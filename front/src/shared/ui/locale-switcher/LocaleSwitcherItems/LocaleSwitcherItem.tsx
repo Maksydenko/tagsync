@@ -6,7 +6,7 @@ import { useLocale } from "next-intl";
 
 import { ILink, Locale } from "@/shared/model";
 
-import { usePathname, useRouter } from "@/i18n/routing";
+import { usePathname, useRouter } from "@/i18n/navigation";
 
 import s from "../LocaleSwitcher.module.scss";
 
