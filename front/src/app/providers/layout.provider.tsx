@@ -22,14 +22,15 @@ export const LayoutProvider: FC<LayoutProviderProps> = async ({
   return (
     <html
       className={clsx(openSans.variable, montserrat.variable)}
+      id="html"
       lang={locale}
       suppressHydrationWarning
     >
       <body>
         <Providers locale={locale}>
-          <div className="layout">
+          <div id="layout">
             <Header />
-            <main className="main">{children}</main>
+            <main>{children}</main>
             <Footer />
           </div>
         </Providers>

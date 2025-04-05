@@ -24,8 +24,11 @@ $grayColor: #9d9d9c;
 $whiteColor: #f3f3f4;
 $lightColor: #fbfbfb;
 $darkColor: #1a1a1e;
-@include mixins.lightDark(mainColor, $darkColor, $lightColor);
-@include mixins.lightDark(mainBg, $lightColor, $darkColor);
+
+#html {
+  @include mixins.theme(mainColor, $darkColor, $lightColor);
+  @include mixins.theme(mainBg, $lightColor, $darkColor);
+}
 
 // ============================================================================
 

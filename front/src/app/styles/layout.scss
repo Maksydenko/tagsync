@@ -6,8 +6,10 @@
 
 // Scrollbar styles
 
-@include m.lightDark(scrollColor, #a3a3a3, #808080);
-@include m.lightDark(scrollBg, #f1f1f1, #424242);
+#html {
+  @include m.theme(scrollColor, #a3a3a3, #808080);
+  @include m.theme(scrollBg, #f1f1f1, #424242);
+}
 
 ::-webkit-scrollbar {
   inline-size: m.rem(8);
@@ -32,14 +34,14 @@ body {
 }
 
 // Shell layout
-.layout {
+#layout {
   display: flex;
   flex-direction: column;
   min-block-size: 100%;
   overflow: clip;
 
   // Press the footer
-  .main {
+  main {
     flex: 1 1 auto;
   }
 }

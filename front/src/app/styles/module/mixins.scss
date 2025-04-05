@@ -90,8 +90,8 @@
 }
 
 // Themized property
-@mixin lightDark($property, $lightValue, $darkValue) {
-  :root {
+@mixin theme($property, $lightValue, $darkValue) {
+  & {
     &[data-theme="light"] {
       --#{$property}: #{$lightValue};
     }

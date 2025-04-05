@@ -1,8 +1,10 @@
 @use "@/app/styles/module" as m;
 
-@include m.lightDark(themeSwitcherBg, #d4d8dd, #222128);
-@include m.lightDark(themeSwitcherSlider, #fff, #494a50);
-@include m.lightDark(themeSwitcherImg, 0, 100%);
+:global(#html) {
+  @include m.theme(themeSwitcherBg, #d4d8dd, #222128);
+  @include m.theme(themeSwitcherSlider, #fff, #494a50);
+  @include m.theme(themeSwitcherImg, 0, 100%);
+}
 
 .themeSwitcher {
   position: relative;
@@ -20,7 +22,7 @@
     aspect-ratio: 1;
     background: var(--themeSwitcherSlider);
     border-radius: 50%;
-    transition: transform 0.15s ease 0s;
+    transition: translate 0.15s ease 0s;
   }
 
   // .themeSwitcher__input
@@ -32,7 +34,7 @@
       &:nth-of-type(#{$i}) {
         &:checked {
           ~ .themeSwitcher__slider {
-            translate: 100% * ($i - 1), -50%;
+            translate: 100% * ($i - 1) -50%;
           }
         }
       }

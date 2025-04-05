@@ -1,5 +1,9 @@
 @use "@/app/styles/module" as m;
 
+:global(#html) {
+  @include m.theme(iconInvert, 0, 1);
+}
+
 .input {
   display: flex;
   gap: m.rem(8);
@@ -20,21 +24,10 @@
   &__icon {
     inline-size: m.rem(20);
     aspect-ratio: 1;
+    filter: invert(var(--iconInvert));
 
     @media (max-width: m.$mobile) {
       inline-size: m.rem(18);
-    }
-  }
-}
-
-:root {
-  &[data-theme="dark"] {
-    .input {
-      // .input__icon
-
-      &__icon {
-        filter: invert(1);
-      }
     }
   }
 }
