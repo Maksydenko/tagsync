@@ -1,0 +1,54 @@
+@use "@/app/styles/module" as m;
+
+.dropdown {
+  position: relative;
+
+  // .dropdown__btn
+
+  &__btn {
+  }
+}
+
+.dropdownItems {
+  z-index: 10;
+  padding: m.rem(5);
+  color: m.$darkColor;
+  outline: none;
+  background: m.$lightColor;
+  border-radius: m.rem(5);
+  box-shadow: 0 m.rem(10) m.rem(15) m.rem(-3) rgba(0, 0, 0, 0.1),
+    0 m.rem(4) m.rem(6) m.rem(-2) rgba(0, 0, 0, 0.1);
+  transition: scale 0.1s ease-out 0s, opacity 0.1s ease-out 0s;
+
+  &[data-closed] {
+    opacity: 0;
+    scale: 0.95;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  // .dropdown__item
+
+  &__item {
+    display: block;
+    border-radius: m.rem(5);
+    transition: color 0.3s ease 0s, background 0.3s ease 0s;
+
+    // .dropdown__item_active
+
+    &_active {
+      color: m.$lightColor;
+      background: m.$darkColor;
+    }
+
+    > * {
+      display: flex;
+      flex: 1 1 auto;
+      inline-size: 100%;
+      padding-block: m.rem(8);
+      padding-inline: m.rem(12);
+    }
+  }
+}

@@ -1,0 +1,66 @@
+// Extends
+
+@use "./mixins";
+@use "./utils";
+@use "./vars";
+
+// ============================================================================
+
+// Limiting container
+
+%container {
+  // Responsive
+  @if vars.$adaptiveType == 1 {
+    @if vars.$maxWidthContainer > 0 {
+      max-width: utils.rem(vars.$containerWidth);
+      margin: 0 auto;
+    }
+
+    @if vars.$containerPadding > 0 {
+      @if vars.$maxWidthContainer > 0 {
+        padding-right: utils.rem(calc(vars.$containerPadding / 2));
+        padding-left: utils.rem(calc(vars.$containerPadding / 2));
+      } @else {
+        @include mixins.responsiveValue(
+          padding-right,
+          calc(vars.$containerPadding / 2),
+          15
+        );
+        @include mixins.responsiveValue(
+          padding-left,
+          calc(vars.$containerPadding / 2),
+          15
+        );
+      }
+    }
+  }
+  // According to breakpoints
+  @else {
+    margin: 0 auto;
+
+    @if vars.$maxWidthContainer > 0 {
+      max-width: utils.rem(vars.$containerWidth);
+    } @else {
+      @if vars.$containerPadding > 0 {
+        padding-inline: utils.rem(calc(vars.$containerPadding / 2));
+      }
+    }
+
+    @media (max-width: vars.$pc) {
+      max-width: utils.rem(970);
+    }
+
+    @media (max-width: vars.$tablet) {
+      max-width: utils.rem(750);
+    }
+
+    @media (max-width: vars.$mobile) {
+      max-width: none;
+    }
+
+    @if vars.$containerPadding > 0 and vars.$maxWidthContainer > 0 {
+      padding-right: utils.rem(calc(vars.$containerPadding / 2));
+      padding-left: utils.rem(calc(vars.$containerPadding / 2));
+    }
+  }
+}

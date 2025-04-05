@@ -1,0 +1,9 @@
+{
+  "login": {
+    "title": "Login to your personal account",
+    "registration": {
+      "title": "Don't have an account yet?",
+      "text": "Sign up to get access to your personal account, order history and exclusive offers."
+    }
+  }
+}

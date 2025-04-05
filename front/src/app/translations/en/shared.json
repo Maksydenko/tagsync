@@ -1,0 +1,60 @@
+{
+  "shared": {
+    "pathnames": {
+      "home": "Home",
+      "categories": "Categories"
+    },
+    "user": {
+      "account": "Account",
+      "logout": "Logout"
+    },
+    "form": {
+      "email": {
+        "label": "Email",
+        "required": "Email is required",
+        "pattern": "Invalid email",
+        "max": "Email should have a maximum of {value} characters"
+      },
+      "password": {
+        "label": "Password",
+        "required": "Password is required",
+        "pattern": "Password must contain Latin letters and numbers",
+        "min": "Password should have a minimum of {value} characters",
+        "max": "Password should have a maximum of {value} characters"
+      },
+      "confirmPassword": {
+        "label": "Confirm password",
+        "required": "Confirm password is required",
+        "pattern": "Passwords don't match"
+      },
+      "name": {
+        "label": "Name",
+        "required": "Name is required",
+        "pattern": "Invalid name",
+        "min": "Name must have at least {value} characters",
+        "max": "Name must have a maximum of {value} characters"
+      },
+      "surname": {
+        "label": "Surname",
+        "required": "Surname is required",
+        "pattern": "Invalid surname",
+        "min": "Surname must have at least {value} characters",
+        "max": "Surname must have a maximum of {value} characters"
+      },
+      "phone": {
+        "label": "Phone",
+        "required": "Phone is required",
+        "pattern": "Invalid phone"
+      },
+      "submit": "Submit"
+    },
+    "errors": {
+      "unknown": "Something went wrong. Try again later",
+      "invalid-credentials": "Invalid email or password",
+      "user-already-exists": "This email already exists",
+      "email-not-confirmed": "Email not confirmed"
+    },
+    "forgot-password": "Forgot password?",
+    "continue": "Continue"
+  }
+}

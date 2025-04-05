@@ -1,0 +1,85 @@
+@use "@/app/styles/module" as m;
+
+@include m.lightDark(themeSwitcherBg, #d4d8dd, #222128);
+@include m.lightDark(themeSwitcherSlider, #fff, #494a50);
+@include m.lightDark(themeSwitcherImg, 0, 100%);
+
+.themeSwitcher {
+  position: relative;
+  display: flex;
+  padding: m.rem(3);
+  background: var(--themeSwitcherBg);
+  border-radius: m.rem(99);
+
+  // .themeSwitcher__slider
+
+  &__slider {
+    position: absolute;
+    inset-block-start: 50%;
+    inline-size: calc((100% - m.rem(6)) / 3);
+    aspect-ratio: 1;
+    background: var(--themeSwitcherSlider);
+    border-radius: 50%;
+    transition: transform 0.15s ease 0s;
+  }
+
+  // .themeSwitcher__input
+
+  &__input {
+    display: none;
+
+    @for $i from 1 through 3 {
+      &:nth-of-type(#{$i}) {
+        &:checked {
+          ~ .themeSwitcher__slider {
+            translate: 100% * ($i - 1), -50%;
+          }
+        }
+      }
+    }
+  }
+
+  // .themeSwitcher__label
+
+  &__label {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    padding: m.rem(8);
+    transition: opacity 0.3s ease 0s;
+
+    &:not(&_checked) {
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+
+    @media (max-width: m.$mobile) {
+      font-size: m.rem(24);
+    }
+
+    // .themeSwitcher__label_checked
+
+    &_checked {
+    }
+  }
+
+  // .themeSwitcher__img
+
+  &__img {
+    inline-size: m.rem(20);
+    block-size: m.rem(20);
+    filter: invert(var(--themeSwitcherImg));
+  }
+
+  // .themeSwitcher__loader
+
+  &__loader {
+    &::after {
+      inline-size: m.rem(30);
+      block-size: m.rem(30);
+    }
+  }
+}

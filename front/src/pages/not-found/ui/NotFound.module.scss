@@ -1,0 +1,33 @@
+@use "@/app/styles/module" as m;
+
+.notFound {
+  // .notFound__container
+
+  &__container {
+    @extend %container;
+
+    padding-top: m.rem(70);
+    padding-bottom: m.rem(70);
+  }
+
+  // .notFound__title
+
+  &__title {
+    margin-bottom: m.em(20, 60);
+    font-size: m.rem(60);
+  }
+
+  // .notFound__subtitle
+
+  &__subtitle {
+    margin-bottom: m.em(20, 30);
+    font-size: m.rem(30);
+    font-weight: 500;
+  }
+
+  // .notFound__text
+
+  &__text {
+    font-size: m.rem(20);
+  }
+}

@@ -1,0 +1,101 @@
+@use "@/app/styles/module" as m;
+
+$bodyGap: 100;
+
+.login {
+  // .login__container
+
+  &__container {
+    @extend %container;
+
+    padding-top: m.$containerPadding;
+    padding-bottom: m.$containerPadding;
+  }
+
+  // .login__body
+
+  &__body {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: m.rem($bodyGap);
+
+    @media (max-width: m.$tablet) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // .login__content
+  &__content,
+  // .login__box
+  &__box {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(30);
+  }
+
+  // .login__content
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(30);
+
+    &:not(:last-child) {
+      position: relative;
+
+      &::after {
+        position: absolute;
+        inset-block: 0;
+        inset-inline-end: m.rem(calc($bodyGap / -2));
+        inline-size: m.rem(1);
+        content: "";
+        background: var(--mainColor);
+        translate: 50% 0;
+
+        @media (max-width: m.$tablet) {
+          inset-block-start: unset;
+          inset-block-end: m.rem(calc($bodyGap / -2));
+          inset-inline-start: 0;
+          inset-inline-end: 0;
+          inline-size: 100%;
+          block-size: m.rem(1);
+          translate: 0 50%;
+        }
+      }
+    }
+  }
+
+  // .login__box
+
+  &__box {
+    flex: 1 1 auto;
+  }
+
+  // .login__title
+
+  &__title {
+    font-family: m.$secondaryFontFamily;
+    font-size: m.rem(24);
+    font-weight: 500;
+
+    @media (max-width: m.$mobile) {
+      font-size: m.rem(20);
+    }
+  }
+
+  // .login__text
+
+  &__text {
+    line-height: 1.3;
+
+    @media (max-width: m.$mobile) {
+      font-size: m.rem(14);
+    }
+  }
+
+  // .login__btn
+
+  &__btn {
+    align-self: flex-start;
+  }
+}

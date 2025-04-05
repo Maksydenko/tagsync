@@ -1,0 +1,41 @@
+@use "@/app/styles/module" as m;
+
+.authForm {
+  // .authForm__body
+  &__body,
+  // .authForm__content
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(50);
+  }
+
+  // .authForm__field
+
+  &__field {
+  }
+
+  // .authForm__btns
+
+  &__btns {
+    display: flex;
+    gap: m.rem(20);
+    align-items: center;
+    justify-content: space-between;
+
+    > a {
+      transition: opacity 0.3s ease 0s;
+      @include m.hover;
+
+      @media (max-width: m.$mobile) {
+        font-size: m.rem(14);
+      }
+    }
+  }
+
+  // .authForm__submissionMessage
+
+  &__submissionMessage {
+    color: m.$redColor;
+  }
+}

@@ -1,0 +1,114 @@
+@use "@/app/styles/module" as m;
+
+.field {
+  min-block-size: m.rem(53);
+  padding-block-end: m.rem(16);
+  border-block-end: m.rem(1) solid rgba(157 157 156 / 30%);
+  transition: border-block-end-color 0.3s ease 0s;
+
+  @media (max-width: m.$mobile) {
+    min-block-size: m.rem(43);
+    padding-block-end: m.rem(10);
+  }
+
+  // .field__body
+
+  &__body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // .field__label
+
+  &__label {
+    margin-bottom: m.rem(10);
+    font-size: m.rem(16);
+
+    @media (max-width: m.$mobile) {
+      font-size: m.rem(14);
+    }
+  }
+
+  // .field__error
+
+  &__error {
+    position: absolute;
+    inset-block-start: 100%;
+    inset-inline-start: 0;
+    margin-top: m.em(25, 14);
+    font-size: m.rem(14);
+    color: m.$redColor;
+
+    @media (max-width: m.$mobile) {
+      font-size: m.rem(12);
+    }
+  }
+
+  input,
+  textarea {
+    inline-size: 100%;
+    block-size: 100%;
+    transition: color 0.3s ease 0s;
+
+    &::placeholder {
+      color: var(--mainColor);
+    }
+  }
+
+  textarea {
+    min-block-size: m.rem(120);
+  }
+
+  // .field_focused
+
+  &_focused {
+    border-block-end-color: m.$grayColor;
+  }
+
+  // .field_error
+
+  &_error {
+    border-block-end-color: m.$redColor;
+    animation: shake 0.3s ease 0s;
+
+    .field__label {
+      color: m.$redColor;
+    }
+
+    > input,
+    > textarea {
+      &,
+      &::placeholder {
+        color: m.$redColor;
+      }
+    }
+  }
+
+  // .field_disabled
+
+  &_disabled {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shake {
+  0% {
+    translate: 0 0;
+  }
+  20% {
+    translate: m.rem(-5) 0;
+  }
+  40% {
+    translate: m.rem(5) 0;
+  }
+  60% {
+    translate: m.rem(-5) 0;
+  }
+  80% {
+    translate: m.rem(5) 0;
+  }
+  100% {
+    translate: 0 0;
+  }
+}

@@ -1,0 +1,27 @@
+@use "@/app/styles/module" as m;
+
+.phone {
+  display: flex;
+  gap: m.rem(16);
+  align-items: center;
+
+  :global(.PhoneInputCountry) {
+    flex: 0 0 m.rem(20);
+
+    :global(.PhoneInputCountrySelect) {
+      display: none;
+    }
+
+    :global(.PhoneInputCountryIconImg) {
+      inline-size: m.rem(20);
+      block-size: m.rem(20);
+      border-radius: m.rem(3);
+    }
+  }
+
+  :global(.PhoneInputInput) {
+    inline-size: 100%;
+    block-size: auto;
+    padding: 0;
+  }
+}

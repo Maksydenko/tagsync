@@ -1,0 +1,70 @@
+@use "@/app/styles/module" as m;
+
+.header {
+  position: sticky;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 10;
+  background: m.$whiteColor;
+
+  // .header__container
+
+  &__container {
+    @extend %container;
+  }
+
+  // .header__body
+
+  &__body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-block-size: m.rem(70);
+  }
+
+  // .header__logo
+
+  &__logo {
+    position: relative;
+    z-index: 9;
+    display: flex;
+    gap: m.rem(10);
+    align-items: center;
+    font-family: m.$secondaryFontFamily;
+    font-size: m.rem(20);
+    font-weight: 500;
+    color: m.$primaryColor;
+
+    @include m.textGradient(
+      linear-gradient(180deg, m.$secondaryColor 0%, m.$primaryColor 100%)
+    );
+
+    .header__img {
+      inline-size: m.rem(70);
+      aspect-ratio: 2 / 1;
+    }
+  }
+
+  // .header__content
+
+  &__content {
+    display: flex;
+    gap: m.rem(40);
+    align-items: center;
+
+    @media (max-width: m.$mobile) {
+      gap: m.rem(20);
+    }
+  }
+
+  // .header__user
+
+  &__user {
+    position: relative;
+    z-index: 1;
+
+    @media (max-width: m.$mobile) {
+      order: -1;
+    }
+  }
+}

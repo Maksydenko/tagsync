@@ -1,0 +1,23 @@
+// Icons fonts
+
+@use "./mixins";
+
+// ============================================================================
+
+@include mixins.font(icons);
+
+%icon {
+  font-family: icons, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  line-height: 1;
+  text-transform: none;
+}
+
+body [class*="_icon-"] {
+  &::before {
+    @extend %icon;
+    display: block;
+  }
+}

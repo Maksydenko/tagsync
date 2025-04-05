@@ -1,0 +1,9 @@
+{
+  "registration": {
+    "title": "Create an account",
+    "login": {
+      "title": "Already have an account?",
+      "text": "Login to access your personal account and all the features of the site."
+    }
+  }
+}

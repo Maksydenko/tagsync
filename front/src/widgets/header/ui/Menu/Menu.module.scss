@@ -1,0 +1,168 @@
+@use "@/app/styles/module" as m;
+
+.menu {
+  // .menu__button
+
+  &__button {
+    @media (min-width: m.$mobile) {
+      display: none;
+    }
+
+    @media (max-width: m.$mobile) {
+      position: relative;
+      z-index: 9;
+      display: block;
+      inline-size: m.rem(30);
+      block-size: m.rem(18);
+
+      &::before,
+      &::after,
+      > span {
+        position: absolute;
+        left: 0;
+        inline-size: 100%;
+        block-size: 9.5%;
+        background: m.$darkColor;
+        border-radius: m.rem(5);
+        transition: all 0.3s ease 0s;
+      }
+
+      &::before,
+      &::after {
+        content: "";
+      }
+
+      &::before {
+        top: 0;
+      }
+
+      &::after {
+        bottom: 0;
+      }
+
+      > span {
+        top: 50%;
+        scale: 1;
+        translate: 0 -50%;
+      }
+
+      // .menu__button_active
+
+      &_active {
+        block-size: m.rem(30);
+
+        &::before,
+        &::after {
+          inset-block-start: 50%;
+          block-size: 5%;
+          translate: 0 -50%;
+        }
+
+        &::before {
+          rotate: 45deg;
+        }
+
+        &::after {
+          rotate: -45deg;
+        }
+
+        > span {
+          scale: 0;
+        }
+      }
+    }
+  }
+
+  // .menu__body
+
+  &__body {
+    @media (max-width: m.$mobile) {
+      position: fixed;
+      inset-block: 0;
+      inset-inline-end: -100%;
+      inline-size: 100%;
+      padding-block-start: m.rem(100);
+      padding-block-end: m.rem(30);
+      padding-inline: m.rem(30);
+      overflow: auto;
+      background: m.$whiteColor;
+      transition: right 0.3s ease 0s;
+
+      &::before {
+        position: fixed;
+        inset-block-start: 0;
+        inset-inline: 0;
+        z-index: 8;
+        block-size: m.rem(70);
+        content: "";
+        background: m.$whiteColor;
+      }
+
+      // .menu__body_active
+
+      &_active {
+        inset-inline-end: 0;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    gap: m.rem(40) m.rem(40);
+    align-items: center;
+    font-size: m.rem(18);
+    text-transform: uppercase;
+
+    @media (max-width: m.$mobile) {
+      flex-direction: column-reverse;
+      align-items: flex-end;
+      justify-content: flex-end;
+      font-size: m.rem(24);
+    }
+  }
+
+  // .menu__list
+
+  &__list {
+    display: flex;
+    gap: m.rem(30) m.rem(20);
+    font-size: m.rem(18);
+
+    @media (min-width: m.$mobile) {
+      align-items: center;
+    }
+
+    @media (max-width: m.$mobile) {
+      flex-direction: column;
+      font-size: m.rem(24);
+    }
+  }
+
+  // .menu__item
+
+  &__item {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  // .menu__link
+
+  &__link {
+    flex: 0 1 auto;
+    color: m.$darkColor;
+    text-align: right;
+    text-transform: capitalize;
+
+    @media (min-width: m.$mobile) {
+      padding: m.em(10, 18) 0;
+    }
+
+    // .menu__link_active
+
+    &_active {
+      cursor: default;
+      opacity: 0.5;
+    }
+  }
+}

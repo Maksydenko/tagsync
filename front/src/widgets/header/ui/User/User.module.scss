@@ -1,0 +1,48 @@
+@use "@/app/styles/module" as m;
+
+.user {
+  // .user__body
+
+  &__body {
+    inline-size: m.rem(40);
+    aspect-ratio: 1;
+    overflow: hidden;
+    border: m.rem(1) solid m.$darkColor;
+    border-radius: 50%;
+  }
+
+  // .user__icon
+
+  &__icon {
+    aspect-ratio: 1;
+  }
+
+  // .user__link
+  &__link,
+  // .user__dropdown
+  &__dropdown {
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: center;
+    inline-size: 100%;
+    block-size: 100%;
+  }
+
+  // .user__link
+  &__link,
+  // .user__dropdown
+  &__dropdown > button {
+    padding: m.rem(10);
+    color: m.$darkColor;
+    border-radius: 50%;
+  }
+
+  // .user__dropdown
+
+  &__dropdown {
+    > button {
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+  }
+}

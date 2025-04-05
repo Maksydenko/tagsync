@@ -1,0 +1,155 @@
+// Mixins
+
+// Connection utils
+@use "./utils";
+
+// ============================================================================
+
+// Responsive value
+@mixin responsiveValue(
+  $property,
+  $startSize,
+  $minSize,
+  $type: 1,
+  $widthFrom,
+  $widthTo
+) {
+  // For calc();
+  $addSize: calc(($startSize - $minSize) / 16);
+
+  $calcSize: calc(
+    #{utils.rem($minSize)} + #{$addSize} * (100vw - #{utils.rem($widthTo)}) / #{calc(
+        $widthFrom / 16
+      ) - calc($widthTo / 16)}
+  );
+
+  // If there is less container
+  @if $type == 1 {
+    #{$property}: utils.rem($startSize);
+
+    @media (max-width: ($widthFrom + px)) {
+      #{$property}: $calcSize;
+    }
+  }
+  // If there is more container
+  @else if $type == 2 {
+    #{$property}: utils.rem($startSize);
+
+    @media (min-width: ($widthFrom + px)) {
+      #{$property}: $calcSize;
+    }
+  }
+  // Always
+  @else {
+    #{$property}: $calcSize;
+  }
+}
+
+// Connecting font
+@mixin font($fontName, $fileName: $fontName, $weight: 400, $style: normal) {
+  @font-face {
+    font-family: $fontName;
+    font-style: $style;
+    font-weight: $weight;
+    src: url("/fonts/#{$fileName}/#{$fileName}.woff2") format("woff2"),
+      url("/fonts/#{$fileName}/#{$fileName}.woff") format("woff");
+    font-display: swap;
+  }
+}
+
+// Hover
+@mixin hover(
+  $styles: (
+    opacity: 0.5,
+  ),
+  $focus: true
+) {
+  @media (hover: hover) {
+    &:hover {
+      @each $property, $value in $styles {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  @media (hover: none) {
+    &:active {
+      @each $property, $value in $styles {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  @if ($focus == true) {
+    &:focus-visible {
+      @each $property, $value in $styles {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
+// Themized property
+@mixin lightDark($property, $lightValue, $darkValue) {
+  :root {
+    &[data-theme="light"] {
+      --#{$property}: #{$lightValue};
+    }
+
+    &[data-theme="dark"] {
+      --#{$property}: #{$darkValue};
+    }
+  }
+}
+
+// Centered object
+@mixin centered($method) {
+  // Flex
+  @if $method == flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  // Position
+  @else if $method == position {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    translate: -50% -50%;
+  }
+}
+
+// Text nowrap
+@mixin textNowrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Text vertical
+@mixin textVertical {
+  writing-mode: vertical-lr;
+  rotate: -180deg;
+  text-orientation: upright;
+}
+
+// Line camp
+@mixin lineCamp($lines) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+}
+
+// Text gradient
+@mixin textGradient($gradient) {
+  background: $gradient;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// Text stroke
+@mixin textStroke($size, $color, $fillColor: transparent) {
+  -webkit-text-stroke: $size $color;
+  -webkit-text-fill-color: $fillColor;
+}

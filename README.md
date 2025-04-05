@@ -1,0 +1,26 @@
+# TagSync
+
+## Launch
+
+### Front
+
+```bash
+cd front
+yarn # first launch
+yarn dev
+```
+
+![React](https://skillicons.dev/icons?i=react)
+![Next](https://skillicons.dev/icons?i=next)
+![JS](https://skillicons.dev/icons?i=js)
+![TS](https://skillicons.dev/icons?i=ts)
+![SCSS](https://skillicons.dev/icons?i=scss)
+![HTML](https://skillicons.dev/icons?i=html)
+![CSS](https://skillicons.dev/icons?i=css)
+![VS Code](https://skillicons.dev/icons?i=supabase)
+![Git](https://skillicons.dev/icons?i=git)
+![GitHub](https://skillicons.dev/icons?i=github)
+![npm](https://skillicons.dev/icons?i=npm)
+![yarn](https://skillicons.dev/icons?i=yarn)
+![Vercel](https://skillicons.dev/icons?i=vercel)
+![VS Code](https://skillicons.dev/icons?i=vscode)

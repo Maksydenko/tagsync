@@ -1,0 +1,30 @@
+@use "@/app/styles/module" as m;
+
+.loader {
+  font-size: m.rem(30);
+
+  @include m.centered(position);
+
+  &::after {
+    display: block;
+    inline-size: m.em(40, 40);
+    aspect-ratio: 1;
+    content: "";
+    background: radial-gradient(farthest-side, m.$primaryColor 94%, #0000)
+        top/m.em(8, 40) m.em(8, 40) no-repeat,
+      conic-gradient(#0000 30%, m.$primaryColor);
+    border-radius: 50%;
+    mask: radial-gradient(
+      farthest-side,
+      #0000 calc(100% - m.em(8, 40)),
+      #000 0
+    );
+    animation: loading 1s infinite linear;
+  }
+}
+
+@keyframes loading {
+  100% {
+    rotate: 1turn;
+  }
+}

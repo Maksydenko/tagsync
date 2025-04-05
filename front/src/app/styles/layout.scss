@@ -1,0 +1,45 @@
+// Layout
+
+// ============================================================================
+
+@use "@/app/styles/module" as m;
+
+// Scrollbar styles
+
+@include m.lightDark(scrollColor, #a3a3a3, #808080);
+@include m.lightDark(scrollBg, #f1f1f1, #424242);
+
+::-webkit-scrollbar {
+  inline-size: m.rem(8);
+  background: var(--scrollBg);
+
+  // ::-webkit-scrollbar-thumbs
+
+  &-thumb {
+    background: var(--scrollColor);
+    border-radius: m.rem(5);
+  }
+}
+
+// Body tag styles
+body {
+  // Lock scroll
+  .lock {
+    overflow: hidden;
+    overscroll-behavior: none;
+    touch-action: none;
+  }
+}
+
+// Shell layout
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-block-size: 100%;
+  overflow: clip;
+
+  // Press the footer
+  .main {
+    flex: 1 1 auto;
+  }
+}

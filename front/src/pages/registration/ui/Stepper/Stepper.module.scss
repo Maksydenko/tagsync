@@ -1,0 +1,120 @@
+@use "@/app/styles/module" as m;
+
+.stepper {
+  position: relative;
+  max-inline-size: calc(100% - m.rem(m.$containerPadding) * 2);
+  margin-inline: auto;
+
+  // .stepper__steps
+  &__steps::after,
+  // .stepper__progressbar
+  &__progressbar {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 0;
+    block-size: m.rem(8);
+    border-radius: m.rem(999);
+    translate: 0 -50%;
+  }
+
+  // .stepper__steps
+
+  &__steps {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+
+    &::after {
+      inset-inline-end: 0;
+      z-index: 1;
+      content: "";
+      background: m.$grayColor;
+    }
+
+    :global(.rc-steps-item) {
+      :global(.rc-steps-item-container) {
+        position: relative;
+        z-index: 3;
+        inline-size: m.rem(24);
+        block-size: m.rem(24);
+        background: var(--mainBg);
+        border: m.rem(2.5) solid var(--mainColor);
+        border-radius: 50%;
+
+        @include m.centered(flex);
+
+        &::after {
+          z-index: 4;
+          visibility: hidden;
+          inline-size: m.rem(16);
+          block-size: m.rem(16);
+          content: "";
+          background: var(--mainColor);
+          border-radius: 50%;
+          opacity: 0;
+          transition: opacity 0.3s ease 0s;
+
+          @include m.centered(position);
+        }
+
+        :global(.rc-steps-item-icon) {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          :global(.rc-steps-icon) {
+            position: relative;
+            z-index: 5;
+            font-size: m.rem(14);
+            font-weight: 700;
+            color: var(--mainColor);
+            transition: color 0.3s ease 0s;
+          }
+        }
+      }
+
+      &:global(.rc-steps-item-active),
+      &:global(.rc-steps-item-finish),
+      &:global(.rc-steps-item-finish) + div {
+        position: relative;
+
+        :global(.rc-steps-item-container) {
+          &::after {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+
+        :global(.rc-steps-item-icon) {
+          :global(.rc-steps-icon) {
+            color: var(--mainBg);
+          }
+        }
+      }
+
+      &:global(.rc-steps-item-finish) {
+        > div {
+          cursor: pointer;
+        }
+
+        &:not(:global(.rc-steps-item-disabled)) {
+          :global(.rc-steps-item-container) {
+            &:hover {
+              &::after {
+                opacity: 0.5;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // .stepper__progressbar
+
+  &__progressbar {
+    z-index: 2;
+    background: var(--mainColor);
+    transition: width 0.8192s ease 0s;
+  }
+}
