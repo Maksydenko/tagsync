@@ -25,7 +25,7 @@ const importMessages = async (
 const requestConfig = getRequestConfig(async ({ requestLocale }) => {
   const { defaultLocale, locales } = routing;
 
-  // This typically corresponds to the `[locale]` segment
+  // Typically corresponds to the `[locale]` segment
   const requested = await requestLocale;
 
   // Ensure that a valid `locale` is used
