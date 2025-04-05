@@ -1,7 +1,7 @@
-import { AbstractIntlMessages } from "next-intl";
+import { AbstractIntlMessages, hasLocale } from "next-intl";
 import { getRequestConfig } from "next-intl/server";
 
-import { Locale, Translation } from "@/shared/model";
+import { Translation } from "@/shared/model";
 
 import { routing } from "./routing";
 
@@ -24,12 +24,12 @@ const importMessages = async (
 
 const requestConfig = getRequestConfig(async ({ requestLocale }) => {
   // This typically corresponds to the `[locale]` segment
-  let locale = await requestLocale;
+  const requested = await requestLocale;
 
-  // Ensure that a valid locale is used
-  if (!locale || !routing.locales.includes(locale as Locale)) {
-    locale = routing.defaultLocale;
-  }
+  // Ensure that a valid `locale` is used
+  const locale = hasLocale(routing.locales, requested)
+    ? requested
+    : routing.defaultLocale;
 
   const translations = [
     Translation.Shared,
