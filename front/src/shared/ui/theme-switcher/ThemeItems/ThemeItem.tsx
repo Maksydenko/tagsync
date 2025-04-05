@@ -4,8 +4,7 @@ import { FC, KeyboardEventHandler } from "react";
 import { useTheme } from "next-themes";
 import { clsx } from "clsx";
 
-import { useMounted } from "@/shared/model";
-import { ILink } from "@/shared/model";
+import { ILink, useMounted } from "@/shared/model";
 import { Img } from "@/shared/ui";
 
 import s from "../ThemeSwitcher.module.scss";
@@ -20,7 +19,7 @@ export const ThemeItem: FC<ThemeItemProps> = ({ theme: { label, value } }) => {
 
   const isChecked = theme === value;
 
-  const handleClick = () => {
+  const switchTheme = () => {
     setTheme(value);
   };
 
@@ -29,7 +28,7 @@ export const ThemeItem: FC<ThemeItemProps> = ({ theme: { label, value } }) => {
       return;
     }
 
-    setTheme(value);
+    switchTheme();
   };
 
   return (
@@ -39,7 +38,7 @@ export const ThemeItem: FC<ThemeItemProps> = ({ theme: { label, value } }) => {
         className={s.themeSwitcher__input}
         id={value}
         type="radio"
-        onChange={handleClick}
+        onChange={switchTheme}
       />
       <label
         className={clsx(

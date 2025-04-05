@@ -6,10 +6,8 @@
 
 // Scrollbar styles
 
-#html {
-  @include m.theme(scrollColor, #a3a3a3, #808080);
-  @include m.theme(scrollBg, #f1f1f1, #424242);
-}
+@include m.theme(scrollColor, #a3a3a3, #808080);
+@include m.theme(scrollBg, #f1f1f1, #424242);
 
 ::-webkit-scrollbar {
   inline-size: m.rem(8);

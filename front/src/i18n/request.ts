@@ -12,8 +12,9 @@ const importMessages = async (
   const messages: AbstractIntlMessages = {};
 
   for (const translation of translations) {
-    const filePath = `../app/translations/${locale}/${translation}.json`;
-    const file = await import(filePath);
+    const file = await import(
+      `@/app/translations/${locale}/${translation}.json`
+    );
 
     Object.assign(messages, file.default);
   }
@@ -37,6 +38,7 @@ const requestConfig = getRequestConfig(async ({ requestLocale }) => {
     Translation.Login,
     Translation.Registration,
   ];
+
   const messages = await importMessages(translations, locale);
 
   return {

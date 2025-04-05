@@ -8,8 +8,8 @@ $bodyGap: 100;
   &__container {
     @extend %container;
 
-    padding-top: m.$containerPadding;
-    padding-bottom: m.$containerPadding;
+    padding-top: m.rem(m.$containerPadding);
+    padding-bottom: m.rem(m.$containerPadding);
   }
 
   // .login__body

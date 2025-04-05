@@ -1,9 +1,8 @@
 import { FC, ReactNode } from "react";
-import { getTranslations } from "next-intl/server";
 
 import { LayoutProvider } from "@/app/providers";
 
-import { IPageProps, Translation } from "@/shared/model";
+import { IPageProps } from "@/shared/model";
 
 import { routing } from "@/i18n/routing";
 
@@ -27,19 +26,4 @@ export const generateStaticParams = () => {
   return routing.locales.map((locale) => ({
     locale,
   }));
-};
-
-export const generateMetadata = async (
-  props: Omit<LocaleLayoutProps, "children">
-) => {
-  const { locale } = await props.params;
-
-  const tHome = await getTranslations({
-    locale,
-    namespace: Translation.Home,
-  });
-
-  return {
-    title: tHome("title"),
-  };
 };

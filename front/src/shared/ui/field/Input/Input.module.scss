@@ -1,9 +1,5 @@
 @use "@/app/styles/module" as m;
 
-:global(#html) {
-  @include m.theme(iconInvert, 0, 1);
-}
-
 .input {
   display: flex;
   gap: m.rem(8);

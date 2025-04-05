@@ -25,10 +25,12 @@ $whiteColor: #f3f3f4;
 $lightColor: #fbfbfb;
 $darkColor: #1a1a1e;
 
-#html {
-  @include mixins.theme(mainColor, $darkColor, $lightColor);
-  @include mixins.theme(mainBg, $lightColor, $darkColor);
-}
+@include mixins.theme(mainColor, $darkColor, $lightColor);
+@include mixins.theme(mainBg, $lightColor, $darkColor);
+@include mixins.theme(themeSwitcherBg, #d4d8dd, #222128);
+@include mixins.theme(themeSwitcherSlider, #fff, #494a50);
+@include mixins.theme(themeSwitcherImg, 0, 100%);
+@include mixins.theme(iconInvert, 0, 1);
 
 // ============================================================================
 

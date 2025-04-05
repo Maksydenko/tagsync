@@ -1,1 +1,1 @@
-export * from "./useRedirectToHomepage";
+export { useRedirectToHomepage } from "./useRedirectToHomepage";
