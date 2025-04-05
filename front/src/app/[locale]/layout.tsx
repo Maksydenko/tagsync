@@ -1,12 +1,12 @@
 import { FC, ReactNode } from "react";
 
-import { LayoutProvider } from "@/app/providers";
+import { LayoutProvider } from "@/application/providers";
 
 import { IPageProps } from "@/shared/model";
 
 import { routing } from "@/i18n/routing";
 
-import "@/app/styles/globals.scss";
+import "@/application/styles/globals.scss";
 
 interface LocaleLayoutProps extends IPageProps {
   children: ReactNode;

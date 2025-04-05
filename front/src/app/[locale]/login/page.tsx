@@ -1,21 +1,21 @@
 import { NextPage } from "next";
 import { setRequestLocale } from "next-intl/server";
 
-import Home from "@/pages/home";
+import Login from "@/views/login";
 
 import { IParams } from "@/shared/model";
 
-interface HomePageProps {
+interface LoginPageProps {
   params: Promise<IParams>;
 }
 
-const HomePage: NextPage<HomePageProps> = async (props) => {
+const LoginPage: NextPage<LoginPageProps> = async (props) => {
   const params = await props.params;
   const { locale } = params;
 
   setRequestLocale(locale);
 
-  return <Home />;
+  return <Login />;
 };
 
-export default HomePage;
+export default LoginPage;

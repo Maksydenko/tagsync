@@ -8,7 +8,7 @@ import { Locale, montserrat, openSans } from "@/shared/model";
 
 import { Providers } from "./providers";
 
-import "@/app/styles/globals.scss";
+import "@/application/styles/globals.scss";
 
 interface LayoutProviderProps {
   children: ReactNode;

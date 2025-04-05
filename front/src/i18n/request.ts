@@ -13,7 +13,7 @@ const importMessages = async (
 
   for (const translation of translations) {
     const file = await import(
-      `@/app/translations/${locale}/${translation}.json`
+      `@/application/translations/${locale}/${translation}.json`
     );
 
     Object.assign(messages, file.default);
