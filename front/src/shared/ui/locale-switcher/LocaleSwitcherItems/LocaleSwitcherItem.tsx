@@ -26,6 +26,8 @@ export const LocaleSwitcherItem: FC<LocaleSwitcherItemProps> = ({
 
   const locale = useLocale();
 
+  const isDisabled = value === locale || isPending;
+
   const handleClick = () => {
     const nextLocale = value as Locale;
 
@@ -48,8 +50,11 @@ export const LocaleSwitcherItem: FC<LocaleSwitcherItemProps> = ({
   return (
     <li className={s.localeSwitcher__item}>
       <button
+        aria-disabled={isDisabled}
+        aria-label={label}
         className={s.localeSwitcher__btn}
-        disabled={isPending || value === locale}
+        disabled={isDisabled}
+        type="button"
         onClick={handleClick}
       >
         {label}
