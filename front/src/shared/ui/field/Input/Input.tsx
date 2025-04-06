@@ -55,7 +55,8 @@ export const Input = <T extends FieldValues>({
       <Tag
         aria-disabled={!!disabled}
         aria-invalid={!!error}
-        aria-label={label || placeholder}
+        aria-label={label}
+        aria-placeholder={placeholder}
         aria-required={!!required}
         autoComplete={name}
         className={s.input__input}
