@@ -36,6 +36,16 @@ export const Input = <T extends FieldValues>({
   ...props
 }: InputProps<T>): ReactNode => {
   const [showPassword, setShowPassword] = useState(false);
+  const {
+    formState: { errors },
+    register,
+  } = formReturn;
+
+  const error = errors[name];
+  const { onBlur: handleBlur, ...restRegister } = register(name, options);
+
+  const disabled = options?.disabled;
+  const required = options?.required;
 
   const isPassword = type === "password";
   const Tag = type === "textarea" ? "textarea" : "input";
@@ -43,24 +53,32 @@ export const Input = <T extends FieldValues>({
   return (
     <div className={clsx(s.input, className)}>
       <Tag
-        {...formReturn.register(name, {
-          ...options,
-        })}
-        {...props}
-        aria-label={label}
+        aria-disabled={!!disabled}
+        aria-invalid={!!error}
+        aria-label={label || placeholder}
+        aria-required={!!required}
         autoComplete={name}
         className={s.input__input}
+        disabled={disabled}
         id={name}
         placeholder={placeholder}
+        required={!!required}
         type={showPassword ? "text" : type}
-        onBlur={onBlur}
+        onBlur={(e) => {
+          handleBlur(e);
+          onBlur?.();
+        }}
         onFocus={onFocus}
+        {...props}
+        {...restRegister}
       />
       {isPassword && (
         <button
           className={s.input__btn}
           type="button"
-          onClick={() => setShowPassword((prev) => !prev)}
+          onClick={() => {
+            setShowPassword((prev) => !prev);
+          }}
         >
           <Img
             className={s.input__icon}

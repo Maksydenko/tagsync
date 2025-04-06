@@ -19,6 +19,7 @@ import s from "./Phone.module.scss";
 interface PhoneProps<T extends FieldValues> {
   className?: string;
   formReturn: UseFormReturn<T>;
+  label?: string;
   name: Path<T>;
   options?: RegisterOptions<T>;
   placeholder?: string;
@@ -40,6 +41,13 @@ export const Phone = <T extends FieldValues>({
     setValue,
     watch,
   } = formReturn;
+
+  const error = errors[name];
+  const {
+    /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
+    onChange,
+    ...restRegister
+  } = register(name, options);
   const phoneValue = watch(name);
 
   const handleChange = (value: Value) => {
@@ -66,14 +74,15 @@ export const Phone = <T extends FieldValues>({
 
   return (
     <PhoneInputWithCountrySelect
-      {...register(name, options)}
-      {...props}
-      className={clsx(s.phone, errors[name] && s.phone_error, className)}
+      className={clsx(s.phone, error && s.phone_error, className)}
       defaultCountry={currentCountry}
+      disabled={options?.disabled}
       id={name}
       placeholder={placeholder}
       international
       onChange={handleChange}
+      {...props}
+      {...restRegister}
     />
   );
 };

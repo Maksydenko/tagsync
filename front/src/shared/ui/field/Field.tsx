@@ -19,26 +19,26 @@ import s from "./Field.module.scss";
 
 interface FieldProps<T extends FieldValues> {
   className?: string;
+  disabled?: boolean;
   formReturn: UseFormReturn<T>;
-  isDisabled?: boolean;
-  isRequired?: boolean;
   label?: string;
   message?: string;
   name: Path<T>;
   options?: RegisterOptions<T>;
   placeholder?: string;
+  required?: boolean;
   type: HTMLInputTypeAttribute;
 }
 
 export const Field = <T extends FieldValues>({
   className,
+  disabled,
   formReturn,
-  isDisabled,
-  isRequired,
   label,
   name,
   options,
   placeholder,
+  required,
   type,
   ...props
 }: FieldProps<T>): ReactNode => {
@@ -47,11 +47,11 @@ export const Field = <T extends FieldValues>({
   const {
     formState: { errors },
   } = formReturn;
+  const error = errors[name];
 
-  const formattedLabel = label && formatLabel(label, isRequired);
+  const formattedLabel = label && formatLabel(label, required);
   const formattedPlaceholder =
-    placeholder && formatLabel(placeholder, isRequired);
-  const currentError = errors[name];
+    placeholder && formatLabel(placeholder, required);
 
   let field;
 
@@ -59,22 +59,23 @@ export const Field = <T extends FieldValues>({
     case "checkbox":
       return (
         <Checkbox
+          {...props}
           className={className}
           formReturn={formReturn}
           label={formattedLabel}
           name={name}
           options={options}
-          {...props}
         />
       );
     case "tel":
       field = (
         <Phone
+          {...props}
           formReturn={formReturn}
+          label={formattedLabel}
           name={name}
           options={options}
           placeholder={formattedPlaceholder}
-          {...props}
         />
       );
       break;
@@ -103,9 +104,9 @@ export const Field = <T extends FieldValues>({
     <div
       className={clsx(
         s.field,
-        currentError && s.field_error,
+        error && s.field_error,
         isFocused && s.field_focused,
-        isDisabled && s.field_disabled,
+        disabled && s.field_disabled,
         className
       )}
     >
@@ -116,8 +117,8 @@ export const Field = <T extends FieldValues>({
           </label>
         )}
         {field}
-        {typeof currentError?.message === "string" && (
-          <span className={s.field__error}>{currentError.message}</span>
+        {typeof error?.message === "string" && (
+          <span className={s.field__error}>{error.message}</span>
         )}
       </div>
     </div>
