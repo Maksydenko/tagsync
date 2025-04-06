@@ -1,2 +1,2 @@
-export * from "./CredentialsForm";
-export * from "./ProfileForm";
+export * from "./CredentialsForm/CredentialsForm";
+export * from "./ProfileForm/ProfileForm";
