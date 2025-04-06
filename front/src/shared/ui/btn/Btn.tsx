@@ -26,10 +26,16 @@ export const Btn: FC<BtnProps> = ({
     });
   }
 
+  const isDisabled = disabled || isLoading;
+
   return (
     <button
+      aria-disabled={isDisabled}
       className={clsx(s.btn, isLoading && s.btn_loading, className)}
-      disabled={disabled || isLoading}
+      disabled={isDisabled}
+      {...(typeof children === "string" && {
+        "aria-label": children,
+      })}
       {...props}
     >
       <div className={s.btn__body}>
