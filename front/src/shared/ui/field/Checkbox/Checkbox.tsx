@@ -65,6 +65,7 @@ export const Checkbox = <T extends FieldValues>({
       )}
     >
       <input
+        aria-checked={isChecked}
         aria-disabled={disabled}
         aria-invalid={!!error}
         aria-label={label}
@@ -72,6 +73,7 @@ export const Checkbox = <T extends FieldValues>({
         disabled={disabled}
         id={name}
         required={!!required}
+        type="checkbox"
         onBlur={(e) => {
           setIsFocused(false);
           handleBlur?.(e);
