@@ -32,15 +32,6 @@ export const getCredentialsFields = (
     {
       label: tShared("form.password.label"),
       name: "password",
-      onChange: () => {
-        const { getValues, trigger } = formReturn;
-
-        if (!getValues("confirmPassword")) {
-          return;
-        }
-
-        trigger?.("confirmPassword");
-      },
       options: {
         maxLength: {
           message: tShared("form.password.max", {
@@ -53,6 +44,15 @@ export const getCredentialsFields = (
             value: formConfig.password.min,
           }),
           value: formConfig.password.min,
+        },
+        onChange: () => {
+          const { getValues, trigger } = formReturn;
+
+          if (!getValues("confirmPassword")) {
+            return;
+          }
+
+          trigger?.("confirmPassword");
         },
         pattern: {
           message: tShared("form.password.pattern"),
