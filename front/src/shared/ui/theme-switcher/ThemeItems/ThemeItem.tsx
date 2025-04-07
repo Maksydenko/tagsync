@@ -1,6 +1,7 @@
 "use client";
 
 import { FC, KeyboardEventHandler } from "react";
+import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { clsx } from "clsx";
 
@@ -14,7 +15,9 @@ interface ThemeItemProps {
 }
 
 export const ThemeItem: FC<ThemeItemProps> = ({ theme: { label, value } }) => {
+  const tShared = useTranslations("shared");
   const { setTheme, theme } = useTheme();
+
   const isMounted = useMounted();
 
   const isChecked = theme === value;
@@ -34,6 +37,8 @@ export const ThemeItem: FC<ThemeItemProps> = ({ theme: { label, value } }) => {
   return (
     <>
       <input
+        aria-checked={isMounted && isChecked}
+        aria-label={tShared("themes." + value)}
         checked={theme === value}
         className={s.themeSwitcher__input}
         id={value}
