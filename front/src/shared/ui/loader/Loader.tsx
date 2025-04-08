@@ -8,5 +8,5 @@ interface LoaderProps {
 }
 
 export const Loader: FC<LoaderProps> = ({ className }) => {
-  return <div className={clsx(s.loader, className)}></div>;
+  return <div className={clsx(s.loader, className)} />;
 };

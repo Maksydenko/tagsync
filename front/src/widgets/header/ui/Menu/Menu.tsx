@@ -27,7 +27,7 @@ export const Menu: FC<MenuProps> = ({ className, isScrollLocked, onClick }) => {
         type="button"
         onClick={onClick}
       >
-        <span></span>
+        <span />
       </button>
       <div
         className={clsx(s.menu__body, isScrollLocked && s.menu__body_active)}
