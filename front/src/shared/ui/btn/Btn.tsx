@@ -1,12 +1,20 @@
-import { ButtonHTMLAttributes, cloneElement, FC, isValidElement } from "react";
+import {
+  ButtonHTMLAttributes,
+  cloneElement,
+  FC,
+  isValidElement,
+  ReactNode,
+} from "react";
 import { clsx } from "clsx";
 
+import { Img } from "../img/Img";
 import { Loader } from "../loader/Loader";
 
 import s from "./Btn.module.scss";
 
 interface BtnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;
+  icon?: ReactNode;
   isLoading?: boolean;
 }
 
@@ -15,6 +23,7 @@ export const Btn: FC<BtnProps> = ({
   children,
   className,
   disabled,
+  icon,
   isLoading,
   ...props
 }) => {
@@ -27,19 +36,34 @@ export const Btn: FC<BtnProps> = ({
   }
 
   const isDisabled = disabled || isLoading;
+  const isStringChildren = typeof children === "string";
 
   return (
     <button
       aria-disabled={isDisabled}
       className={clsx(s.btn, isLoading && s.btn_loading, className)}
       disabled={isDisabled}
-      {...(typeof children === "string" && {
+      {...(isStringChildren && {
         "aria-label": children,
       })}
       {...props}
     >
       <div className={s.btn__body}>
-        <div className={s.btn__content}>{children}</div>
+        {children}
+        {typeof icon === "string" ? (
+          <Img
+            className={s.btn__icon}
+            src={icon}
+            {...(isStringChildren && {
+              alt: children,
+            })}
+            height={20}
+            width={20}
+            isSvg
+          />
+        ) : (
+          icon
+        )}
         {isLoading && <Loader className={s.btn__loader} />}
       </div>
     </button>

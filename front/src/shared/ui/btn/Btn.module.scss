@@ -30,6 +30,18 @@
 
   &__body {
     position: relative;
+    display: flex;
+    gap: m.rem(8);
+    align-items: center;
+  }
+
+  // .btn__icon
+
+  &__icon {
+    inline-size: m.rem(20);
+    aspect-ratio: 1;
+    filter: invert(var(--iconInvertReverse));
+    transition: filter 0.3s ease 0s;
   }
 
   // .btn__loader
@@ -42,6 +54,16 @@
   &_loading {
     .btn__content {
       visibility: hidden;
+    }
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: var(--mainColor);
+    background: transparent;
+
+    .btn__icon {
+      filter: invert(var(--iconInvert));
     }
   }
 }
