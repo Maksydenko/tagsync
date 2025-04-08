@@ -67,7 +67,7 @@ export const getCredentialsFields = (
       name: "confirmPassword",
       options: {
         required: tShared("form.confirmPassword.required"),
-        validate: (value: string, formValues) => {
+        validate: (value, formValues) => {
           if (!formValues.password) {
             return;
           }
