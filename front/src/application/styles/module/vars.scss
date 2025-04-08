@@ -31,6 +31,7 @@ $darkColor: #1a1a1e;
 @include mixins.theme(themeSwitcherSlider, #fff, #494a50);
 @include mixins.theme(themeSwitcherImg, 0, 100%);
 @include mixins.theme(iconInvert, 0, 1);
+@include mixins.theme(iconReverseInvert, 1, 0);
 
 // ============================================================================
 
