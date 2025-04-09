@@ -46,6 +46,7 @@
     "eslint-plugin-perfectionist": "^4.11.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-simple-import-sort": "^12.1.1",
+    "postcss": "^8.5.3",
     "sass": "^1.86.3",
     "stylelint": "^16.18.0",
     "stylelint-config-recess-order": "^6.0.0",
