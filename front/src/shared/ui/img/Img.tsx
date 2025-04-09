@@ -19,7 +19,7 @@ interface ImgProps {
   loader?: ReactNode;
   quality?: number;
   sizes?: string;
-  src: StaticImageData | string;
+  src?: StaticImageData | string;
   style?: CSSProperties;
   width?: number;
 }
@@ -41,30 +41,32 @@ export const Img: FC<ImgProps> = ({
   const imgRef = useRef<HTMLImageElement>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const handleLoad = () => {
-    setIsLoading(false);
-  };
-
   return (
     <div className={clsx(s.img, isSvg && s.img_svg, className)} style={style}>
-      {isLoading && loader}
-      <Image
-        alt={alt}
-        priority={isPriority}
-        quality={quality}
-        src={src}
-        {...(width && height
-          ? {
-              height,
-              width,
-            }
-          : {
-              fill: isFill,
-              sizes,
-            })}
-        ref={imgRef}
-        onLoad={handleLoad}
-      />
+      {src && (
+        <>
+          {isLoading && loader}
+          <Image
+            alt={alt}
+            priority={isPriority}
+            quality={quality}
+            src={src}
+            {...(width && height
+              ? {
+                  height,
+                  width,
+                }
+              : {
+                  fill: isFill,
+                  sizes,
+                })}
+            ref={imgRef}
+            onLoad={() => {
+              setIsLoading(false);
+            }}
+          />
+        </>
+      )}
     </div>
   );
 };
