@@ -79,7 +79,7 @@ export const Stepper: FC<StepperProps> = ({
       <span
         className={s.stepper__progressbar}
         style={{
-          width: transformPxToRem(progressbarWidth * current),
+          inlineSize: transformPxToRem(progressbarWidth * current),
         }}
       />
     </div>
