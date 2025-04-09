@@ -40,7 +40,7 @@
   &__icon {
     inline-size: m.rem(20);
     aspect-ratio: 1;
-    filter: invert(var(--iconInvertReverse));
+    filter: invert(var(--iconReverseInvert));
     transition: filter 0.3s ease 0s;
   }
 

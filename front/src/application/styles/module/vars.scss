@@ -27,11 +27,12 @@ $darkColor: #1a1a1e;
 
 @include mixins.theme(mainColor, $darkColor, $lightColor);
 @include mixins.theme(mainBg, $lightColor, $darkColor);
-@include mixins.theme(themeSwitcherBg, #d4d8dd, #222128);
-@include mixins.theme(themeSwitcherSlider, #fff, #494a50);
-@include mixins.theme(themeSwitcherImg, 0, 100%);
 @include mixins.theme(iconInvert, 0, 1);
 @include mixins.theme(iconReverseInvert, 1, 0);
+@include mixins.theme(themeSwitcherBg, #d4d8dd, #222128);
+@include mixins.theme(themeSwitcherSlider, #fff, #494a50);
+@include mixins.theme(productCardBg, #e4e4e7, #27272b);
+@include mixins.theme(productCardHeader, #d9d9dc, #1d1d1e);
 
 // ============================================================================
 
@@ -42,9 +43,9 @@ $minWidth: 320;
 // The width of the canvas
 $maxWidth: 1920;
 // The width of the limiting container
-$maxWidthContainer: 1170;
+$maxWidthContainer: 1600;
 // General indenter
-$containerPadding: 30;
+$containerPadding: 32;
 
 // The width of the first breakpoint
 $containerWidth: $maxWidthContainer + $containerPadding;

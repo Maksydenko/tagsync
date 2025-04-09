@@ -3,9 +3,9 @@
 .themeSwitcher {
   position: relative;
   display: flex;
-  padding: m.rem(3);
+  padding: m.rem(4);
   background: var(--themeSwitcherBg);
-  border-radius: m.rem(99);
+  border-radius: m.rem(999);
 
   // .themeSwitcher__slider
 
@@ -67,15 +67,11 @@
   &__img {
     inline-size: m.rem(20);
     block-size: m.rem(20);
-    filter: invert(var(--themeSwitcherImg));
+    filter: invert(var(--iconInvert));
   }
 
   // .themeSwitcher__loader
 
   &__loader {
-    &::after {
-      inline-size: m.rem(30);
-      block-size: m.rem(30);
-    }
   }
 }
