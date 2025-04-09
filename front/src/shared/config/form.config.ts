@@ -12,8 +12,4 @@ export const formConfig = {
     min: 8,
     pattern: /^(?=.*[A-Za-z])(?=.*\d).+$/,
   },
-  phone: {
-    max: 20,
-    pattern: /^\+?\d[\d- ()]+$/,
-  },
 };

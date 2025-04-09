@@ -1,3 +1,5 @@
+"use client";
+
 import { HTMLInputTypeAttribute, ReactNode, useState } from "react";
 import { clsx } from "clsx";
 import {
@@ -45,7 +47,6 @@ export const Input = <T extends FieldValues>({
   const { onBlur: handleBlur, ...restRegister } = register(name, options);
 
   const disabled = options?.disabled;
-  const required = options?.required;
 
   const isPassword = type === "password";
   const Tag = type === "textarea" ? "textarea" : "input";
@@ -57,13 +58,12 @@ export const Input = <T extends FieldValues>({
         aria-invalid={!!error}
         aria-label={label}
         aria-placeholder={placeholder}
-        aria-required={!!required}
+        aria-required={!!options?.required}
         autoComplete={name}
         className={s.input__input}
         disabled={disabled}
         id={name}
         placeholder={placeholder}
-        required={!!required}
         type={showPassword ? "text" : type}
         onBlur={(e) => {
           handleBlur(e);

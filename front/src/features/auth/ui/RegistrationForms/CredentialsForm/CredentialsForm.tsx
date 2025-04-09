@@ -48,6 +48,9 @@ export const CredentialsForm: FC<CredentialsFormProps> = ({
 
   const { isPending: isRegisterPending, mutate: register } = useMutation({
     mutationFn: async (data: ICredentialsForm) => {
+      return data;
+
+      // TODO: check email exists
       const { data: emailExistsData, error: emailExistsError } =
         await AuthService.checkEmailExists(supabase, data.email);
 

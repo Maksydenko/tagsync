@@ -1,0 +1,18 @@
+@use "@/application/styles/module" as m;
+
+.rating {
+  display: flex;
+
+  // .rating__icon
+
+  &__icon {
+    width: m.rem(20);
+    aspect-ratio: 1;
+
+    // .rating__icon_empty
+
+    &_empty {
+      filter: grayscale(1);
+    }
+  }
+}

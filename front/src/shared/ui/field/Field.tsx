@@ -14,6 +14,7 @@ import { formatLabel } from "./formatLabel.util";
 import { Checkbox } from "./Checkbox/Checkbox";
 import { Input } from "./Input/Input";
 import { Phone } from "./Phone/Phone";
+import { Rating } from "./Rating/Rating";
 
 import s from "./Field.module.scss";
 
@@ -67,6 +68,8 @@ export const Field = <T extends FieldValues>({
           options={options}
         />
       );
+    case "rating":
+      return <Rating {...props} formReturn={formReturn} name={name} />;
     case "tel":
       field = (
         <Phone

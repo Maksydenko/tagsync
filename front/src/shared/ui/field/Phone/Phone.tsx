@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactNode, useEffect, useState } from "react";
 import { clsx } from "clsx";
 import {
@@ -11,7 +13,6 @@ import PhoneInputWithCountrySelect, {
   Country,
   getCountries,
   getCountryCallingCode,
-  Value,
 } from "react-phone-number-input";
 
 import s from "./Phone.module.scss";
@@ -34,11 +35,11 @@ export const Phone = <T extends FieldValues>({
   ...props
 }: PhoneProps<T>): ReactNode => {
   const [currentCountry, setCurrentCountry] = useState<Country | undefined>();
-
   const {
     formState: { errors },
     register,
     setValue,
+    trigger,
     watch,
   } = formReturn;
 
@@ -49,10 +50,6 @@ export const Phone = <T extends FieldValues>({
     ...restRegister
   } = register(name, options);
   const phoneValue = watch(name);
-
-  const handleChange = (value: Value) => {
-    setValue(name, value as PathValue<T, Path<T>>);
-  };
 
   useEffect(() => {
     if (!phoneValue) {
@@ -80,7 +77,11 @@ export const Phone = <T extends FieldValues>({
       id={name}
       placeholder={placeholder}
       international
-      onChange={handleChange}
+      onChange={(value) => {
+        console.log(value);
+        setValue(name, value as PathValue<T, Path<T>>);
+        trigger(name);
+      }}
       {...props}
       {...restRegister}
     />

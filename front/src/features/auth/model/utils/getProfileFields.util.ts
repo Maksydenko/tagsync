@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import parsePhoneNumberFromString from "libphonenumber-js";
 
 import { formConfig } from "@/shared/config";
 import { IField } from "@/shared/model";
@@ -49,19 +50,18 @@ export const getProfileFields = (
       label: tShared("form.phone.label"),
       name: "phone",
       options: {
-        maxLength: {
-          message: tShared("form.phone.pattern", {
-            value: formConfig.phone.max,
-          }),
-          value: formConfig.phone.max,
-        },
-        pattern: {
-          message: tShared("form.phone.pattern"),
-          value: formConfig.phone.pattern,
-        },
         required: tShared("form.phone.required"),
+        validate: (value) => {
+          if (!value || value?.length <= 1) {
+            return;
+          }
+
+          const phoneNumber = parsePhoneNumberFromString(value);
+
+          return phoneNumber?.isValid() || tShared("form.phone.pattern");
+        },
       },
-      type: "phone",
+      type: "tel",
     },
   ];
 };

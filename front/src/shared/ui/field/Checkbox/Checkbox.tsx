@@ -43,7 +43,6 @@ export const Checkbox = <T extends FieldValues>({
   const isChecked = watch(name);
 
   const disabled = options?.disabled;
-  const required = options?.required;
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -69,10 +68,9 @@ export const Checkbox = <T extends FieldValues>({
         aria-disabled={disabled}
         aria-invalid={!!error}
         aria-label={label}
-        aria-required={!!required}
+        aria-required={!!options?.required}
         disabled={disabled}
         id={name}
-        required={!!required}
         type="checkbox"
         onBlur={(e) => {
           setIsFocused(false);
