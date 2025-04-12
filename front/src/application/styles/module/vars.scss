@@ -31,8 +31,8 @@ $darkColor: #1a1a1e;
 @include mixins.theme(iconReverseInvert, 1, 0);
 @include mixins.theme(themeSwitcherBg, #d4d8dd, #222128);
 @include mixins.theme(themeSwitcherSlider, #fff, #494a50);
-@include mixins.theme(productCardBg, #e4e4e7, #27272b);
-@include mixins.theme(productCardHeader, #d9d9dc, #1d1d1e);
+@include mixins.theme(cardBg, #e4e4e7, #27272b);
+@include mixins.theme(cardBorder, #d9d9dc, #1d1d1e);
 
 // ============================================================================
 
