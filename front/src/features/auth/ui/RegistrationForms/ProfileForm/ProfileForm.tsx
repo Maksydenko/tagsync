@@ -40,7 +40,6 @@ export const ProfileForm: FC<ProfileFormProps> = ({ className }) => {
   const { push } = useRouter();
 
   const form = useForm<IProfileForm>({
-    defaultValues: {},
     mode: "onChange",
   });
 

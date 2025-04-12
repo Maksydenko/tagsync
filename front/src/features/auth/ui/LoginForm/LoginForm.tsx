@@ -38,8 +38,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
   const tShared = useTranslations(Translation.Shared);
   const supabase = createClientComponentClient<IDatabase>();
 
-  const formReturn = useForm<ILoginForm>({
-    defaultValues: {},
+  const form = useForm<ILoginForm>({
     mode: "onChange",
   });
 
@@ -97,7 +96,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
       }
       className={clsx(s.loginForm, className)}
       fields={fields}
-      formReturn={formReturn}
+      formReturn={form}
       submissionMessage={submissionMessage}
       onSubmit={login}
     />
