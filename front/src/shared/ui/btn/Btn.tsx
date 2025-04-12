@@ -49,7 +49,7 @@ export const Btn: FC<BtnProps> = ({
       {...props}
     >
       <div className={s.btn__body}>
-        {children}
+        {isStringChildren ? <span>{children}</span> : children}
         {typeof icon === "string" ? (
           <Img
             className={s.btn__icon}
