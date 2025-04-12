@@ -1,8 +1,6 @@
 @use "@/application/styles/module" as m;
 
 .rating {
-  display: flex;
-
   // .rating__icon
 
   &__icon {
@@ -13,6 +11,13 @@
 
     &_empty {
       filter: grayscale(1);
+    }
+  }
+
+  :global(.react-simple-star-rating) {
+    > span {
+      display: flex;
+      gap: m.rem(4);
     }
   }
 }

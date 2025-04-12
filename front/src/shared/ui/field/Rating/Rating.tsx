@@ -44,19 +44,11 @@ export const Rating = <T extends FieldValues>({
   };
 
   const { getValues, register, setValue } = formReturn;
-  const disabled = options?.disabled;
 
   return (
-    <div
-      className={clsx(s.rating, className)}
-      style={{
-        direction: "ltr",
-        fontFamily: "sans-serif",
-        touchAction: "none",
-      }}
-    >
+    <div className={clsx(s.rating, className)}>
       <RootRating
-        allowHover={!disabled}
+        allowHover={!options?.disabled}
         emptyIcon={getIcon("empty")}
         fillIcon={getIcon("fill")}
         initialValue={getValues(name) as number}
