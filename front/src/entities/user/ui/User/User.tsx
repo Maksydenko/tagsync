@@ -73,6 +73,7 @@ export const User: FC<UserProps> = ({ className, onClick }) => {
             {userData?.user ? (
               <Dropdown
                 className={s.user__dropdown}
+                icon={null}
                 isDisabled={isUserLoading}
                 items={[
                   {

@@ -5,6 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { clsx } from "clsx";
 
+import { User } from "@/entities/user";
+
 import {
   Breakpoint,
   Pathname,
@@ -14,7 +16,6 @@ import {
 import { Img } from "@/shared/ui";
 
 import { Menu } from "./Menu/Menu";
-import { User } from "./User/User";
 
 import s from "./Header.module.scss";
 
@@ -93,7 +94,12 @@ export const Header: FC<HeaderProps> = ({ className }) => {
               isScrollLocked={isScrollLocked}
               onClick={handleClick}
             />
-            <User className={s.header__user} onClick={handleClick} />
+            <User
+              className={s.header__user}
+              {...(isScrollLocked && {
+                onClick: handleClick,
+              })}
+            />
           </div>
         </div>
       </div>
