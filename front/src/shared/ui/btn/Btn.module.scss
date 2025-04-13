@@ -1,29 +1,10 @@
 @use "@/application/styles/module" as m;
 
 .btn {
-  display: inline-flex;
-  align-items: center;
-  padding-block: m.em(12, 16);
-  padding-inline: m.em(16, 16);
-  font-size: m.rem(16);
-  font-weight: 500;
-  color: var(--mainBg);
-  background: var(--mainColor);
-  border: m.em(2, 16) solid var(--mainColor);
-  border-radius: m.em(5, 16);
-  transition: color 0.3s ease 0s, background 0.3s ease 0s;
-
-  @media (max-width: m.$mobile) {
-    font-size: m.rem(14);
-  }
+  @extend %btn;
 
   &:not(:disabled) {
-    @include m.hover(
-      (
-        color: var(--mainColor),
-        background: transparent,
-      )
-    );
+    @extend %btn_hover;
   }
 
   // .btn__body

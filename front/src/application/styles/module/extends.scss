@@ -64,3 +64,35 @@
     }
   }
 }
+
+%btn {
+  display: inline-flex;
+  align-items: center;
+  padding-block: utils.em(12, 16);
+  padding-inline: utils.em(16, 16);
+  font-size: utils.rem(16);
+  font-weight: 500;
+  color: var(--mainBg);
+  background: var(--mainColor);
+  border: utils.em(2, 16) solid var(--mainColor);
+  border-radius: utils.em(5, 16);
+  transition: color 0.3s ease 0s, background 0.3s ease 0s;
+
+  @media (max-width: vars.$mobile) {
+    font-size: utils.rem(14);
+  }
+}
+
+%btn_hover {
+  @include mixins.hover(
+    (
+      color: var(--mainColor),
+      background: transparent,
+    )
+  );
+}
+
+%btn_active {
+  color: var(--mainColor);
+  background: transparent;
+}

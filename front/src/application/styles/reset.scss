@@ -17,8 +17,8 @@
 
 html,
 body {
-  min-inline-size: m.$minWidth + px;
-  block-size: 100%;
+  min-width: m.$minWidth + px;
+  height: 100%;
 }
 
 html {

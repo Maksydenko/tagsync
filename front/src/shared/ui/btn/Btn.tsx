@@ -49,21 +49,27 @@ export const Btn: FC<BtnProps> = ({
       {...props}
     >
       <div className={s.btn__body}>
-        {isStringChildren ? <span>{children}</span> : children}
-        {typeof icon === "string" ? (
-          <Img
-            className={s.btn__icon}
-            src={icon}
-            {...(isStringChildren && {
-              alt: children,
-            })}
-            height={20}
-            width={20}
-            isSvg
-          />
-        ) : (
-          icon
-        )}
+        <div className={s.btn__content}>
+          {isStringChildren ? (
+            <div className={s.btn__box}>{children}</div>
+          ) : (
+            children
+          )}
+          {typeof icon === "string" ? (
+            <Img
+              className={s.btn__icon}
+              src={icon}
+              {...(isStringChildren && {
+                alt: children,
+              })}
+              height={20}
+              width={20}
+              isSvg
+            />
+          ) : (
+            icon
+          )}
+        </div>
         {isLoading && <Loader className={s.btn__loader} />}
       </div>
     </button>
