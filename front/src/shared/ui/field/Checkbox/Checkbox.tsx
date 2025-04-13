@@ -10,6 +10,8 @@ import {
   UseFormReturn,
 } from "react-hook-form";
 
+import { Img } from "../../img/Img";
+
 import s from "./Checkbox.module.scss";
 
 interface CheckboxProps<T extends FieldValues> {
@@ -83,7 +85,18 @@ export const Checkbox = <T extends FieldValues>({
         {...props}
         {...restRegister}
       />
-      {label && <label htmlFor={name}>{label}</label>}
+      {label && (
+        <label htmlFor={name}>
+          <Img
+            className={s.checkbox__icon}
+            height={20}
+            src="/img/icons/form/checkmark.svg"
+            width={20}
+            isSvg
+          />
+          {label}
+        </label>
+      )}
     </div>
   );
 };

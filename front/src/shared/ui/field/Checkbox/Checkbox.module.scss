@@ -3,6 +3,17 @@
 .checkbox {
   position: relative;
 
+  // .checkbox__icon
+
+  &__icon {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    visibility: hidden;
+    opacity: 0;
+    filter: invert(var(--iconInvert));
+    transition: opacity 0.3s ease 0s;
+  }
   // .checkbox_error
 
   &_error {
@@ -16,7 +27,7 @@
   &_focused {
     > label {
       &::before {
-        outline: m.rem(1) solid #a7a9ac;
+        outline: m.rem(1) solid var(--mainColor);
       }
     }
   }
@@ -28,12 +39,13 @@
     cursor: pointer;
 
     &:before {
-      flex: 0 0 m.rem(20);
+      flex: 0 0 auto;
       align-self: flex-start;
       inline-size: m.rem(20);
       block-size: m.rem(20);
       content: "";
-      border: m.rem(1) solid #a7a9ac;
+      border: m.rem(1) solid var(--mainColor);
+      border-radius: m.rem(2);
     }
   }
 
@@ -45,8 +57,9 @@
 
     &:checked {
       + label {
-        &:before {
-          background: #219fdf;
+        .checkbox__icon {
+          visibility: visible;
+          opacity: 1;
         }
       }
     }
