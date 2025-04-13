@@ -6,9 +6,12 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import initials from "initials";
+import { useAtomValue } from "jotai";
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+
+import { userAtom } from "@/application/atoms";
 
 import { IDatabase } from "@/shared/lib";
 import { MutationKey, Pathname, QueryKey, Translation } from "@/shared/model";
@@ -27,14 +30,7 @@ export const User: FC<UserProps> = ({ className, onClick }) => {
   const tShared = useTranslations(Translation.Shared);
   const supabase = createClientComponentClient<IDatabase>();
 
-  const { data: userData, isLoading: isUserLoading } = useQuery({
-    queryFn: async () => {
-      const res = await supabase.auth.getUser();
-
-      return res.data;
-    },
-    queryKey: [QueryKey.User],
-  });
+  const { data: userData, isLoading: isUserLoading } = useAtomValue(userAtom);
   const userEmail = userData?.user?.email;
 
   const queryClient = useQueryClient();
