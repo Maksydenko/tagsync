@@ -78,7 +78,6 @@ export const Phone = <T extends FieldValues>({
       placeholder={placeholder}
       international
       onChange={(value) => {
-        console.log(value);
         setValue(name, value as PathValue<T, Path<T>>);
         trigger(name);
       }}
