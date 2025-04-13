@@ -9,6 +9,10 @@
       "dark": "Dark theme",
       "system": "System theme"
     },
+    "slide-directions": {
+      "prev": "Previous",
+      "next": "Next"
+    },
     "user": {
       "account": "Account",
       "logout": "Logout"
