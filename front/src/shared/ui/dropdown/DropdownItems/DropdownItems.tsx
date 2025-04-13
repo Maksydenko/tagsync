@@ -1,15 +1,15 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 
 import { MenuItems } from "@headlessui/react";
 
-import { IDropdown } from "../dropdown.interface";
+import { ILink } from "@/shared/model";
 
 import { DropdownItem } from "./DropdownItem";
 
 import s from "../Dropdown.module.scss";
 
 interface DropdownItemsProps {
-  items: IDropdown[];
+  items: ILink<ReactNode>[];
 }
 
 export const DropdownItems: FC<DropdownItemsProps> = ({ items }) => {

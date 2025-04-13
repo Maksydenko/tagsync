@@ -5,10 +5,9 @@ import { clsx } from "clsx";
 
 import { Menu, MenuButton } from "@headlessui/react";
 
-import { useWindowListener } from "@/shared/model";
+import { ILink, useWindowListener } from "@/shared/model";
 
-import { IDropdown } from "./dropdown.interface";
-
+import { Img } from "../img/Img";
 import { DropdownItems } from "./DropdownItems/DropdownItems";
 
 import s from "./Dropdown.module.scss";
@@ -16,13 +15,15 @@ import s from "./Dropdown.module.scss";
 interface DropdownProps {
   children: ReactNode;
   className?: string;
+  icon?: ReactNode;
   isDisabled?: boolean;
-  items: IDropdown[];
+  items: ILink<ReactNode>[];
 }
 
 export const Dropdown: FC<DropdownProps> = ({
   children,
   className,
+  icon = "/img/icons/form/arrow-down.svg",
   isDisabled,
   items,
 }) => {
@@ -37,8 +38,9 @@ export const Dropdown: FC<DropdownProps> = ({
 
     menuButtonElement.click();
   };
-
   useWindowListener("resize", handleClose);
+
+  const isStringChildren = typeof children === "string";
 
   return (
     <Menu as="div" className={clsx(s.dropdown, className)}>
@@ -46,8 +48,29 @@ export const Dropdown: FC<DropdownProps> = ({
         ref={menuButtonRef}
         className={s.dropdown__btn}
         disabled={isDisabled}
+        {...(isStringChildren && {
+          "aria-label": children,
+        })}
       >
-        {children}
+        {isStringChildren ? (
+          <div className={s.dropdown__box}>{children}</div>
+        ) : (
+          children
+        )}
+        {typeof icon === "string" ? (
+          <Img
+            className={s.dropdown__icon}
+            src={icon}
+            {...(isStringChildren && {
+              alt: children,
+            })}
+            height={20}
+            width={20}
+            isSvg
+          />
+        ) : (
+          icon
+        )}
       </MenuButton>
       <DropdownItems items={items} />
     </Menu>

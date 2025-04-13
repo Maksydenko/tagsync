@@ -6,6 +6,18 @@
   // .dropdown__btn
 
   &__btn {
+    display: flex;
+    gap: m.rem(8);
+    align-items: center;
+  }
+
+  // .dropdown__icon
+
+  &__icon {
+    inline-size: m.rem(12);
+    aspect-ratio: 1;
+    filter: invert(var(--iconInvert));
+    transition: filter 0.3s ease 0s;
   }
 }
 
