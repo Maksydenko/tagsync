@@ -1,9 +1,9 @@
 import { NextPage } from "next";
 import { setRequestLocale } from "next-intl/server";
 
-import Registration from "@/views/registration";
-
 import { IParams } from "@/shared/model";
+
+import Registration from "@/views/registration";
 
 interface RegistrationPageProps {
   params: Promise<IParams>;

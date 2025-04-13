@@ -1,9 +1,9 @@
 import { NextPage } from "next";
 import { setRequestLocale } from "next-intl/server";
 
-import Home from "@/views/home";
-
 import { IParams } from "@/shared/model";
+
+import Home from "@/views/home";
 
 interface HomePageProps {
   params: Promise<IParams>;
