@@ -6,14 +6,15 @@ import { queryOptions } from "@tanstack/react-query";
 import { IDatabase } from "@/shared/lib";
 import { QueryKey } from "@/shared/model";
 
-export const userAtom = atomWithQuery(() =>
-  queryOptions({
-    queryFn: async () => {
-      const supabase = createClientComponentClient<IDatabase>();
-      const res = await supabase.auth.getUser();
+const supabase = createClientComponentClient<IDatabase>();
 
-      return res.data;
+export const userAtom = atomWithQuery(() => {
+  return queryOptions({
+    queryFn: async () => {
+      const { data } = await supabase.auth.getUser();
+
+      return data;
     },
     queryKey: [QueryKey.User],
-  })
-);
+  });
+});
