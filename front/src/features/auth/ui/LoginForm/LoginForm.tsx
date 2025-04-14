@@ -76,8 +76,6 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
     },
   });
 
-  const fields = getLoginFields(tShared);
-
   return (
     <AuthForm
       btns={
@@ -95,7 +93,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
         </>
       }
       className={clsx(s.loginForm, className)}
-      fields={fields}
+      fields={getLoginFields(tShared)}
       formReturn={form}
       submissionMessage={submissionMessage}
       onSubmit={login}

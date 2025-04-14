@@ -48,9 +48,6 @@ export const CredentialsForm: FC<CredentialsFormProps> = ({
 
   const { isPending: isRegisterPending, mutate: register } = useMutation({
     mutationFn: async (data: ICredentialsForm) => {
-      return data;
-
-      // TODO: check email exists
       const { data: emailExistsData, error: emailExistsError } =
         await AuthService.checkEmailExists(supabase, data.email);
 
@@ -85,8 +82,6 @@ export const CredentialsForm: FC<CredentialsFormProps> = ({
     },
   });
 
-  const fields = getCredentialsFields(tShared, form);
-
   return (
     <AuthForm
       btns={
@@ -107,7 +102,7 @@ export const CredentialsForm: FC<CredentialsFormProps> = ({
         </>
       }
       className={clsx(s.credentialsForm, className)}
-      fields={fields}
+      fields={getCredentialsFields(tShared, form)}
       formReturn={form}
       isLoading={isRegisterPending}
       submissionMessage={submissionMessage}

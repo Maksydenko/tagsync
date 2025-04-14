@@ -95,8 +95,6 @@ export const ProfileForm: FC<ProfileFormProps> = ({ className }) => {
       },
     });
 
-  const fields = getProfileFields(tShared);
-
   return (
     <AuthForm
       btns={
@@ -109,7 +107,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({ className }) => {
         </Btn>
       }
       className={(s.profileForm, className)}
-      fields={fields}
+      fields={getProfileFields(tShared)}
       formReturn={form}
       isLoading={isRegistrationPending}
       submissionMessage={submissionMessage}
