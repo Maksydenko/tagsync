@@ -4,13 +4,14 @@ import { FC } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { clsx } from "clsx";
-import { useAtomValue } from "jotai";
 import { useForm } from "react-hook-form";
 
-import { userAtom } from "@/application/atoms";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useQuery } from "@tanstack/react-query";
 
-import { formatPrice, Pathname } from "@/shared/model";
-import { Btn, Img, Rating } from "@/shared/ui";
+import { IDatabase } from "@/shared/lib";
+import { formatPrice, Pathname, QueryKey } from "@/shared/model";
+import { Btn, Img, Loader, Rating } from "@/shared/ui";
 
 import { IProduct } from "../../api";
 
@@ -26,11 +27,21 @@ export const ProductCard: FC<ProductCardProps> = ({
   productData: { images, price, rating, title },
 }) => {
   const { push } = useRouter();
-  const { data: userData, isLoading: isUserLoading } = useAtomValue(userAtom);
+
+  const supabase = createClientComponentClient<IDatabase>();
+
+  const { data: userData, isLoading: isUserLoading } = useQuery({
+    queryFn: async () => {
+      const res = await supabase.auth.getUser();
+
+      return res.data;
+    },
+    queryKey: [QueryKey.User],
+  });
 
   const form = useForm({
     defaultValues: {
-      rating: rating,
+      rating,
     },
   });
 
@@ -69,7 +80,12 @@ export const ProductCard: FC<ProductCardProps> = ({
             />
           </button>
         </div>
-        <Img alt={title} className={s.productCard__img} src={images[0]} />
+        <Img
+          alt={title}
+          className={s.productCard__img}
+          loader={<Loader />}
+          src={images[0]}
+        />
         <div className={s.productCard__content}>
           <h5 className={s.productCard__title}>{title}</h5>
           <Rating
