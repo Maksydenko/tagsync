@@ -1,4 +1,5 @@
 export * from "./breakpoint.enum";
+export * from "./direction.enum";
 export * from "./errorCode.enum";
 export * from "./fontSize.enum";
 export * from "./locale.enum";
