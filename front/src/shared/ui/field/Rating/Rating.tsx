@@ -31,6 +31,9 @@ export const Rating = <T extends FieldValues>({
   options,
   ...props
 }: RatingProps<T>): ReactNode => {
+  const { getValues, register, setValue } = formReturn;
+  const isDisabled = options?.disabled;
+
   const getIcon = (className: string) => {
     return (
       <Image
@@ -43,15 +46,15 @@ export const Rating = <T extends FieldValues>({
     );
   };
 
-  const { getValues, register, setValue } = formReturn;
-
   return (
     <div className={clsx(s.rating, className)}>
       <RootRating
-        allowHover={!options?.disabled}
+        allowFraction={isDisabled}
+        allowHover={!isDisabled}
         emptyIcon={getIcon("empty")}
         fillIcon={getIcon("fill")}
         initialValue={getValues(name) as number}
+        transition
         onClick={(value) => {
           setValue(name, value as PathValue<T, Path<T>>);
         }}

@@ -1,0 +1,62 @@
+@use "@/application/styles/module" as m;
+
+.categoryPage {
+  display: flex;
+  flex: 1 1 100%;
+  flex-direction: column;
+}
+
+.category {
+  display: flex;
+  flex: 1 1 100%;
+  flex-direction: column;
+
+  // .category__container
+
+  &__container {
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: column;
+    @extend %container;
+
+    width: 100%;
+    padding-top: m.rem(m.$containerPadding);
+    padding-bottom: m.rem(m.$containerPadding);
+  }
+
+  // .category__body
+
+  &__body {
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: column;
+    gap: m.rem(40);
+  }
+
+  // .category__header
+
+  &__header {
+  }
+
+  // .category__content
+
+  &__content {
+    display: flex;
+    flex: 1 1 100%;
+    gap: m.rem(16);
+  }
+
+  // .category__filters
+
+  &__filters {
+    flex: 0 0 m.rem(320);
+  }
+
+  // .category__products
+
+  &__products {
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: column;
+  }
+}

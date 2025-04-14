@@ -7,6 +7,8 @@ export * from "./pathname.enum";
 export * from "./phase.enum";
 export * from "./protocol.enum";
 export * from "./queryKey.enum";
+export * from "./searchParam.enum";
+export * from "./sortOrder.enum";
 export * from "./status.enum";
 export * from "./time.enum";
 export * from "./translation.enum";

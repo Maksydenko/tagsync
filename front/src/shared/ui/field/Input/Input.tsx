@@ -22,7 +22,7 @@ interface InputProps<T extends FieldValues> {
   onFocus?: () => void;
   options?: RegisterOptions<T>;
   placeholder?: string;
-  type: HTMLInputTypeAttribute;
+  type?: HTMLInputTypeAttribute;
 }
 
 export const Input = <T extends FieldValues>({

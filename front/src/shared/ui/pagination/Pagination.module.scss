@@ -1,0 +1,122 @@
+@use "@/application/styles/module" as m;
+
+.pagination {
+  display: flex;
+  gap: m.em(8, 16);
+  justify-content: center;
+
+  @media (max-width: m.$mobile) {
+    font-size: m.rem(14);
+  }
+
+  // .pagination__icon
+
+  &__icon {
+    inline-size: m.em(16, 16);
+    block-size: m.em(16, 16);
+    filter: invert(var(--iconReverseInvert));
+    transition: filter 0.3s ease 0s;
+  }
+
+  // .pagination__page
+
+  &__page {
+  }
+
+  // .pagination__pageLink
+
+  &__pageLink {
+  }
+
+  // .pagination__previous
+
+  &__previous {
+  }
+
+  // .pagination__previousLink
+
+  &__previousLink {
+    .pagination__icon {
+      rotate: 90deg;
+    }
+  }
+
+  // .pagination__next
+
+  &__next {
+  }
+
+  // .pagination__nextLink
+
+  &__nextLink {
+    .pagination__icon {
+      rotate: -90deg;
+    }
+  }
+
+  // .pagination__break
+
+  &__break {
+  }
+
+  // .pagination__breakLink
+
+  &__breakLink {
+  }
+
+  // .pagination__pageLink
+  &__pageLink,
+  // .pagination__previousLink
+  &__previousLink,
+  // .pagination__nextLink
+  &__nextLink,
+  // .pagination__breakLink
+  &__breakLink {
+    inline-size: m.em(40, 16);
+    block-size: m.em(40, 16);
+    padding: 0;
+    font-size: inherit;
+
+    @extend %btn;
+    @include m.centered(flex);
+
+    &:not(.pagination__activeLink, .pagination__disabledLink) {
+      font-weight: 400;
+      cursor: pointer;
+
+      &:hover,
+      &:focus-visible {
+        color: var(--mainColor);
+        background: transparent;
+
+        .pagination__icon {
+          filter: invert(var(--iconInvert));
+        }
+      }
+    }
+  }
+
+  // .pagination__active
+
+  &__active {
+  }
+
+  // .pagination__activeLink
+
+  &__activeLink {
+    font-weight: 500;
+
+    @extend %btn_active;
+  }
+
+  // .pagination__disabled
+
+  &__disabled {
+  }
+
+  // .pagination__disabledLink
+
+  &__disabledLink {
+    opacity: 0.5;
+  }
+}

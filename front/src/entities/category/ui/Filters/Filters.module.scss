@@ -1,0 +1,12 @@
+@use "@/application/styles/module" as m;
+
+.filters {
+  // .filters__fields
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+
+    gap: m.rem(16);
+  }
+}

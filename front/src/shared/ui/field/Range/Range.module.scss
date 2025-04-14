@@ -1,0 +1,76 @@
+@use "@/application/styles/module" as m;
+
+.range {
+  // .range__body
+
+  &__body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(8);
+  }
+
+  // .range__content
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  // .range__label
+
+  &__label {
+  }
+
+  :global(.rc-slider),
+  :global(.rc-slider-handle) {
+    height: m.rem(14);
+  }
+
+  :global(.rc-slider) {
+    padding: m.rem(5) 0;
+    border-radius: m.rem(6);
+  }
+
+  :global(.rc-slider-handle) {
+    width: m.rem(14);
+    margin-top: m.rem(-5);
+    background: m.$lightColor;
+    border: m.rem(2) solid m.$secondaryColor;
+
+    &:hover,
+    &:focus-visible {
+      border-color: m.$secondaryColor;
+    }
+
+    &:focus-visible {
+      box-shadow: 0 0 0 m.rem(3) m.$secondaryColor;
+    }
+  }
+
+  :global(
+      .rc-slider-handle-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging
+    ) {
+    border-color: m.$secondaryColor;
+    box-shadow: 0 0 0 m.rem(5) m.$secondaryColor;
+  }
+
+  :global(.rc-slider-rail),
+  :global(.rc-slider-track),
+  :global(.rc-slider-tracks),
+  :global(.rc-slider-step) {
+    height: m.rem(4);
+  }
+
+  :global(.rc-slider-track),
+  :global(.rc-slider-tracks) {
+    background: m.$secondaryColor;
+  }
+
+  :global(.rc-slider-rail) {
+    background: var(--mainColor);
+    border-radius: m.rem(6);
+    opacity: 0.5;
+  }
+}

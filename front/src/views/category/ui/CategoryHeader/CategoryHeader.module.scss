@@ -1,0 +1,24 @@
+@use "@/application/styles/module" as m;
+
+.categoryHeader {
+  // .categoryHeader__body
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(24);
+  }
+
+  // .categoryHeader__title
+
+  &__title {
+    font-size: m.rem(24);
+  }
+
+  // .categoryHeader__content
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+  }
+}

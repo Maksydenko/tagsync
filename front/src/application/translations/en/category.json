@@ -1,0 +1,13 @@
+{
+  "category": {
+    "filters": {
+      "remove-all": "Remove all",
+      "price": "Price"
+    },
+    "sorts": {
+      "price-asc": "Price (ascending)",
+      "price-desc": "Price (descending)",
+      "rating": "Rating"
+    }
+  }
+}

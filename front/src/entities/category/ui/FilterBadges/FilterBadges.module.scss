@@ -1,0 +1,73 @@
+@use "@/application/styles/module" as m;
+
+.filterBadges {
+  // .filterBadges__body
+
+  &__body {
+  }
+
+  // .filterBadges__list
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: m.rem(8);
+  }
+
+  // .filterBadges__item
+
+  &__item {
+  }
+
+  // .filterBadges__icon
+
+  &__icon {
+    position: relative;
+    inline-size: m.rem(12);
+    aspect-ratio: 1;
+
+    &::before,
+    &::after {
+      position: absolute;
+      inset-block-start: 50%;
+      inset-inline: 0;
+      block-size: m.rem(2);
+      content: "";
+      background: var(--mainBg);
+      border-radius: m.rem(4);
+      transition: rotate 0.3s ease 0s, background 0.3s ease 0s;
+    }
+
+    &::before {
+      rotate: 45deg;
+    }
+
+    &::after {
+      rotate: -45deg;
+    }
+  }
+
+  // .filterBadges__btn
+
+  &__btn {
+    gap: m.rem(8);
+    font-size: m.rem(14);
+    border-radius: m.rem(999);
+
+    @extend %btn;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--mainColor);
+      background: transparent;
+
+      .filterBadges__icon {
+        &::before,
+        &::after {
+          background: var(--mainColor);
+          rotate: 0deg;
+        }
+      }
+    }
+  }
+}

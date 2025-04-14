@@ -37,6 +37,7 @@ const requestConfig = getRequestConfig(async ({ requestLocale }) => {
     Translation.Home,
     Translation.Login,
     Translation.Registration,
+    Translation.Category,
   ];
 
   const messages = await importMessages(translations, locale);

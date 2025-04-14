@@ -9,32 +9,36 @@ import {
   UseFormReturn,
 } from "react-hook-form";
 
+import { ILink } from "@/shared/model";
+
 import { formatLabel } from "./formatLabel.util";
 
 import { Checkbox } from "./Checkbox/Checkbox";
 import { Input } from "./Input/Input";
 import { Phone } from "./Phone/Phone";
+import { Range } from "./Range/Range";
 import { Rating } from "./Rating/Rating";
+import { Select } from "./Select/Select";
 
 import s from "./Field.module.scss";
 
 interface FieldProps<T extends FieldValues> {
   className?: string;
-  disabled?: boolean;
   formReturn: UseFormReturn<T>;
+  items?: ILink[];
   label?: string;
   message?: string;
   name: Path<T>;
   options?: RegisterOptions<T>;
   placeholder?: string;
   required?: boolean;
-  type: HTMLInputTypeAttribute;
+  type?: HTMLInputTypeAttribute;
 }
 
 export const Field = <T extends FieldValues>({
   className,
-  disabled,
   formReturn,
+  items = [],
   label,
   name,
   options,
@@ -68,8 +72,33 @@ export const Field = <T extends FieldValues>({
           options={options}
         />
       );
+    case "range":
+    case "ranges":
+      return (
+        <Range
+          {...props}
+          className={className}
+          formReturn={formReturn}
+          name={name}
+          options={options}
+          {...(type === "ranges" && {
+            range: true,
+          })}
+        />
+      );
     case "rating":
       return <Rating {...props} formReturn={formReturn} name={name} />;
+    case "select":
+      field = (
+        <Select
+          {...props}
+          className={className}
+          formReturn={formReturn}
+          items={items}
+          name={name}
+        />
+      );
+      break;
     case "tel":
       field = (
         <Phone
@@ -109,7 +138,7 @@ export const Field = <T extends FieldValues>({
         s.field,
         error && s.field_error,
         isFocused && s.field_focused,
-        disabled && s.field_disabled,
+        options?.disabled && s.field_disabled,
         className
       )}
     >
