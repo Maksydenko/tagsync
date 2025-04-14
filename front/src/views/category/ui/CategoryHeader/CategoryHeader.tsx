@@ -1,6 +1,6 @@
 "use client";
 
-import { FC } from "react";
+import { FC, Suspense } from "react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
@@ -22,7 +22,6 @@ export const CategoryHeader: FC<CategoryHeaderProps> = ({
   filtersData,
 }) => {
   const pathname = usePathname();
-
   const tShared = useTranslations(Translation.Shared);
 
   // TODO: handle real category
@@ -43,11 +42,13 @@ export const CategoryHeader: FC<CategoryHeaderProps> = ({
         <Breadcrumbs breadcrumbs={breadcrumbs} />
         <h1 className={s.categoryHeader__title}>Category</h1>
         <div className={s.categoryHeader__content}>
-          <FilterBadges
-            className={s.categoryHeader__filters}
-            filtersData={filtersData}
-          />
-          <Sort className={s.categoryHeader__sort} />
+          <Suspense>
+            <FilterBadges
+              className={s.categoryHeader__filters}
+              filtersData={filtersData}
+            />
+            <Sort className={s.categoryHeader__sort} />
+          </Suspense>
         </div>
       </div>
     </div>

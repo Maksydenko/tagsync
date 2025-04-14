@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, Suspense } from "react";
 
 import { Filters, IFilter } from "@/entities/category";
 
@@ -50,11 +50,13 @@ export const Category: FC = () => {
               filtersData={filtersData}
             />
             <div className={s.category__content}>
-              <Filters
-                className={s.category__filters}
-                filtersData={filtersData}
-              />
-              <Products className={s.category__products} />
+              <Suspense>
+                <Filters
+                  className={s.category__filters}
+                  filtersData={filtersData}
+                />
+                <Products className={s.category__products} />
+              </Suspense>
             </div>
           </div>
         </div>
