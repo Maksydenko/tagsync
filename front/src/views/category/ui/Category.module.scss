@@ -17,11 +17,11 @@
     display: flex;
     flex: 1 1 100%;
     flex-direction: column;
-    @extend %container;
-
     width: 100%;
     padding-top: m.rem(m.$containerPadding);
     padding-bottom: m.rem(m.$containerPadding);
+
+    @extend %container;
   }
 
   // .category__body

@@ -4,10 +4,10 @@
   // .notFound__container
 
   &__container {
-    @extend %container;
-
     padding-top: m.rem(70);
     padding-bottom: m.rem(70);
+
+    @extend %container;
   }
 
   // .notFound__title

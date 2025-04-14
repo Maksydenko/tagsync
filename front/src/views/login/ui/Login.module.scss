@@ -6,10 +6,10 @@ $bodyGap: 100;
   // .login__container
 
   &__container {
-    @extend %container;
-
     padding-top: m.rem(m.$containerPadding);
     padding-bottom: m.rem(m.$containerPadding);
+
+    @extend %container;
   }
 
   // .login__body
