@@ -6,15 +6,18 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import initials from "initials";
-import { useAtomValue } from "jotai";
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-
-import { userAtom } from "@/application/atoms";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { IDatabase } from "@/shared/lib";
-import { MutationKey, Pathname, QueryKey, Translation } from "@/shared/model";
+import {
+  MutationKey,
+  Pathname,
+  QueryKey,
+  Translation,
+  userData as userLinksData,
+} from "@/shared/model";
 import { Dropdown, Img, Loader } from "@/shared/ui";
 
 import s from "./User.module.scss";
@@ -26,11 +29,18 @@ interface UserProps {
 
 export const User: FC<UserProps> = ({ className, onClick }) => {
   const { push } = useRouter();
-
   const tShared = useTranslations(Translation.Shared);
+
   const supabase = createClientComponentClient<IDatabase>();
 
-  const { data: userData, isLoading: isUserLoading } = useAtomValue(userAtom);
+  const { data: userData, isLoading: isUserLoading } = useQuery({
+    queryFn: async () => {
+      const res = await supabase.auth.getUser();
+
+      return res.data;
+    },
+    queryKey: [QueryKey.User],
+  });
   const userEmail = userData?.user?.email;
 
   const queryClient = useQueryClient();
@@ -50,7 +60,7 @@ export const User: FC<UserProps> = ({ className, onClick }) => {
 
   const userIcon = (
     <Img
-      alt={tShared("user.account")}
+      alt={tShared("user.profile")}
       className={s.user__icon}
       height={20}
       src="/img/icons/user.svg"
@@ -72,10 +82,12 @@ export const User: FC<UserProps> = ({ className, onClick }) => {
                 icon={null}
                 isDisabled={isUserLoading}
                 items={[
-                  {
-                    label: tShared("user.account"),
-                    value: Pathname.Account,
-                  },
+                  ...userLinksData.map(({ label, value }) => {
+                    return {
+                      label: tShared(`user.${label}`),
+                      value,
+                    };
+                  }),
                   {
                     label: "logout",
                     value: (

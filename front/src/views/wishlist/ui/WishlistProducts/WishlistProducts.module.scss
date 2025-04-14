@@ -1,0 +1,15 @@
+@use "@/application/styles/module" as m;
+
+.wishlistProducts {
+  // .wishlistProducts__body
+
+  &__body {
+    display: grid;
+    flex: 1 1 100%;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(m.rem(m.$minWidth - m.$containerPadding), 1fr)
+    );
+    gap: m.rem(16);
+  }
+}

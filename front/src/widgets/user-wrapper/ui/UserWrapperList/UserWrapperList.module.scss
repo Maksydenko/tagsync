@@ -1,0 +1,47 @@
+@use "@/application/styles/module" as m;
+
+.userWrapperList {
+  padding: m.rem(12);
+  background: var(--cardBg);
+  border-radius: m.rem(4);
+
+  // .userWrapperList__list
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(12);
+  }
+
+  // .userWrapperList__link
+
+  &__link {
+    display: flex;
+    align-items: center;
+    min-inline-size: 100%;
+    padding: m.rem(12);
+    font-weight: 500;
+    background: var(--cardBorder);
+    border-radius: m.rem(4);
+    transition: color 0.3s ease 0s, background 0.3s ease 0s;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--mainBg);
+      background: var(--cardReverseBg);
+    }
+  }
+
+  // .userWrapperList__item
+
+  &__item {
+    // .userWrapperList__item_active
+
+    &_active {
+      .userWrapperList__link {
+        color: var(--mainBg);
+        background: var(--cardReverseBorder);
+      }
+    }
+  }
+}

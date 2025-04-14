@@ -87,7 +87,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
           >
             {tShared("form.submit")}
           </Btn>
-          <Link className={s.loginForm__link} href={Pathname.ForgotPassword}>
+          <Link className={s.loginForm__link} href={Pathname.ResetPassword}>
             {tShared("forgot-password")}
           </Link>
         </>

@@ -1,0 +1,46 @@
+@use "@/application/styles/module" as m;
+
+.userWrapper {
+  // .userWrapper__container
+
+  &__container {
+    padding-top: m.rem(m.$containerPadding);
+    padding-bottom: m.rem(m.$containerPadding);
+
+    @extend %container;
+  }
+
+  // .userWrapper__body
+
+  &__body {
+    display: flex;
+    gap: m.rem(16);
+    align-items: flex-start;
+  }
+
+  // .userWrapper__list
+
+  &__list {
+    flex: 0 0 m.rem(280);
+  }
+
+  // .userWrapper__content
+
+  &__content {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    gap: m.rem(16);
+  }
+
+  // .userWrapper__title
+
+  &__title {
+    font-size: m.rem(24);
+  }
+
+  // .userWrapper__box
+
+  &__box {
+  }
+}

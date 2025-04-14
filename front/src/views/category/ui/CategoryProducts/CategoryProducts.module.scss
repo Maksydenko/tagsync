@@ -1,7 +1,7 @@
 @use "@/application/styles/module" as m;
 
-.products {
-  // .products__body
+.categoryProducts {
+  // .categoryProducts__body
 
   &__body {
     display: flex;
@@ -10,7 +10,7 @@
     gap: m.rem(16);
   }
 
-  // .products__content
+  // .categoryProducts__content
 
   &__content {
     display: grid;
@@ -22,7 +22,7 @@
     gap: m.rem(16);
   }
 
-  // .products__pagination
+  // .categoryProducts__pagination
 
   &__pagination {
   }

@@ -3,7 +3,7 @@ import { FC, Suspense } from "react";
 import { Filters, IFilter } from "@/entities/category";
 
 import { CategoryHeader } from "./CategoryHeader/CategoryHeader";
-import { Products } from "./Products/Products";
+import { CategoryProducts } from "./CategoryProducts/CategoryProducts";
 
 import s from "./Category.module.scss";
 
@@ -55,7 +55,7 @@ export const Category: FC = () => {
                   className={s.category__filters}
                   filtersData={filtersData}
                 />
-                <Products className={s.category__products} />
+                <CategoryProducts className={s.category__products} />
               </Suspense>
             </div>
           </div>

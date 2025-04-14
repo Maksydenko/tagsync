@@ -14,7 +14,9 @@
       "next": "Next"
     },
     "user": {
-      "account": "Account",
+      "profile": "Profile",
+      "wishlist": "Wishlist",
+      "orders": "Orders",
       "logout": "Logout"
     },
     "form": {

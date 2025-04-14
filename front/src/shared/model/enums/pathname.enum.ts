@@ -1,7 +1,9 @@
 export enum Pathname {
-  Account = "/account",
-  ForgotPassword = "/forgot-password",
   Home = "/",
   Login = "/login",
+  Orders = "/orders",
+  Profile = "/profile",
   Registration = "/registration",
+  ResetPassword = "/reset-password",
+  Wishlist = "/wishlist",
 }

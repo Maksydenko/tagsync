@@ -10,7 +10,7 @@ import { IProduct } from "@/entities/product/api";
 import { SearchParam } from "@/shared/model";
 import { Pagination } from "@/shared/ui";
 
-import s from "./Products.module.scss";
+import s from "./CategoryProducts.module.scss";
 
 // TODO: handle real products
 const ALL_PRODUCTS_COUNT = 40;
@@ -45,14 +45,15 @@ const productsData: IProduct[] = Array.from(
   })
 );
 
-interface ProductsProps {
+interface CategoryProductsProps {
   className?: string;
 }
 
-export const Products: FC<ProductsProps> = ({ className }) => {
+export const CategoryProducts: FC<CategoryProductsProps> = ({ className }) => {
   const ITEMS_PER_PAGE = +process.env.NEXT_PUBLIC_PRODUCTS_PER_PAGE!;
 
   const searchParams = useSearchParams();
+
   const pageParam = searchParams.get(SearchParam.Page);
   const page = Number(pageParam) || 1;
 

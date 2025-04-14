@@ -95,7 +95,7 @@ export const CredentialsForm: FC<CredentialsFormProps> = ({
           </Btn>
           <Link
             className={s.credentialsForm__link}
-            href={Pathname.ForgotPassword}
+            href={Pathname.ResetPassword}
           >
             {tShared("forgot-password")}
           </Link>
