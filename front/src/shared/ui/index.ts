@@ -7,5 +7,4 @@ export * from "./img/Img";
 export * from "./loader/Loader";
 export * from "./locale-switcher/LocaleSwitcher";
 export * from "./pagination/Pagination";
-export * from "./slider-swiper/SliderSwiper";
 export * from "./theme-switcher/ThemeSwitcher";
