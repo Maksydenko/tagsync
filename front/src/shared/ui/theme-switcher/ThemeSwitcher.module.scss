@@ -1,11 +1,11 @@
 @use "@/application/styles/module" as m;
 
-$padding: 4;
+$themeSwitcherPadding: 4;
 
 .themeSwitcher {
   position: relative;
   display: flex;
-  padding: m.rem($padding);
+  padding: m.rem($themeSwitcherPadding);
   background: var(--themeSwitcherBg);
   border-radius: m.rem(999);
 
@@ -14,7 +14,7 @@ $padding: 4;
   &__slider {
     position: absolute;
     inset-block-start: 50%;
-    inline-size: calc((100% - m.rem($padding * 2)) / 3);
+    inline-size: calc((100% - m.rem($themeSwitcherPadding * 2)) / 3);
     aspect-ratio: 1;
     background: var(--themeSwitcherSlider);
     border-radius: 50%;
