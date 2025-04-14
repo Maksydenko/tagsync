@@ -5,8 +5,6 @@ import Image from "next/image";
 import { StaticImageData } from "next/image";
 import { clsx } from "clsx";
 
-import { Loader } from "../loader/Loader";
-
 import s from "./Img.module.scss";
 
 interface ImgProps {
@@ -31,7 +29,7 @@ export const Img: FC<ImgProps> = ({
   isFill = true,
   isPriority,
   isSvg,
-  loader = <Loader className={s.img__loader} />,
+  loader,
   quality = 75,
   sizes = "99vw",
   src,
