@@ -58,9 +58,9 @@ export const CategoryProducts: FC<CategoryProductsProps> = ({ className }) => {
   const page = Number(pageParam) || 1;
 
   return (
-    <div className={clsx(s.products, className)}>
-      <div className={s.products__body}>
-        <div className={s.products__content}>
+    <div className={clsx(s.categoryProducts, className)}>
+      <div className={s.categoryProducts__body}>
+        <div className={s.categoryProducts__content}>
           {/* TODO: handle real paginated products */}
           {productsData
             .slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE)
@@ -69,7 +69,7 @@ export const CategoryProducts: FC<CategoryProductsProps> = ({ className }) => {
             })}
         </div>
         <Pagination
-          className={s.products__pagination}
+          className={s.categoryProducts__pagination}
           itemsPerPage={ITEMS_PER_PAGE}
           itemsPerTotal={ALL_PRODUCTS_COUNT}
         />
