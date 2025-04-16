@@ -14,27 +14,51 @@ const productsData: IProduct[] = Array.from(
     length: 20,
   },
   (_, index) => ({
-    id: index,
+    characteristics: [
+      {
+        name: "price",
+        translations: {
+          en: "Price",
+          uk: "Ціна",
+        },
+        value: "13999",
+        value_translations: {
+          en: "13999 UAH",
+          uk: "13999 ₴",
+        },
+      },
+      {
+        name: "price",
+        translations: {
+          en: "Price",
+          uk: "Ціна",
+        },
+        value: "13999",
+        value_translations: {
+          en: "13999 UAH",
+          uk: "13999 ₴",
+        },
+      },
+      {
+        name: "price",
+        translations: {
+          en: "Price",
+          uk: "Ціна",
+        },
+        value: "13999",
+        value_translations: {
+          en: "13999 UAH",
+          uk: "13999 ₴",
+        },
+      },
+    ],
     images: [
       "/img/logos/logo.png",
       "/img/logos/logo.png",
       "/img/logos/logo.png",
     ],
     price: "14499",
-    product_parameters: [
-      {
-        name: "memory",
-        value: "12GB",
-      },
-      {
-        name: "memory_type",
-        value: "GDDR6",
-      },
-      {
-        name: "memory_bus",
-        value: "192-bit",
-      },
-    ],
+    product_id: index,
     rating: 3.5,
     title: "GeForce RTX 3060 ASUS Dual",
   })
@@ -49,7 +73,7 @@ export const WishlistProducts: FC<WishlistProductsProps> = ({ className }) => {
     <div className={clsx(s.wishlistProducts, className)}>
       <div className={s.wishlistProducts__body}>
         {productsData.map((product) => {
-          return <ProductCard key={product.id} productData={product} />;
+          return <ProductCard key={product.product_id} productData={product} />;
         })}
       </div>
     </div>
