@@ -1,6 +1,7 @@
 import { FC, ReactNode } from "react";
 import { clsx } from "clsx";
 
+import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { Footer } from "@/widgets/footer";
@@ -35,6 +36,7 @@ export const LayoutProvider: FC<LayoutProviderProps> = async ({
             <main>{children}</main>
             <Footer />
           </div>
+          <Analytics />
           <SpeedInsights />
         </Providers>
       </body>
