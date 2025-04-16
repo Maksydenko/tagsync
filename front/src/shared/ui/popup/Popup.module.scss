@@ -1,0 +1,102 @@
+@use "@/application/styles/module" as m;
+
+.popupBtn {
+}
+
+.popup {
+  // .popup__body
+
+  &__body {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+
+    .popup {
+      // .popup__body
+
+      &__body {
+        background: transparent;
+      }
+    }
+  }
+
+  // .popup__content
+
+  &__content {
+    min-block-size: 100%;
+    padding-block: m.rem(m.$containerPadding);
+    padding-inline: m.rem(calc(m.$containerPadding / 2));
+
+    @include m.centered(flex);
+  }
+
+  // .popup__panel
+
+  &__panel {
+    position: relative;
+    transition: scale 0.1s ease-out 0s, opacity 0.1s ease-out 0s;
+
+    &[data-closed] {
+      opacity: 0;
+      scale: 0.95;
+    }
+
+    // .popup_bg
+
+    &_bg {
+      position: fixed;
+      inset: 0;
+      content: "";
+      background: m.$darkColor;
+      opacity: 0.8;
+      transition: opacity 0.1s ease-out 0s;
+
+      &[data-closed] {
+        opacity: 0;
+        scale: 1;
+      }
+    }
+  }
+
+  // .popup__box
+
+  &__box {
+    position: relative;
+    padding: m.rem(16);
+    color: m.$darkColor;
+    background: m.$lightColor;
+    border-radius: m.rem(8);
+  }
+
+  // .popup__cross
+
+  &__cross {
+    position: absolute;
+    inset-block-start: m.rem(8);
+    inset-inline-end: m.rem(8);
+    inline-size: m.rem(20);
+    aspect-ratio: 1;
+    transition: opacity 0.3s ease 0s;
+
+    @include m.hover;
+
+    &::before,
+    &::after {
+      position: absolute;
+      inset-block-start: 50%;
+      inset-inline: 0;
+      block-size: m.rem(2);
+      content: "";
+      background: m.$darkColor;
+      border-radius: m.rem(5);
+    }
+
+    &::before {
+      rotate: 45deg;
+    }
+
+    &::after {
+      rotate: -45deg;
+    }
+  }
+}
