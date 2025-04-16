@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 
-import { FilterBadges, IFilter, Sort } from "@/entities/category";
+import { FilterBadges, IFilter, Sort } from "@/features/filters";
 
 import { ILink, Pathname, Translation } from "@/shared/model";
 import { Breadcrumbs } from "@/shared/ui";

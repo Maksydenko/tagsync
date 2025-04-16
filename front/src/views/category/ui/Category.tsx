@@ -1,6 +1,6 @@
 import { FC, Suspense } from "react";
 
-import { Filters, IFilter } from "@/entities/category";
+import { Filters, IFilter } from "@/features/filters";
 
 import { CategoryHeader } from "./CategoryHeader/CategoryHeader";
 import { CategoryProducts } from "./CategoryProducts/CategoryProducts";
