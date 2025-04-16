@@ -1,4 +1,5 @@
 export enum Pathname {
+  Comparisons = "/comparisons",
   Home = "/",
   Login = "/login",
   Orders = "/orders",

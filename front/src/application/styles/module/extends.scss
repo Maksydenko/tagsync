@@ -96,3 +96,50 @@
   color: var(--mainColor);
   background: transparent;
 }
+
+%table {
+  border-radius: utils.rem(4);
+
+  thead {
+    tr {
+      background: var(--cardBg);
+    }
+  }
+
+  tbody {
+    tr {
+      &:nth-child(odd) {
+        background: var(--cardBorder);
+      }
+
+      &:nth-child(even) {
+        background: var(--cardBg);
+      }
+    }
+  }
+
+  td {
+    padding-block: utils.rem(16);
+    padding-inline: utils.rem(20);
+  }
+}
+
+%table_reverse {
+  thead {
+    tr {
+      background: var(--cardBorder);
+    }
+  }
+
+  tbody {
+    tr {
+      &:nth-child(odd) {
+        background: var(--cardBg);
+      }
+
+      &:nth-child(even) {
+        background: var(--cardBorder);
+      }
+    }
+  }
+}

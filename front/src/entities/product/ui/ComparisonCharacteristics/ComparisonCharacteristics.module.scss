@@ -1,0 +1,14 @@
+@use "@/application/styles/module" as m;
+
+.comparisonCharacteristics {
+  // .comparisonCharacteristics__table
+
+  &__table {
+  }
+
+  // .comparisonCharacteristics__productCard
+
+  &__productCard {
+    text-align: start;
+  }
+}

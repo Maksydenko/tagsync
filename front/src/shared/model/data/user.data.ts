@@ -7,11 +7,15 @@ export const userData: ILink[] = [
     value: Pathname.Profile,
   },
   {
-    label: "orders",
-    value: Pathname.Orders,
+    label: "comparisons",
+    value: Pathname.Comparisons,
   },
   {
     label: "wishlist",
     value: Pathname.Wishlist,
+  },
+  {
+    label: "orders",
+    value: Pathname.Orders,
   },
 ];

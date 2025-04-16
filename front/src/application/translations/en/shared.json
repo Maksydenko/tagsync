@@ -15,6 +15,7 @@
     },
     "user": {
       "profile": "Profile",
+      "comparisons": "Compare lists",
       "wishlist": "Wishlist",
       "orders": "Orders",
       "logout": "Logout"
