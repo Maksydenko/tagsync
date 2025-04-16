@@ -74,8 +74,8 @@ export const LeaveReview: FC<LeaveReviewProps> = ({ className }) => {
     <div className={clsx(s.leaveReview, className)}>
       <Popup
         btn={
-          <Btn className={s.leaveReview__btn}>
-            {tShared("review.leave-review")}
+          <Btn className={s.leaveReview__btn} asChild>
+            <span>{tShared("review.leave-review")}</span>
           </Btn>
         }
         className={s.leaveReview__popup}
