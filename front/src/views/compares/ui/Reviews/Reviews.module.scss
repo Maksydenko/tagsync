@@ -1,0 +1,34 @@
+@use "@/application/styles/module" as m;
+
+.reviews {
+  // .reviews__body
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(16);
+  }
+
+  // .reviews__header
+
+  &__header {
+    display: flex;
+    gap: m.rem(16);
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  // .reviews__title
+
+  &__title {
+    font-size: m.rem(24);
+  }
+
+  // .reviews__list
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(16);
+  }
+}
