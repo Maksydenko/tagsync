@@ -1,0 +1,9 @@
+.sliderSwiper {
+  :global(.swiper-pagination) {
+    :global(.swiper-pagination-progressbar) {
+      :global(.swiper-pagination-progressbar-fill) {
+        background: var(--mainBg) !important;
+      }
+    }
+  }
+}

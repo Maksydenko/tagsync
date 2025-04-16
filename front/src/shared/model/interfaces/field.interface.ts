@@ -22,7 +22,7 @@ export interface IField<T extends FieldValues>
   icon?: string;
   isLoading?: boolean;
   items?: ILink[];
-  label: string;
+  label?: string;
   name: Path<T>;
   options?: RegisterOptions<T>;
   type?: HTMLInputTypeAttribute;

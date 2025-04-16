@@ -1,0 +1,33 @@
+@use "@/application/styles/module" as m;
+
+.characteristics {
+  // .characteristics__body
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(16);
+  }
+
+  // .characteristics__title
+
+  &__title {
+    font-size: m.rem(24);
+  }
+
+  // .characteristics__table
+
+  &__table {
+    thead {
+      display: none;
+    }
+
+    td {
+      &:nth-child(even) {
+        display: flex;
+        justify-content: flex-end;
+        font-weight: 500;
+      }
+    }
+  }
+}

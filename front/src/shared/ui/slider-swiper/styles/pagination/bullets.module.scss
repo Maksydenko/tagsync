@@ -1,0 +1,41 @@
+@use "@/application/styles/module" as m;
+
+.sliderSwiper {
+  // .sliderSwiper_bullets
+
+  &_bullets {
+  }
+
+  :global(.swiper-pagination) {
+    @include m.centered(flex);
+
+    &:global(.swiper-pagination-bullets) {
+      bottom: m.rem(16) !important;
+      gap: m.rem(8);
+    }
+
+    :global(.swiper-pagination-bullet) {
+      margin: 0 !important;
+      background: var(--mainBg) !important;
+
+      &:not(:global(.swiper-pagination-bullet-active)) {
+        width: m.rem(8) !important;
+        height: m.rem(8) !important;
+        opacity: 0.8;
+        transition: opacity 0.3s ease 0s;
+
+        @include m.hover(
+          (
+            opacity: 0.4,
+          )
+        );
+      }
+
+      &:global(.swiper-pagination-bullet-active) {
+        width: m.rem(12) !important;
+        height: m.rem(12) !important;
+        cursor: default;
+      }
+    }
+  }
+}

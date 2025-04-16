@@ -1,0 +1,24 @@
+@use "@/application/styles/module" as m;
+
+.reviewCard {
+  padding: m.rem(16);
+  background: var(--cardBg);
+  border-radius: m.rem(4);
+
+  // .reviewCard__body
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(12);
+  }
+
+  // .reviewCard__header
+
+  &__header {
+    display: flex;
+    gap: m.rem(12);
+    align-items: center;
+    justify-content: space-between;
+  }
+}

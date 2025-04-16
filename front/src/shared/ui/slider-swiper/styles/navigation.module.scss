@@ -1,0 +1,80 @@
+@use "@/application/styles/module" as m;
+
+.sliderSwiper {
+  // .sliderSwiper__btn
+
+  &__btn {
+    position: absolute;
+    inset-block-start: 50%;
+    z-index: 9;
+    inline-size: m.em(40, 40);
+    block-size: m.em(40, 40);
+    font-size: m.rem(40);
+    background: var(--cardBg);
+    border-radius: m.em(4, 40);
+    translate: 0 -50%;
+    transition: opacity 0.3s ease 0s;
+
+    @include m.centered(flex);
+    @include m.hover;
+
+    @media (max-width: m.$mobile) {
+      font-size: m.rem(32);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+    }
+
+    // .sliderSwiper__btn_prev
+
+    &_prev {
+      inset-inline-start: m.rem(8);
+
+      .sliderSwiper__icon {
+        rotate: 90deg;
+      }
+    }
+
+    // .sliderSwiper__btn_next
+
+    &_next {
+      inset-inline-end: m.rem(8);
+
+      .sliderSwiper__icon {
+        rotate: -90deg;
+      }
+    }
+
+    .sliderSwiper__icon {
+      inline-size: m.em(20, 40);
+      block-size: m.em(20, 40);
+      aspect-ratio: 1;
+      filter: invert(var(--iconInvert));
+
+      @include m.centered(flex);
+    }
+
+    // .sliderSwiper__btn_vertical
+
+    &_vertical {
+      writing-mode: vertical-lr;
+
+      &.sliderSwiper__btn_prev {
+        translate: -50% 0;
+
+        .sliderSwiper__icon {
+          rotate: -180deg;
+        }
+      }
+
+      &.sliderSwiper__btn_next {
+        translate: -50% 0;
+
+        .sliderSwiper__icon {
+          rotate: 0deg;
+        }
+      }
+    }
+  }
+}

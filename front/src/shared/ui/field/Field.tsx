@@ -74,10 +74,9 @@ export const Field = <T extends FieldValues>({
       );
     case "range":
     case "ranges":
-      return (
+      field = (
         <Range
           {...props}
-          className={className}
           formReturn={formReturn}
           name={name}
           options={options}
@@ -86,17 +85,20 @@ export const Field = <T extends FieldValues>({
           })}
         />
       );
+      break;
     case "rating":
-      return <Rating {...props} formReturn={formReturn} name={name} />;
+      field = (
+        <Rating
+          {...props}
+          formReturn={formReturn}
+          name={name}
+          options={options}
+        />
+      );
+      break;
     case "select":
       field = (
-        <Select
-          {...props}
-          className={className}
-          formReturn={formReturn}
-          items={items}
-          name={name}
-        />
+        <Select {...props} formReturn={formReturn} items={items} name={name} />
       );
       break;
     case "tel":

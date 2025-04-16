@@ -57,6 +57,13 @@
         "required": "Телефон обов'язковий",
         "pattern": "Невірний формат телефону"
       },
+      "rating": {
+        "required": "Оцінка обов'язкова"
+      },
+      "review": {
+        "label": "Коментар",
+        "required": "Коментар обов'язковий"
+      },
       "submit": "Підтвердити"
     },
     "errors": {
@@ -64,6 +71,13 @@
       "invalid-credentials": "Неправильний email або пароль",
       "user-already-exists": "Цей email вже існує",
       "email-not-confirmed": "Email не підтверджено"
+    },
+    "product": {
+      "add-to-cart": "Додати в кошик",
+      "in-cart": "У кошику"
+    },
+    "review": {
+      "leave-review": "Залишити відгук"
     },
     "forgot-password": "Забули пароль?",
     "continue": "Продовжити"

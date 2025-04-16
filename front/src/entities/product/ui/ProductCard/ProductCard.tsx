@@ -27,7 +27,6 @@ export const ProductCard: FC<ProductCardProps> = ({
   productData: { images, price, rating, title },
 }) => {
   const { push } = useRouter();
-
   const supabase = createClientComponentClient<IDatabase>();
 
   const { data: userData, isLoading: isUserLoading } = useQuery({
@@ -60,7 +59,7 @@ export const ProductCard: FC<ProductCardProps> = ({
   return (
     <div className={clsx(s.productCard, className)}>
       <div className={s.productCard__body}>
-        <Link className={s.productCard__link} href="/" />
+        <Link className={s.productCard__link} href="/category/product" />
         <div className={s.productCard__header}>
           <button className={s.productCard__btn} type="button">
             <Img

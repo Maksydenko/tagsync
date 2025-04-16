@@ -1,0 +1,27 @@
+@use "@/application/styles/module" as m;
+
+.productsSlider {
+  // .productsSlider__body
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(16);
+  }
+
+  // .productsSlider__title
+
+  &__title {
+    font-size: m.rem(24);
+  }
+
+  // .productsSlider__slider
+
+  &__slider {
+  }
+
+  // .productsSlider__productCard
+
+  &__productCard {
+  }
+}

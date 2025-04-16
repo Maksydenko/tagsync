@@ -33,6 +33,10 @@ body {
   background: var(--mainBg);
 }
 
+table {
+  border-collapse: collapse;
+}
+
 input,
 button,
 textarea {

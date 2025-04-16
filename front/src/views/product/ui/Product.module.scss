@@ -1,0 +1,58 @@
+@use "@/application/styles/module" as m;
+
+.product {
+  // .product__container
+
+  &__container {
+    padding-top: m.rem(m.$containerPadding);
+    padding-bottom: m.rem(m.$containerPadding);
+
+    @extend %container;
+  }
+
+  // .product__body
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(32);
+  }
+
+  // .product__header
+
+  &__header {
+  }
+
+  // .product__content
+
+  &__content {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: m.rem((600 + 138 + 16)) 1fr;
+    gap: m.rem(32);
+  }
+
+  // .product__box
+
+  &__box {
+    display: flex;
+    gap: m.rem(16);
+  }
+
+  // .product__sliders
+
+  &__sliders {
+    grid-row: span 2;
+  }
+
+  // .product__reviews
+
+  &__reviews {
+    flex: 1 1 auto;
+  }
+
+  // .product__characteristics
+
+  &__characteristics {
+  }
+}

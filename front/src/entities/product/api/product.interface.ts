@@ -1,13 +1,17 @@
+import { ITranslations } from "@/shared/api";
+
 export interface IProduct {
-  id: number;
+  characteristics: IProductCharacteristic[];
   images: string[];
   price: string;
-  product_parameters: IProductParameter[];
+  product_id: number;
   rating: number;
   title: string;
 }
 
-export interface IProductParameter {
+export interface IProductCharacteristic {
   name: string;
+  translations: ITranslations;
   value: string;
+  value_translations: ITranslations;
 }

@@ -19,27 +19,51 @@ const productsData: IProduct[] = Array.from(
     length: ALL_PRODUCTS_COUNT,
   },
   (_, index) => ({
-    id: index,
+    characteristics: [
+      {
+        name: "price",
+        translations: {
+          en: "Price",
+          uk: "Ціна",
+        },
+        value: "13999",
+        value_translations: {
+          en: "13999 UAH",
+          uk: "13999 ₴",
+        },
+      },
+      {
+        name: "price",
+        translations: {
+          en: "Price",
+          uk: "Ціна",
+        },
+        value: "13999",
+        value_translations: {
+          en: "13999 UAH",
+          uk: "13999 ₴",
+        },
+      },
+      {
+        name: "price",
+        translations: {
+          en: "Price",
+          uk: "Ціна",
+        },
+        value: "13999",
+        value_translations: {
+          en: "13999 UAH",
+          uk: "13999 ₴",
+        },
+      },
+    ],
     images: [
       "/img/logos/logo.png",
       "/img/logos/logo.png",
       "/img/logos/logo.png",
     ],
     price: "14499",
-    product_parameters: [
-      {
-        name: "memory",
-        value: "12GB",
-      },
-      {
-        name: "memory_type",
-        value: "GDDR6",
-      },
-      {
-        name: "memory_bus",
-        value: "192-bit",
-      },
-    ],
+    product_id: index,
     rating: 3.5,
     title: "GeForce RTX 3060 ASUS Dual",
   })
@@ -65,7 +89,9 @@ export const CategoryProducts: FC<CategoryProductsProps> = ({ className }) => {
           {productsData
             .slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE)
             .map((product) => {
-              return <ProductCard key={product.id} productData={product} />;
+              return (
+                <ProductCard key={product.product_id} productData={product} />
+              );
             })}
         </div>
         <Pagination

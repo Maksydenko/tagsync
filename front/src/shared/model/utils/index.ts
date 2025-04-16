@@ -1,3 +1,4 @@
+export * from "./formatDate.util";
 export * from "./formatNumber.util";
 export * from "./formatPrice.util";
 export * from "./removeLocalePrefix.util";

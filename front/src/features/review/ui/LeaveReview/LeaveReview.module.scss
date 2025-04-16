@@ -1,0 +1,30 @@
+@use "@/application/styles/module" as m;
+
+.leaveReview {
+  // .leaveReview__body
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(16);
+    min-width: m.rem(400);
+  }
+
+  // .leaveReview__submit
+
+  &__submit {
+    color: m.$lightColor;
+    background: m.$darkColor;
+    border-color: m.$darkColor;
+
+    &:not(:disabled) {
+      @include m.hover(
+        (
+          color: m.$darkColor,
+          background: m.$lightColor,
+          border-color: m.$darkColor,
+        )
+      );
+    }
+  }
+}

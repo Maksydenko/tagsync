@@ -1,0 +1,67 @@
+@use "@/application/styles/module" as m;
+
+.productMain {
+  // .productMain__body
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(16);
+    align-items: flex-start;
+  }
+
+  // .productMain__title
+
+  &__title {
+    font-size: m.rem(24);
+  }
+
+  // .productMain__reviews
+
+  &__reviews {
+    display: flex;
+    gap: m.rem(8);
+    align-items: center;
+    font-size: m.rem(18);
+  }
+
+  // .productMain__price
+
+  &__price {
+    font-size: m.rem(20);
+    font-weight: 500;
+  }
+
+  // .productMain__footer
+
+  &__footer {
+    display: flex;
+    gap: m.rem(16);
+  }
+
+  // .productMain__btn
+
+  &__btn {
+  }
+
+  // .productMain__btns
+
+  &__btns {
+    display: flex;
+    gap: m.rem(8);
+    align-items: center;
+
+    .productMain__btn {
+      padding: m.rem(8);
+      transition: opacity 0.3s ease 0s;
+
+      @include m.hover;
+    }
+
+    .productMain__icon {
+      inline-size: m.rem(24);
+      aspect-ratio: 1;
+      filter: invert(var(--iconInvert));
+    }
+  }
+}

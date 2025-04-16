@@ -11,15 +11,20 @@
 
   &__body {
     position: relative;
+  }
+
+  // .btn__content
+
+  &__content {
     display: flex;
-    gap: m.rem(8);
+    gap: m.em(8, 16);
     align-items: center;
   }
 
   // .btn__icon
 
   &__icon {
-    inline-size: m.rem(20);
+    inline-size: m.em(20, 16);
     aspect-ratio: 1;
     filter: invert(var(--iconReverseInvert));
     transition: filter 0.3s ease 0s;

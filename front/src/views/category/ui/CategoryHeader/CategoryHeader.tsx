@@ -7,7 +7,7 @@ import { clsx } from "clsx";
 
 import { FilterBadges, IFilter, Sort } from "@/entities/category";
 
-import { Pathname, Translation } from "@/shared/model";
+import { ILink, Pathname, Translation } from "@/shared/model";
 import { Breadcrumbs } from "@/shared/ui";
 
 import s from "./CategoryHeader.module.scss";
@@ -25,7 +25,7 @@ export const CategoryHeader: FC<CategoryHeaderProps> = ({
   const tShared = useTranslations(Translation.Shared);
 
   // TODO: handle real category
-  const breadcrumbs = [
+  const breadcrumbs: ILink[] = [
     {
       label: tShared("pathnames.home"),
       value: Pathname.Home,

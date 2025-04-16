@@ -3,24 +3,23 @@ import { setRequestLocale } from "next-intl/server";
 
 import { IPageProps } from "@/shared/model";
 
-import Category from "@/views/category";
+import Product from "@/views/product";
 
-const CategoryPage: NextPage<IPageProps> = async (props) => {
+const ProductPage: NextPage<IPageProps> = async (props) => {
   const params = await props.params;
   const { locale } = params;
 
   setRequestLocale(locale);
 
-  return <Category />;
+  return <Product />;
 };
 
-export default CategoryPage;
+export default ProductPage;
 
 export const generateStaticParams = async () => {
-  // TODO: handle real slugs
   return [
     {
-      slug: "category",
+      productSlug: "product",
     },
   ];
 };

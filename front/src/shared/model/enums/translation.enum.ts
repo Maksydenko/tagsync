@@ -3,6 +3,8 @@ export enum Translation {
   Home = "home",
   Login = "login",
   NotFound = "not-found",
+  Product = "product",
   Registration = "registration",
+  ResetPassword = "reset-password",
   Shared = "shared",
 }
