@@ -15,7 +15,7 @@ const eslintConfig = [
   ...compat.extends(
     "next/core-web-vitals",
     "next/typescript",
-    "plugin:perfectionist/recommended-natural-legacy"
+    "plugin:perfectionist/recommended-natural-legacy",
   ),
   {
     plugins: {
@@ -64,6 +64,7 @@ const eslintConfig = [
             ["^\\.\\.*/use[A-Z].*$", "^\\.*/use[A-Z].*$"],
             ["^\\.\\.(?!/?$)", "^\\.(?!/?$)"],
             ["^.+\\.json$"],
+            ["^.+\\.svg$"],
             ["^.+\\.s?css$"],
           ],
         },
