@@ -39,8 +39,8 @@ const eslintConfig = [
           groups: [
             ["^react$", "^next", "^[a-z]"],
             ["^@"],
-            ["^@/app"],
-            ["^@/pages"],
+            ["^@/application"],
+            ["^@/views"],
             ["^@/widgets"],
             ["^@/features"],
             ["^@/entities"],
