@@ -1,12 +1,26 @@
 @use "@/application/styles/module" as m;
 
 .filters {
+  // .filters__form
+
+  &__form {
+  }
+
+  // .filters__collapse
+
+  &__collapse {
+    :global(.rc-collapse-title) {
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+  }
+
   // .filters__fields
 
   &__fields {
     display: flex;
     flex-direction: column;
-
     gap: m.rem(16);
   }
 }

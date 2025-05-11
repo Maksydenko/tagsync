@@ -11,8 +11,4 @@ interface MenuItemsProps {
   onClick?: () => void;
 }
 
-export const MenuItems: FC<MenuItemsProps> = ({ links }) => {
-  return links.map((link) => {
-    return <MenuItem key={link.value} link={link} />;
-  });
-};
+export const MenuItems: FC<MenuItemsProps> = ({ links }) => links.map((link) => <MenuItem key={link.value} link={link} />);

@@ -1,0 +1,16 @@
+@use "@/application/styles/module" as m;
+
+.copyright {
+  color: m.$lightColor;
+  background: m.$primaryColor;
+
+  // .copyright__container
+
+  &__container {
+    padding-top: m.rem(calc(m.$containerPadding / 2));
+    padding-bottom: m.rem(calc(m.$containerPadding / 2));
+    text-align: center;
+
+    @extend %container;
+  }
+}

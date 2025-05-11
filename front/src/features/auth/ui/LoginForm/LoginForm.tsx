@@ -7,13 +7,11 @@ import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import { useForm } from "react-hook-form";
 
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { AuthError } from "@supabase/supabase-js";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { AuthForm } from "@/features/auth";
+import { AuthForm, AuthService } from "@/features/auth";
 
-import { IDatabase } from "@/shared/lib";
 import {
   ErrorCode,
   MutationKey,
@@ -36,7 +34,6 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
   const { push } = useRouter();
 
   const tShared = useTranslations(Translation.Shared);
-  const supabase = createClientComponentClient<IDatabase>();
 
   const form = useForm<ILoginForm>({
     mode: "onChange",
@@ -46,7 +43,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
 
   const { isPending: isLoginPending, mutate: login } = useMutation({
     mutationFn: async (data: ILoginForm) => {
-      const { error } = await supabase.auth.signInWithPassword(data);
+      const { error } = await AuthService.login(data);
 
       if (error) {
         throw error;

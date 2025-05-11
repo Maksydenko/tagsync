@@ -34,8 +34,7 @@ export const Rating = <T extends FieldValues>({
   const { getValues, register, setValue } = formReturn;
   const isDisabled = options?.disabled;
 
-  const getIcon = (className: string) => {
-    return (
+  const getIcon = (className: string) => (
       <Image
         alt="star"
         className={clsx(s.rating__icon, s[`rating__icon_${className}`])}
@@ -44,7 +43,6 @@ export const Rating = <T extends FieldValues>({
         width={20}
       />
     );
-  };
 
   return (
     <div className={clsx(s.rating, className)}>
@@ -54,6 +52,7 @@ export const Rating = <T extends FieldValues>({
         emptyIcon={getIcon("empty")}
         fillIcon={getIcon("fill")}
         initialValue={getValues(name) as number}
+        readonly={isDisabled}
         transition
         onClick={(value) => {
           setValue(name, value as PathValue<T, Path<T>>);

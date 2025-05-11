@@ -1,9 +1,9 @@
 import { NextPage } from "next";
 import { setRequestLocale } from "next-intl/server";
 
-import { IPageProps } from "@/shared/model";
-
 import Comparisons from "@/views/comparisons";
+
+import { IPageProps } from "@/shared/model";
 
 const ComparisonsPage: NextPage<IPageProps> = async (props) => {
   const params = await props.params;

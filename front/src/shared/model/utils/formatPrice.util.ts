@@ -4,9 +4,7 @@ interface IFormatPrice extends Intl.NumberFormatOptions {
   number: number;
 }
 
-export const formatPrice = ({ number, ...props }: IFormatPrice) => {
-  return `${formatNumber({
+export const formatPrice = ({ number, ...props }: IFormatPrice) => `${formatNumber({
     number,
     ...props,
   })} ₴`;
-};

@@ -1,0 +1,45 @@
+@use "@/application/styles/module" as m;
+
+.cartProduct {
+  // .cartProduct__body
+
+  &__body {
+    display: flex;
+    gap: m.rem(16);
+  }
+
+  // .cartProduct__content
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(16);
+    justify-content: space-between;
+    padding-block: m.rem(12);
+  }
+
+  // .cartProduct__img
+
+  &__img {
+    inline-size: m.rem(160);
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: m.$lightColor;
+    border: m.rem(1) solid m.$grayColor;
+    border-radius: m.rem(4);
+
+    img {
+      object-fit: contain;
+    }
+  }
+
+  // .cartProduct__title
+
+  &__title {
+  }
+
+  // .cartProduct__counter
+
+  &__counter {
+  }
+}

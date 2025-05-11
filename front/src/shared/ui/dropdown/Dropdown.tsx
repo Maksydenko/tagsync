@@ -5,7 +5,7 @@ import { clsx } from "clsx";
 
 import { Menu, MenuButton } from "@headlessui/react";
 
-import { ILink, useWindowListener } from "@/shared/model";
+import { ILink, ILinkWithIcon, useWindowListener } from "@/shared/model";
 
 import { Img } from "../img/Img";
 import { DropdownItems } from "./DropdownItems/DropdownItems";
@@ -17,7 +17,10 @@ interface DropdownProps {
   className?: string;
   icon?: ReactNode;
   isDisabled?: boolean;
-  items: ILink<ReactNode>[];
+  items: (
+    | ILink<(() => unknown) | string>
+    | ILinkWithIcon<(() => unknown) | string>
+  )[];
 }
 
 export const Dropdown: FC<DropdownProps> = ({

@@ -1,0 +1,126 @@
+@use "@/application/styles/module" as m;
+
+.cart {
+  // .cart__body
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(16);
+  }
+
+  // .cart__content
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(16);
+  }
+
+  // .cart__product
+
+  &__product {
+    button {
+      color: m.$lightColor;
+      background: m.$darkColor;
+      border-color: m.$darkColor;
+
+      img {
+        filter: invert(1);
+      }
+
+      &:not(:disabled) {
+        &:hover,
+        &:focus-visible {
+          color: m.$darkColor;
+          background: m.$lightColor;
+          border-color: m.$darkColor;
+
+          img {
+            filter: invert(0);
+          }
+        }
+      }
+    }
+  }
+
+  // .cart__footer
+
+  &__footer {
+    display: flex;
+    gap: m.rem(16);
+    align-items: center;
+    justify-content: space-between;
+
+    .cart__btn {
+      &:first-child {
+        color: m.$lightColor;
+        background: m.$darkColor;
+        border-color: m.$darkColor;
+
+        &:not(:disabled) {
+          @include m.hover(
+            (
+              color: m.$darkColor,
+              background: m.$lightColor,
+              border-color: m.$darkColor,
+            )
+          );
+        }
+      }
+
+      &:last-child {
+        color: m.$darkColor;
+        background: transparent;
+        border-color: m.$darkColor;
+
+        &:not(:disabled) {
+          @include m.hover(
+            (
+              color: m.$lightColor,
+              background: m.$darkColor,
+            )
+          );
+        }
+      }
+    }
+  }
+
+  button.cart__popup {
+    position: relative;
+    inline-size: m.rem(44);
+    aspect-ratio: 1;
+    overflow: hidden;
+    border: m.rem(1) solid m.$darkColor;
+    border-radius: 50%;
+
+    @include m.centered(flex);
+
+    .cart__btn {
+      position: relative;
+    }
+
+    .cart__icon {
+      inline-size: m.rem(20);
+      aspect-ratio: 1;
+
+      img {
+        scale: -1 1;
+      }
+    }
+
+    .cart__counter {
+      position: absolute;
+      inset-block-start: m.rem(-4);
+      inset-inline-end: m.rem(-4);
+      inline-size: m.rem(16);
+      block-size: m.rem(16);
+      font-size: m.rem(12);
+      color: m.$lightColor;
+      background: m.$darkColor;
+      border-radius: 50%;
+
+      @include m.centered(flex);
+    }
+  }
+}

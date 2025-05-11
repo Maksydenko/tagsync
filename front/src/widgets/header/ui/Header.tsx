@@ -5,8 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { clsx } from "clsx";
 
-import { User } from "@/entities/user";
-
 import {
   Breakpoint,
   Pathname,
@@ -24,7 +22,7 @@ interface HeaderProps {
 }
 
 export const Header: FC<HeaderProps> = ({ className }) => {
-  const BREAKPOINT = Breakpoint.Mobile;
+  const BREAKPOINT = Breakpoint.Desktop;
   const pathname = usePathname();
 
   const { isScrollLocked, setIsScrollLocked } = useScrollLock([
@@ -93,12 +91,6 @@ export const Header: FC<HeaderProps> = ({ className }) => {
               className={s.header__menu}
               isScrollLocked={isScrollLocked}
               onClick={handleClick}
-            />
-            <User
-              className={s.header__user}
-              {...(isScrollLocked && {
-                onClick: handleClick,
-              })}
             />
           </div>
         </div>

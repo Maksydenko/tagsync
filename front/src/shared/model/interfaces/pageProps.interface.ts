@@ -1,10 +1,13 @@
 import { Locale } from "../enums/locale.enum";
 
-export interface IPageProps<T = unknown> {
+export interface IPageProps {
   params: Promise<IParams>;
-  searchParams?: Promise<T>;
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  searchParams?: Promise<any>;
 }
 
 export interface IParams {
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  [key: string]: any;
   locale: Locale;
 }

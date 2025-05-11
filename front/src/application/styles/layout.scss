@@ -11,6 +11,7 @@
 
 ::-webkit-scrollbar {
   inline-size: m.rem(8);
+  block-size: m.rem(4);
   background: var(--scrollBg);
 
   // ::-webkit-scrollbar-thumbs

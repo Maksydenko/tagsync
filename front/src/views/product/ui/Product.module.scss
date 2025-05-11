@@ -5,7 +5,7 @@
 
   &__container {
     padding-top: m.rem(m.$containerPadding);
-    padding-bottom: m.rem(m.$containerPadding);
+    padding-bottom: m.rem(m.$containerPadding * 1.5);
 
     @extend %container;
   }
@@ -30,6 +30,11 @@
     grid-template-rows: auto 1fr;
     grid-template-columns: m.rem((600 + 138 + 16)) 1fr;
     gap: m.rem(32);
+
+    @media (max-width: m.$desktop) {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   // .product__box
@@ -42,7 +47,9 @@
   // .product__sliders
 
   &__sliders {
-    grid-row: span 2;
+    @media (min-width: m.$desktop) {
+      grid-row: span 2;
+    }
   }
 
   // .product__reviews

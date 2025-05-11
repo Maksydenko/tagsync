@@ -27,10 +27,10 @@ export const ReviewCard: FC<ReviewCardProps> = ({ className, review }) => {
     <div className={clsx(s.reviewCard, className)}>
       <div className={s.reviewCard__body}>
         <div className={s.reviewCard__header}>
-          <h3 className={s.reviewCard__title}>{review.name}</h3>
+          <h3 className={s.reviewCard__title}>{review.userEmail}</h3>
           <span className={s.reviewCard__date}>
             {formatDate({
-              date: review.date,
+              date: new Date(review.createdAt),
             })}
           </span>
         </div>
@@ -43,7 +43,7 @@ export const ReviewCard: FC<ReviewCardProps> = ({ className, review }) => {
           }}
         />
         <div className={s.reviewCard__text}>
-          <p>{review.text}</p>
+          <p>{review.comment}</p>
         </div>
       </div>
     </div>

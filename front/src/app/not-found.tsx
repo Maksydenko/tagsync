@@ -9,14 +9,12 @@ import { Locale } from "@/shared/model";
 // In this case, the layout at `app/[locale]/layout.tsx` receives
 // an invalid value as the `[locale]` param and calls `notFound()`.
 
-const GlobalNotFound = () => {
-  return (
+const GlobalNotFound = () => (
     <html lang={Locale.Default}>
       <body>
         <Error statusCode={StatusCodes.NOT_FOUND} />;
       </body>
     </html>
   );
-};
 
 export default GlobalNotFound;

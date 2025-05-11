@@ -1,0 +1,88 @@
+@use "@/application/styles/module" as m;
+
+.autocomplete {
+  color: m.$darkColor;
+
+  // .autocomplete__body
+
+  &__body {
+    position: relative;
+    display: flex;
+  }
+
+  // .autocomplete__btn
+
+  &__btn {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-end: 0;
+    aspect-ratio: 1;
+
+    @include m.centered(flex);
+  }
+
+  // .autocomplete__input
+
+  &__input {
+    inline-size: 100%;
+    max-inline-size: m.rem(44);
+    padding-block: m.rem(8);
+    border: m.rem(1) solid m.$darkColor;
+    border-radius: m.rem(999);
+    transition: max-inline-size 0.3s ease 0s;
+
+    &[data-focus] {
+      max-inline-size: m.rem(280);
+      padding-inline-start: m.rem(16);
+      padding-inline-end: m.rem(44);
+    }
+  }
+
+  // .autocomplete__icon
+
+  &__icon {
+    inline-size: m.rem(20);
+    aspect-ratio: 1;
+  }
+
+  // .autocomplete__options
+
+  &__options {
+    z-index: 10;
+    inline-size: var(--input-width);
+    max-block-size: m.rem(400) !important;
+    padding: m.rem(4);
+    color: m.$darkColor;
+    background: m.$cardBgLightColor;
+    border-radius: m.rem(12);
+    transition: opacity 0.1s ease-in 0s;
+
+    &:empty {
+      visibility: hidden;
+    }
+
+    &[data-leave][data-closed] {
+      opacity: 0;
+    }
+  }
+
+  // .autocomplete__option
+
+  &__option {
+    display: flex;
+    gap: m.rem(8);
+    align-items: center;
+    border-radius: m.rem(8);
+    transition: color 0.3s ease 0s, background 0.3s ease 0s;
+
+    &[data-focus] {
+      color: m.$lightColor;
+      background: m.$secondaryColor;
+    }
+
+    > a,
+    > button {
+      padding: m.rem(6) m.rem(12);
+    }
+  }
+}

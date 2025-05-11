@@ -3,10 +3,6 @@
 .btn {
   @extend %btn;
 
-  &:not(:disabled) {
-    @extend %btn_hover;
-  }
-
   // .btn__body
 
   &__body {
@@ -26,8 +22,11 @@
   &__icon {
     inline-size: m.em(20, 16);
     aspect-ratio: 1;
-    filter: invert(var(--iconReverseInvert));
-    transition: filter 0.3s ease 0s;
+
+    img {
+      filter: invert(var(--iconReverseInvert));
+      transition: filter 0.3s ease 0s;
+    }
   }
 
   // .btn__loader
@@ -43,13 +42,15 @@
     }
   }
 
-  &:hover,
-  &:focus-visible {
-    color: var(--mainColor);
-    background: transparent;
+  &:not(:disabled) {
+    &:hover,
+    &:focus-visible {
+      color: var(--mainColor);
+      background: transparent;
 
-    .btn__icon {
-      filter: invert(var(--iconInvert));
+      img {
+        filter: invert(var(--iconInvert));
+      }
     }
   }
 }

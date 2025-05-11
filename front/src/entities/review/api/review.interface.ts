@@ -1,7 +1,8 @@
 export interface IReview {
-  date: Date;
+  comment: string;
+  createdAt: string;
   id: number;
-  name: string;
+  product_id: number;
   rating: number;
-  text: string;
+  userEmail: string;
 }

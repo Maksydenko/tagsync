@@ -11,6 +11,7 @@
 // Settings template
 
 $fontSize: utils.rem(16);
+$headerHeight: utils.rem(70);
 
 // Fonts
 $primaryFontFamily: var(--openSans);
@@ -24,8 +25,9 @@ $cardBgDarkColor: #27272b;
 $cardBorderLightColor: #d9d9dc;
 $cardBorderDarkColor: #1d1d1e;
 $redColor: #d6363f;
+$greenColor: #40a258;
 $grayColor: #9d9d9c;
-$whiteColor: #f3f3f4;
+$whiteColor: #fff;
 $lightColor: #fbfbfb;
 $darkColor: #1a1a1e;
 
@@ -61,14 +63,9 @@ $containerPadding: 32;
 $containerWidth: $maxWidthContainer + $containerPadding;
 
 // Breakpoints
-
-// Desktops, laptops, some tablets in a horizontal position
-$pc: $containerWidth + px;
-// Tablets, some phones in the horizontal position
+$desktop: 1199.98px;
 $tablet: 991.98px;
-// Large phones
 $mobile: 767.98px;
-// Small phones
 $mobileSmall: 479.98px;
 
 // Adaptive type:

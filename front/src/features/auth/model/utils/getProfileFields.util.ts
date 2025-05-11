@@ -8,8 +8,7 @@ import { IProfileForm } from "../interfaces";
 
 export const getProfileFields = (
   tShared: ReturnType<typeof useTranslations>
-): IField<IProfileForm>[] => {
-  return [
+): IField<IProfileForm>[] => [
     {
       label: tShared("form.name.label"),
       name: "name",
@@ -26,7 +25,6 @@ export const getProfileFields = (
         },
         required: tShared("form.name.required"),
       },
-      type: "text",
     },
     {
       label: tShared("form.surname.label"),
@@ -44,7 +42,6 @@ export const getProfileFields = (
         },
         required: tShared("form.surname.required"),
       },
-      type: "text",
     },
     {
       label: tShared("form.phone.label"),
@@ -63,5 +60,34 @@ export const getProfileFields = (
       },
       type: "tel",
     },
+    {
+      label: tShared("form.city.label"),
+      name: "city",
+      options: {
+        minLength: {
+          message: tShared("form.city.min", {
+            value: formConfig.city.min,
+          }),
+          value: formConfig.city.min,
+        },
+        pattern: {
+          message: tShared("form.city.pattern"),
+          value: formConfig.city.pattern,
+        },
+        required: tShared("form.city.required"),
+      },
+    },
+    {
+      label: tShared("form.address.label"),
+      name: "address",
+      options: {
+        minLength: {
+          message: tShared("form.address.min", {
+            value: formConfig.address.min,
+          }),
+          value: formConfig.address.min,
+        },
+        required: tShared("form.address.required"),
+      },
+    },
   ];
-};

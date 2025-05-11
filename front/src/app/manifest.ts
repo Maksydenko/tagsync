@@ -2,8 +2,7 @@ import { MetadataRoute } from "next";
 
 import { Pathname } from "@/shared/model";
 
-const manifest = async (): Promise<MetadataRoute.Manifest> => {
-  return {
+const manifest = async (): Promise<MetadataRoute.Manifest> => ({
     background_color: "#fff",
     display: "standalone",
     icons: [
@@ -24,7 +23,6 @@ const manifest = async (): Promise<MetadataRoute.Manifest> => {
     short_name: "TagSync",
     start_url: Pathname.Home,
     theme_color: "#fff",
-  };
-};
+  });
 
 export default manifest;

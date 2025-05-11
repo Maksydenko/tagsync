@@ -5,15 +5,15 @@ import { Protocol } from "@/shared/model";
 
 const withNextIntl = createNextIntlPlugin();
 
-const backendURI = new URL(process.env.NEXT_PUBLIC_SUPABASE_URL!);
+const backURI = new URL(process.env.NEXT_PUBLIC_SUPABASE_URL!);
 
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: backendURI.hostname,
+        hostname: backURI.hostname,
         pathname: "/storage/**",
-        protocol: backendURI.protocol.split(":")[0] as Protocol,
+        protocol: backURI.protocol.split(":")[0] as Protocol,
       },
     ],
   },

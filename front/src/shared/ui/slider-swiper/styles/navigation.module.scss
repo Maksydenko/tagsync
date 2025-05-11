@@ -10,7 +10,7 @@
     inline-size: m.em(40, 40);
     block-size: m.em(40, 40);
     font-size: m.rem(40);
-    background: var(--cardBg);
+    background: m.$cardBgLightColor;
     border-radius: m.em(4, 40);
     translate: 0 -50%;
     transition: opacity 0.3s ease 0s;
@@ -50,7 +50,6 @@
       inline-size: m.em(20, 40);
       block-size: m.em(20, 40);
       aspect-ratio: 1;
-      filter: invert(var(--iconInvert));
 
       @include m.centered(flex);
     }

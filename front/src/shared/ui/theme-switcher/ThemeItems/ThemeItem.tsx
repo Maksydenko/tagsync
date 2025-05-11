@@ -38,7 +38,7 @@ export const ThemeItem: FC<ThemeItemProps> = ({ theme: { label, value } }) => {
     <>
       <input
         aria-checked={isMounted && isChecked}
-        aria-label={tShared("themes." + value)}
+        aria-label={tShared(`themes.${  value}`)}
         checked={theme === value}
         className={s.themeSwitcher__input}
         id={value}

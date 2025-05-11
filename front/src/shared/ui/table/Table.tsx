@@ -13,11 +13,9 @@ interface TableProps<T> {
   table: TTable<T>;
 }
 
-export const Table = <T,>({ className, table }: TableProps<T>): ReactNode => {
-  return (
+export const Table = <T,>({ className, table }: TableProps<T>): ReactNode => (
     <table className={clsx(s.table, className)}>
       <TableHead table={table} />
       <TableBody table={table} />
     </table>
   );
-};

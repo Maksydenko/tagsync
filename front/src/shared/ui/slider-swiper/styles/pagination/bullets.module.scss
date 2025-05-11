@@ -16,13 +16,14 @@
 
     :global(.swiper-pagination-bullet) {
       margin: 0 !important;
-      background: var(--mainBg) !important;
+      background: m.$cardBgLightColor !important;
 
       &:not(:global(.swiper-pagination-bullet-active)) {
         width: m.rem(8) !important;
         height: m.rem(8) !important;
         opacity: 0.8;
-        transition: opacity 0.3s ease 0s;
+        transition: opacity 0.3s ease 0s, width 0.3s ease 0s,
+          height 0.3s ease 0s;
 
         @include m.hover(
           (

@@ -47,16 +47,14 @@ export const AuthForm = <T extends FieldValues>({
     >
       <div className={s.authForm__body}>
         <div className={s.authForm__content}>
-          {fields.map((field) => {
-            return (
+          {fields.map((field) => (
               <Field
                 key={field.name}
                 className={s.authForm__field}
                 formReturn={formReturn}
                 {...field}
               />
-            );
-          })}
+            ))}
         </div>
         <div className={s.authForm__btns}>{btns}</div>
         {submissionMessage && (

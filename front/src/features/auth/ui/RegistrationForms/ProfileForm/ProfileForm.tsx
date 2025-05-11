@@ -3,28 +3,22 @@
 import { FC, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { clsx } from "clsx";
 import { useForm } from "react-hook-form";
 import { StepWizardChildProps } from "react-step-wizard";
 
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { AuthError } from "@supabase/supabase-js";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import {
   AuthForm,
+  AuthService,
   getProfileFields,
   ICredentialsForm,
   IProfileForm,
 } from "@/features/auth";
 
-import { IDatabase } from "@/shared/lib";
-import {
-  ErrorCode,
-  MutationKey,
-  Pathname,
-  QueryKey,
-  Translation,
-} from "@/shared/model";
+import { MutationKey, Pathname, QueryKey, Translation } from "@/shared/model";
 import { Btn } from "@/shared/ui";
 
 import s from "./ProfileForm.module.scss";
@@ -43,8 +37,6 @@ export const ProfileForm: FC<ProfileFormProps> = ({ className }) => {
     mode: "onChange",
   });
 
-  const supabase = createClientComponentClient<IDatabase>();
-
   const queryClient = useQueryClient();
 
   const { isPending: isRegistrationPending, mutate: registration } =
@@ -60,23 +52,24 @@ export const ProfileForm: FC<ProfileFormProps> = ({ className }) => {
 
         const { email, password } = parsedFormData;
 
-        const { error } = await supabase.auth.signUp({
+        await AuthService.register({
           email,
           password,
         });
 
-        if (error) {
-          throw error;
-        }
-
-        // TODO: send profile data to back
-        console.log(data);
+        await AuthService.addUserData({
+          address: data.address.trim(),
+          city: data.city.trim(),
+          email,
+          firstName: data.name.trim(),
+          lastName: data.surname.trim(),
+          phone: data.phone.replace(/\s+/g, ""),
+        });
       },
       mutationKey: [MutationKey.Profile],
       onError: (error: AuthError) => {
         const errorMessages = {
           default: "errors.unknown",
-          [ErrorCode.UserAlreadyExists]: "errors.user-already-exists",
         };
         const errorMessage =
           errorMessages[error.code as keyof typeof errorMessages] ||
@@ -106,7 +99,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({ className }) => {
           {tShared("form.submit")}
         </Btn>
       }
-      className={(s.profileForm, className)}
+      className={clsx(s.profileForm, className)}
       fields={getProfileFields(tShared)}
       formReturn={form}
       isLoading={isRegistrationPending}

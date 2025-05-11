@@ -1,13 +1,18 @@
 @use "@/application/styles/module" as m;
 
 .productCard {
+  overflow: hidden;
+  background: var(--cardBg);
+  border: m.rem(1) solid var(--cardBg);
+  border-radius: m.rem(4);
+
   // .productCard__body
 
   &__body {
     position: relative;
-    overflow: hidden;
-    background: var(--cardBg);
-    border-radius: m.rem(4);
+    display: flex;
+    flex-direction: column;
+    block-size: 100%;
   }
 
   // .productCard__link
@@ -16,6 +21,17 @@
     position: absolute;
     inset: 0;
     z-index: 1;
+  }
+
+  // .productCard__btn
+
+  &__btn {
+    position: relative;
+    cursor: pointer;
+
+    .productCard__indicator {
+      position: absolute;
+    }
   }
 
   // .productCard__header
@@ -41,7 +57,12 @@
     .productCard__icon {
       inline-size: m.rem(20);
       aspect-ratio: 1;
-      filter: invert(var(--iconInvert));
+      filter: invert(1);
+    }
+
+    .productCard__indicator {
+      inset-block-start: m.rem(4);
+      inset-inline-end: m.rem(4);
     }
   }
 
@@ -49,27 +70,40 @@
 
   &__img {
     aspect-ratio: 1;
-    background: var(--cardReverseBg);
+    background: m.$whiteColor;
 
-    &,
+    @include m.centered(flex);
+
     img {
-      padding: m.rem(16);
+      object-fit: contain;
     }
   }
 
   // .productCard__content
 
   &__content {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template: 1fr auto auto / 1fr;
     gap: m.rem(12);
+    justify-content: space-between;
+    block-size: 100%;
     padding: m.rem(12);
   }
 
   // .productCard__title
 
   &__title {
+    flex: 1 1 auto;
+
     @include m.lineCamp(3);
+
+    // .productCard__title_stable
+
+    &_stable {
+      block-size: 2lh;
+
+      @include m.lineCamp(2);
+    }
   }
 
   // .productCard__rating
@@ -83,6 +117,7 @@
 
   &__footer {
     display: flex;
+    gap: m.rem(12);
     align-items: center;
     justify-content: space-between;
 
@@ -90,7 +125,29 @@
       position: relative;
       z-index: 2;
       padding: m.rem(8);
+
+      img {
+        scale: -1 1;
+      }
     }
+
+    .productCard__indicator {
+      inset-block-start: m.rem(-4);
+      inset-inline-end: m.rem(-4);
+      z-index: 1;
+
+      img {
+        scale: unset;
+      }
+    }
+  }
+
+  // .productCard__box
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
   }
 
   // .productCard__price
@@ -98,5 +155,15 @@
   &__price {
     font-weight: 500;
     border-radius: m.rem(4);
+  }
+
+  // .productCard__status
+
+  &__status {
+    font-size: m.rem(14);
+    font-weight: 500;
+    color: m.$greenColor;
+
+    @include m.textNowrap;
   }
 }

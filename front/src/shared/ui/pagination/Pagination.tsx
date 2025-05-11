@@ -6,8 +6,8 @@ import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import ReactPaginate, { ReactPaginateProps } from "react-paginate";
 
-import { SlideDirection, Translation } from "@/shared/model";
-import { SearchParam } from "@/shared/model/enums/searchParam.enum";
+import { SlideDirection, sortSearchParams, Translation } from "@/shared/model";
+import { SearchParam } from "@/shared/model";
 
 import { Img } from "../img/Img";
 
@@ -49,18 +49,16 @@ export const Pagination: FC<PaginationProps> = ({
       params.set(SearchParam.Page, String(page));
     }
 
-    push(`?${params.toString()}`);
+    push(`?${sortSearchParams(params)}`);
   };
 
-  const getIcon = (direction: SlideDirection) => {
-    return (
+  const getIcon = (direction: SlideDirection) => (
       <Img
-        alt={tShared("slide-directions." + direction)}
+        alt={tShared(`slide-directions.${  direction}`)}
         className={s.pagination__icon}
         src="/img/icons/form/arrow-down.svg"
       />
     );
-  };
 
   return (
     <ReactPaginate

@@ -22,8 +22,6 @@ export default LocaleLayout;
 
 export const dynamicParams = false;
 
-export const generateStaticParams = () => {
-  return routing.locales.map((locale) => ({
+export const generateStaticParams = () => routing.locales.map((locale) => ({
     locale,
   }));
-};

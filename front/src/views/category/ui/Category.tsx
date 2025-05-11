@@ -1,66 +1,39 @@
 import { FC, Suspense } from "react";
 
 import { Filters, IFilter } from "@/features/filters";
+import { IProducts } from "@/features/products";
 
 import { CategoryHeader } from "./CategoryHeader/CategoryHeader";
 import { CategoryProducts } from "./CategoryProducts/CategoryProducts";
 
 import s from "./Category.module.scss";
 
-// TODO: handle real filters
-export const filtersData: IFilter[] = [
-  {
-    list: [
-      {
-        name: "Nvidia",
-        value: "nvidia",
-      },
-      {
-        name: "AMD",
-        value: "amd",
-      },
-    ],
-    name: "Brands",
-    value: "brands",
-  },
-  {
-    list: [
-      {
-        name: "GPU",
-        value: "gpu",
-      },
-      {
-        name: "CPU",
-        value: "cpu",
-      },
-    ],
-    name: "Category",
-    value: "categories",
-  },
-];
+interface CategoryProps {
+  filtersData: IFilter[];
+  productsData: IProducts;
+}
 
-export const Category: FC = () => {
-  return (
-    <div className={s.categoryPage}>
-      <section className={s.category}>
-        <div className={s.category__container}>
-          <div className={s.category__body}>
-            <CategoryHeader
-              className={s.category__header}
-              filtersData={filtersData}
-            />
-            <div className={s.category__content}>
-              <Suspense>
-                <Filters
-                  className={s.category__filters}
-                  filtersData={filtersData}
-                />
-                <CategoryProducts className={s.category__products} />
-              </Suspense>
-            </div>
+export const Category: FC<CategoryProps> = ({ filtersData, productsData }) => (
+    <section className={s.category}>
+      <div className={s.category__container}>
+        <div className={s.category__body}>
+          <CategoryHeader
+            className={s.category__header}
+            filtersData={filtersData}
+          />
+          <div className={s.category__content}>
+            <Suspense>
+              <Filters
+                className={s.category__filters}
+                filtersData={filtersData}
+              />
+              <CategoryProducts
+                className={s.category__products}
+                productsData={productsData}
+              />
+            </Suspense>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
-};

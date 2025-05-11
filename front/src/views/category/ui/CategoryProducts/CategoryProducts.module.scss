@@ -16,7 +16,7 @@
     display: grid;
     flex: 1 1 100%;
     grid-template-columns: repeat(
-      auto-fit,
+      auto-fill,
       minmax(m.rem(m.$minWidth - m.$containerPadding), 1fr)
     );
     gap: m.rem(16);

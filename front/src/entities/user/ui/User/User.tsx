@@ -7,10 +7,10 @@ import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import initials from "initials";
 
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-import { IDatabase } from "@/shared/lib";
+import { AuthService } from "@/features/auth";
+
 import {
   MutationKey,
   Pathname,
@@ -31,24 +31,17 @@ export const User: FC<UserProps> = ({ className, onClick }) => {
   const { push } = useRouter();
   const tShared = useTranslations(Translation.Shared);
 
-  const supabase = createClientComponentClient<IDatabase>();
-
   const { data: userData, isLoading: isUserLoading } = useQuery({
-    queryFn: async () => {
-      const res = await supabase.auth.getUser();
-
-      return res.data;
-    },
+    queryFn: async () => AuthService.getUserData(),
     queryKey: [QueryKey.User],
   });
-  const userEmail = userData?.user?.email;
+  const user = userData?.data;
+  const userName = `${user?.firstName} ${user?.lastName}`;
 
   const queryClient = useQueryClient();
 
-  const { isPending: isLogoutPending, mutate: logout } = useMutation({
-    mutationFn: async () => {
-      return supabase.auth.signOut();
-    },
+  const { mutate: logout } = useMutation({
+    mutationFn: async () => AuthService.logout(),
     mutationKey: [MutationKey.Logout],
     onSuccess: () => {
       queryClient.invalidateQueries({
@@ -74,48 +67,35 @@ export const User: FC<UserProps> = ({ className, onClick }) => {
       <div className={s.user__body}>
         {isUserLoading ? (
           <Loader className={s.user__loader} />
+        ) : userData ? (
+          <Dropdown
+            className={s.user__dropdown}
+            icon={null}
+            isDisabled={isUserLoading}
+            items={[
+              ...userLinksData.map(({ label, ...rest }) => ({
+                label: tShared(`user.${label}`),
+                ...rest,
+              })),
+              {
+                icon: "/img/icons/logout.svg",
+                label: tShared("user.logout"),
+                value: () => {
+                  logout();
+                },
+              },
+            ]}
+          >
+            {userName ? initials(userName) : userIcon}
+          </Dropdown>
         ) : (
-          <>
-            {userData?.user ? (
-              <Dropdown
-                className={s.user__dropdown}
-                icon={null}
-                isDisabled={isUserLoading}
-                items={[
-                  ...userLinksData.map(({ label, value }) => {
-                    return {
-                      label: tShared(`user.${label}`),
-                      value,
-                    };
-                  }),
-                  {
-                    label: "logout",
-                    value: (
-                      <button
-                        disabled={isLogoutPending}
-                        type="button"
-                        onClick={() => {
-                          logout();
-                        }}
-                      >
-                        {tShared("user.logout")}
-                      </button>
-                    ),
-                  },
-                ]}
-              >
-                {userEmail ? initials(userEmail) : userIcon}
-              </Dropdown>
-            ) : (
-              <Link
-                className={s.user__link}
-                href={Pathname.Login}
-                onClick={onClick}
-              >
-                {userIcon}
-              </Link>
-            )}
-          </>
+          <Link
+            className={s.user__link}
+            href={Pathname.Login}
+            onClick={onClick}
+          >
+            {userIcon}
+          </Link>
         )}
       </div>
     </div>

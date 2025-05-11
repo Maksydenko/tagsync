@@ -5,7 +5,7 @@
 
   &__container {
     padding-top: m.rem(m.$containerPadding);
-    padding-bottom: m.rem(m.$containerPadding);
+    padding-bottom: m.rem(m.$containerPadding * 1.5);
 
     @extend %container;
   }
@@ -28,6 +28,10 @@
 
   &__list {
     flex: 0 0 m.rem(280);
+
+    @media (max-width: m.$tablet) {
+      display: none;
+    }
   }
 
   // .userWrapper__content

@@ -1,5 +1,6 @@
 export enum Translation {
   Category = "category",
+  Checkout = "checkout",
   Home = "home",
   Login = "login",
   NotFound = "not-found",

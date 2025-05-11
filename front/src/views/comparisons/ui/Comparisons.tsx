@@ -4,7 +4,7 @@ import { clsx } from "clsx";
 
 import { UserWrapper } from "@/widgets/user-wrapper";
 
-import { ComparisonCharacteristics } from "@/entities/product/ui/ComparisonCharacteristics/ComparisonCharacteristics";
+import { ComparisonCharacteristics } from "@/entities/product";
 
 import { Translation } from "@/shared/model";
 

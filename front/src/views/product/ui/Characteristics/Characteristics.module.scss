@@ -23,10 +23,9 @@
     }
 
     td {
-      &:nth-child(even) {
-        display: flex;
-        justify-content: flex-end;
+      &:last-child {
         font-weight: 500;
+        text-align: end;
       }
     }
   }

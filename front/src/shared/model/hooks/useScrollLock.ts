@@ -33,9 +33,7 @@ export const useScrollLock: IUseScrollLock = (inerts = []) => {
   useEffect(() => {
     const { body } = document;
 
-    const inertElements = inerts.map((inert) => {
-      return document.querySelector(inert);
-    });
+    const inertElements = inerts.map((inert) => document.querySelector(inert));
 
     if (isScrollLocked) {
       body.classList.add("lock");

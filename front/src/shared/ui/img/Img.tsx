@@ -31,7 +31,7 @@ export const Img: FC<ImgProps> = ({
   isSvg,
   loader,
   quality = 75,
-  sizes = "99vw",
+  sizes = "(min-width: 0) 100vw",
   src,
   style,
   width,
@@ -51,8 +51,8 @@ export const Img: FC<ImgProps> = ({
             src={src}
             {...(width && height
               ? {
-                  height,
-                  width,
+                  height: height * 2,
+                  width: width * 2,
                 }
               : {
                   fill: isFill,

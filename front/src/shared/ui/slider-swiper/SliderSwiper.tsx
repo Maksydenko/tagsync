@@ -62,7 +62,7 @@ export const SliderSwiper: FC<SliderSwiperProps> = ({
   // Autoplay
   autoplay,
   // Pause between slides
-  autoplayDelay = 1000,
+  autoplayDelay = 5000,
   // Disable after manual override
   autoplayDisableOnInteraction,
   // Stop on last slide

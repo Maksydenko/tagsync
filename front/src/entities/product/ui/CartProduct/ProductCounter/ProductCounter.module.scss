@@ -1,0 +1,36 @@
+@use "@/application/styles/module" as m;
+
+.productCounter {
+  // .productCounter__body
+
+  &__body {
+    display: flex;
+    gap: m.rem(16);
+    align-items: center;
+  }
+
+  // .productCounter__content
+
+  &__content {
+    display: inline-grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: m.rem(4);
+  }
+
+  // .productCounter__btn
+
+  &__btn {
+    justify-content: center;
+    aspect-ratio: 1;
+    font-size: m.rem(12) !important;
+  }
+
+  // .productCounter__value
+
+  &__value {
+    border: m.rem(1) solid var(--mainColor);
+    border-radius: m.rem(4);
+
+    @include m.centered(flex);
+  }
+}

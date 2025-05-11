@@ -1,0 +1,20 @@
+@use "@/application/styles/module" as m;
+
+.checked {
+  inline-size: m.em(12, 12);
+  block-size: m.em(12, 12);
+  font-size: m.rem(12);
+  background: m.$greenColor;
+  border: m.em(1, 12) solid m.$lightColor;
+  border-radius: 50%;
+
+  @include m.centered(flex);
+
+  // .checked__icon
+
+  &__icon {
+    inline-size: 100%;
+    block-size: 100%;
+    filter: invert(1);
+  }
+}

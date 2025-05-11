@@ -4,7 +4,7 @@ import { Locale } from "@/shared/model";
 
 // This page only renders when the app is built statically (output: 'export')
 const RootPage = () => {
-  redirect("/" + Locale.Default);
+  redirect(`/${Locale.Default}`);
 };
 
 export default RootPage;

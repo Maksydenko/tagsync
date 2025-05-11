@@ -1,0 +1,28 @@
+@use "@/application/styles/module" as m;
+
+.checkout {
+  // .checkout__container
+
+  &__container {
+    padding-top: m.rem(m.$containerPadding);
+    padding-bottom: m.rem(m.$containerPadding * 1.5);
+
+    @extend %container;
+  }
+
+  // .checkout__body
+
+  &__body {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: m.rem(16);
+  }
+
+  // .checkout__content
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(16);
+  }
+}

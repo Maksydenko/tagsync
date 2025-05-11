@@ -4,7 +4,7 @@
   // .user__body
 
   &__body {
-    inline-size: m.rem(40);
+    inline-size: m.rem(44);
     aspect-ratio: 1;
     overflow: hidden;
     border: m.rem(1) solid m.$darkColor;
@@ -14,7 +14,8 @@
   // .user__icon
 
   &__icon {
-    aspect-ratio: 1;
+    inline-size: m.rem(18);
+    block-size: m.rem(18);
   }
 
   // .user__link
@@ -22,7 +23,6 @@
   // .user__dropdown
   &__dropdown {
     display: flex;
-    flex: 1 1 auto;
     justify-content: center;
     inline-size: 100%;
     block-size: 100%;
@@ -32,16 +32,18 @@
   &__link,
   // .user__dropdown
   &__dropdown > button {
-    padding: m.rem(10);
-    color: m.$darkColor;
     border-radius: 50%;
+
+    @include m.centered(flex);
   }
 
   // .user__dropdown
 
   &__dropdown {
     > button {
+      inline-size: 100%;
       font-weight: 500;
+      color: m.$darkColor;
       text-transform: uppercase;
     }
   }

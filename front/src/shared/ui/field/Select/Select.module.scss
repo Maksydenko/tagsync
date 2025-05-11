@@ -7,82 +7,61 @@
     position: relative;
   }
 
-  // .select__select
+  // .select__listbox
 
-  &__select {
+  &__listbox {
+    display: flex;
+    gap: m.rem(8);
+    align-items: center;
+    padding-block: m.rem(12);
+    padding-inline: m.rem(16);
+    font-family: m.$primaryFontFamily;
+    color: m.$darkColor;
+    appearance: none;
+    background: m.$cardBgLightColor;
+    border-radius: m.rem(4);
   }
 
   // .select__icon
 
   &__icon {
-    position: absolute;
-    inset-block: 0;
-    inset-inline-end: m.rem(8);
+    display: flex;
+    align-items: center;
     inline-size: m.rem(12);
     aspect-ratio: 1;
-    transition: filter 0.3s ease 0s;
   }
 
-  :global(.select__control) {
-    min-height: unset;
-    cursor: pointer;
-    background: m.$cardBgLightColor;
-    border-width: m.rem(1);
-    border-radius: m.rem(4);
-  }
+  // .select__options
 
-  :global(.select__value-container) {
-    padding: unset;
-    padding-block: m.rem(8);
-    padding-inline-start: m.rem(12);
-    padding-inline-end: m.rem(28);
-  }
-
-  :global(.select__single-value) {
-    max-width: unset;
-    margin: unset;
-    font-weight: 500;
-    color: var(--mainBg);
-  }
-
-  :global(.select__indicator-separator) {
-    display: none;
-  }
-
-  :global(.select__dropdown-indicator) {
-    display: none;
-  }
-
-  :global(.select__menu) {
-    z-index: 3;
-    margin: unset;
-    margin-block: m.rem(8);
+  &__options {
+    z-index: 2;
+    padding: m.rem(4);
     background: m.$cardBorderLightColor;
     border-radius: m.rem(4);
+    transition: opacity 0.1s ease-in;
+
+    &[data-leave][data-closed] {
+      opacity: 0;
+    }
   }
 
-  :global(.select__menu-list) {
-    max-block-size: m.rem(320);
-    max-height: unset;
-    padding: unset;
-    padding-block: m.rem(4);
-  }
+  // .select__option
 
-  :global(.select__option) {
+  &__option {
+    padding: m.rem(8) m.rem(12);
     color: m.$darkColor;
     cursor: pointer;
+    user-select: none;
+    border-radius: m.rem(4);
     transition: color 0.3s ease 0s, background 0.3s ease 0s;
 
-    &:global(.select__option--is-focused),
-    &:global(.select__option--is-selected) {
+    &[data-focus] {
       color: m.$lightColor;
-    }
-
-    &:global(.select__option--is-focused) {
       background: m.$secondaryColor;
     }
 
-    &:global(.select__option--is-selected) {
+    &[data-selected] {
+      color: m.$lightColor;
       background: m.$primaryColor;
     }
   }

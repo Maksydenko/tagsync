@@ -8,8 +8,7 @@ interface TableBodyProps<T> {
   table: TTable<T>;
 }
 
-export const TableBody = <T,>({ table }: TableBodyProps<T>): ReactNode => {
-  return (
+export const TableBody = <T,>({ table }: TableBodyProps<T>): ReactNode => (
     <tbody className={s.table__body}>
       {table.getRowModel().rows.map((row) => (
         <tr key={row.id} className={s.table__row}>
@@ -22,4 +21,3 @@ export const TableBody = <T,>({ table }: TableBodyProps<T>): ReactNode => {
       ))}
     </tbody>
   );
-};

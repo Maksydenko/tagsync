@@ -77,10 +77,6 @@
   border: utils.em(2, 16) solid var(--mainColor);
   border-radius: utils.em(5, 16);
   transition: color 0.3s ease 0s, background 0.3s ease 0s;
-
-  @media (max-width: vars.$mobile) {
-    font-size: utils.rem(14);
-  }
 }
 
 %btn_hover {

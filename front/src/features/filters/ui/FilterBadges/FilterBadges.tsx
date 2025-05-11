@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 
-import { Translation } from "@/shared/model";
+import { SearchParam, sortSearchParams, Translation } from "@/shared/model";
 
 import { IFilter } from "../../api";
 
@@ -31,18 +31,22 @@ export const FilterBadges: FC<FilterBadgesProps> = ({
     value: string;
   }[] = [];
 
-  filtersData.forEach(({ list, value: groupKey }) => {
-    const paramValues = searchParams.get(groupKey)?.split(",") || [];
+  filtersData.forEach(({ name, values }) => {
+    const paramValues = searchParams.get(name)?.split(",") || [];
 
-    list.forEach(({ name, value }) => {
+    values.forEach((value) => {
       if (paramValues.includes(value)) {
-        activeBadges.push({ groupKey, name, value });
+        activeBadges.push({
+          groupKey: name,
+          name: value,
+          value,
+        });
       }
     });
   });
 
   const removeFilter = (groupKey: string, value: string) => {
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams(searchParams);
     const values = params.get(groupKey)?.split(",").filter(Boolean) || [];
 
     const updatedValues = values.filter((v) => v !== value);
@@ -52,17 +56,19 @@ export const FilterBadges: FC<FilterBadgesProps> = ({
       params.delete(groupKey);
     }
 
-    push(`?${params.toString()}`);
+    params.delete(SearchParam.Page);
+    push(`?${sortSearchParams(params)}`);
   };
 
   const removeAllFilters = () => {
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams(searchParams);
 
-    filtersData.forEach(({ value }) => {
-      params.delete(value);
+    filtersData.forEach(({ name }) => {
+      params.delete(name);
     });
 
-    push(`?${params.toString()}`);
+    params.delete(SearchParam.Page);
+    push(`?${sortSearchParams(params)}`);
   };
 
   return (

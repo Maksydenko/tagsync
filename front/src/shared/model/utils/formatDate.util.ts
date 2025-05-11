@@ -12,8 +12,6 @@ export const formatDate = ({
   date,
   format = DateFormat.Default,
   locale = Locale.Default,
-}: IFormatDate) => {
-  return DateTime.fromISO(date.toISOString(), {
+}: IFormatDate) => DateTime.fromISO(date.toISOString(), {
     locale,
   }).toFormat(format);
-};
