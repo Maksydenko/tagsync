@@ -11,10 +11,8 @@ export const formatNumber = ({
   number = 0,
   useGrouping = true,
   ...props
-}: IFormatNumber) => {
-  return number.toLocaleString(locales, {
+}: IFormatNumber) => number.toLocaleString(locales, {
     minimumFractionDigits,
     useGrouping,
     ...props,
   });
-};

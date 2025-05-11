@@ -1,0 +1,73 @@
+@use "@/application/styles/module" as m;
+
+.file {
+  // .file__body
+
+  &__body {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: m.rem(25) m.rem(15);
+    border: m.rem(2) dashed var(--mainColor);
+    border-radius: m.rem(5);
+    transition: border-color 0.3s ease 0s;
+
+    &:hover {
+      border-color: #766df4;
+    }
+
+    // .file__body_active
+
+    &_active {
+      border-color: #766df4;
+    }
+  }
+
+  // .file__box
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    > * {
+      &:not(:last-child) {
+        margin-bottom: m.rem(5);
+      }
+    }
+  }
+
+  // .file__hint
+
+  &__hint {
+    > span {
+      font-weight: 700;
+      color: #766df4;
+    }
+  }
+
+  // .file__subHint
+
+  &__subHint {
+    @include m.responsiveValue(
+      "max-width",
+      520,
+      260,
+      1,
+      m.$maxWidth,
+      m.$minWidth
+    );
+    @include m.textNowrap;
+  }
+
+  // .file__input
+
+  &__input {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    cursor: pointer;
+    opacity: 0;
+  }
+}

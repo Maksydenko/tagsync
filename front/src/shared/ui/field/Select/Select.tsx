@@ -9,7 +9,13 @@ import {
   RegisterOptions,
   UseFormReturn,
 } from "react-hook-form";
-import RootSelect, { OptionProps } from "react-select";
+
+import {
+  Listbox,
+  ListboxButton,
+  ListboxOption,
+  ListboxOptions,
+} from "@headlessui/react";
 
 import { ILink } from "@/shared/model";
 
@@ -21,7 +27,6 @@ interface SelectProps<T extends FieldValues> {
   className?: string;
   formReturn: UseFormReturn<T>;
   icon?: ReactNode;
-  isLoading?: boolean;
   items: ILink[];
   name: Path<T>;
   options?: RegisterOptions<T>;
@@ -31,7 +36,6 @@ export const Select = <T extends FieldValues>({
   className,
   formReturn: { register, setValue, watch },
   icon = "/img/icons/form/arrow-down.svg",
-  isLoading,
   items,
   name,
   options,
@@ -46,31 +50,48 @@ export const Select = <T extends FieldValues>({
   return (
     <div className={clsx(s.select, className)}>
       <div className={s.select__body}>
-        <RootSelect
-          className={s.select__select}
-          classNamePrefix="select"
-          defaultValue={watch(name)}
-          isDisabled={options?.disabled}
-          isLoading={isLoading}
-          isSearchable={false}
-          options={items as OptionProps["options"]}
+        <Listbox
+          defaultValue={items[0]}
+          disabled={options?.disabled}
+          value={watch(name)}
           onChange={(value) => {
             setValue(name, value as PathValue<T, Path<T>>);
           }}
-          {...props}
-          {...restRegister}
-        />
-        {typeof icon === "string" ? (
-          <Img
-            className={s.select__icon}
-            height={20}
-            src={icon}
-            width={20}
-            isSvg
-          />
-        ) : (
-          icon
-        )}
+        >
+          <ListboxButton
+            className={s.select__listbox}
+            {...props}
+            {...restRegister}
+          >
+            <span>{watch(name).label}</span>
+            {typeof icon === "string" ? (
+              <Img
+                className={s.select__icon}
+                height={20}
+                src={icon}
+                width={20}
+                isSvg
+              />
+            ) : (
+              icon
+            )}
+          </ListboxButton>
+          <ListboxOptions
+            anchor="bottom"
+            className={s.select__options}
+            transition
+          >
+            {items.map((item) => (
+                <ListboxOption
+                  key={item.value}
+                  className={s.select__option}
+                  value={item}
+                >
+                  {item.label}
+                </ListboxOption>
+              ))}
+          </ListboxOptions>
+        </Listbox>
       </div>
     </div>
   );

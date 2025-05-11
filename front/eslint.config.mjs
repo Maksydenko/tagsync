@@ -16,14 +16,21 @@ const eslintConfig = [
     "next/core-web-vitals",
     "next/typescript",
     "plugin:perfectionist/recommended-natural-legacy",
+    "plugin:@tanstack/eslint-plugin-query/recommended"
   ),
   {
     plugins: {
       "simple-import-sort": simpleImportSort,
     },
     rules: {
+      "arrow-body-style": ["error", "as-needed"],
+      "func-style": ["error", "expression"],
+      "no-useless-rename": "error",
+      "object-shorthand": ["error", "always"],
       "perfectionist/sort-imports": "off",
       "perfectionist/sort-jsx-props": "off",
+      "prefer-template": "error",
+      "react/jsx-no-useless-fragment": ["error", { allowExpressions: false }],
       "react/jsx-sort-props": [
         "warn",
         {

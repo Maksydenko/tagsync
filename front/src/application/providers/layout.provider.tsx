@@ -7,7 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
 
-import { Locale, montserrat, openSans } from "@/shared/model";
+import { Locale, montserrat, openSans, Phase } from "@/shared/model";
 
 import { Providers } from "./providers";
 
@@ -21,8 +21,7 @@ interface LayoutProviderProps {
 export const LayoutProvider: FC<LayoutProviderProps> = async ({
   children,
   locale,
-}) => {
-  return (
+}) => (
     <html
       className={clsx(openSans.variable, montserrat.variable)}
       id="html"
@@ -36,10 +35,13 @@ export const LayoutProvider: FC<LayoutProviderProps> = async ({
             <main>{children}</main>
             <Footer />
           </div>
-          <Analytics />
-          <SpeedInsights />
+          {process.env.NEXT_PUBLIC_PHASE !== Phase.Development && (
+            <>
+              <Analytics />
+              <SpeedInsights />
+            </>
+          )}
         </Providers>
       </body>
     </html>
   );
-};

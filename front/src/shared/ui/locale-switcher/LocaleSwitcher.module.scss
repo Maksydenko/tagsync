@@ -5,10 +5,6 @@
   font-size: m.rem(16);
   color: m.$darkColor;
 
-  @media (max-width: m.$mobile) {
-    font-size: m.rem(20);
-  }
-
   // .localeSwitcher__item
 
   &__item {

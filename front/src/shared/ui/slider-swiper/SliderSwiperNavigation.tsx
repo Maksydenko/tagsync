@@ -66,16 +66,14 @@ export const SliderSwiperNavigation: FC<SliderSwiperNavigationProps> = ({
 
   const isVertical = direction === Direction.Vertical;
 
-  const getIcon = (direction: SlideDirection) => {
-    return (
+  const getIcon = (direction: SlideDirection) => (
       <Img
-        alt={tShared("slide-directions." + direction)}
+        alt={tShared(`slide-directions.${  direction}`)}
         className={s.sliderSwiper__icon}
         src="/img/icons/form/arrow-down.svg"
         isSvg
       />
     );
-  };
 
   return (
     <>

@@ -7,8 +7,6 @@ import { clsx } from "clsx";
 import { useForm } from "react-hook-form";
 import { StepWizardChildProps } from "react-step-wizard";
 
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { PostgrestError } from "@supabase/supabase-js";
 import { useMutation } from "@tanstack/react-query";
 
 import {
@@ -18,7 +16,6 @@ import {
   ICredentialsForm,
 } from "@/features/auth";
 
-import { IDatabase } from "@/shared/lib";
 import { ErrorCode, MutationKey, Pathname, Translation } from "@/shared/model";
 import { Btn } from "@/shared/ui";
 
@@ -44,25 +41,18 @@ export const CredentialsForm: FC<CredentialsFormProps> = ({
     mode: "onChange",
   });
 
-  const supabase = createClientComponentClient<IDatabase>();
-
   const { isPending: isRegisterPending, mutate: register } = useMutation({
     mutationFn: async (data: ICredentialsForm) => {
-      const { data: emailExistsData, error: emailExistsError } =
-        await AuthService.checkEmailExists(supabase, data.email);
+      const response = await AuthService.checkEmailExists(data.email);
 
-      if (emailExistsError) {
-        throw emailExistsError;
-      }
-
-      if (emailExistsData) {
+      if (response.data.exists) {
         throw new Error(ErrorCode.UserAlreadyExists);
       }
 
       return data;
     },
     mutationKey: [MutationKey.Credentials],
-    onError: (error: Error | PostgrestError) => {
+    onError: (error) => {
       const errorMessages = {
         default: "errors.unknown",
         [ErrorCode.UserAlreadyExists]: "errors.user-already-exists",

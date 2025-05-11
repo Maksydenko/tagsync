@@ -3,6 +3,8 @@
 .img {
   position: relative;
 
+  @include m.centered(flex);
+
   > img {
     inline-size: 100%;
     block-size: 100%;

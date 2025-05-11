@@ -7,7 +7,7 @@ $bodyGap: 100;
 
   &__container {
     padding-top: m.rem(m.$containerPadding);
-    padding-bottom: m.rem(m.$containerPadding);
+    padding-bottom: m.rem(m.$containerPadding * 1.5);
 
     @extend %container;
   }

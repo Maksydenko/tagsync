@@ -1,6 +1,7 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useMemo } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import { clsx } from "clsx";
 
 import {
@@ -11,13 +12,14 @@ import {
 
 import { IProductCharacteristic } from "@/entities/product";
 
+import { ILink, Locale, Translation } from "@/shared/model";
 import { Table } from "@/shared/ui";
 
 import s from "./Characteristics.module.scss";
 
-const columns: ColumnDef<IProductCharacteristic>[] = [
+const columns: ColumnDef<ILink>[] = [
   {
-    accessorKey: "name",
+    accessorKey: "label",
     header: "",
   },
   {
@@ -35,16 +37,27 @@ export const Characteristics: FC<CharacteristicsProps> = ({
   characteristics,
   className,
 }) => {
+  const tProduct = useTranslations(Translation.Product);
+  const locale = useLocale() as Locale;
+
+  const data: ILink[] = useMemo(() => characteristics.map((characteristic) => ({
+        label: characteristic.translations[locale],
+        value:
+          characteristic.value_translations?.[locale] || characteristic.value,
+      })), [characteristics, locale]);
+
   const table = useReactTable({
     columns,
-    data: characteristics,
+    data,
     getCoreRowModel: getCoreRowModel(),
   });
 
   return (
     <div className={clsx(s.characteristics, className)}>
       <div className={s.characteristics__body}>
-        <h2 className={s.characteristics__title}>Characteristics</h2>
+        <h2 className={s.characteristics__title}>
+          {tProduct("characteristics")}
+        </h2>
         <Table className={s.characteristics__table} table={table} />
       </div>
     </div>

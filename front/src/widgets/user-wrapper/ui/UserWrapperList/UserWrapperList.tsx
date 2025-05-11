@@ -18,6 +18,7 @@ import {
   Translation,
   userData,
 } from "@/shared/model";
+import { Img } from "@/shared/ui";
 
 import s from "./UserWrapperList.module.scss";
 
@@ -36,9 +37,7 @@ export const UserWrapperList: FC<UserWrapperListProps> = ({ className }) => {
   const queryClient = useQueryClient();
 
   const { isPending: isLogoutPending, mutate: logout } = useMutation({
-    mutationFn: async () => {
-      return supabase.auth.signOut();
-    },
+    mutationFn: async () => supabase.auth.signOut(),
     mutationKey: [MutationKey.Logout],
     onSuccess: () => {
       queryClient.invalidateQueries({
@@ -51,8 +50,7 @@ export const UserWrapperList: FC<UserWrapperListProps> = ({ className }) => {
   return (
     <div className={clsx(s.userWrapperList, className)}>
       <ul className={s.userWrapperList__list}>
-        {userData.map(({ label, value }) => {
-          return (
+        {userData.map(({ icon, label, value }) => (
             <li
               key={value}
               className={clsx(
@@ -62,11 +60,16 @@ export const UserWrapperList: FC<UserWrapperListProps> = ({ className }) => {
               )}
             >
               <Link className={s.userWrapperList__link} href={value}>
-                {tShared("user." + label)}
+                <Img
+                  alt={label}
+                  className={s.userWrapperList__icon}
+                  src={icon}
+                  isSvg
+                />
+                {tShared(`user.${  label}`)}
               </Link>
             </li>
-          );
-        })}
+          ))}
         <li className={s.userWrapperList__item}>
           <button
             className={s.userWrapperList__link}
@@ -75,6 +78,12 @@ export const UserWrapperList: FC<UserWrapperListProps> = ({ className }) => {
               logout();
             }}
           >
+            <Img
+              alt={tShared("user.logout")}
+              className={s.userWrapperList__icon}
+              src="/img/icons/logout.svg"
+              isSvg
+            />
             {tShared("user.logout")}
           </button>
         </li>

@@ -13,14 +13,24 @@
     gap: m.rem(12);
   }
 
+  // .userWrapperList__icon
+
+  &__icon {
+    flex: 0 0 auto;
+    inline-size: m.rem(20);
+    aspect-ratio: 1;
+    filter: invert(var(--iconInvert));
+    transition: filter 0.3s ease 0s;
+  }
+
   // .userWrapperList__link
 
   &__link {
     display: flex;
+    gap: m.rem(12);
     align-items: center;
     min-inline-size: 100%;
     padding: m.rem(12);
-    font-weight: 500;
     background: var(--cardBorder);
     border-radius: m.rem(4);
     transition: color 0.3s ease 0s, background 0.3s ease 0s;
@@ -29,6 +39,10 @@
     &:focus-visible {
       color: var(--mainBg);
       background: var(--cardReverseBg);
+
+      .userWrapperList__icon {
+        filter: invert(var(--iconReverseInvert));
+      }
     }
   }
 
@@ -39,8 +53,13 @@
 
     &_active {
       .userWrapperList__link {
+        font-weight: 500;
         color: var(--mainBg);
         background: var(--cardReverseBorder);
+
+        .userWrapperList__icon {
+          filter: invert(var(--iconReverseInvert));
+        }
       }
     }
   }

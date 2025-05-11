@@ -4,8 +4,7 @@ import { FC, useState } from "react";
 import { clsx } from "clsx";
 import { Swiper } from "swiper/types";
 
-import { Breakpoint, useBreakpointCheck } from "@/shared/model";
-import { Direction } from "@/shared/model";
+import { Breakpoint, Direction, useBreakpointCheck } from "@/shared/model";
 import { Img, Loader, SliderSwiper } from "@/shared/ui";
 
 import s from "./ProductSliders.module.scss";
@@ -31,25 +30,19 @@ export const ProductSliders: FC<ProductSlidersProps> = ({
       <div className={s.productSliders__body}>
         <SliderSwiper
           autoHeight={false}
-          breakpoints={{
-            [Breakpoint.Mobile]: {
-              slidesPerView: 4,
-            },
-            [Breakpoint.Tablet]: {
-              slidesPerView: 4,
-            },
-          }}
           className={s.productSliders__miniSlider}
           direction={isMobile ? Direction.Horizontal : Direction.Vertical}
           navigation={false}
-          slides={images?.map((img, index) => ({
-            label: index.toString(),
+          slides={images?.map((img) => ({
+            label: img,
             value: (
               <Img
                 alt={title}
                 className={s.productSliders__img}
+                height={735}
                 loader={loader}
                 src={img}
+                width={735}
               />
             ),
           }))}
@@ -62,14 +55,16 @@ export const ProductSliders: FC<ProductSlidersProps> = ({
           <SliderSwiper
             autoHeight={false}
             className={s.productSliders__slider}
-            slides={images?.map((img, index) => ({
-              label: index.toString(),
+            slides={images?.map((img) => ({
+              label: img,
               value: (
                 <Img
                   alt={title}
                   className={s.productSliders__img}
+                  height={172}
                   loader={loader}
                   src={img}
+                  width={172}
                 />
               ),
             }))}
@@ -77,7 +72,6 @@ export const ProductSliders: FC<ProductSlidersProps> = ({
               swiper: thumbsSwiper,
             }}
             pagination
-            virtual
           />
         </div>
       </div>

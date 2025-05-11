@@ -3,14 +3,27 @@
 import { FC } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import { useForm } from "react-hook-form";
 
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-import { IDatabase } from "@/shared/lib";
-import { formatPrice, Pathname, QueryKey } from "@/shared/model";
+import { AuthService } from "@/features/auth";
+import { CartService } from "@/features/cart";
+import { ComparisonsService } from "@/features/comparisons";
+import { WishlistService } from "@/features/wishlist";
+
+import { Checked } from "@/entities/indicator";
+
+import { invalidateQueries } from "@/shared/lib/utils";
+import {
+  formatPrice,
+  MutationKey,
+  Pathname,
+  QueryKey,
+  Translation,
+} from "@/shared/model";
 import { Btn, Img, Loader, Rating } from "@/shared/ui";
 
 import { IProduct } from "../../api";
@@ -19,63 +32,205 @@ import s from "./ProductCard.module.scss";
 
 interface ProductCardProps {
   className?: string;
+  isStable?: boolean;
   productData: IProduct;
 }
 
 export const ProductCard: FC<ProductCardProps> = ({
   className,
-  productData: { images, price, rating, title },
+  isStable,
+  productData: { average_rating, images, price, product_id, slug, title },
 }) => {
   const { push } = useRouter();
-  const supabase = createClientComponentClient<IDatabase>();
+
+  const tShared = useTranslations(Translation.Shared);
+  const queryClient = useQueryClient();
 
   const { data: userData, isLoading: isUserLoading } = useQuery({
-    queryFn: async () => {
-      const res = await supabase.auth.getUser();
-
-      return res.data;
-    },
+    queryFn: async () => AuthService.getUserData(),
     queryKey: [QueryKey.User],
+  });
+  const userEmail = userData?.data.email;
+
+  const { data: wishlistData, isLoading: isWishlistLoading } = useQuery({
+    enabled: !!userEmail,
+    queryFn: async () => {
+      if (!userEmail) {
+        return;
+      }
+
+      return WishlistService.get(userEmail);
+    },
+    queryKey: [QueryKey.Wishlist, userEmail],
+  });
+  const isWished = wishlistData?.data.some((product) => product.product_id === product_id);
+
+  const { data: comparisonsData, isLoading: isComparisonsLoading } = useQuery({
+    enabled: !!userEmail,
+    queryFn: async () => {
+      if (!userEmail) {
+        return;
+      }
+
+      return ComparisonsService.get(userEmail);
+    },
+    queryKey: [QueryKey.Comparisons, userEmail],
+  });
+  const isInComparisons = comparisonsData?.data[slug.toLocaleLowerCase()]?.some(
+    (product) => product.product_id === product_id
+  );
+
+  const { data: cartData, isLoading: isCartLoading } = useQuery({
+    enabled: !!userEmail,
+    queryFn: async () => {
+      if (!userEmail) {
+        return;
+      }
+
+      return CartService.get(userEmail);
+    },
+    queryKey: [QueryKey.Cart, userEmail],
+  });
+  const isInCart = cartData?.data.items.some((product) => product.product_id === product_id);
+
+  const { isPending: isAddToWishlistPending, mutate: addToWishlist } =
+    useMutation({
+      mutationFn: async () => {
+        if (isUserLoading) {
+          throw new Error();
+        }
+
+        if (!userEmail) {
+          push(Pathname.Login);
+
+          throw new Error();
+        }
+
+        if (isWished) {
+          WishlistService.remove({
+            product_id,
+            userEmail,
+          });
+
+          return;
+        }
+
+        WishlistService.add({
+          product_id,
+          userEmail,
+        });
+      },
+      mutationKey: [MutationKey.AddToWishlist, userEmail],
+      onSuccess: async () => {
+        await invalidateQueries(queryClient, [QueryKey.Wishlist]);
+        // Triggered by a repeat call
+        await invalidateQueries(queryClient, [QueryKey.Wishlist]);
+      },
+    });
+
+  const { isPending: isAddToComparisonsPending, mutate: addToComparisons } =
+    useMutation({
+      mutationFn: async () => {
+        if (isUserLoading) {
+          throw new Error();
+        }
+
+        if (!userData) {
+          push(Pathname.Login);
+
+          throw new Error();
+        }
+
+        if (isInComparisons) {
+          ComparisonsService.remove({
+            product_id,
+            userEmail: userData.data.email,
+          });
+
+          return;
+        }
+
+        ComparisonsService.add({
+          product_id,
+          userEmail: userData.data.email,
+        });
+      },
+      mutationKey: [MutationKey.AddToComparisons],
+      onSuccess: async () => {
+        await invalidateQueries(queryClient, [QueryKey.Comparisons]);
+        // Triggered by a repeat call
+        await invalidateQueries(queryClient, [QueryKey.Comparisons]);
+      },
+    });
+
+  const { isPending: isAddToCartPending, mutate: addToCart } = useMutation({
+    mutationFn: async () => {
+      if (isUserLoading || isInCart) {
+        throw new Error();
+      }
+
+      if (!userData) {
+        push(Pathname.Login);
+
+        throw new Error();
+      }
+
+      CartService.add({
+        product_id,
+        quantity: 1,
+        userEmail: userData.data.email,
+      });
+
+      return;
+    },
+    mutationKey: [MutationKey.AddToCart],
+    onSuccess: async () => {
+      await invalidateQueries(queryClient, [QueryKey.Cart]);
+      // Triggered by a repeat call
+      await invalidateQueries(queryClient, [QueryKey.Cart]);
+    },
   });
 
   const form = useForm({
     defaultValues: {
-      rating,
+      rating: average_rating,
     },
   });
-
-  const addInWishlist = async () => {
-    if (isUserLoading) {
-      return;
-    }
-
-    if (userData?.user) {
-      return;
-    }
-
-    push(Pathname.Login);
-  };
 
   return (
     <div className={clsx(s.productCard, className)}>
       <div className={s.productCard__body}>
-        <Link className={s.productCard__link} href="/category/product" />
+        <Link className={s.productCard__link} href={`/${slug}/${product_id}`} />
         <div className={s.productCard__header}>
-          <button className={s.productCard__btn} type="button">
+          <button
+            className={s.productCard__btn}
+            disabled={isAddToComparisonsPending || isComparisonsLoading}
+            type="button"
+            onClick={() => {
+              addToComparisons();
+            }}
+          >
             <Img
               className={s.productCard__icon}
               src="/img/icons/product/compare.svg"
             />
+            {isInComparisons && (
+              <Checked className={s.productCard__indicator} />
+            )}
           </button>
           <button
             className={s.productCard__btn}
-            disabled={isUserLoading}
+            disabled={isAddToWishlistPending || isWishlistLoading}
             type="button"
-            onClick={addInWishlist}
+            onClick={() => {
+              addToWishlist();
+            }}
           >
             <Img
               className={s.productCard__icon}
-              src="/img/icons/product/heart-empty.svg"
+              src={`/img/icons/product/heart-${
+                isWished ? "fill" : "empty"
+              }.svg`}
             />
           </button>
         </div>
@@ -83,10 +238,17 @@ export const ProductCard: FC<ProductCardProps> = ({
           alt={title}
           className={s.productCard__img}
           loader={<Loader />}
-          src={images[0]}
+          src={images?.[0]}
         />
         <div className={s.productCard__content}>
-          <h5 className={s.productCard__title}>{title}</h5>
+          <h5
+            className={clsx(
+              s.productCard__title,
+              isStable && s.productCard__title_stable
+            )}
+          >
+            {title}
+          </h5>
           <Rating
             className={s.productCard__rating}
             formReturn={form}
@@ -96,16 +258,28 @@ export const ProductCard: FC<ProductCardProps> = ({
             }}
           />
           <div className={s.productCard__footer}>
-            <span className={s.productCard__price}>
-              {formatPrice({
-                number: +price,
-              })}
-            </span>
+            <div className={s.productCard__box}>
+              <span className={s.productCard__price}>
+                {formatPrice({
+                  number: +price,
+                })}
+              </span>
+              <div className={s.productCard__status}>
+                {tShared("product.statuses.available")}
+              </div>
+            </div>
             <Btn
-              aria-label="Add to cart"
+              aria-label={tShared("product.cart.add-to-cart")}
               className={s.productCard__btn}
+              disabled={isCartLoading || isInCart}
               icon="/img/icons/product/cart.svg"
-            />
+              isLoading={isAddToCartPending}
+              onClick={() => {
+                addToCart();
+              }}
+            >
+              {isInCart && <Checked className={s.productCard__indicator} />}
+            </Btn>
           </div>
         </div>
       </div>

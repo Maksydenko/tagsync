@@ -24,9 +24,7 @@ export const Stepper: FC<StepperProps> = ({
   const [currentStep, setCurrentStep] = useState(0);
   const [progressbarWidth, setProgressbarWidth] = useState(0);
 
-  const items = useMemo(() => {
-    return createSteps(currentStep, stepsLength);
-  }, [currentStep, stepsLength]);
+  const items = useMemo(() => createSteps(currentStep, stepsLength), [currentStep, stepsLength]);
 
   const { length: itemsLength } = items;
 

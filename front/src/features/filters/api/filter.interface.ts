@@ -1,8 +1,11 @@
+import { ITranslations } from "@/shared/api";
+
+import { FilterType } from "./filterType.enum";
+
 export interface IFilter {
-  list: {
-    name: string;
-    value: string;
-  }[];
   name: string;
-  value: string;
+  translations?: ITranslations;
+  type: FilterType;
+  values: string[];
+  values_translations?: ITranslations;
 }

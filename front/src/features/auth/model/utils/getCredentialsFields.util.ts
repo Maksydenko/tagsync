@@ -9,8 +9,7 @@ import { ICredentialsForm } from "../interfaces";
 export const getCredentialsFields = (
   tShared: ReturnType<typeof useTranslations>,
   formReturn: UseFormReturn<ICredentialsForm>
-): IField<ICredentialsForm>[] => {
-  return [
+): IField<ICredentialsForm>[] => [
     {
       label: tShared("form.email.label"),
       name: "email",
@@ -81,4 +80,3 @@ export const getCredentialsFields = (
       type: "password",
     },
   ];
-};

@@ -14,6 +14,7 @@ interface PopupProps {
   children: ReactNode;
   className?: string;
   forceOpen?: boolean;
+  isSheet?: boolean;
   setForceOpen?: TSetState<boolean>;
 }
 
@@ -53,7 +54,7 @@ export const Popup: FC<PopupProps> = ({
     <>
       {btn && (
         <Button
-          className={clsx(className, s.popupBtn)}
+          className={clsx(s.popupBtn, className)}
           type="button"
           onClick={handleOpen}
         >

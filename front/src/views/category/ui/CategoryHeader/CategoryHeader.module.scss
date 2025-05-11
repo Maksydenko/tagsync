@@ -21,4 +21,30 @@
     display: flex;
     justify-content: space-between;
   }
+
+  // .categoryHeader__btn
+
+  &__btn {
+    padding-block: m.rem(10);
+    padding-inline: m.rem(16);
+    color: m.$darkColor;
+    background: m.$cardBgLightColor;
+    border: none;
+
+    img {
+      filter: unset;
+    }
+
+    @media (min-width: m.$tablet) {
+      display: none;
+    }
+  }
+
+  // .categoryHeader__filters
+
+  &__filters {
+    @media (min-width: m.$tablet) {
+      display: none;
+    }
+  }
 }

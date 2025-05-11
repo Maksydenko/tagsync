@@ -8,8 +8,4 @@ interface ThemeItemsProps {
   themes: ILink[];
 }
 
-export const ThemeItems: FC<ThemeItemsProps> = ({ themes }) => {
-  return themes.map((theme) => {
-    return <ThemeItem key={theme.value} theme={theme} />;
-  });
-};
+export const ThemeItems: FC<ThemeItemsProps> = ({ themes }) => themes.map((theme) => <ThemeItem key={theme.value} theme={theme} />);

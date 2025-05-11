@@ -1,0 +1,42 @@
+@use "@/application/styles/module" as m;
+
+.homeSlide {
+  // .homeSlide__body
+
+  &__body {
+    position: relative;
+  }
+
+  // .homeSlide__title
+
+  &__title {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: m.rem(120);
+    z-index: 1;
+    font-size: m.rem(40);
+    font-weight: 700;
+    text-align: center;
+
+    @include m.responsiveValue(max-inline-size, 620, 320, 1, 1920, 320);
+  }
+
+  // .homeSlide__img
+
+  &__img {
+    block-size: calc(100svh - m.$headerHeight);
+
+    @media (max-width: m.$tablet) {
+      block-size: auto;
+      aspect-ratio: 1;
+    }
+
+    @media (max-width: m.$mobileSmall) {
+      aspect-ratio: 5.85 / 9;
+    }
+
+    img {
+      object-position: 0 50%;
+    }
+  }
+}

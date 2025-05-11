@@ -1,3 +1,4 @@
+export * from "./autocomplete/Autocomplete";
 export * from "./Checkbox/Checkbox";
 export * from "./Field";
 export * from "./Input/Input";

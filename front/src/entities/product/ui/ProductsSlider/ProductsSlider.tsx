@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { clsx } from "clsx";
 
+import { Breakpoint } from "@/shared/model";
 import { SliderSwiper } from "@/shared/ui";
 
 import { IProduct } from "../../api";
@@ -19,30 +20,40 @@ export const ProductsSlider: FC<ProductsSliderProps> = ({
   className,
   productsData,
   title,
-}) => {
-  return (
+}) => (
     <div className={clsx(s.productsSlider, className)}>
       <div className={s.productsSlider__body}>
         {title && <h2 className={s.productsSlider__title}>{title}</h2>}
         <SliderSwiper
+          breakpoints={{
+            [Breakpoint.Mobile]: {
+              slidesPerView: 3,
+            },
+            [Breakpoint.MobileSmall]: {
+              slidesPerView: 2,
+            },
+            [Breakpoint.Tablet]: {
+              slidesPerView: 4,
+            },
+          }}
           className={s.productsSlider__slider}
           slides={productsData.map((product) => {
             const { product_id } = product;
 
             return {
-              label: product_id.toString(),
+              label: product_id?.toString(),
               value: (
                 <ProductCard
                   key={product_id}
                   className={s.productsSlider__productCard}
                   productData={product}
+                  isStable
                 />
               ),
             };
           })}
-          slidesPerView={4}
+          slidesPerView={1}
         />
       </div>
     </div>
   );
-};

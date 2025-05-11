@@ -5,7 +5,7 @@
   inset-block-start: 0;
   inset-inline: 0;
   z-index: 10;
-  background: m.$whiteColor;
+  background: m.$cardBgLightColor;
 
   // .header__container
 
@@ -17,9 +17,10 @@
 
   &__body {
     display: flex;
+    gap: m.rem(20);
     align-items: center;
     justify-content: space-between;
-    min-block-size: m.rem(70);
+    block-size: m.$headerHeight;
   }
 
   // .header__logo
@@ -39,6 +40,12 @@
       linear-gradient(180deg, m.$secondaryColor 0%, m.$primaryColor 100%)
     );
 
+    @media (max-width: m.$mobile) {
+      > span {
+        display: none;
+      }
+    }
+
     .header__img {
       inline-size: m.rem(70);
       aspect-ratio: 2 / 1;
@@ -52,19 +59,13 @@
     gap: m.rem(40);
     align-items: center;
 
-    @media (max-width: m.$mobile) {
+    @media (max-width: m.$desktop) {
       gap: m.rem(20);
     }
   }
 
-  // .header__user
+  // .header__box
 
-  &__user {
-    position: relative;
-    z-index: 1;
-
-    @media (max-width: m.$mobile) {
-      order: -1;
-    }
+  &__box {
   }
 }

@@ -4,10 +4,10 @@ import { FC, ReactNode, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { clsx } from "clsx";
 
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useQuery } from "@tanstack/react-query";
 
-import { IDatabase } from "@/shared/lib";
+import { AuthService } from "@/features/auth";
+
 import { Pathname, QueryKey } from "@/shared/model";
 import { Loader } from "@/shared/ui";
 
@@ -27,30 +27,24 @@ export const UserWrapper: FC<UserWrapperProps> = ({
   title,
 }) => {
   const { push } = useRouter();
-  const supabase = createClientComponentClient<IDatabase>();
 
   const { data: userData, isLoading: isUserLoading } = useQuery({
-    queryFn: async () => {
-      const res = await supabase.auth.getUser();
-
-      return res.data;
-    },
+    queryFn: async () => AuthService.getUserData(),
     queryKey: [QueryKey.User],
   });
-  const user = userData?.user;
 
   useEffect(() => {
-    if (isUserLoading || user) {
+    if (isUserLoading || userData) {
       return;
     }
 
     push(Pathname.Login);
-  }, [isUserLoading, push, user]);
+  }, [isUserLoading, push, userData]);
 
   return (
     <div className={clsx(s.userWrapper, className)}>
       <div className={s.userWrapper__container}>
-        {isUserLoading || !user ? (
+        {isUserLoading || !userData ? (
           <Loader className={s.userWrapper__loader} />
         ) : (
           <div className={s.userWrapper__body}>

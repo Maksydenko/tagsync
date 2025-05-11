@@ -1,6 +1,17 @@
-import { FC } from "react";
+"use client";
+
+import { FC, useEffect } from "react";
+import { useTranslations } from "next-intl";
+
+import { useQuery } from "@tanstack/react-query";
+
+import { AuthService } from "@/features/auth";
+import { ProductsService } from "@/features/products";
 
 import { IProduct, ProductsSlider } from "@/entities/product";
+import { IReview } from "@/entities/review";
+
+import { QueryKey, Translation } from "@/shared/model";
 
 import { Characteristics } from "./Characteristics/Characteristics";
 import { ProductHeader } from "./ProductHeader/ProductHeader";
@@ -10,94 +21,74 @@ import { Reviews } from "./Reviews/Reviews";
 
 import s from "./Product.module.scss";
 
-// TODO: handle real products
-const productsData: IProduct[] = Array.from(
-  {
-    length: 20,
-  },
-  (_, index) => ({
-    characteristics: [
-      {
-        name: "price",
-        translations: {
-          en: "Price",
-          uk: "Ціна",
-        },
-        value: "13999",
-        value_translations: {
-          en: "13999 UAH",
-          uk: "13999 ₴",
-        },
-      },
-      {
-        name: "price",
-        translations: {
-          en: "Price",
-          uk: "Ціна",
-        },
-        value: "13999",
-        value_translations: {
-          en: "13999 UAH",
-          uk: "13999 ₴",
-        },
-      },
-      {
-        name: "price",
-        translations: {
-          en: "Price",
-          uk: "Ціна",
-        },
-        value: "13999",
-        value_translations: {
-          en: "13999 UAH",
-          uk: "13999 ₴",
-        },
-      },
-    ],
-    images: [
-      "/img/logos/logo.png",
-      "/img/icons/user.svg",
-      "/img/logos/logo.png",
-      "/img/icons/user.svg",
-      "/img/logos/logo.png",
-    ],
-    price: "14499",
-    product_id: index,
-    rating: 3.5,
-    title: "GeForce RTX 3060 ASUS Dual",
-  })
-);
+interface ProductProps {
+  productData: IProduct;
+  relatedData: IProduct[];
+  reviewsData: IReview[];
+  similarData: IProduct[];
+}
 
-export const Product: FC = () => {
-  const [productData] = productsData;
+export const Product: FC<ProductProps> = ({
+  productData,
+  relatedData,
+  reviewsData,
+  similarData,
+}) => {
+  const { characteristics, images, product_id, title } = productData;
+  const tProduct = useTranslations(Translation.Product);
+
+  const { data: userData } = useQuery({
+    queryFn: async () => AuthService.getUserData(),
+    queryKey: [QueryKey.User],
+  });
+  const userEmail = userData?.data.email;
+
+  useEffect(() => {
+    if (!userEmail) {
+      return;
+    }
+
+    ProductsService.trackView({
+      product_id,
+      userEmail,
+    });
+  }, [product_id, userEmail]);
 
   return (
     <div className={s.productPage}>
       <div className={s.product}>
         <div className={s.product__container}>
           <div className={s.product__body}>
-            <ProductHeader className={s.product__header} />
+            <ProductHeader
+              className={s.product__header}
+              productData={productData}
+            />
             <div className={s.product__content}>
               <ProductSliders
                 className={s.product__sliders}
-                images={productData.images}
-                title={productData.title}
+                images={images}
+                title={title}
               />
               <ProductMain
                 className={s.product__main}
                 productData={productData}
+                reviewsLength={reviewsData.length}
               />
-              <Characteristics characteristics={productData.characteristics} />
+              <Characteristics characteristics={characteristics} />
             </div>
             <ProductsSlider
-              productsData={productsData}
-              title={"Related products"}
+              productsData={relatedData}
+              title={tProduct("related-products")}
             />
             <ProductsSlider
-              productsData={productsData}
-              title={"Similar products"}
+              productsData={similarData}
+              title={tProduct("similar-products")}
             />
-            <Reviews className={s.product__reviews} />
+            <Reviews
+              className={s.product__reviews}
+              productId={product_id}
+              reviewsData={reviewsData}
+            />
           </div>
         </div>
       </div>

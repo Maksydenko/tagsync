@@ -1,0 +1,20 @@
+@use "@/application/styles/module" as m;
+
+.home {
+  // .home__container
+
+  &__container {
+    padding-top: m.rem(m.$containerPadding);
+    padding-bottom: m.rem(m.$containerPadding * 1.5);
+
+    @extend %container;
+  }
+
+  // .home__body
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(32);
+  }
+}

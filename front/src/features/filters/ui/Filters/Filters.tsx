@@ -2,11 +2,11 @@
 
 import { FC, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import { useForm } from "react-hook-form";
 
-import { SearchParam, Translation } from "@/shared/model";
+import { Locale, SearchParam, Translation } from "@/shared/model";
 import { Collapse, Field } from "@/shared/ui";
 
 import { IFilter } from "../../api";
@@ -21,55 +21,67 @@ interface FiltersProps {
 }
 
 export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
-  // TODO: handle real price range
-  const defaultFilters = useMemo(() => {
-    return {
-      [SearchParam.Price]: {
-        max: 1_000_000,
-        min: 0,
-      },
-    };
-  }, []);
+  const priceFilter = useMemo(
+    () =>
+      filtersData.find((filter) => filter.name === SearchParam.Price),
+    [filtersData]
+  );
+  const defaultPrice = useMemo(() => ({
+      max: Number(
+        priceFilter?.values[priceFilter.values.length - 1].split("-")[1]
+      ),
+      min: Number(priceFilter?.values[0].split("-")[0]),
+    }), [priceFilter?.values]);
 
-  const tCategory = useTranslations(Translation.Category);
+  const filteredData = useMemo(() => filtersData.filter((filter) => filter.name !== SearchParam.Price), [filtersData]);
+
+  const defaultFilters = useMemo(() => ({
+      [SearchParam.PriceRange]: defaultPrice,
+    }), [defaultPrice]);
+
   const searchParams = useSearchParams();
+
+  const locale = useLocale() as Locale;
+  const tCategory = useTranslations(Translation.Category);
 
   const defaultValues = useMemo(() => {
     const values: Record<string, boolean | number[]> = {};
-    const priceParam = searchParams.get(SearchParam.Price);
+    const priceParam = searchParams.get(SearchParam.PriceRange);
 
     const { max: defaultMax, min: defaultMin } =
-      defaultFilters[SearchParam.Price];
+      defaultFilters[SearchParam.PriceRange];
     const defaultPrice = [defaultMin, defaultMax];
 
     if (priceParam) {
-      const [minParam, maxParam] = priceParam.split(",");
+      const [minParam, maxParam] = priceParam.split("-");
 
       const min = Number(minParam);
       const max = Number(maxParam);
 
       if (!isNaN(min) && !isNaN(max)) {
-        values[SearchParam.Price] = [min, max];
+        values[SearchParam.PriceRange] = [min, max];
       } else {
-        values[SearchParam.Price] = defaultPrice;
+        values[SearchParam.PriceRange] = defaultPrice;
       }
     } else {
-      values[SearchParam.Price] = defaultPrice;
+      values[SearchParam.PriceRange] = defaultPrice;
     }
 
-    filtersData.forEach((group) => {
-      const param = searchParams.get(group.value);
+    filteredData.forEach((group) => {
+      const paramName =
+        group.type === "int" ? `${group.name}_range` : group.name;
+      const param = searchParams.get(paramName);
       const activeValues = param?.split(",") || [];
 
       activeValues.forEach((value) => {
         if (value) {
-          values[value] = true;
+          values[`${paramName}-${value}`] = true;
         }
       });
     });
 
     return values;
-  }, [defaultFilters, filtersData, searchParams]);
+  }, [defaultFilters, filteredData, searchParams]);
 
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   const form = useForm<any>({
@@ -77,7 +89,11 @@ export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
     mode: "onChange",
   });
 
-  useFilterParams(filtersData, form);
+  useFilterParams({
+    defaultPrice,
+    filtersData: filteredData,
+    form,
+  });
 
   const filterFields = [
     {
@@ -85,36 +101,47 @@ export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
         <div className={s.filters__fields}>
           <Field
             formReturn={form}
-            name={SearchParam.Price}
+            name={SearchParam.PriceRange}
             options={{
-              max: defaultFilters[SearchParam.Price].max,
-              min: defaultFilters[SearchParam.Price].min,
+              max: defaultFilters[SearchParam.PriceRange].max,
+              min: defaultFilters[SearchParam.PriceRange].min,
             }}
             type="ranges"
           />
         </div>
       ),
-      key: SearchParam.Price,
+      key: SearchParam.PriceRange,
       label: tCategory("filters.price"),
     },
-    ...filtersData.map(
-      ({ list: filterList, name: filterName, value: filterValue }) => ({
+    ...filteredData.map(
+      ({
+        name: filterName,
+        translations: filterTranslations,
+        type: groupType,
+        values: filterValues,
+      }) => ({
         children: (
           <div className={s.filters__fields}>
-            {filterList.map(({ name: itemName, value: itemValue }) => (
-              <Field
-                key={itemValue}
-                className={s.authForm__field}
-                formReturn={form}
-                label={itemName}
-                name={itemValue}
-                type="checkbox"
-              />
-            ))}
+            {filterValues.map((value) => {
+              const fieldName = `${
+                groupType === "int" ? `${filterName}_range` : filterName
+              }-${value}`;
+
+              return (
+                <Field
+                  key={value}
+                  className={s.authForm__field}
+                  formReturn={form}
+                  label={value}
+                  name={fieldName}
+                  type="checkbox"
+                />
+              );
+            })}
           </div>
         ),
-        key: filterValue,
-        label: filterName,
+        key: filterName,
+        label: filterTranslations?.[locale] || filterName,
       })
     ),
   ];
@@ -124,10 +151,7 @@ export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
       <form className={s.filters__form}>
         <Collapse
           className={s.filters__collapse}
-          defaultActiveKey={[
-            SearchParam.Price,
-            ...filtersData.map((group) => group.value),
-          ]}
+          defaultActiveKey={[SearchParam.PriceRange, filteredData[0].name]}
           items={filterFields}
           isReverseIcon
         />

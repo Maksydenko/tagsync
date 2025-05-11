@@ -10,6 +10,7 @@
     position: fixed;
     inset: 0;
     z-index: 100;
+    overflow: auto;
 
     .popup {
       // .popup__body
@@ -62,6 +63,7 @@
 
   &__box {
     position: relative;
+    min-width: m.rem(400);
     padding: m.rem(16);
     color: m.$darkColor;
     background: m.$lightColor;

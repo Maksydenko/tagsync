@@ -5,71 +5,42 @@ import { IProduct, ProductsSlider } from "@/entities/product";
 
 import { Translation } from "@/shared/model";
 
+import { HomeSlider } from "./HomeSlider/HomeSlider";
+
 import s from "./Home.module.scss";
 
-// TODO: handle real products
-const productsData: IProduct[] = Array.from(
-  {
-    length: 20,
-  },
-  (_, index) => ({
-    characteristics: [
-      {
-        name: "price",
-        translations: {
-          en: "Price",
-          uk: "Ціна",
-        },
-        value: "13999",
-        value_translations: {
-          en: "13999 UAH",
-          uk: "13999 ₴",
-        },
-      },
-      {
-        name: "price",
-        translations: {
-          en: "Price",
-          uk: "Ціна",
-        },
-        value: "13999",
-        value_translations: {
-          en: "13999 UAH",
-          uk: "13999 ₴",
-        },
-      },
-      {
-        name: "price",
-        translations: {
-          en: "Price",
-          uk: "Ціна",
-        },
-        value: "13999",
-        value_translations: {
-          en: "13999 UAH",
-          uk: "13999 ₴",
-        },
-      },
-    ],
-    images: [
-      "/img/logos/logo.png",
-      "/img/logos/logo.png",
-      "/img/logos/logo.png",
-    ],
-    price: "14499",
-    product_id: index,
-    rating: 3.5,
-    title: "GeForce RTX 3060 ASUS Dual",
-  })
-);
+interface HomeProps {
+  alsoViewedData: IProduct[];
+  priceBasedData: IProduct[];
+  similarData: IProduct[];
+}
 
-export const Home: FC = () => {
+export const Home: FC<HomeProps> = ({
+  alsoViewedData,
+  priceBasedData,
+  similarData,
+}) => {
   const tHome = useTranslations(Translation.Home);
 
   return (
-    <div className={s.homePage}>
-      <p>{tHome("title")}</p>
-      <ProductsSlider productsData={productsData} title={tHome("title")} />
+    <div className={s.home}>
+      <HomeSlider className={s.home__slider} />
+      <div className={s.home__container}>
+        <div className={s.home__body}>
+          <ProductsSlider
+            productsData={alsoViewedData}
+            title={tHome("recommendations.popular")}
+          />
+          <ProductsSlider
+            productsData={priceBasedData}
+            title={tHome("recommendations.recommended")}
+          />
+          <ProductsSlider
+            productsData={similarData}
+            title={tHome("recommendations.viewed")}
+          />
+        </div>
+      </div>
     </div>
   );
 };

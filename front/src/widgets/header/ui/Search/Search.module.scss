@@ -1,0 +1,12 @@
+@use "@/application/styles/module" as m;
+
+.search {
+  display: flex;
+  block-size: m.rem(44);
+
+  > div {
+    > input {
+      box-shadow: none;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+@use "@/application/styles/module" as m;
+
+.ordersList {
+  // .ordersList__list
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(16);
+  }
+}

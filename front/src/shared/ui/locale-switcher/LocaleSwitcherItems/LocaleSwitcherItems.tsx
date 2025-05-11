@@ -10,14 +10,10 @@ interface LocaleSwitcherItemsProps {
 
 export const LocaleSwitcherItems: FC<LocaleSwitcherItemsProps> = ({
   onClick,
-}) => {
-  return localeData.map((locale) => {
-    return (
+}) => localeData.map((locale) => (
       <LocaleSwitcherItem
         key={locale.value}
         locale={locale}
         onClick={onClick}
       />
-    );
-  });
-};
+    ));

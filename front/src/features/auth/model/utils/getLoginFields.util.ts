@@ -7,8 +7,7 @@ import { ILoginForm } from "../interfaces";
 
 export const getLoginFields = (
   tShared: ReturnType<typeof useTranslations>
-): IField<ILoginForm>[] => {
-  return [
+): IField<ILoginForm>[] => [
     {
       label: tShared("form.email.label"),
       name: "email",
@@ -52,4 +51,3 @@ export const getLoginFields = (
       type: "password",
     },
   ];
-};

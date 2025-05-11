@@ -1,9 +1,9 @@
 import { NextPage } from "next";
 import { setRequestLocale } from "next-intl/server";
 
-import { IPageProps } from "@/shared/model";
-
 import Wishlist from "@/views/wishlist";
+
+import { IPageProps } from "@/shared/model";
 
 const WishlistPage: NextPage<IPageProps> = async (props) => {
   const params = await props.params;

@@ -8,8 +8,7 @@ interface TableHeadProps<T> {
   table: TTable<T>;
 }
 
-export const TableHead = <T,>({ table }: TableHeadProps<T>): ReactNode => {
-  return (
+export const TableHead = <T,>({ table }: TableHeadProps<T>): ReactNode => (
     <thead className={s.table__head}>
       {table.getHeaderGroups().map((headerGroup) => (
         <tr key={headerGroup.id} className={s.table__row}>
@@ -22,4 +21,3 @@ export const TableHead = <T,>({ table }: TableHeadProps<T>): ReactNode => {
       ))}
     </thead>
   );
-};

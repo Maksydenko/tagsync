@@ -1,9 +1,24 @@
 @use "@/application/styles/module" as m;
 
 .comparisonCharacteristics {
+  // .comparisonCharacteristics__body
+
+  &__body {
+    max-inline-size: m.rem(1304);
+    overflow: auto;
+
+    @include m.responsiveValue(max-inline-size, 1303, 664, 1, 1631, 992);
+
+    @media (max-width: m.$tablet) {
+      @include m.responsiveValue(max-inline-size, 959, 288, 1, 991, 320);
+    }
+  }
+
   // .comparisonCharacteristics__table
 
   &__table {
+    overflow: hidden;
+    border-radius: m.rem(4);
   }
 
   // .comparisonCharacteristics__productCard

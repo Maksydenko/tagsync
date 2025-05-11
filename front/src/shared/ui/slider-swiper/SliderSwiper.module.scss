@@ -18,8 +18,12 @@
     height: 100%;
     user-select: none;
 
-    :global(.swiper-slide-thumb-active) {
-      opacity: 0.5;
+    :global(.swiper-slide) {
+      transition: opacity 0.3s ease 0s;
+
+      &:global(.swiper-slide-thumb-active) {
+        opacity: 0.5;
+      }
     }
   }
 }

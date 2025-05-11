@@ -1,6 +1,8 @@
 @use "@/application/styles/module" as m;
 
 .table {
+  table-layout: fixed;
+
   // .table__row
 
   &__row {
@@ -9,11 +11,17 @@
   // .table__cell
 
   &__cell {
+    max-inline-size: m.rem(300);
     padding: m.rem(12);
     text-align: center;
 
     &[colspan] {
       font-weight: 500;
+    }
+
+    // .table__cell_head
+
+    &_head {
     }
   }
 }

@@ -11,12 +11,10 @@ interface ProvidersProps {
   locale: Locale;
 }
 
-export const Providers: FC<ProvidersProps> = ({ children, locale }) => {
-  return (
+export const Providers: FC<ProvidersProps> = ({ children, locale }) => (
     <QueryProvider>
       <NextIntlProvider locale={locale}>
         <ThemeProvider>{children}</ThemeProvider>
       </NextIntlProvider>
     </QueryProvider>
   );
-};

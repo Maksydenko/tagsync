@@ -76,6 +76,7 @@ export const Phone = <T extends FieldValues>({
       disabled={options?.disabled}
       id={name}
       placeholder={placeholder}
+      value={phoneValue}
       international
       onChange={(value) => {
         setValue(name, value as PathValue<T, Path<T>>);

@@ -24,12 +24,10 @@ export const useBullets = ({
   }
 
   const breakpointsArray: IBreakpoint[] = Object.entries(breakpoints).map(
-    ([, { isBreakpoint, slidesPerView: slides }]) => {
-      return {
+    ([, { isBreakpoint, slidesPerView: slides }]) => ({
         isBreakpoint,
         slides,
-      };
-    }
+      })
   );
 
   const breakpointsWithDesktop = addBreakpointDesktop(

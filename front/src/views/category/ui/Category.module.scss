@@ -1,11 +1,5 @@
 @use "@/application/styles/module" as m;
 
-.categoryPage {
-  display: flex;
-  flex: 1 1 100%;
-  flex-direction: column;
-}
-
 .category {
   display: flex;
   flex: 1 1 100%;
@@ -19,7 +13,7 @@
     flex-direction: column;
     width: 100%;
     padding-top: m.rem(m.$containerPadding);
-    padding-bottom: m.rem(m.$containerPadding);
+    padding-bottom: m.rem(m.$containerPadding * 1.5);
 
     @extend %container;
   }
@@ -44,12 +38,17 @@
     display: flex;
     flex: 1 1 100%;
     gap: m.rem(16);
+    align-items: flex-start;
   }
 
   // .category__filters
 
   &__filters {
     flex: 0 0 m.rem(320);
+
+    @media (max-width: m.$tablet) {
+      display: none;
+    }
   }
 
   // .category__products
