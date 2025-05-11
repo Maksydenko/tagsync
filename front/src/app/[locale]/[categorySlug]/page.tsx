@@ -40,7 +40,14 @@ export const generateStaticParams = async () => {
   }));
 };
 
-export const generateMetadata = async () => ({
+export const generateMetadata = async ({ params }: IPageProps) => {
+  const { categorySlug, locale } = await params;
+  const filtersData = await ProductsService.getFiltered(
+    `?category=${categorySlug}&limit=1`
+  );
+
+  return {
     revalidate: process.env.REVALIDATE_TIMEOUT,
-    title: "Category",
-  });
+    title: filtersData?.data.products[0].translations_slug[locale],
+  };
+};
