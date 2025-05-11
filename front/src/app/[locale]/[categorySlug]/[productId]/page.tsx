@@ -49,12 +49,8 @@ const ProductPage: NextPage<IPageProps> = async (props) => {
 
 export default ProductPage;
 
-export const generateMetadata = async (props: {
-  params: { locale: string; productId: string };
-}) => {
-  const params = await props.params;
-  const productId = params.productId;
-
+export const generateMetadata = async ({ params }: IPageProps) => {
+  const { productId } = await params;
   const productData = await ProductsService.getAll(`?product_id=${productId}`);
 
   return {
