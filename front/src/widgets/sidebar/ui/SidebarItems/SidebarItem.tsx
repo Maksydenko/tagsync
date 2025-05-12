@@ -23,7 +23,14 @@ export const SidebarItem: FC<ItemProps> = ({
   return (
     <li className={s.sidebar__item}>
       <Link className={clsx(s.sidebar__link)} href={`/${slug}`}>
-        <Img alt={translatedSlug} className={s.sidebar__icon} src={img} isSvg />
+        <Img
+          alt={translatedSlug}
+          className={s.sidebar__icon}
+          height={32}
+          src={img}
+          width={32}
+          isSvg
+        />
         <span className={s.sidebar__label}>{translatedSlug}</span>
         <span className={clsx(s.sidebar__label, s.sidebar__label_visible)}>
           {translatedSlug}
