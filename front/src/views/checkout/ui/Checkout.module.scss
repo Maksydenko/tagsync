@@ -15,7 +15,11 @@
   &__body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: m.rem(16);
+    gap: m.rem(40) m.rem(16);
+
+    @media (max-width: m.$tablet) {
+      grid-template-columns: 1fr;
+    }
   }
 
   // .checkout__content
