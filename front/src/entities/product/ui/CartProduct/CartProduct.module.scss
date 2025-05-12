@@ -6,6 +6,7 @@
   &__body {
     display: flex;
     gap: m.rem(16);
+    align-items: flex-start;
   }
 
   // .cartProduct__content
@@ -15,7 +16,11 @@
     flex-direction: column;
     gap: m.rem(16);
     justify-content: space-between;
-    padding-block: m.rem(12);
+
+    @media (min-width: m.$mobile) {
+      gap: m.rem(12);
+      padding-block: m.rem(12);
+    }
   }
 
   // .cartProduct__img
@@ -28,8 +33,12 @@
     border: m.rem(1) solid m.$grayColor;
     border-radius: m.rem(4);
 
+    @media (max-width: m.$mobile) {
+      inline-size: m.rem(100);
+    }
+
     img {
-      padding: m.rem(16);
+      padding: m.rem(4);
       object-fit: contain;
     }
   }

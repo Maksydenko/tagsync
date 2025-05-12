@@ -22,7 +22,11 @@
   &__btn {
     justify-content: center;
     aspect-ratio: 1;
-    font-size: m.rem(12) !important;
+    font-size: m.rem(12);
+
+    @media (max-width: m.$mobile) {
+      font-size: m.rem(8);
+    }
   }
 
   // .productCounter__value
