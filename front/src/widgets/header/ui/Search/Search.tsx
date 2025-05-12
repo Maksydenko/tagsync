@@ -27,16 +27,17 @@ export const Search: FC<SearchProps> = ({ className }) => {
     queryKey: [QueryKey.Search, search],
   });
 
-  const items = searchData?.data.products.map((item) => ({
-    label: item.title,
-    value: `/${item.slug}/${item.product_id}`,
-  }));
+  const items =
+    searchData?.data.products.map((item) => ({
+      label: item.title,
+      value: `/${item.slug}/${item.product_id}`,
+    })) || [];
 
   return (
     <Autocomplete
       className={clsx(s.search, className)}
       formReturn={form}
-      items={items || []}
+      items={items}
       name="search"
     />
   );
