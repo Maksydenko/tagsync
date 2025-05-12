@@ -31,7 +31,7 @@
     grid-template-columns: m.rem((600 + 138 + 16)) 1fr;
     gap: m.rem(32);
 
-    @media (max-width: m.$desktop) {
+    @media (max-width: m.$desktopSmall) {
       display: flex;
       flex-direction: column;
     }
@@ -47,7 +47,7 @@
   // .product__sliders
 
   &__sliders {
-    @media (min-width: m.$desktop) {
+    @media (min-width: m.$desktopSmall) {
       grid-row: span 2;
     }
   }

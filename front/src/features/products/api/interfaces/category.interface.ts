@@ -4,6 +4,7 @@ import { ITranslations } from "@/shared/api";
 
 export interface ICategory {
   count: number;
+  img: string;
   slug: string;
   translations_slug: ITranslations;
 }

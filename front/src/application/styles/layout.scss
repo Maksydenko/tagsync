@@ -33,11 +33,19 @@ body {
 }
 
 // Shell layout
-#layout {
+.layout {
   display: flex;
   flex-direction: column;
   min-block-size: 100%;
   overflow: clip;
+
+  // .layout__sidebar
+
+  &__sidebar {
+    @media (max-width: m.$desktopSmall) {
+      display: none;
+    }
+  }
 
   // Press the footer
   main {

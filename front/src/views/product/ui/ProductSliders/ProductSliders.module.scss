@@ -47,7 +47,7 @@
     position: relative;
     flex: 0 0 50%;
 
-    @media (max-width: m.$desktop) {
+    @media (max-width: m.$desktopSmall) {
       flex: 0 0 auto;
     }
 
@@ -62,7 +62,7 @@
     inline-size: m.rem(600);
     aspect-ratio: 1;
 
-    @media (max-width: m.$desktop) {
+    @media (max-width: m.$desktopSmall) {
       inline-size: 75vw;
       block-size: m.rem(600);
       aspect-ratio: unset;
@@ -84,7 +84,7 @@
     .productSliders__img {
       inline-size: 100%;
 
-      @media (max-width: m.$desktop) {
+      @media (max-width: m.$desktopSmall) {
         block-size: 100%;
       }
     }

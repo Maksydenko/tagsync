@@ -1,0 +1,126 @@
+@use "@/application/styles/module" as m;
+
+$sidebarLinkInlineSize: 72;
+$linkPadding: m.rem(20);
+
+.sidebar {
+  position: fixed;
+  inset-block-start: 50%;
+  inset-inline-start: m.rem(calc(m.$containerPadding / 2));
+  z-index: 10;
+  max-block-size: 100%;
+  padding-block: m.rem(m.$containerPadding);
+  overflow-y: auto;
+  border-radius: m.rem(4);
+  translate: 0 -50%;
+
+  &::-webkit-scrollbar {
+    inline-size: m.rem(4);
+  }
+
+  // .sidebar__list
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(16);
+    align-items: flex-start;
+  }
+
+  // .sidebar__item
+
+  &__item {
+  }
+
+  // .sidebar__icon
+
+  &__icon {
+    flex: 0 0 auto;
+    inline-size: m.rem(32);
+    block-size: m.rem(32);
+
+    img {
+      transition: filter 0.3s ease 0s;
+    }
+  }
+
+  // .sidebar__label
+
+  &__label {
+    display: block;
+    font-weight: 700;
+    color: m.$lightColor;
+    text-transform: uppercase;
+
+    @include m.textNowrap;
+
+    // .sidebar__label_visible
+
+    &_visible {
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: 0;
+      display: flex;
+      align-items: center;
+      inline-size: 0;
+      padding-inline-start: 0;
+      transition: all 0.3s ease 0s;
+
+      &::after {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        content: "";
+        background: m.$primaryColor;
+      }
+    }
+
+    &:not(&_visible) {
+      visibility: hidden;
+    }
+  }
+
+  // .sidebar__link
+
+  &__link {
+    position: relative;
+    display: flex;
+    gap: $linkPadding;
+    align-items: center;
+    max-inline-size: m.rem($sidebarLinkInlineSize);
+    padding: $linkPadding;
+    overflow: hidden;
+    border-radius: m.rem(999);
+    transition: all 0.3s ease 0s;
+
+    &::after {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      // inline-size: m.rem($sidebarLinkInlineSize); // for square
+      content: "";
+      background: m.$grayColor;
+      opacity: 0.5;
+    }
+
+    &:hover,
+    &:focus-visible {
+      max-inline-size: 100%;
+
+      .sidebar__icon {
+        img {
+          filter: invert(1);
+        }
+      }
+
+      .sidebar__label {
+        // .sidebar__label_visible
+
+        &_visible {
+          inline-size: 100%;
+          padding-inline-start: m.rem($sidebarLinkInlineSize);
+        }
+      }
+    }
+  }
+}

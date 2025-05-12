@@ -22,7 +22,7 @@ interface HeaderProps {
 }
 
 export const Header: FC<HeaderProps> = ({ className }) => {
-  const BREAKPOINT = Breakpoint.Desktop;
+  const BREAKPOINT = Breakpoint.DesktopSmall;
   const pathname = usePathname();
 
   const { isScrollLocked, setIsScrollLocked } = useScrollLock([

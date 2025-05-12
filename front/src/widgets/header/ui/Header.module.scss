@@ -59,7 +59,7 @@
     gap: m.rem(40);
     align-items: center;
 
-    @media (max-width: m.$desktop) {
+    @media (max-width: m.$desktopSmall) {
       gap: m.rem(20);
     }
   }

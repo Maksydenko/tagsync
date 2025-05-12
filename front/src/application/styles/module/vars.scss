@@ -58,12 +58,15 @@ $maxWidth: 1920;
 $maxWidthContainer: 1600;
 // General indenter
 $containerPadding: 32;
+$containerDesktopPadding: 240;
 
 // The width of the first breakpoint
 $containerWidth: $maxWidthContainer + $containerPadding;
 
 // Breakpoints
-$desktop: 1199.98px;
+$desktopLarge: 1535.98px;
+$desktopMedium: 1279.98px;
+$desktopSmall: 1023.98px;
 $tablet: 991.98px;
 $mobile: 767.98px;
 $mobileSmall: 479.98px;

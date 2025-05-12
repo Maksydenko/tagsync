@@ -6,6 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
+import { Sidebar } from "@/widgets/sidebar";
 
 import { Locale, montserrat, openSans, Phase } from "@/shared/model";
 
@@ -22,26 +23,27 @@ export const LayoutProvider: FC<LayoutProviderProps> = async ({
   children,
   locale,
 }) => (
-    <html
-      className={clsx(openSans.variable, montserrat.variable)}
-      id="html"
-      lang={locale}
-      suppressHydrationWarning
-    >
-      <body>
-        <Providers locale={locale}>
-          <div id="layout">
-            <Header />
-            <main>{children}</main>
-            <Footer />
-          </div>
-          {process.env.NEXT_PUBLIC_PHASE !== Phase.Development && (
-            <>
-              <Analytics />
-              <SpeedInsights />
-            </>
-          )}
-        </Providers>
-      </body>
-    </html>
-  );
+  <html
+    className={clsx(openSans.variable, montserrat.variable)}
+    id="html"
+    lang={locale}
+    suppressHydrationWarning
+  >
+    <body>
+      <Providers locale={locale}>
+        <div className="layout">
+          <Header />
+          <Sidebar className="layout__sidebar" />
+          <main>{children}</main>
+          <Footer />
+        </div>
+        {process.env.NEXT_PUBLIC_PHASE !== Phase.Development && (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        )}
+      </Providers>
+    </body>
+  </html>
+);
