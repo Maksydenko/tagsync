@@ -4,6 +4,9 @@
   // .comparisonCharacteristics__body
 
   &__body {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(40);
     max-inline-size: m.rem(1304);
     overflow: auto;
 
