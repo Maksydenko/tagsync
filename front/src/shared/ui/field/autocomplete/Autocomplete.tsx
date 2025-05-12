@@ -17,7 +17,7 @@ import {
   ComboboxOptions,
 } from "@headlessui/react";
 
-import { ILink } from "@/shared/model";
+import { checkKeyByTypes, ILink, ILinkWithIcon } from "@/shared/model";
 
 import { Img } from "../../img/Img";
 
@@ -26,7 +26,10 @@ import s from "./Autocomplete.module.scss";
 interface AutocompleteProps<T extends FieldValues> {
   className?: string;
   formReturn: UseFormReturn<T>;
-  items: ILink<(() => unknown) | string>[];
+  items: (
+    | ILink<(() => unknown) | string>
+    | ILinkWithIcon<(() => unknown) | string>
+  )[];
   name: Path<T>;
   options?: RegisterOptions<T>;
 }
@@ -44,7 +47,6 @@ export const Autocomplete = <T extends FieldValues>({
     onChange,
     ...restRegister
   } = register(name, options);
-
   const selected = watch(name);
 
   return (
@@ -78,21 +80,39 @@ export const Autocomplete = <T extends FieldValues>({
           className={s.autocomplete__options}
           transition
         >
-          {items.map((item) => (
+          {items.map((item) => {
+            const { label, value } = item;
+            const icon = checkKeyByTypes<
+              ILinkWithIcon<(() => unknown) | string>,
+              ILink<(() => unknown) | string>
+            >(item, "icon")
+              ? item?.icon
+              : null;
+
+            return (
               <ComboboxOption
-                key={item.label}
+                key={label}
                 className={s.autocomplete__option}
                 value={item}
               >
-                {typeof item.value === "string" ? (
-                  <Link href={item.value}>{item.label}</Link>
+                {icon && (
+                  <Img
+                    alt={label}
+                    className={s.autocomplete__icon}
+                    src={icon}
+                    isSvg
+                  />
+                )}
+                {typeof value === "string" ? (
+                  <Link href={value}>{label}</Link>
                 ) : (
-                  <button type="button" onClick={item.value}>
-                    {item.label}
+                  <button type="button" onClick={value}>
+                    {label}
                   </button>
                 )}
               </ComboboxOption>
-            ))}
+            );
+          })}
         </ComboboxOptions>
       </Combobox>
     </div>
