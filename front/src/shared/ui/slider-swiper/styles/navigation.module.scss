@@ -29,7 +29,7 @@
     // .sliderSwiper__btn_prev
 
     &_prev {
-      inset-inline-start: m.rem(8);
+      inset-inline-start: m.rem(calc(m.$containerPadding / 2));
 
       .sliderSwiper__icon {
         rotate: 90deg;
@@ -39,7 +39,7 @@
     // .sliderSwiper__btn_next
 
     &_next {
-      inset-inline-end: m.rem(8);
+      inset-inline-end: m.rem(calc(m.$containerPadding / 2));
 
       .sliderSwiper__icon {
         rotate: -90deg;
