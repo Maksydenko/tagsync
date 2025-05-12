@@ -20,7 +20,7 @@ export const LocaleSwitcherItem: FC<LocaleSwitcherItemProps> = ({
 }) => {
   const [isPending, startTransition] = useTransition();
 
-  const router = useRouter();
+  const { replace } = useRouter();
   const pathname = usePathname();
   const params = useParams();
 
@@ -32,7 +32,7 @@ export const LocaleSwitcherItem: FC<LocaleSwitcherItemProps> = ({
     const nextLocale = value as Locale;
 
     startTransition(() => {
-      router.replace(
+      replace(
         {
           // @ts-expect-error -- TypeScript will validate that only known `params`
           // are used in combination with a given `pathname`. Since the two will
