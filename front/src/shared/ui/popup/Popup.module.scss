@@ -31,39 +31,10 @@
     @include m.centered(flex);
   }
 
-  // .popup__panel
-
-  &__panel {
-    position: relative;
-    transition: scale 0.1s ease-out 0s, opacity 0.1s ease-out 0s;
-
-    &[data-closed] {
-      opacity: 0;
-      scale: 0.95;
-    }
-
-    // .popup_bg
-
-    &_bg {
-      position: fixed;
-      inset: 0;
-      content: "";
-      background: m.$darkColor;
-      opacity: 0.8;
-      transition: opacity 0.1s ease-out 0s;
-
-      &[data-closed] {
-        opacity: 0;
-        scale: 1;
-      }
-    }
-  }
-
   // .popup__box
 
   &__box {
     position: relative;
-    min-width: m.rem(400);
     padding: m.rem(16);
     color: m.$darkColor;
     background: m.$lightColor;
@@ -99,6 +70,35 @@
 
     &::after {
       rotate: -45deg;
+    }
+  }
+
+  // .popup__panel
+
+  &__panel {
+    position: relative;
+    transition: scale 0.1s ease-out 0s, opacity 0.1s ease-out 0s;
+
+    &[data-closed] {
+      opacity: 0;
+      scale: 0.95;
+    }
+
+    // .popup_bg
+
+    &_bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      content: "";
+      background: m.$darkColor;
+      opacity: 0.8;
+      transition: opacity 0.1s ease-out 0s;
+
+      &[data-closed] {
+        opacity: 0;
+        scale: 1;
+      }
     }
   }
 }

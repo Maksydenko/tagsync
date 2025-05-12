@@ -1,6 +1,21 @@
 @use "@/application/styles/module" as m;
 
 .leaveReview {
+  // .leaveReview__popup
+
+  &__popup {
+    > div {
+      > div {
+        > div {
+          &:first-child {
+            inline-size: 100%;
+            max-inline-size: m.rem(400);
+          }
+        }
+      }
+    }
+  }
+
   // .leaveReview__body
 
   &__body {
