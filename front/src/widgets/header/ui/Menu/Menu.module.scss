@@ -8,11 +8,11 @@
   // .menu__button
 
   &__button {
-    @media (min-width: m.$desktopMedium) {
+    @media (min-width: m.$desktopSmall) {
       display: none;
     }
 
-    @media (max-width: m.$desktopMedium) {
+    @media (max-width: m.$desktopSmall) {
       position: relative;
       z-index: 9;
       display: block;
@@ -88,8 +88,8 @@
     display: flex;
     gap: m.rem(20);
 
-    @media (max-width: m.$desktopMedium) {
-      order: -1;
+    @media (max-width: m.$desktopSmall) {
+      order: -2;
     }
 
     @media (max-width: m.$mobile) {
@@ -100,7 +100,7 @@
   // .menu__body
 
   &__body {
-    @media (max-width: m.$desktopMedium) {
+    @media (max-width: m.$desktopSmall) {
       position: fixed;
       inset-block: 0;
       inset-inline-end: -100%;
@@ -137,7 +137,6 @@
       }
 
       @media (max-width: m.$mobileSmall) {
-        flex-direction: column;
         align-items: flex-end;
       }
     }
@@ -150,7 +149,7 @@
     font-size: m.rem(18);
     text-transform: uppercase;
 
-    @media (max-width: m.$desktopMedium) {
+    @media (max-width: m.$desktopSmall) {
       flex-direction: column-reverse;
       align-items: flex-end;
       justify-content: flex-end;
@@ -165,11 +164,11 @@
     gap: m.rem(30) m.rem(20);
     font-size: m.rem(18);
 
-    @media (min-width: m.$desktopMedium) {
+    @media (min-width: m.$desktopSmall) {
       align-items: center;
     }
 
-    @media (max-width: m.$desktopMedium) {
+    @media (max-width: m.$desktopSmall) {
       flex-direction: column;
       font-size: m.rem(24);
     }
@@ -191,7 +190,7 @@
     text-align: end;
     text-transform: capitalize;
 
-    @media (min-width: m.$desktopMedium) {
+    @media (min-width: m.$desktopSmall) {
       padding: m.em(10, 18) 0;
     }
 
@@ -224,12 +223,16 @@
     position: relative;
     z-index: 1;
     font-size: m.rem(16);
+
+    @media (max-width: m.$desktopSmall) {
+      order: -1;
+    }
   }
 
   // .menu__localeSwitcher
 
   &__localeSwitcher {
-    @media (max-width: m.$desktopMedium) {
+    @media (max-width: m.$desktopSmall) {
       font-size: m.rem(20) !important;
     }
   }
