@@ -20,12 +20,12 @@ export const HomeSlider: FC<HomeSliderProps> = ({ className }) => {
         <SliderSwiper
           autoHeight={false}
           className={s.homeSlider__slider}
+          navigation={false}
           slides={slides.map((slide) => ({
-              label: slide,
-              value: (
-                <HomeSlide className={s.homeSlider__slide} slide={slide} />
-              ),
-            }))}
+            label: slide,
+            value: <HomeSlide className={s.homeSlider__slide} slide={slide} />,
+          }))}
+          spaceBetween={0}
           autoplay
           loop
           pagination

@@ -7,7 +7,7 @@ $linkPadding: m.rem(20);
   position: fixed;
   inset-block-start: 50%;
   inset-inline-start: m.rem(calc(m.$containerPadding / 2));
-  z-index: 10;
+  z-index: 9;
   max-block-size: 100%;
   padding-block: m.rem(m.$containerPadding);
   overflow-y: auto;

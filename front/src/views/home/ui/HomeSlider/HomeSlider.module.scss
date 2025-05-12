@@ -4,6 +4,8 @@
   // .homeSlider__body
 
   &__body {
+    position: relative;
+    z-index: 9;
   }
 
   // .homeSlider__slider
