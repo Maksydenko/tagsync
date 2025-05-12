@@ -7,6 +7,11 @@
     display: flex;
     flex-direction: column;
     gap: m.rem(40);
+  }
+
+  // .comparisonCharacteristics__group
+
+  &__group {
     max-inline-size: m.rem(1304);
     overflow: auto;
 
@@ -27,6 +32,15 @@
   // .comparisonCharacteristics__productCard
 
   &__productCard {
+    inline-size: m.rem(280);
     text-align: start;
+
+    > div {
+      > div {
+        &:last-child {
+          padding-inline: 0;
+        }
+      }
+    }
   }
 }
