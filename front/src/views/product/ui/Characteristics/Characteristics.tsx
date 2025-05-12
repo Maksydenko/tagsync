@@ -17,17 +17,6 @@ import { Table } from "@/shared/ui";
 
 import s from "./Characteristics.module.scss";
 
-const columns: ColumnDef<ILink>[] = [
-  {
-    accessorKey: "label",
-    header: "",
-  },
-  {
-    accessorKey: "value",
-    header: "",
-  },
-];
-
 interface CharacteristicsProps {
   characteristics: IProductCharacteristic[];
   className?: string;
@@ -40,11 +29,26 @@ export const Characteristics: FC<CharacteristicsProps> = ({
   const tProduct = useTranslations(Translation.Product);
   const locale = useLocale() as Locale;
 
-  const data: ILink[] = useMemo(() => characteristics.map((characteristic) => ({
+  const columns: ColumnDef<ILink>[] = [
+    {
+      accessorKey: "label",
+      header: "",
+    },
+    {
+      accessorKey: "value",
+      header: "",
+    },
+  ];
+
+  const data: ILink[] = useMemo(
+    () =>
+      characteristics.map((characteristic) => ({
         label: characteristic.translations[locale],
         value:
           characteristic.value_translations?.[locale] || characteristic.value,
-      })), [characteristics, locale]);
+      })),
+    [characteristics, locale]
+  );
 
   const table = useReactTable({
     columns,
