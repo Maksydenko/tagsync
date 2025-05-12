@@ -37,7 +37,7 @@
         z-index: 3;
         inline-size: m.rem(24);
         block-size: m.rem(24);
-        background: var(--mainBg);
+        background: var(--mainBgColor);
         border: m.rem(2.5) solid var(--mainColor);
         border-radius: 50%;
 
@@ -87,7 +87,7 @@
 
         :global(.rc-steps-item-icon) {
           :global(.rc-steps-icon) {
-            color: var(--mainBg);
+            color: var(--mainBgColor);
           }
         }
       }

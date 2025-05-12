@@ -37,7 +37,7 @@
 
     &:hover,
     &:focus-visible {
-      color: var(--mainBg);
+      color: var(--mainBgColor);
       background: var(--cardReverseBg);
 
       .userWrapperList__icon {
@@ -54,7 +54,7 @@
     &_active {
       .userWrapperList__link {
         font-weight: 500;
-        color: var(--mainBg);
+        color: var(--mainBgColor);
         background: var(--cardReverseBorder);
 
         .userWrapperList__icon {

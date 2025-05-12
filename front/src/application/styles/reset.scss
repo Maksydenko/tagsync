@@ -30,7 +30,7 @@ body {
   font-size: m.$fontSize;
   line-height: 1;
   color: var(--mainColor);
-  background: var(--mainBg);
+  background: var(--mainBgColor);
 }
 
 table {
@@ -52,7 +52,7 @@ textarea {
 }
 
 input {
-  box-shadow: 0 0 0 m.rem(999) var(--mainBg) inset;
+  box-shadow: 0 0 0 m.rem(999) var(--mainBgColor) inset;
 }
 
 textarea {

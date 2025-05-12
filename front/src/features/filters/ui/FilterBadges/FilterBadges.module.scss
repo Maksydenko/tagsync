@@ -33,7 +33,7 @@
       inset-inline: 0;
       block-size: m.rem(2);
       content: "";
-      background: var(--mainBg);
+      background: var(--mainBgColor);
       border-radius: m.rem(4);
       transition: rotate 0.3s ease 0s, background 0.3s ease 0s;
     }

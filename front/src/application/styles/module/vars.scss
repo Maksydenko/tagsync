@@ -32,7 +32,7 @@ $lightColor: #fbfbfb;
 $darkColor: #1a1a1e;
 
 @include mixins.theme(mainColor, $darkColor, $lightColor);
-@include mixins.theme(mainBg, $lightColor, $darkColor);
+@include mixins.theme(mainBgColor, $lightColor, $darkColor);
 @include mixins.theme(iconInvert, 0, 1);
 @include mixins.theme(iconReverseInvert, 1, 0);
 @include mixins.theme(themeSwitcherBg, #d4d8dd, #222128);
