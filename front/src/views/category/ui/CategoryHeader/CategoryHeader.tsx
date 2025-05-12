@@ -28,6 +28,7 @@ export const CategoryHeader: FC<CategoryHeaderProps> = ({
 
   const locale = useLocale() as Locale;
   const tShared = useTranslations(Translation.Shared);
+  const tCategory = useTranslations(Translation.Category);
 
   const { data: categoriesData } = useQuery({
     queryFn: async () => ProductsService.getCategories(),
@@ -37,7 +38,9 @@ export const CategoryHeader: FC<CategoryHeaderProps> = ({
   const categories = categoriesData?.data;
   const categorySlug = pathname.split("/")[2];
   /* eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain */
-  const category = categories?.find((category) => category.slug === categorySlug)!;
+  const category = categories?.find(
+    (category) => category.slug === categorySlug
+  )!;
   const categoryTitle = category?.translations_slug[locale];
 
   const breadcrumbs: ILink[] = [
@@ -70,7 +73,7 @@ export const CategoryHeader: FC<CategoryHeaderProps> = ({
                   type="button"
                   asChild
                 >
-                  Filters
+                  {tCategory("filters.label")}
                 </Btn>
               }
             >

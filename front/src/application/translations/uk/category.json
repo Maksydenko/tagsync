@@ -2,7 +2,8 @@
   "category": {
     "filters": {
       "remove-all": "Видалити все",
-      "price": "Ціна"
+      "price": "Ціна",
+      "label": "Фільтри"
     },
     "sorts": {
       "price-asc": "Ціна (за зростанням)",

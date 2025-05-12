@@ -2,7 +2,8 @@
   "category": {
     "filters": {
       "remove-all": "Remove all",
-      "price": "Price"
+      "price": "Price",
+      "label": "Filters"
     },
     "sorts": {
       "price-asc": "Price (ascending)",
