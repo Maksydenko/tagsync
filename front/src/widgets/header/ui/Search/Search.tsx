@@ -28,9 +28,9 @@ export const Search: FC<SearchProps> = ({ className }) => {
   });
 
   const items = searchData?.data.products.map((item) => ({
-      label: item.title,
-      value: `/${item.slug}/${item.product_id}`,
-    }));
+    label: item.title,
+    value: `/${item.slug}/${item.product_id}`,
+  }));
 
   return (
     <Autocomplete
