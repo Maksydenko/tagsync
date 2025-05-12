@@ -14,6 +14,10 @@
     @if vars.$maxWidthContainer > 0 {
       max-width: utils.rem(vars.$containerWidth);
       margin: 0 auto;
+
+      @media (min-width: vars.$desktopSmall) {
+        max-width: utils.rem(vars.$containerDesktopWidth);
+      }
     }
 
     @if vars.$containerPadding > 0 {
@@ -58,6 +62,10 @@
 
     @if vars.$maxWidthContainer > 0 {
       max-width: utils.rem(vars.$containerWidth);
+
+      @media (min-width: vars.$desktopSmall) {
+        max-width: utils.rem(vars.$containerDesktopWidth);
+      }
     } @else {
       @if vars.$containerPadding > 0 {
         padding-right: utils.rem(calc(vars.$containerPadding / 2));
@@ -70,7 +78,7 @@
       }
     }
 
-    @media (max-width: vars.$pc) {
+    @media (max-width: vars.$desktopSmall) {
       max-width: utils.rem(970);
     }
 

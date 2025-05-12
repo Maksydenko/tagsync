@@ -62,6 +62,7 @@ $containerDesktopPadding: 240;
 
 // The width of the first breakpoint
 $containerWidth: $maxWidthContainer + $containerPadding;
+$containerDesktopWidth: $maxWidthContainer + $containerDesktopPadding;
 
 // Breakpoints
 $desktopLarge: 1535.98px;
