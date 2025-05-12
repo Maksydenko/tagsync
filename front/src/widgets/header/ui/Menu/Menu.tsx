@@ -62,10 +62,13 @@ export const Menu: FC<MenuProps> = ({ className, isScrollLocked, onClick }) => {
             <MenuItems links={menuData} onClick={onClick} />
             <Dropdown
               className={s.menu__dropdown}
-              items={(categoriesData?.data || []).map((category) => ({
-                label: category.translations_slug[locale],
-                value: category.slug,
-              }))}
+              items={
+                categoriesData?.data?.map((category) => ({
+                  icon: category.img,
+                  label: category.translations_slug[locale],
+                  value: category.slug,
+                })) || []
+              }
             >
               {tShared("pathnames.categories")}
             </Dropdown>
