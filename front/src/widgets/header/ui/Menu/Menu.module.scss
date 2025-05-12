@@ -8,11 +8,11 @@
   // .menu__button
 
   &__button {
-    @media (min-width: m.$desktopSmall) {
+    @media (min-width: m.$desktopMedium) {
       display: none;
     }
 
-    @media (max-width: m.$desktopSmall) {
+    @media (max-width: m.$desktopMedium) {
       position: relative;
       z-index: 9;
       display: block;
@@ -88,7 +88,7 @@
     display: flex;
     gap: m.rem(20);
 
-    @media (max-width: m.$desktopSmall) {
+    @media (max-width: m.$desktopMedium) {
       order: -1;
     }
 
@@ -100,7 +100,7 @@
   // .menu__body
 
   &__body {
-    @media (max-width: m.$desktopSmall) {
+    @media (max-width: m.$desktopMedium) {
       position: fixed;
       inset-block: 0;
       inset-inline-end: -100%;
@@ -150,7 +150,7 @@
     font-size: m.rem(18);
     text-transform: uppercase;
 
-    @media (max-width: m.$desktopSmall) {
+    @media (max-width: m.$desktopMedium) {
       flex-direction: column-reverse;
       align-items: flex-end;
       justify-content: flex-end;
@@ -165,11 +165,11 @@
     gap: m.rem(30) m.rem(20);
     font-size: m.rem(18);
 
-    @media (min-width: m.$desktopSmall) {
+    @media (min-width: m.$desktopMedium) {
       align-items: center;
     }
 
-    @media (max-width: m.$desktopSmall) {
+    @media (max-width: m.$desktopMedium) {
       flex-direction: column;
       font-size: m.rem(24);
     }
@@ -191,7 +191,7 @@
     text-align: end;
     text-transform: capitalize;
 
-    @media (min-width: m.$desktopSmall) {
+    @media (min-width: m.$desktopMedium) {
       padding: m.em(10, 18) 0;
     }
 
@@ -229,7 +229,7 @@
   // .menu__localeSwitcher
 
   &__localeSwitcher {
-    @media (max-width: m.$desktopSmall) {
+    @media (max-width: m.$desktopMedium) {
       font-size: m.rem(20) !important;
     }
   }

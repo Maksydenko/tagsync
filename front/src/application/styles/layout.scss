@@ -42,7 +42,7 @@ body {
   // .layout__sidebar
 
   &__sidebar {
-    @media (max-width: m.$desktopSmall) {
+    @media (max-width: m.$desktopMedium) {
       display: none;
     }
   }

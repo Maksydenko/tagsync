@@ -15,7 +15,7 @@
       max-width: utils.rem(vars.$containerWidth);
       margin: 0 auto;
 
-      @media (min-width: vars.$desktopSmall) {
+      @media (min-width: vars.$desktopMedium) {
         max-width: utils.rem(vars.$containerDesktopWidth);
       }
     }
@@ -25,7 +25,7 @@
         padding-right: utils.rem(calc(vars.$containerPadding / 2));
         padding-left: utils.rem(calc(vars.$containerPadding / 2));
 
-        @media (min-width: vars.$desktopSmall) {
+        @media (min-width: vars.$desktopMedium) {
           padding-right: utils.rem(calc(vars.$containerDesktopPadding / 2));
           padding-left: utils.rem(calc(vars.$containerDesktopPadding / 2));
         }
@@ -41,7 +41,7 @@
           15
         );
 
-        @media (min-width: vars.$desktopSmall) {
+        @media (min-width: vars.$desktopMedium) {
           @include mixins.responsiveValue(
             padding-right,
             calc(vars.$containerDesktopPadding / 2),
@@ -63,7 +63,7 @@
     @if vars.$maxWidthContainer > 0 {
       max-width: utils.rem(vars.$containerWidth);
 
-      @media (min-width: vars.$desktopSmall) {
+      @media (min-width: vars.$desktopMedium) {
         max-width: utils.rem(vars.$containerDesktopWidth);
       }
     } @else {
@@ -71,14 +71,14 @@
         padding-right: utils.rem(calc(vars.$containerPadding / 2));
         padding-left: utils.rem(calc(vars.$containerPadding / 2));
 
-        @media (min-width: vars.$desktopSmall) {
+        @media (min-width: vars.$desktopMedium) {
           padding-right: utils.rem(calc(vars.$containerDesktopPadding / 2));
           padding-left: utils.rem(calc(vars.$containerDesktopPadding / 2));
         }
       }
     }
 
-    @media (max-width: vars.$desktopSmall) {
+    @media (max-width: vars.$desktopMedium) {
       max-width: utils.rem(970);
     }
 
@@ -94,7 +94,7 @@
       padding-right: utils.rem(calc(vars.$containerPadding / 2));
       padding-left: utils.rem(calc(vars.$containerPadding / 2));
 
-      @media (min-width: vars.$desktopSmall) {
+      @media (min-width: vars.$desktopMedium) {
         padding-right: utils.rem(calc(vars.$containerDesktopPadding / 2));
         padding-left: utils.rem(calc(vars.$containerDesktopPadding / 2));
       }
