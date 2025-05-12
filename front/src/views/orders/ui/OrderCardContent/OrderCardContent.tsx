@@ -70,43 +70,53 @@ export const OrderCardContent: FC<OrderCardContentProps> = ({
     <div className={clsx(s.orderCardContent, className)}>
       <div className={s.orderCardContent__body}>
         <ul className={s.orderCardContent__list}>
-          {order.items.map((item) => {
-            const productUrl = `/${item.slug}/${item.product_id}`;
+          {order.items.map(
+            ({
+              images,
+              price_per_item,
+              product_id,
+              product_title,
+              quantity,
+              slug,
+              total_price,
+            }) => {
+              const productUrl = `/${slug}/${product_id}`;
 
-            return (
-              <li key={item.product_id} className={s.orderCardContent__item}>
-                <div className={s.orderCardContent__content}>
-                  <Link href={productUrl}>
-                    <Img
-                      alt={item.product_title}
-                      className={s.orderCardContent__img}
-                      src={item.images[0]}
-                    />
-                  </Link>
-                  <h2 className={s.orderCardContent__title}>
-                    <Link href={productUrl}>{item.product_title}</Link>
-                  </h2>
-                </div>
-                <div className={s.orderCardContent__box}>
-                  <div className={s.orderCardContent__prices}>
-                    <span className={s.orderCardContent__price}>
-                      {formatPrice({
-                        number: item.price_per_item,
-                      })}
-                    </span>
-                    <span className={s.orderCardContent__quantity}>
-                      {item.quantity}
-                    </span>
-                    <span className={s.orderCardContent__total}>
-                      {formatPrice({
-                        number: item.total_price,
-                      })}
-                    </span>
+              return (
+                <li key={product_id} className={s.orderCardContent__item}>
+                  <div className={s.orderCardContent__content}>
+                    <Link href={productUrl}>
+                      <Img
+                        alt={product_title}
+                        className={s.orderCardContent__img}
+                        src={images[0]}
+                      />
+                    </Link>
+                    <h2 className={s.orderCardContent__title}>
+                      <Link href={productUrl}>{product_title}</Link>
+                    </h2>
                   </div>
-                </div>
-              </li>
-            );
-          })}
+                  <div className={s.orderCardContent__box}>
+                    <div className={s.orderCardContent__prices}>
+                      <span className={s.orderCardContent__price}>
+                        {formatPrice({
+                          number: price_per_item,
+                        })}
+                      </span>
+                      <span className={s.orderCardContent__quantity}>
+                        {quantity}
+                      </span>
+                      <span className={s.orderCardContent__total}>
+                        {formatPrice({
+                          number: total_price,
+                        })}
+                      </span>
+                    </div>
+                  </div>
+                </li>
+              );
+            }
+          )}
         </ul>
         <Table className={s.orderCardContent__table} table={table} />
       </div>
