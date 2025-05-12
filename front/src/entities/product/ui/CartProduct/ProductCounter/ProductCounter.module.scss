@@ -28,7 +28,7 @@
   // .productCounter__value
 
   &__value {
-    border: m.rem(1) solid var(--mainColor);
+    border: m.rem(1) solid m.$darkColor;
     border-radius: m.rem(4);
 
     @include m.centered(flex);
