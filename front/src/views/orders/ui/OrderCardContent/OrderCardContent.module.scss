@@ -1,0 +1,119 @@
+@use "@/application/styles/module" as m;
+
+.orderCardContent {
+  // .orderCardContent__body
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(16);
+  }
+
+  // .orderCardContent__list
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(16);
+  }
+
+  // .orderCardContent__item
+
+  &__item {
+    display: flex;
+    gap: m.rem(64);
+    justify-content: space-between;
+    padding-inline-end: m.rem(64 + 12);
+
+    @media (max-width: m.$mobile) {
+      gap: m.rem(24);
+      padding-inline-end: m.rem(12);
+    }
+
+    .orderCardContent__img {
+      flex: 0 0 auto;
+      inline-size: m.rem(120);
+      block-size: m.rem(120);
+      background: m.$lightColor;
+      border-radius: m.rem(4);
+
+      img {
+        padding: m.rem(4);
+        object-fit: contain;
+      }
+    }
+  }
+
+  // .orderCardContent__content
+
+  &__content {
+    display: flex;
+    gap: m.rem(64);
+
+    @media (max-width: m.$mobile) {
+      gap: m.rem(24);
+    }
+  }
+
+  // .orderCardContent__title
+
+  &__title {
+    align-self: center;
+
+    @include m.lineCamp(3);
+  }
+
+  // .orderCardContent__box
+
+  &__box {
+    display: flex;
+    gap: m.rem(64);
+
+    @media (max-width: m.$mobile) {
+      gap: m.rem(24);
+    }
+  }
+
+  // .orderCardContent__prices
+
+  &__prices {
+    display: flex;
+    align-items: center;
+
+    @media (min-width: m.$mobile) {
+      gap: m.rem(64);
+    }
+
+    @media (max-width: m.$mobile) {
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+
+    > span {
+      line-height: 2;
+      white-space: nowrap;
+
+      &:last-child {
+        font-weight: 500;
+      }
+    }
+  }
+
+  // .orderCardContent__table
+
+  &__table {
+    overflow: hidden;
+    outline: m.rem(1) solid var(--cardBorder);
+    border-radius: m.rem(4);
+
+    @extend %table;
+
+    td {
+      &:last-child {
+        font-weight: 500;
+        text-align: end;
+      }
+    }
+  }
+}

@@ -1,4 +1,9 @@
 @use "@/application/styles/module" as m;
 
 .orders {
+  // .orders__list
+
+  &__list {
+    block-size: 100%;
+  }
 }

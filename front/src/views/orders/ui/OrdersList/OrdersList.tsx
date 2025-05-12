@@ -9,9 +9,10 @@ import { AuthService } from "@/features/auth";
 import { OrdersService } from "@/features/orders";
 
 import { QueryKey } from "@/shared/model";
-import { Loader } from "@/shared/ui";
+import { Collapse, Loader } from "@/shared/ui";
 
 import { OrderCard } from "../OrderCard/OrderCard";
+import { OrderCardContent } from "../OrderCardContent/OrderCardContent";
 
 import s from "./OrdersList.module.scss";
 
@@ -38,21 +39,30 @@ export const OrdersList: FC<OrdersListProps> = ({ className }) => {
     queryKey: [QueryKey.Orders, userEmail],
   });
 
+  const items = ordersData?.data.map((order) => ({
+    children: (
+      <OrderCardContent
+        className={s.ordersList__orderCardContent}
+        order={order}
+      />
+    ),
+    key: order.order_time,
+    label: <OrderCard className={s.ordersList__orderCard} orderData={order} />,
+  }));
+
   return (
     <div className={clsx(s.ordersList, className)}>
       {isLoadingOrders ? (
         <Loader className={s.ordersList__loader} />
       ) : (
-        <ul className={s.ordersList__list}>
-          {ordersData?.data.map((order) => (
-              <li key={order.order_time} className={s.ordersList__item}>
-                <OrderCard
-                  className={s.ordersList__orderCard}
-                  orderData={order}
-                />
-              </li>
-            ))}
-        </ul>
+        <div className={s.ordersList__body}>
+          <Collapse
+            className={s.ordersList__collapse}
+            items={items}
+            accordion
+            isReverseIcon
+          />
+        </div>
       )}
     </div>
   );

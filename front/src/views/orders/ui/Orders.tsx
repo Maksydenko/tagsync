@@ -20,7 +20,7 @@ export const Orders: FC<OrdersProps> = ({ className }) => {
   return (
     <div className={clsx(s.ordersPage, className)}>
       <UserWrapper className={s.orders} title={tShared("user.orders")}>
-        <OrdersList />
+        <OrdersList className={s.orders__list} />
       </UserWrapper>
     </div>
   );

@@ -22,5 +22,6 @@ export interface IOrderProduct {
   product_id: number;
   product_title: string;
   quantity: number;
+  slug: string;
   total_price: number;
 }

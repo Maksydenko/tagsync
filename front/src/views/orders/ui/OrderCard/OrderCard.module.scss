@@ -1,11 +1,6 @@
 @use "@/application/styles/module" as m;
 
 .orderCard {
-  padding-block: m.rem(12);
-  padding-inline: m.rem(16);
-  background: var(--cardBg);
-  border-radius: m.rem(4);
-
   // .orderCard__body
 
   &__body {
@@ -18,7 +13,6 @@
 
   &__list {
     display: flex;
-    flex-wrap: wrap;
     gap: m.rem(8);
   }
 
@@ -35,16 +29,29 @@
   &__img {
     inline-size: m.rem(120);
     aspect-ratio: 1;
+
+    img {
+      padding: m.rem(4);
+      object-fit: contain;
+    }
   }
 
   // .orderCard__content
 
   &__content {
     display: flex;
-    flex-direction: column;
-    gap: m.rem(8);
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
+    line-height: 2;
+
+    @media (min-width: m.$mobile) {
+      gap: m.rem(64);
+    }
+
+    @media (max-width: m.$mobile) {
+      flex-direction: column;
+      align-items: flex-end;
+    }
   }
 
   // .orderCard__total

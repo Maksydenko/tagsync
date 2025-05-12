@@ -1,11 +1,29 @@
 @use "@/application/styles/module" as m;
 
 .ordersList {
-  // .ordersList__list
+  // .ordersList__body
 
-  &__list {
+  &__body {
     display: flex;
     flex-direction: column;
     gap: m.rem(16);
+  }
+
+  // .ordersList__collapse
+
+  &__collapse {
+    :global(.rc-collapse-header) {
+      gap: m.rem(64) !important;
+      padding-block: m.rem(12);
+      padding-inline: m.rem(16);
+
+      @media (max-width: m.$mobile) {
+        gap: m.rem(0) !important;
+      }
+    }
+
+    :global(.rc-collapse-title) {
+      inline-size: 100%;
+    }
   }
 }
