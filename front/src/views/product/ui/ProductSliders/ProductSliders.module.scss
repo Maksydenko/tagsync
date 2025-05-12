@@ -21,7 +21,7 @@
     border-radius: m.rem(4);
 
     img {
-      padding: m.rem(16);
+      padding: m.rem(8);
       object-fit: contain;
     }
   }
@@ -36,9 +36,6 @@
       flex-basis: auto;
       inline-size: 100%;
       block-size: auto;
-    }
-
-    @media (max-width: m.$mobileSmall) {
     }
   }
 

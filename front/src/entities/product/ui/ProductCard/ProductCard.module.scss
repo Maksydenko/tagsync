@@ -75,7 +75,7 @@
     @include m.centered(flex);
 
     img {
-      padding: m.rem(16);
+      padding: m.rem(8);
       object-fit: contain;
     }
   }
