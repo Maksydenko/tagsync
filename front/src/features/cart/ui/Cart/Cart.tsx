@@ -63,8 +63,6 @@ export const Cart: FC<CartProps> = ({ className }) => {
       queryClient.invalidateQueries({
         queryKey: [QueryKey.Cart],
       });
-
-      setIsOpen(false);
     },
   });
 
@@ -87,12 +85,12 @@ export const Cart: FC<CartProps> = ({ className }) => {
           <h2 className={s.cart__title}>{tShared("cart.title")}</h2>{" "}
           <div className={s.cart__content}>
             {cartItems?.map((product) => (
-                <CartProduct
-                  key={product.product_id}
-                  className={s.cart__product}
-                  productData={product}
-                />
-              ))}
+              <CartProduct
+                key={product.product_id}
+                className={s.cart__product}
+                productData={product}
+              />
+            ))}
           </div>
           <div className={s.cart__footer}>
             <Btn asChild>
