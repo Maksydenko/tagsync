@@ -68,6 +68,10 @@ export const Popup: FC<PopupProps> = ({
       >
         <div className={s.popup__body}>
           <div className={s.popup__content}>
+            <DialogPanel
+              className={clsx(s.popup__panel, s.popup__panel_bg)}
+              transition
+            />
             <DialogPanel className={s.popup__panel} transition>
               <div className={s.popup__box}>{children}</div>
               <button
@@ -76,10 +80,6 @@ export const Popup: FC<PopupProps> = ({
                 onClick={handleClose}
               />
             </DialogPanel>
-            <DialogPanel
-              className={clsx(s.popup__panel, s.popup__panel_bg)}
-              transition
-            />
           </div>
         </div>
       </Dialog>

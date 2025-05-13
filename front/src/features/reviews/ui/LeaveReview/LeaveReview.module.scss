@@ -7,7 +7,7 @@
     > div {
       > div {
         > div {
-          &:first-child {
+          &:last-child {
             inline-size: 100%;
             max-inline-size: m.rem(400);
           }
