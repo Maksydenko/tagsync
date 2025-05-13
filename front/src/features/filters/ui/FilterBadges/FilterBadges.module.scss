@@ -51,7 +51,6 @@
 
   &__btn {
     gap: m.rem(8);
-    font-size: m.rem(14);
     border-radius: m.rem(999);
 
     @extend %btn;
