@@ -15,10 +15,6 @@
     font-size: m.rem(16);
     text-transform: uppercase;
 
-    @media (max-width: m.$mobile) {
-      font-size: m.rem(12);
-    }
-
     &:not(:last-child) {
       position: relative;
 
