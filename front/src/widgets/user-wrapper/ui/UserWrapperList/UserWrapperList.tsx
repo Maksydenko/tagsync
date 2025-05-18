@@ -39,8 +39,8 @@ export const UserWrapperList: FC<UserWrapperListProps> = ({ className }) => {
   const { isPending: isLogoutPending, mutate: logout } = useMutation({
     mutationFn: async () => supabase.auth.signOut(),
     mutationKey: [MutationKey.Logout],
-    onSuccess: () => {
-      queryClient.invalidateQueries({
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
         queryKey: [QueryKey.User],
       });
       push(Pathname.Login);
@@ -51,25 +51,25 @@ export const UserWrapperList: FC<UserWrapperListProps> = ({ className }) => {
     <div className={clsx(s.userWrapperList, className)}>
       <ul className={s.userWrapperList__list}>
         {userData.map(({ icon, label, value }) => (
-            <li
-              key={value}
-              className={clsx(
-                s.userWrapperList__item,
-                value === removeLocalePrefix(pathname) &&
-                  s.userWrapperList__item_active
-              )}
-            >
-              <Link className={s.userWrapperList__link} href={value}>
-                <Img
-                  alt={label}
-                  className={s.userWrapperList__icon}
-                  src={icon}
-                  isSvg
-                />
-                {tShared(`user.${  label}`)}
-              </Link>
-            </li>
-          ))}
+          <li
+            key={value}
+            className={clsx(
+              s.userWrapperList__item,
+              value === removeLocalePrefix(pathname) &&
+                s.userWrapperList__item_active
+            )}
+          >
+            <Link className={s.userWrapperList__link} href={value}>
+              <Img
+                alt={label}
+                className={s.userWrapperList__icon}
+                src={icon}
+                isSvg
+              />
+              {tShared(`user.${label}`)}
+            </Link>
+          </li>
+        ))}
         <li className={s.userWrapperList__item}>
           <button
             className={s.userWrapperList__link}

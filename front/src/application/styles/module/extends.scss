@@ -105,6 +105,7 @@
 %btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   padding-block: utils.em(12, 16);
   padding-inline: utils.em(16, 16);
   font-size: utils.rem(16);

@@ -9,6 +9,7 @@ export interface IAddToCart {
 export interface ICart {
   cart_price: number;
   items: ICartProduct[];
+  total_quantity: number;
 }
 
 export interface ICartProduct extends IProduct {

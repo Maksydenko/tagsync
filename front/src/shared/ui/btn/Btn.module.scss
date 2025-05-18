@@ -42,7 +42,11 @@
     }
   }
 
-  &:not(:disabled) {
+  &[aria-disabled="true"] {
+    cursor: default;
+  }
+
+  &:not([aria-disabled="true"]) {
     &:hover,
     &:focus-visible {
       color: var(--mainColor);

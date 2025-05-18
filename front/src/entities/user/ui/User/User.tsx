@@ -43,10 +43,11 @@ export const User: FC<UserProps> = ({ className, onClick }) => {
   const { mutate: logout } = useMutation({
     mutationFn: async () => AuthService.logout(),
     mutationKey: [MutationKey.Logout],
-    onSuccess: () => {
-      queryClient.invalidateQueries({
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
         queryKey: [QueryKey.User],
       });
+
       push(Pathname.Login);
     },
   });

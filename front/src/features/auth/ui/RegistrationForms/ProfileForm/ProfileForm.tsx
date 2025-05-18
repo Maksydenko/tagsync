@@ -78,9 +78,9 @@ export const ProfileForm: FC<ProfileFormProps> = ({ className }) => {
         setSubmissionMessage(errorMessage);
         console.warn(error);
       },
-      onSuccess: () => {
+      onSuccess: async () => {
         sessionStorage.removeItem(MutationKey.Credentials);
-        queryClient.invalidateQueries({
+        await queryClient.invalidateQueries({
           queryKey: [QueryKey.User],
         });
 

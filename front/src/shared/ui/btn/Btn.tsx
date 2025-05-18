@@ -27,21 +27,23 @@ export const Btn: FC<BtnProps> = ({
   isLoading,
   ...props
 }) => {
+  const isDisabled = disabled || isLoading;
+  const classNames = clsx(s.btn, isLoading && s.btn_loading);
+
   if (asChild && isValidElement(children)) {
     return cloneElement(children, {
       /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
       /* @ts-ignore */
-      className: clsx(s.btn, children.props.className, className),
+      className: clsx(classNames, children.props.className),
     });
   }
 
-  const isDisabled = disabled || isLoading;
   const isStringChildren = typeof children === "string";
 
   return (
     <button
       aria-disabled={isDisabled}
-      className={clsx(s.btn, isLoading && s.btn_loading, className)}
+      className={clsx(classNames, className)}
       disabled={isDisabled}
       {...(isStringChildren && {
         "aria-label": children,

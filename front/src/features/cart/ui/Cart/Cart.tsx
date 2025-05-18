@@ -1,11 +1,14 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC } from "react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
+import { useAtom } from "jotai";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+
+import { cartOpenAtom } from "@/application/atoms";
 
 import { AuthService } from "@/features/auth";
 
@@ -23,7 +26,7 @@ interface CartProps {
 }
 
 export const Cart: FC<CartProps> = ({ className }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useAtom(cartOpenAtom);
 
   const tShared = useTranslations(Translation.Shared);
   const queryClient = useQueryClient();
@@ -46,7 +49,7 @@ export const Cart: FC<CartProps> = ({ className }) => {
     queryKey: [QueryKey.Cart, userEmail],
   });
   const cartItems = cartData?.data.items;
-  const cartItemsLength = cartItems?.length;
+  const cartTotalQuantity = cartData?.data.total_quantity;
 
   const { mutate: clearCart } = useMutation({
     mutationFn: async () => {
@@ -59,10 +62,11 @@ export const Cart: FC<CartProps> = ({ className }) => {
       });
     },
     mutationKey: [MutationKey.CartClear],
-    onSuccess: () => {
-      queryClient.invalidateQueries({
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
         queryKey: [QueryKey.Cart],
       });
+      setIsOpen(false);
     },
   });
 
@@ -72,8 +76,8 @@ export const Cart: FC<CartProps> = ({ className }) => {
         btn={
           <div className={s.cart__btn}>
             <Img className={s.cart__icon} src="/img/icons/product/cart.svg" />
-            {!!cartItemsLength && (
-              <span className={s.cart__counter}>{cartItemsLength}</span>
+            {!!cartTotalQuantity && (
+              <span className={s.cart__counter}>{cartTotalQuantity}</span>
             )}
           </div>
         }
@@ -82,7 +86,7 @@ export const Cart: FC<CartProps> = ({ className }) => {
         setForceOpen={setIsOpen}
       >
         <div className={s.cart__body}>
-          <h2 className={s.cart__title}>{tShared("cart.title")}</h2>{" "}
+          <h2 className={s.cart__title}>{tShared("cart.title")}</h2>
           <div className={s.cart__content}>
             {cartItems?.map((product) => (
               <CartProduct
@@ -93,11 +97,16 @@ export const Cart: FC<CartProps> = ({ className }) => {
             ))}
           </div>
           <div className={s.cart__footer}>
-            <Btn asChild>
+            <Btn disabled={!cartItems?.length} asChild>
               <Link
+                aria-disabled={!cartItems?.length}
                 className={s.cart__btn}
                 href={Pathname.Checkout}
-                onClick={() => {
+                onClick={(e) => {
+                  if (!cartItems?.length) {
+                    return e.preventDefault();
+                  }
+
                   setIsOpen(false);
                 }}
               >

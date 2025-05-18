@@ -35,14 +35,14 @@ export const Rating = <T extends FieldValues>({
   const isDisabled = options?.disabled;
 
   const getIcon = (className: string) => (
-      <Image
-        alt="star"
-        className={clsx(s.rating__icon, s[`rating__icon_${className}`])}
-        height={20}
-        src="/img/icons/product/star.svg"
-        width={20}
-      />
-    );
+    <Image
+      alt="star"
+      className={clsx(s.rating__icon, s[`rating__icon_${className}`])}
+      height={20}
+      src="/img/icons/product/star.svg"
+      width={20}
+    />
+  );
 
   return (
     <div className={clsx(s.rating, className)}>

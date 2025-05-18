@@ -4,9 +4,12 @@ import { FC } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
+import { useAtom } from "jotai";
 import { useForm } from "react-hook-form";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+
+import { cartOpenAtom } from "@/application/atoms";
 
 import { AuthService } from "@/features/auth";
 import { CartService } from "@/features/cart";
@@ -40,6 +43,7 @@ export const ProductMain: FC<ProductMainProps> = ({
   reviewsLength,
 }) => {
   const { push } = useRouter();
+  const [, setIsOpen] = useAtom(cartOpenAtom);
 
   const tShared = useTranslations(Translation.Shared);
   const queryClient = useQueryClient();
@@ -67,7 +71,9 @@ export const ProductMain: FC<ProductMainProps> = ({
     },
     queryKey: [QueryKey.Wishlist, userEmail],
   });
-  const isWished = wishlistData?.data.some((product) => product.product_id === product_id);
+  const isWished = wishlistData?.data.some(
+    (product) => product.product_id === product_id
+  );
 
   const { data: comparisonsData, isLoading: isComparisonsLoading } = useQuery({
     queryFn: async () => {
@@ -79,7 +85,9 @@ export const ProductMain: FC<ProductMainProps> = ({
     },
     queryKey: [QueryKey.Comparisons, userEmail],
   });
-  const isInComparisons = comparisonsData?.data[slug]?.some((product) => product.product_id === product_id);
+  const isInComparisons = comparisonsData?.data[slug]?.some(
+    (product) => product.product_id === product_id
+  );
 
   const { data: cartData, isLoading: isCartLoading } = useQuery({
     enabled: !!userEmail,
@@ -92,7 +100,9 @@ export const ProductMain: FC<ProductMainProps> = ({
     },
     queryKey: [QueryKey.Cart, userEmail],
   });
-  const isInCart = cartData?.data.items.some((product) => product.product_id === product_id);
+  const isInCart = cartData?.data.items.some(
+    (product) => product.product_id === product_id
+  );
 
   const { isPending: isAddToWishlistPending, mutate: addToWishlist } =
     useMutation({
@@ -108,25 +118,20 @@ export const ProductMain: FC<ProductMainProps> = ({
         }
 
         if (isWished) {
-          WishlistService.remove({
+          return WishlistService.remove({
             product_id,
             userEmail,
           });
-
-          return;
         }
 
-        WishlistService.add({
+        return WishlistService.add({
           product_id,
           userEmail,
         });
       },
       mutationKey: [MutationKey.AddToWishlist, userEmail],
-      onSuccess: async () => {
-        await invalidateQueries(queryClient, [QueryKey.Wishlist]);
-        // Triggered by a repeat call
-        await invalidateQueries(queryClient, [QueryKey.Wishlist]);
-      },
+      onSuccess: async () =>
+        invalidateQueries(queryClient, [QueryKey.Wishlist]),
     });
 
   const { isPending: isAddToComparisonsPending, mutate: addToComparisons } =
@@ -143,25 +148,20 @@ export const ProductMain: FC<ProductMainProps> = ({
         }
 
         if (isInComparisons) {
-          ComparisonsService.remove({
+          return ComparisonsService.remove({
             product_id,
             userEmail: userData.data.email,
           });
-
-          return;
         }
 
-        ComparisonsService.add({
+        return ComparisonsService.add({
           product_id,
           userEmail: userData.data.email,
         });
       },
       mutationKey: [MutationKey.AddToComparisons],
-      onSuccess: async () => {
-        await invalidateQueries(queryClient, [QueryKey.Comparisons]);
-        // Triggered by a repeat call
-        await invalidateQueries(queryClient, [QueryKey.Comparisons]);
-      },
+      onSuccess: async () =>
+        invalidateQueries(queryClient, [QueryKey.Comparisons]),
     });
 
   const { isPending: isAddToCartPending, mutate: addToCart } = useMutation({
@@ -176,18 +176,14 @@ export const ProductMain: FC<ProductMainProps> = ({
         throw new Error();
       }
 
-      CartService.add({
+      return CartService.add({
         product_id,
         quantity: 1,
         userEmail: userData.data.email,
       });
     },
     mutationKey: [MutationKey.AddToCart],
-    onSuccess: async () => {
-      await invalidateQueries(queryClient, [QueryKey.Cart]);
-      // Triggered by a repeat call
-      await invalidateQueries(queryClient, [QueryKey.Cart]);
-    },
+    onSuccess: async () => invalidateQueries(queryClient, [QueryKey.Cart]),
   });
 
   return (
@@ -217,6 +213,10 @@ export const ProductMain: FC<ProductMainProps> = ({
             icon="/img/icons/product/cart.svg"
             isLoading={isAddToCartPending}
             onClick={() => {
+              if (isInCart) {
+                return setIsOpen(true);
+              }
+
               addToCart();
             }}
           >
@@ -230,9 +230,7 @@ export const ProductMain: FC<ProductMainProps> = ({
               className={s.productMain__btn}
               disabled={isAddToComparisonsPending || isComparisonsLoading}
               type="button"
-              onClick={() => {
-                addToComparisons();
-              }}
+              onClick={() => addToComparisons()}
             >
               <Img
                 className={s.productMain__icon}
@@ -246,9 +244,7 @@ export const ProductMain: FC<ProductMainProps> = ({
               className={s.productMain__btn}
               disabled={isAddToWishlistPending || isWishlistLoading}
               type="button"
-              onClick={() => {
-                addToWishlist();
-              }}
+              onClick={() => addToWishlist()}
             >
               <Img
                 className={s.productMain__icon}

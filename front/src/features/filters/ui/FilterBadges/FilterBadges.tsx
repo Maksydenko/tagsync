@@ -91,7 +91,9 @@ export const FilterBadges: FC<FilterBadgesProps> = ({
             <button
               className={s.filterBadges__btn}
               type="button"
-              onClick={() => removeFilter(groupKey, value)}
+              onClick={() => {
+                removeFilter(groupKey, value);
+              }}
             >
               <span>{name}</span>
               <span className={s.filterBadges__icon} />

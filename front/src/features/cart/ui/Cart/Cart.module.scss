@@ -58,7 +58,7 @@
         background: m.$darkColor;
         border-color: m.$darkColor;
 
-        &:not(:disabled) {
+        &:not([aria-disabled="true"]) {
           @include m.hover(
             (
               color: m.$darkColor,

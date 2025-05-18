@@ -62,11 +62,10 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({ className }) => {
       setSubmissionMessage(errorMessage);
       console.warn(error);
     },
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({
+    onSuccess: async () =>
+      queryClient.invalidateQueries({
         queryKey: [QueryKey.Cart],
-      });
-    },
+      }),
   });
 
   const form = useForm<ICheckoutForm>({
