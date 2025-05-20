@@ -26,12 +26,7 @@ export const CartProduct: FC<CartProductProps> = ({
     <div className={clsx(s.cartProduct, className)}>
       <div className={s.cartProduct__body}>
         <Link className={s.cartProduct__link} href={`/${slug}/${product_id}`}>
-          <Img
-            alt={title}
-            className={s.cartProduct__img}
-            src={images[0]}
-            isSvg
-          />
+          <Img alt={title} className={s.cartProduct__img} src={images[0]} />
         </Link>
         <div className={s.cartProduct__content}>
           <h3 className={s.cartProduct__title}>{title}</h3>
