@@ -6,7 +6,7 @@ import { useAtom } from "jotai";
 
 import { ProductCard } from "@/entities/product";
 
-import { userAtom, cartAtom } from "@/shared/lib";
+import { userAtom, wishlistAtom } from "@/shared/lib";
 import { Loader } from "@/shared/ui";
 
 import s from "./WishlistProducts.module.scss";
@@ -20,7 +20,7 @@ export const WishlistProducts: FC<WishlistProductsProps> = ({ className }) => {
   const userEmail = userData?.data.email;
 
   const [{ data: wishlistData, isLoading: isWishlistLoading }] = useAtom(
-    cartAtom(userEmail)
+    wishlistAtom(userEmail)
   );
 
   return (
