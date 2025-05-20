@@ -8,7 +8,7 @@ import { clsx } from "clsx";
 import { useAtom } from "jotai";
 import { useForm } from "react-hook-form";
 
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
 import { CartService } from "@/features/cart";
 import { ComparisonsService } from "@/features/comparisons";
@@ -17,13 +17,13 @@ import { WishlistService } from "@/features/wishlist";
 import { Checked } from "@/entities/indicator";
 
 import {
+  cartAtom,
   cartOpenAtom,
   comparisonsAtom,
   useInvalidateAtom,
   userAtom,
   wishlistAtom,
 } from "@/shared/lib";
-import { invalidateQueries } from "@/shared/lib/utils";
 import {
   formatPrice,
   isValueInSet,
@@ -52,7 +52,6 @@ export const ProductCard: FC<ProductCardProps> = ({
   const { push } = useRouter();
   const tShared = useTranslations(Translation.Shared);
 
-  const queryClient = useQueryClient();
   const [, setIsOpen] = useAtom(cartOpenAtom);
 
   const [{ data: userData, isLoading: isUserLoading }] = useAtom(userAtom);
@@ -78,17 +77,10 @@ export const ProductCard: FC<ProductCardProps> = ({
     value: product_id,
   });
 
-  const { data: cartData, isLoading: isCartLoading } = useQuery({
-    enabled: !!userEmail,
-    queryFn: async () => {
-      if (!userEmail) {
-        return;
-      }
-
-      return CartService.get(userEmail);
-    },
-    queryKey: [QueryKey.Cart, userEmail],
-  });
+  const invalidateCart = useInvalidateAtom([QueryKey.Cart]);
+  const [{ data: cartData, isLoading: isCartLoading }] = useAtom(
+    cartAtom(userEmail)
+  );
   const isInCart = isValueInSet({
     data: cartData?.data.items,
     key: "product_id",
@@ -172,7 +164,7 @@ export const ProductCard: FC<ProductCardProps> = ({
       });
     },
     mutationKey: [MutationKey.AddToCart],
-    onSuccess: async () => invalidateQueries(queryClient, [QueryKey.Cart]),
+    onSuccess: async () => invalidateCart(),
   });
 
   const form = useForm({

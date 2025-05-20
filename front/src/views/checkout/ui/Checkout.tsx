@@ -5,15 +5,12 @@ import { useRouter } from "next/navigation";
 import { clsx } from "clsx";
 import { useAtom } from "jotai";
 
-import { useQuery } from "@tanstack/react-query";
-
-import { CartService } from "@/features/cart";
 import { CheckoutForm } from "@/features/orders";
 
 import { CartProduct } from "@/entities/product";
 
-import { userAtom } from "@/shared/lib";
-import { Pathname, QueryKey } from "@/shared/model";
+import { cartAtom, userAtom } from "@/shared/lib";
+import { Pathname } from "@/shared/model";
 
 import s from "./Checkout.module.scss";
 
@@ -24,20 +21,9 @@ interface CheckoutProps {
 export const Checkout: FC<CheckoutProps> = ({ className }) => {
   const { push } = useRouter();
   const [{ data: userData, isLoading: isUserLoading }] = useAtom(userAtom);
-
   const userEmail = userData?.data.email;
 
-  const { data: cartData } = useQuery({
-    enabled: !!userEmail,
-    queryFn: async () => {
-      if (!userEmail) {
-        return;
-      }
-
-      return CartService.get(userEmail);
-    },
-    queryKey: [QueryKey.Cart, userEmail],
-  });
+  const [{ data: cartData }] = useAtom(cartAtom(userEmail));
   const cartItems = cartData?.data.items;
 
   useEffect(() => {

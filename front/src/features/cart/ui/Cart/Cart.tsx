@@ -6,11 +6,16 @@ import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import { useAtom } from "jotai";
 
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
 import { CartProduct } from "@/entities/product";
 
-import { cartOpenAtom, userAtom } from "@/shared/lib";
+import {
+  cartAtom,
+  cartOpenAtom,
+  useInvalidateAtom,
+  userAtom,
+} from "@/shared/lib";
 import { MutationKey, Pathname, QueryKey, Translation } from "@/shared/model";
 import { Btn, Img, Popup } from "@/shared/ui";
 
@@ -24,26 +29,19 @@ interface CartProps {
 
 export const Cart: FC<CartProps> = ({ className }) => {
   const tShared = useTranslations(Translation.Shared);
-  const queryClient = useQueryClient();
 
   const [isOpen, setIsOpen] = useAtom(cartOpenAtom);
-  const [{ data: userData }] = useAtom(userAtom);
 
+  const invalidateCart = useInvalidateAtom([QueryKey.Cart]);
+  const [{ data: userData }] = useAtom(userAtom);
   const userEmail = userData?.data.email;
 
-  const { data: cartData, isLoading: isCartLoading } = useQuery({
-    enabled: !!userEmail,
-    queryFn: async () => {
-      if (!userEmail) {
-        return;
-      }
-
-      return CartService.get(userEmail);
-    },
-    queryKey: [QueryKey.Cart, userEmail],
-  });
-  const cartItems = cartData?.data.items;
-  const cartTotalQuantity = cartData?.data.total_quantity;
+  const [{ data: cartData, isLoading: isCartLoading }] = useAtom(
+    cartAtom(userEmail)
+  );
+  const cart = cartData?.data;
+  const cartItems = cart?.items;
+  const cartTotalQuantity = cart?.total_quantity;
 
   const { mutate: clearCart } = useMutation({
     mutationFn: async () => {
@@ -57,9 +55,7 @@ export const Cart: FC<CartProps> = ({ className }) => {
     },
     mutationKey: [MutationKey.CartClear],
     onSuccess: async () => {
-      await queryClient.invalidateQueries({
-        queryKey: [QueryKey.Cart],
-      });
+      await invalidateCart();
       setIsOpen(false);
     },
   });

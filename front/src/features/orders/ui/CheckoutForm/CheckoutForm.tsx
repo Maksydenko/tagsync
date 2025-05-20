@@ -8,11 +8,11 @@ import { useForm } from "react-hook-form";
 import { StepWizardChildProps } from "react-step-wizard";
 
 import { AuthError } from "@supabase/supabase-js";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
 import { AuthForm } from "@/features/auth";
 
-import { userAtom } from "@/shared/lib";
+import { useInvalidateAtom, userAtom } from "@/shared/lib";
 import { MutationKey, QueryKey, Translation } from "@/shared/model";
 import { Btn } from "@/shared/ui";
 
@@ -30,8 +30,7 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({ className }) => {
   const tShared = useTranslations(Translation.Shared);
   const [submissionMessage, setSubmissionMessage] = useState("");
 
-  const queryClient = useQueryClient();
-
+  const invalidateCart = useInvalidateAtom([QueryKey.Cart]);
   const [{ data: userData }] = useAtom(userAtom);
   const user = userData?.data;
 
@@ -61,10 +60,7 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({ className }) => {
       setSubmissionMessage(errorMessage);
       console.warn(error);
     },
-    onSuccess: async () =>
-      queryClient.invalidateQueries({
-        queryKey: [QueryKey.Cart],
-      }),
+    onSuccess: async () => invalidateCart(),
   });
 
   const form = useForm<ICheckoutForm>({
