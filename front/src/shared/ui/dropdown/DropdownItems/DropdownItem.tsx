@@ -33,26 +33,26 @@ export const DropdownItem: FC<DropdownItemProps> = ({ item }) => {
   return (
     <MenuItem>
       {({ focus }) => (
-          <div
-            key={label}
-            className={clsx(
-              s.dropdownItems__item,
-              focus && s.dropdownItems__item_active
-            )}
-          >
-            {typeof value === "string" ? (
-              <Link href={value}>
-                {iconElement}
-                <span>{label}</span>
-              </Link>
-            ) : (
-              <button type="button" onClick={value}>
-                {iconElement}
-                <span>{label}</span>
-              </button>
-            )}
-          </div>
-        )}
+        <div
+          key={label}
+          className={clsx(
+            s.dropdownItems__item,
+            focus && s.dropdownItems__item_active
+          )}
+        >
+          {typeof value === "string" ? (
+            <Link href={value}>
+              {iconElement}
+              <p>{label}</p>
+            </Link>
+          ) : (
+            <button type="button" onClick={value}>
+              {iconElement}
+              <p>{label}</p>
+            </button>
+          )}
+        </div>
+      )}
     </MenuItem>
   );
 };

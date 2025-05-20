@@ -152,7 +152,7 @@ export const Field = <T extends FieldValues>({
         )}
         {field}
         {typeof error?.message === "string" && (
-          <span className={s.field__error}>{error.message}</span>
+          <p className={s.field__error}>{error.message}</p>
         )}
       </div>
     </div>

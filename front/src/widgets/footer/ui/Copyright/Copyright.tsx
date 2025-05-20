@@ -16,9 +16,9 @@ export const Copyright: FC<CopyrightProps> = ({ className }) => {
   return (
     <div className={clsx(s.copyright, className)}>
       <div className={s.copyright__container}>
-        <span>
+        <p>
           {tShared("footer.copyright")} © {new Date().getFullYear()}
-        </span>
+        </p>
       </div>
     </div>
   );

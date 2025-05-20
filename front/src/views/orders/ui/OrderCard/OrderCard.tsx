@@ -37,16 +37,16 @@ export const OrderCard: FC<OrderCardProps> = ({
         ))}
       </ul>
       <div className={s.orderCard__content}>
-        <span className={s.orderCard__date}>
+        <p className={s.orderCard__date}>
           {formatDate({
             date: new Date(order_time),
           })}
-        </span>
-        <span className={s.orderCard__total}>
+        </p>
+        <p className={s.orderCard__total}>
           {formatPrice({
             number: total_order_price,
           })}
-        </span>
+        </p>
       </div>
     </div>
   </div>

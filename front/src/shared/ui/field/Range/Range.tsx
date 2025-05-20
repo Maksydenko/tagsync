@@ -57,16 +57,16 @@ export const Range = <T extends FieldValues>({
     <div className={clsx(s.range, className)}>
       <div className={s.range__body}>
         <div className={s.range__content}>
-          <span className={s.range__label}>
+          <p className={s.range__label}>
             {formatNumber({
               number: min,
             })}
-          </span>
-          <span className={s.range__label}>
+          </p>
+          <p className={s.range__label}>
             {formatNumber({
               number: max,
             })}
-          </span>
+          </p>
         </div>
         <Slider
           disabled={options?.disabled}

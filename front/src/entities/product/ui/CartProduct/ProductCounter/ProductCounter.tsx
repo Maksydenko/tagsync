@@ -97,7 +97,7 @@ export const ProductCounter: FC<ProductCounterProps> = ({
             type="button"
             onClick={() => addToCart(CartAction.Remove)}
           />
-          <span className={s.productCounter__value}>{quantity}</span>
+          <p className={s.productCounter__value}>{quantity}</p>
           <Btn
             className={s.productCounter__btn}
             icon="/img/icons/form/plus.svg"

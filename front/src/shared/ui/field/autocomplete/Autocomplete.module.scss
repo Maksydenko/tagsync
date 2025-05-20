@@ -48,7 +48,7 @@
   // .autocomplete__options
 
   &__options {
-    z-index: 10;
+    z-index: 100;
     inline-size: var(--input-width);
     max-block-size: m.rem(400) !important;
     padding: m.rem(4);

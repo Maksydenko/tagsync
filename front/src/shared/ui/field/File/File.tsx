@@ -92,10 +92,10 @@ export const File: FC<FileProps> = ({
             type={"file"}
             onChange={handleChangeFile}
           />
-          <span className={s.file__hint}>
+          <p className={s.file__hint}>
             <span>Upload a file</span> or drag and drop
-          </span>
-          <span className={s.file__subHint}>{subHint}</span>
+          </p>
+          <p className={s.file__subHint}>{subHint}</p>
         </div>
       </div>
     </div>

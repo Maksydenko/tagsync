@@ -83,7 +83,7 @@ export const Header: FC<HeaderProps> = ({ className }) => {
               isPriority
               isSvg
             />
-            <span>TagSync</span>
+            <p>TagSync</p>
           </Link>
           <div className={s.header__content}>
             <Menu

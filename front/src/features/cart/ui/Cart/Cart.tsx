@@ -77,7 +77,7 @@ export const Cart: FC<CartProps> = ({ className }) => {
           <div className={s.cart__btn}>
             <Img className={s.cart__icon} src="/img/icons/product/cart.svg" />
             {!!cartTotalQuantity && (
-              <span className={s.cart__counter}>{cartTotalQuantity}</span>
+              <p className={s.cart__counter}>{cartTotalQuantity}</p>
             )}
           </div>
         }

@@ -258,11 +258,11 @@ export const ProductCard: FC<ProductCardProps> = ({
           />
           <div className={s.productCard__footer}>
             <div className={s.productCard__box}>
-              <span className={s.productCard__price}>
+              <p className={s.productCard__price}>
                 {formatPrice({
                   number: +price,
                 })}
-              </span>
+              </p>
               <div className={s.productCard__status}>
                 {tShared("product.statuses.available")}
               </div>

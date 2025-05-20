@@ -48,19 +48,19 @@ export const AuthForm = <T extends FieldValues>({
       <div className={s.authForm__body}>
         <div className={s.authForm__content}>
           {fields.map((field) => (
-              <Field
-                key={field.name}
-                className={s.authForm__field}
-                formReturn={formReturn}
-                {...field}
-              />
-            ))}
+            <Field
+              key={field.name}
+              className={s.authForm__field}
+              formReturn={formReturn}
+              {...field}
+            />
+          ))}
         </div>
         <div className={s.authForm__btns}>{btns}</div>
         {submissionMessage && (
-          <span className={s.authForm__submissionMessage}>
+          <p className={s.authForm__submissionMessage}>
             {tShared(submissionMessage)}
-          </span>
+          </p>
         )}
       </div>
     </form>

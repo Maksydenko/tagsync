@@ -35,6 +35,12 @@ $maxInlineSizeItem: m.rem(160);
     }
   }
 
+  // .footer__text
+
+  &__text {
+    line-height: 1.3;
+  }
+
   // .footer__box
 
   &__box {

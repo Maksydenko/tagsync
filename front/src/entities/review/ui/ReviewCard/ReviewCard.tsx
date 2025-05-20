@@ -28,11 +28,11 @@ export const ReviewCard: FC<ReviewCardProps> = ({ className, review }) => {
       <div className={s.reviewCard__body}>
         <div className={s.reviewCard__header}>
           <h3 className={s.reviewCard__title}>{review.userEmail}</h3>
-          <span className={s.reviewCard__date}>
+          <p className={s.reviewCard__date}>
             {formatDate({
               date: new Date(review.createdAt),
             })}
-          </span>
+          </p>
         </div>
         <Rating
           className={s.reviewCard__rating}

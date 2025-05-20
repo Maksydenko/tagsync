@@ -63,7 +63,7 @@ export const Select = <T extends FieldValues>({
             {...props}
             {...restRegister}
           >
-            <span>{watch(name).label}</span>
+            <p>{watch(name).label}</p>
             {typeof icon === "string" ? (
               <Img
                 className={s.select__icon}
@@ -82,14 +82,14 @@ export const Select = <T extends FieldValues>({
             transition
           >
             {items.map((item) => (
-                <ListboxOption
-                  key={item.value}
-                  className={s.select__option}
-                  value={item}
-                >
-                  {item.label}
-                </ListboxOption>
-              ))}
+              <ListboxOption
+                key={item.value}
+                className={s.select__option}
+                value={item}
+              >
+                {item.label}
+              </ListboxOption>
+            ))}
           </ListboxOptions>
         </Listbox>
       </div>

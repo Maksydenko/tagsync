@@ -45,7 +45,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
                   isPriority
                   isSvg
                 />
-                <span>TagSync</span>
+                <p>TagSync</p>
               </Link>
               <div className={s.footer__text}>
                 <p>{tShared("footer.text")}</p>

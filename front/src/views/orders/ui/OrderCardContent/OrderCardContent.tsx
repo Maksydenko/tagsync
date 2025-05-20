@@ -98,19 +98,17 @@ export const OrderCardContent: FC<OrderCardContentProps> = ({
                   </div>
                   <div className={s.orderCardContent__box}>
                     <div className={s.orderCardContent__prices}>
-                      <span className={s.orderCardContent__price}>
+                      <p className={s.orderCardContent__price}>
                         {formatPrice({
                           number: price_per_item,
                         })}
-                      </span>
-                      <span className={s.orderCardContent__quantity}>
-                        {quantity}
-                      </span>
-                      <span className={s.orderCardContent__total}>
+                      </p>
+                      <p className={s.orderCardContent__quantity}>{quantity}</p>
+                      <p className={s.orderCardContent__total}>
                         {formatPrice({
                           number: total_price,
                         })}
-                      </span>
+                      </p>
                     </div>
                   </div>
                 </li>

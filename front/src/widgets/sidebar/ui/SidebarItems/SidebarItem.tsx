@@ -31,10 +31,12 @@ export const SidebarItem: FC<ItemProps> = ({
           width={32}
           isSvg
         />
-        <span className={s.sidebar__label}>{translatedSlug}</span>
-        <span className={clsx(s.sidebar__label, s.sidebar__label_visible)}>
+        <p className={clsx(s.sidebar__label, s.sidebar__label_hidden)}>
           {translatedSlug}
-        </span>
+        </p>
+        <p className={clsx(s.sidebar__label, s.sidebar__label_visible)}>
+          {translatedSlug}
+        </p>
       </Link>
     </li>
   );

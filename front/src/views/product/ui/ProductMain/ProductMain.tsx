@@ -206,13 +206,13 @@ export const ProductMain: FC<ProductMainProps> = ({
               disabled: true,
             }}
           />
-          <span>({reviewsLength})</span>
+          <p>({reviewsLength})</p>
         </div>
-        <span className={s.productMain__price}>
+        <p className={s.productMain__price}>
           {formatPrice({
             number: +price,
           })}
-        </span>
+        </p>
         <div className={s.productMain__footer}>
           <Btn
             className={s.productMain__btn}
@@ -227,9 +227,7 @@ export const ProductMain: FC<ProductMainProps> = ({
               addToCart();
             }}
           >
-            <span>
-              {tShared(`product.cart.${isInCart ? "in" : "add-to"}-cart`)}
-            </span>
+            <p>{tShared(`product.cart.${isInCart ? "in" : "add-to"}-cart`)}</p>
             {isInCart && <Checked className={s.productMain__indicator} />}
           </Btn>
           <div className={s.productMain__btns}>

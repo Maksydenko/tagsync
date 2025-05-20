@@ -30,11 +30,11 @@ export const CartProduct: FC<CartProductProps> = ({
         </Link>
         <div className={s.cartProduct__content}>
           <h3 className={s.cartProduct__title}>{title}</h3>
-          <span className={s.cartProduct__price}>
+          <p className={s.cartProduct__price}>
             {formatPrice({
               number: +all_price,
             })}
-          </span>
+          </p>
           <ProductCounter
             className={s.cartProduct__counter}
             productData={productData}

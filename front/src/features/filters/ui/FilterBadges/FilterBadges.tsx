@@ -81,7 +81,7 @@ export const FilterBadges: FC<FilterBadgesProps> = ({
               type="button"
               onClick={removeAllFilters}
             >
-              <span>{tCategory("filters.remove-all")}</span>
+              <p>{tCategory("filters.remove-all")}</p>
               <span className={s.filterBadges__icon} />
             </button>
           </li>
@@ -95,7 +95,7 @@ export const FilterBadges: FC<FilterBadgesProps> = ({
                 removeFilter(groupKey, value);
               }}
             >
-              <span>{name}</span>
+              <p>{name}</p>
               <span className={s.filterBadges__icon} />
             </button>
           </li>
