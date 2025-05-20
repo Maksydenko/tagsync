@@ -22,6 +22,7 @@ import { IProduct } from "@/entities/product";
 import { invalidateQueries } from "@/shared/lib";
 import {
   formatPrice,
+  isValueInSet,
   MutationKey,
   Pathname,
   QueryKey,
@@ -71,9 +72,11 @@ export const ProductMain: FC<ProductMainProps> = ({
     },
     queryKey: [QueryKey.Wishlist, userEmail],
   });
-  const isWished = wishlistData?.data.some(
-    (product) => product.product_id === product_id
-  );
+  const isWished = isValueInSet({
+    data: wishlistData?.data,
+    key: "product_id",
+    value: product_id,
+  });
 
   const { data: comparisonsData, isLoading: isComparisonsLoading } = useQuery({
     queryFn: async () => {
@@ -85,9 +88,11 @@ export const ProductMain: FC<ProductMainProps> = ({
     },
     queryKey: [QueryKey.Comparisons, userEmail],
   });
-  const isInComparisons = comparisonsData?.data[slug]?.some(
-    (product) => product.product_id === product_id
-  );
+  const isInComparisons = isValueInSet({
+    data: comparisonsData?.data[slug.toLocaleLowerCase()],
+    key: "product_id",
+    value: product_id,
+  });
 
   const { data: cartData, isLoading: isCartLoading } = useQuery({
     enabled: !!userEmail,
@@ -100,9 +105,11 @@ export const ProductMain: FC<ProductMainProps> = ({
     },
     queryKey: [QueryKey.Cart, userEmail],
   });
-  const isInCart = cartData?.data.items.some(
-    (product) => product.product_id === product_id
-  );
+  const isInCart = isValueInSet({
+    data: cartData?.data.items,
+    key: "product_id",
+    value: product_id,
+  });
 
   const { isPending: isAddToWishlistPending, mutate: addToWishlist } =
     useMutation({
