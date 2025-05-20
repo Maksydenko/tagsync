@@ -16,7 +16,12 @@ import { WishlistService } from "@/features/wishlist";
 
 import { Checked } from "@/entities/indicator";
 
-import { cartOpenAtom, userAtom } from "@/shared/lib";
+import {
+  cartOpenAtom,
+  useInvalidateAtom,
+  userAtom,
+  wishlistAtom,
+} from "@/shared/lib";
 import { invalidateQueries } from "@/shared/lib/utils";
 import {
   formatPrice,
@@ -47,23 +52,15 @@ export const ProductCard: FC<ProductCardProps> = ({
   const tShared = useTranslations(Translation.Shared);
 
   const queryClient = useQueryClient();
-
   const [, setIsOpen] = useAtom(cartOpenAtom);
-  const [{ data: userData, isLoading: isUserLoading }] = useAtom(userAtom);
 
+  const [{ data: userData, isLoading: isUserLoading }] = useAtom(userAtom);
   const userEmail = userData?.data.email;
 
-  const { data: wishlistData, isLoading: isWishlistLoading } = useQuery({
-    enabled: !!userEmail,
-    queryFn: async () => {
-      if (!userEmail) {
-        return;
-      }
-
-      return WishlistService.get(userEmail);
-    },
-    queryKey: [QueryKey.Wishlist, userEmail],
-  });
+  const invalidateWishlist = useInvalidateAtom([QueryKey.Wishlist]);
+  const [{ data: wishlistData, isLoading: isWishlistLoading }] = useAtom(
+    wishlistAtom(userEmail)
+  );
   const isWished = isValueInSet({
     data: wishlistData?.data,
     key: "product_id",
@@ -130,8 +127,7 @@ export const ProductCard: FC<ProductCardProps> = ({
         });
       },
       mutationKey: [MutationKey.AddToWishlist, userEmail],
-      onSuccess: async () =>
-        invalidateQueries(queryClient, [QueryKey.Wishlist]),
+      onSuccess: async () => invalidateWishlist(),
     });
 
   const { isPending: isAddToComparisonsPending, mutate: addToComparisons } =

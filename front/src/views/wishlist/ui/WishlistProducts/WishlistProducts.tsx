@@ -4,14 +4,9 @@ import { FC } from "react";
 import { clsx } from "clsx";
 import { useAtom } from "jotai";
 
-import { useQuery } from "@tanstack/react-query";
-
-import { WishlistService } from "@/features/wishlist";
-
 import { ProductCard } from "@/entities/product";
 
-import { userAtom } from "@/shared/lib";
-import { QueryKey } from "@/shared/model";
+import { userAtom, wishlistAtom } from "@/shared/lib";
 import { Loader } from "@/shared/ui";
 
 import s from "./WishlistProducts.module.scss";
@@ -24,17 +19,9 @@ export const WishlistProducts: FC<WishlistProductsProps> = ({ className }) => {
   const [{ data: userData, isLoading: isUserLoading }] = useAtom(userAtom);
   const userEmail = userData?.data.email;
 
-  const { data: wishlistData, isLoading: isWishlistLoading } = useQuery({
-    enabled: !!userEmail,
-    queryFn: async () => {
-      if (!userEmail) {
-        return;
-      }
-
-      return WishlistService.get(userEmail);
-    },
-    queryKey: [QueryKey.Wishlist, userEmail],
-  });
+  const [{ data: wishlistData, isLoading: isWishlistLoading }] = useAtom(
+    wishlistAtom(userEmail)
+  );
 
   return (
     <div className={clsx(s.wishlistProducts, className)}>

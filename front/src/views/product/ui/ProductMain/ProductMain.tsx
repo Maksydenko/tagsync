@@ -16,7 +16,11 @@ import { WishlistService } from "@/features/wishlist";
 import { Checked } from "@/entities/indicator";
 import { IProduct } from "@/entities/product";
 
-import { invalidateQueries } from "@/shared/lib";
+import {
+  invalidateQueries,
+  useInvalidateAtom,
+  wishlistAtom,
+} from "@/shared/lib";
 import { cartOpenAtom, userAtom } from "@/shared/lib";
 import {
   formatPrice,
@@ -57,17 +61,10 @@ export const ProductMain: FC<ProductMainProps> = ({
     },
   });
 
-  const { data: wishlistData, isLoading: isWishlistLoading } = useQuery({
-    enabled: !!userEmail,
-    queryFn: async () => {
-      if (!userEmail) {
-        return;
-      }
-
-      return WishlistService.get(userEmail);
-    },
-    queryKey: [QueryKey.Wishlist, userEmail],
-  });
+  const invalidateWishlist = useInvalidateAtom([QueryKey.Wishlist]);
+  const [{ data: wishlistData, isLoading: isWishlistLoading }] = useAtom(
+    wishlistAtom(userEmail)
+  );
   const isWished = isValueInSet({
     data: wishlistData?.data,
     key: "product_id",
@@ -133,8 +130,7 @@ export const ProductMain: FC<ProductMainProps> = ({
         });
       },
       mutationKey: [MutationKey.AddToWishlist, userEmail],
-      onSuccess: async () =>
-        invalidateQueries(queryClient, [QueryKey.Wishlist]),
+      onSuccess: async () => invalidateWishlist(),
     });
 
   const { isPending: isAddToComparisonsPending, mutate: addToComparisons } =
