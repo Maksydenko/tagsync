@@ -9,9 +9,6 @@ import { useForm } from "react-hook-form";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-import { cartOpenAtom } from "@/application/atoms";
-
-import { AuthService } from "@/features/auth";
 import { CartService } from "@/features/cart";
 import { ComparisonsService } from "@/features/comparisons";
 import { WishlistService } from "@/features/wishlist";
@@ -20,6 +17,7 @@ import { Checked } from "@/entities/indicator";
 import { IProduct } from "@/entities/product";
 
 import { invalidateQueries } from "@/shared/lib";
+import { cartOpenAtom, userAtom } from "@/shared/lib";
 import {
   formatPrice,
   isValueInSet,
@@ -44,22 +42,20 @@ export const ProductMain: FC<ProductMainProps> = ({
   reviewsLength,
 }) => {
   const { push } = useRouter();
-  const [, setIsOpen] = useAtom(cartOpenAtom);
-
   const tShared = useTranslations(Translation.Shared);
+
   const queryClient = useQueryClient();
+
+  const [, setIsOpen] = useAtom(cartOpenAtom);
+  const [{ data: userData, isLoading: isUserLoading }] = useAtom(userAtom);
+
+  const userEmail = userData?.data.email;
 
   const form = useForm({
     defaultValues: {
       rating: average_rating,
     },
   });
-
-  const { data: userData, isLoading: isUserLoading } = useQuery({
-    queryFn: async () => AuthService.getUserData(),
-    queryKey: [QueryKey.User],
-  });
-  const userEmail = userData?.data.email;
 
   const { data: wishlistData, isLoading: isWishlistLoading } = useQuery({
     enabled: !!userEmail,

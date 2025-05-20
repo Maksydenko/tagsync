@@ -8,12 +8,9 @@ import { useAtom } from "jotai";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-import { cartOpenAtom } from "@/application/atoms";
-
-import { AuthService } from "@/features/auth";
-
 import { CartProduct } from "@/entities/product";
 
+import { cartOpenAtom, userAtom } from "@/shared/lib";
 import { MutationKey, Pathname, QueryKey, Translation } from "@/shared/model";
 import { Btn, Img, Popup } from "@/shared/ui";
 
@@ -26,15 +23,12 @@ interface CartProps {
 }
 
 export const Cart: FC<CartProps> = ({ className }) => {
-  const [isOpen, setIsOpen] = useAtom(cartOpenAtom);
-
   const tShared = useTranslations(Translation.Shared);
   const queryClient = useQueryClient();
 
-  const { data: userData } = useQuery({
-    queryFn: async () => AuthService.getUserData(),
-    queryKey: [QueryKey.User],
-  });
+  const [isOpen, setIsOpen] = useAtom(cartOpenAtom);
+  const [{ data: userData }] = useAtom(userAtom);
+
   const userEmail = userData?.data.email;
 
   const { data: cartData, isLoading: isCartLoading } = useQuery({

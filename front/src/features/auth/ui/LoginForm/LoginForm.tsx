@@ -8,10 +8,11 @@ import { clsx } from "clsx";
 import { useForm } from "react-hook-form";
 
 import { AuthError } from "@supabase/supabase-js";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
 import { AuthForm, AuthService } from "@/features/auth";
 
+import { useInvalidateAtom } from "@/shared/lib";
 import {
   ErrorCode,
   MutationKey,
@@ -34,12 +35,11 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
   const { push } = useRouter();
 
   const tShared = useTranslations(Translation.Shared);
+  const invalidateUser = useInvalidateAtom([QueryKey.User]);
 
   const form = useForm<ILoginForm>({
     mode: "onChange",
   });
-
-  const queryClient = useQueryClient();
 
   const { isPending: isLoginPending, mutate: login } = useMutation({
     mutationFn: async (data: ILoginForm) => {
@@ -65,9 +65,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
     },
     onSuccess: async () => {
       sessionStorage.removeItem(MutationKey.Credentials);
-      await queryClient.invalidateQueries({
-        queryKey: [QueryKey.User],
-      });
+      await invalidateUser();
 
       push(Pathname.Home);
     },

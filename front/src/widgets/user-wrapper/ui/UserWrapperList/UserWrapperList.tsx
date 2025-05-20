@@ -7,9 +7,9 @@ import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
-import { IDatabase } from "@/shared/lib";
+import { IDatabase, useInvalidateAtom } from "@/shared/lib";
 import {
   MutationKey,
   Pathname,
@@ -31,18 +31,15 @@ export const UserWrapperList: FC<UserWrapperListProps> = ({ className }) => {
   const pathname = usePathname();
 
   const tShared = useTranslations(Translation.Shared);
+  const invalidateUser = useInvalidateAtom([QueryKey.User]);
 
   const supabase = createClientComponentClient<IDatabase>();
-
-  const queryClient = useQueryClient();
 
   const { isPending: isLogoutPending, mutate: logout } = useMutation({
     mutationFn: async () => supabase.auth.signOut(),
     mutationKey: [MutationKey.Logout],
     onSuccess: async () => {
-      await queryClient.invalidateQueries({
-        queryKey: [QueryKey.User],
-      });
+      await invalidateUser();
       push(Pathname.Login);
     },
   });

@@ -3,12 +3,10 @@
 import { FC, ReactNode, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { clsx } from "clsx";
+import { useAtom } from "jotai";
 
-import { useQuery } from "@tanstack/react-query";
-
-import { AuthService } from "@/features/auth";
-
-import { Pathname, QueryKey } from "@/shared/model";
+import { userAtom } from "@/shared/lib";
+import { Pathname } from "@/shared/model";
 import { Loader } from "@/shared/ui";
 
 import { UserWrapperList } from "./UserWrapperList/UserWrapperList";
@@ -27,11 +25,7 @@ export const UserWrapper: FC<UserWrapperProps> = ({
   title,
 }) => {
   const { push } = useRouter();
-
-  const { data: userData, isLoading: isUserLoading } = useQuery({
-    queryFn: async () => AuthService.getUserData(),
-    queryKey: [QueryKey.User],
-  });
+  const [{ data: userData, isLoading: isUserLoading }] = useAtom(userAtom);
 
   useEffect(() => {
     if (isUserLoading || userData) {

@@ -2,16 +2,15 @@
 
 import { FC, useEffect } from "react";
 import { useTranslations } from "next-intl";
+import { useAtom } from "jotai";
 
-import { useQuery } from "@tanstack/react-query";
-
-import { AuthService } from "@/features/auth";
 import { ProductsService } from "@/features/products";
 
 import { IProduct, ProductsSlider } from "@/entities/product";
 import { IReview } from "@/entities/review";
 
-import { QueryKey, Translation } from "@/shared/model";
+import { userAtom } from "@/shared/lib";
+import { Translation } from "@/shared/model";
 
 import { Characteristics } from "./Characteristics/Characteristics";
 import { ProductHeader } from "./ProductHeader/ProductHeader";
@@ -37,10 +36,7 @@ export const Product: FC<ProductProps> = ({
   const { characteristics, images, product_id, title } = productData;
   const tProduct = useTranslations(Translation.Product);
 
-  const { data: userData } = useQuery({
-    queryFn: async () => AuthService.getUserData(),
-    queryKey: [QueryKey.User],
-  });
+  const [{ data: userData }] = useAtom(userAtom);
   const userEmail = userData?.data.email;
 
   useEffect(() => {

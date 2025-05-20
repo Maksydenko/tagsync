@@ -6,11 +6,14 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import initials from "initials";
+import { useAtom } from "jotai";
 
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
 import { AuthService } from "@/features/auth";
 
+import { useInvalidateAtom } from "@/shared/lib";
+import { userAtom } from "@/shared/lib";
 import {
   MutationKey,
   Pathname,
@@ -31,23 +34,17 @@ export const User: FC<UserProps> = ({ className, onClick }) => {
   const { push } = useRouter();
   const tShared = useTranslations(Translation.Shared);
 
-  const { data: userData, isLoading: isUserLoading } = useQuery({
-    queryFn: async () => AuthService.getUserData(),
-    queryKey: [QueryKey.User],
-  });
+  const [{ data: userData, isLoading: isUserLoading }] = useAtom(userAtom);
+  const invalidateUser = useInvalidateAtom([QueryKey.User]);
+
   const user = userData?.data;
   const userName = `${user?.firstName} ${user?.lastName}`;
-
-  const queryClient = useQueryClient();
 
   const { mutate: logout } = useMutation({
     mutationFn: async () => AuthService.logout(),
     mutationKey: [MutationKey.Logout],
     onSuccess: async () => {
-      await queryClient.invalidateQueries({
-        queryKey: [QueryKey.User],
-      });
-
+      await invalidateUser();
       push(Pathname.Login);
     },
   });
@@ -68,7 +65,7 @@ export const User: FC<UserProps> = ({ className, onClick }) => {
       <div className={s.user__body}>
         {isUserLoading ? (
           <Loader className={s.user__loader} />
-        ) : userData ? (
+        ) : user ? (
           <Dropdown
             className={s.user__dropdown}
             icon={null}

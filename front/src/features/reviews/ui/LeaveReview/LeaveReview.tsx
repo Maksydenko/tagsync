@@ -3,14 +3,16 @@
 import { FC, useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
+import { useAtom } from "jotai";
 import { useForm } from "react-hook-form";
 
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { AuthForm, AuthService } from "@/features/auth";
+import { AuthForm } from "@/features/auth";
 
 import { IProduct } from "@/entities/product";
 
+import { userAtom } from "@/shared/lib";
 import { MutationKey, QueryKey, Translation } from "@/shared/model";
 import { Btn, Popup } from "@/shared/ui";
 
@@ -30,6 +32,10 @@ export const LeaveReview: FC<LeaveReviewProps> = ({ className, productId }) => {
   const [submissionMessage, setSubmissionMessage] = useState("");
 
   const tShared = useTranslations(Translation.Shared);
+  const queryClient = useQueryClient();
+
+  const [{ data: userData }] = useAtom(userAtom);
+  const userEmail = userData?.data.email;
 
   const form = useForm<ILeaveReviewForm>({
     // TODO: remove default values
@@ -52,14 +58,6 @@ export const LeaveReview: FC<LeaveReviewProps> = ({ className, productId }) => {
 
     close();
   }, [close, isOpen]);
-
-  const queryClient = useQueryClient();
-
-  const { data: userData } = useQuery({
-    queryFn: async () => AuthService.getUserData(),
-    queryKey: [QueryKey.User],
-  });
-  const userEmail = userData?.data.email;
 
   const { isPending: isLeaveReviewPending, mutate: leaveReview } = useMutation({
     mutationFn: async (data: ILeaveReviewForm) => {

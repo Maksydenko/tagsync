@@ -3,15 +3,16 @@
 import { FC, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { clsx } from "clsx";
+import { useAtom } from "jotai";
 
 import { useQuery } from "@tanstack/react-query";
 
-import { AuthService } from "@/features/auth";
 import { CartService } from "@/features/cart";
 import { CheckoutForm } from "@/features/orders";
 
 import { CartProduct } from "@/entities/product";
 
+import { userAtom } from "@/shared/lib";
 import { Pathname, QueryKey } from "@/shared/model";
 
 import s from "./Checkout.module.scss";
@@ -22,11 +23,8 @@ interface CheckoutProps {
 
 export const Checkout: FC<CheckoutProps> = ({ className }) => {
   const { push } = useRouter();
+  const [{ data: userData, isLoading: isUserLoading }] = useAtom(userAtom);
 
-  const { data: userData, isLoading: isUserLoading } = useQuery({
-    queryFn: async () => AuthService.getUserData(),
-    queryKey: [QueryKey.User],
-  });
   const userEmail = userData?.data.email;
 
   const { data: cartData } = useQuery({
@@ -57,8 +55,8 @@ export const Checkout: FC<CheckoutProps> = ({ className }) => {
           <div className={s.checkout__body}>
             <div className={s.checkout__content}>
               {cartItems?.map((product) => (
-                  <CartProduct key={product.product_id} productData={product} />
-                ))}
+                <CartProduct key={product.product_id} productData={product} />
+              ))}
             </div>
             <CheckoutForm className={s.checkout__form} />
           </div>

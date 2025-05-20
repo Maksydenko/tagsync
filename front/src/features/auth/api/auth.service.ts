@@ -17,7 +17,7 @@ import {
 const { auth } = createClientComponentClient<IDatabase>();
 
 export const AuthService = {
-  addUserData: async (data: IUserData) => {
+  addUserData: async (data: Omit<IUserData, "avatarUrl">) => {
     try {
       const response: IResponse<IResult> = await axiosInstance.post(
         "/UserRegistration/addUserData",

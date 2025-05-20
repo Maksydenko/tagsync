@@ -2,14 +2,15 @@
 
 import { FC } from "react";
 import { clsx } from "clsx";
+import { useAtom } from "jotai";
 
 import { useQuery } from "@tanstack/react-query";
 
-import { AuthService } from "@/features/auth";
 import { WishlistService } from "@/features/wishlist";
 
 import { ProductCard } from "@/entities/product";
 
+import { userAtom } from "@/shared/lib";
 import { QueryKey } from "@/shared/model";
 import { Loader } from "@/shared/ui";
 
@@ -20,10 +21,7 @@ interface WishlistProductsProps {
 }
 
 export const WishlistProducts: FC<WishlistProductsProps> = ({ className }) => {
-  const { data: userData, isLoading: isUserLoading } = useQuery({
-    queryFn: async () => AuthService.getUserData(),
-    queryKey: [QueryKey.User],
-  });
+  const [{ data: userData, isLoading: isUserLoading }] = useAtom(userAtom);
   const userEmail = userData?.data.email;
 
   const { data: wishlistData, isLoading: isWishlistLoading } = useQuery({
@@ -45,8 +43,8 @@ export const WishlistProducts: FC<WishlistProductsProps> = ({ className }) => {
       ) : (
         <div className={s.wishlistProducts__body}>
           {wishlistData?.data.map((product) => (
-              <ProductCard key={product.product_id} productData={product} />
-            ))}
+            <ProductCard key={product.product_id} productData={product} />
+          ))}
         </div>
       )}
     </div>

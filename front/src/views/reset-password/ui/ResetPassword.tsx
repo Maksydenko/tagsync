@@ -4,7 +4,7 @@ import { FC } from "react";
 import { useTranslations } from "next-intl";
 import { useAtom } from "jotai";
 
-import { authAtom } from "@/application/atoms";
+import { authAtom } from "@/shared/lib";
 
 import { ForgotPasswordForm, ResetPasswordForm } from "@/features/auth";
 

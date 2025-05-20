@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { StepWizardChildProps } from "react-step-wizard";
 
 import { AuthError } from "@supabase/supabase-js";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
 import {
   AuthForm,
@@ -18,6 +18,7 @@ import {
   IProfileForm,
 } from "@/features/auth";
 
+import { useInvalidateAtom } from "@/shared/lib";
 import { MutationKey, Pathname, QueryKey, Translation } from "@/shared/model";
 import { Btn } from "@/shared/ui";
 
@@ -28,16 +29,15 @@ interface ProfileFormProps extends Partial<StepWizardChildProps> {
 }
 
 export const ProfileForm: FC<ProfileFormProps> = ({ className }) => {
-  const tShared = useTranslations(Translation.Shared);
   const [submissionMessage, setSubmissionMessage] = useState("");
-
   const { push } = useRouter();
+
+  const tShared = useTranslations(Translation.Shared);
+  const invalidateUser = useInvalidateAtom([QueryKey.User]);
 
   const form = useForm<IProfileForm>({
     mode: "onChange",
   });
-
-  const queryClient = useQueryClient();
 
   const { isPending: isRegistrationPending, mutate: registration } =
     useMutation({
@@ -80,9 +80,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({ className }) => {
       },
       onSuccess: async () => {
         sessionStorage.removeItem(MutationKey.Credentials);
-        await queryClient.invalidateQueries({
-          queryKey: [QueryKey.User],
-        });
+        await invalidateUser();
 
         push(Pathname.Home);
       },

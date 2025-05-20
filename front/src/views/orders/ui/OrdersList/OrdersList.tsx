@@ -2,12 +2,13 @@
 
 import { FC } from "react";
 import { clsx } from "clsx";
+import { useAtom } from "jotai";
 
 import { useQuery } from "@tanstack/react-query";
 
-import { AuthService } from "@/features/auth";
 import { OrdersService } from "@/features/orders";
 
+import { userAtom } from "@/shared/lib";
 import { QueryKey } from "@/shared/model";
 import { Collapse, Loader } from "@/shared/ui";
 
@@ -21,10 +22,7 @@ interface OrdersListProps {
 }
 
 export const OrdersList: FC<OrdersListProps> = ({ className }) => {
-  const { data: userData } = useQuery({
-    queryFn: async () => AuthService.getUserData(),
-    queryKey: [QueryKey.User],
-  });
+  const [{ data: userData }] = useAtom(userAtom);
   const userEmail = userData?.data.email;
 
   const { data: ordersData, isLoading: isLoadingOrders } = useQuery({

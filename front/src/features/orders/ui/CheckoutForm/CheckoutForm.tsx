@@ -3,14 +3,16 @@
 import { FC, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
+import { useAtom } from "jotai";
 import { useForm } from "react-hook-form";
 import { StepWizardChildProps } from "react-step-wizard";
 
 import { AuthError } from "@supabase/supabase-js";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { AuthForm, AuthService } from "@/features/auth";
+import { AuthForm } from "@/features/auth";
 
+import { userAtom } from "@/shared/lib";
 import { MutationKey, QueryKey, Translation } from "@/shared/model";
 import { Btn } from "@/shared/ui";
 
@@ -30,10 +32,7 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({ className }) => {
 
   const queryClient = useQueryClient();
 
-  const { data: userData } = useQuery({
-    queryFn: async () => AuthService.getUserData(),
-    queryKey: [QueryKey.User],
-  });
+  const [{ data: userData }] = useAtom(userAtom);
   const user = userData?.data;
 
   const { isPending: isCheckoutPending, mutate: checkout } = useMutation({

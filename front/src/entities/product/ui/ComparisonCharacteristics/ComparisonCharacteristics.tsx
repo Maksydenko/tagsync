@@ -3,15 +3,16 @@
 import { FC, useMemo } from "react";
 import { useLocale } from "next-intl";
 import { clsx } from "clsx";
+import { useAtom } from "jotai";
 
 import { useQuery } from "@tanstack/react-query";
 import { ColumnDef } from "@tanstack/react-table";
 
-import { AuthService } from "@/features/auth";
 import { ComparisonsService } from "@/features/comparisons";
 
 import { ProductCard } from "@/entities/product";
 
+import { userAtom } from "@/shared/lib";
 import { ILink, Locale, QueryKey } from "@/shared/model";
 import { Loader } from "@/shared/ui";
 
@@ -27,11 +28,8 @@ export const ComparisonCharacteristics: FC<ComparisonCharacteristicsProps> = ({
   className,
 }) => {
   const locale = useLocale() as Locale;
+  const [{ data: userData }] = useAtom(userAtom);
 
-  const { data: userData } = useQuery({
-    queryFn: async () => AuthService.getUserData(),
-    queryKey: [QueryKey.User],
-  });
   const userEmail = userData?.data.email;
 
   const { data: comparisonsData, isLoading: isComparisonsLoading } = useQuery({

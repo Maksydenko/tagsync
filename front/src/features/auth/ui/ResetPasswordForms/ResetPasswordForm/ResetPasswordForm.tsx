@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 
 import { useMutation } from "@tanstack/react-query";
 
-import { authAtom } from "@/application/atoms";
+import { authAtom } from "@/shared/lib";
 
 import {
   AuthForm,

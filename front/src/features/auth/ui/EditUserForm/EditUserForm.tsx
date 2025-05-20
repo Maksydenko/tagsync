@@ -3,13 +3,16 @@
 import { FC, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
+import { useAtom } from "jotai";
 import { useForm } from "react-hook-form";
 import { StepWizardChildProps } from "react-step-wizard";
 
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
 import { AuthForm, AuthService } from "@/features/auth";
 
+import { useInvalidateAtom } from "@/shared/lib";
+import { userAtom } from "@/shared/lib";
 import { MutationKey, QueryKey, Translation } from "@/shared/model";
 import { Btn } from "@/shared/ui";
 
@@ -25,12 +28,9 @@ export const EditUserForm: FC<EditUserFormProps> = ({ className }) => {
   const tShared = useTranslations(Translation.Shared);
   const [submissionMessage, setSubmissionMessage] = useState("");
 
-  const queryClient = useQueryClient();
+  const [{ data: userData }] = useAtom(userAtom);
+  const invalidateUser = useInvalidateAtom([QueryKey.User]);
 
-  const { data: userData } = useQuery({
-    queryFn: async () => AuthService.getUserData(),
-    queryKey: [QueryKey.User],
-  });
   const user = userData?.data;
 
   const { isPending: isEditUserPending, mutate: editUser } = useMutation({
@@ -60,11 +60,7 @@ export const EditUserForm: FC<EditUserFormProps> = ({ className }) => {
       setSubmissionMessage(errorMessage);
       console.warn(error);
     },
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({
-        queryKey: [QueryKey.User],
-      });
-    },
+    onSuccess: async () => invalidateUser(),
   });
 
   const form = useForm<IEditUserForm>({

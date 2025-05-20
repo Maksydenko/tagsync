@@ -2,14 +2,15 @@
 
 import { FC } from "react";
 import { clsx } from "clsx";
+import { useAtom } from "jotai";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-import { AuthService } from "@/features/auth";
 import { CartService, ICartProduct } from "@/features/cart";
 
 import { CartAction } from "@/entities/product";
 
+import { userAtom } from "@/shared/lib";
 import { MutationKey, QueryKey } from "@/shared/model";
 import { Btn } from "@/shared/ui";
 
@@ -25,11 +26,8 @@ export const ProductCounter: FC<ProductCounterProps> = ({
   productData: { product_id, quantity },
 }) => {
   const queryClient = useQueryClient();
+  const [{ data: userData }] = useAtom(userAtom);
 
-  const { data: userData } = useQuery({
-    queryFn: async () => AuthService.getUserData(),
-    queryKey: [QueryKey.User],
-  });
   const userEmail = userData?.data.email;
 
   const { data: cartData } = useQuery({
