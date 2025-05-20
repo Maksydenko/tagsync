@@ -5,15 +5,12 @@ import { useLocale } from "next-intl";
 import { clsx } from "clsx";
 import { useAtom } from "jotai";
 
-import { useQuery } from "@tanstack/react-query";
 import { ColumnDef } from "@tanstack/react-table";
-
-import { ComparisonsService } from "@/features/comparisons";
 
 import { ProductCard } from "@/entities/product";
 
-import { userAtom } from "@/shared/lib";
-import { ILink, Locale, QueryKey } from "@/shared/model";
+import { comparisonsAtom, userAtom } from "@/shared/lib";
+import { ILink, Locale } from "@/shared/model";
 import { Loader } from "@/shared/ui";
 
 import { ComparisonCharacteristicsTable } from "./ComparisonCharacteristicsTable/ComparisonCharacteristicsTable";
@@ -32,17 +29,9 @@ export const ComparisonCharacteristics: FC<ComparisonCharacteristicsProps> = ({
 
   const userEmail = userData?.data.email;
 
-  const { data: comparisonsData, isLoading: isComparisonsLoading } = useQuery({
-    enabled: !!userEmail,
-    queryFn: async () => {
-      if (!userEmail) {
-        return;
-      }
-
-      return ComparisonsService.get(userEmail);
-    },
-    queryKey: [QueryKey.Comparisons, userEmail],
-  });
+  const [{ data: comparisonsData, isLoading: isComparisonsLoading }] = useAtom(
+    comparisonsAtom(userEmail)
+  );
   const comparisonsRecord = comparisonsData?.data;
 
   const groups = useMemo(() => {

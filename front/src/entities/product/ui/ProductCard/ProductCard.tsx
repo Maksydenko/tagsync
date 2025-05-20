@@ -18,6 +18,7 @@ import { Checked } from "@/entities/indicator";
 
 import {
   cartOpenAtom,
+  comparisonsAtom,
   useInvalidateAtom,
   userAtom,
   wishlistAtom,
@@ -67,17 +68,10 @@ export const ProductCard: FC<ProductCardProps> = ({
     value: product_id,
   });
 
-  const { data: comparisonsData, isLoading: isComparisonsLoading } = useQuery({
-    enabled: !!userEmail,
-    queryFn: async () => {
-      if (!userEmail) {
-        return;
-      }
-
-      return ComparisonsService.get(userEmail);
-    },
-    queryKey: [QueryKey.Comparisons, userEmail],
-  });
+  const invalidateComparisons = useInvalidateAtom([QueryKey.Comparisons]);
+  const [{ data: comparisonsData, isLoading: isComparisonsLoading }] = useAtom(
+    comparisonsAtom(userEmail)
+  );
   const isInComparisons = isValueInSet({
     data: comparisonsData?.data[slug.toLocaleLowerCase()],
     key: "product_id",
@@ -156,8 +150,7 @@ export const ProductCard: FC<ProductCardProps> = ({
         });
       },
       mutationKey: [MutationKey.AddToComparisons],
-      onSuccess: async () =>
-        invalidateQueries(queryClient, [QueryKey.Comparisons]),
+      onSuccess: async () => invalidateComparisons(),
     });
 
   const { isPending: isAddToCartPending, mutate: addToCart } = useMutation({
