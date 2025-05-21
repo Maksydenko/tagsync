@@ -4,12 +4,10 @@ import { FC } from "react";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { clsx } from "clsx";
+import { useAtom } from "jotai";
 
-import { useQuery } from "@tanstack/react-query";
-
-import { ProductsService } from "@/features/products";
-
-import { Locale, Pathname, QueryKey, Translation } from "@/shared/model";
+import { categoriesAtom } from "@/shared/lib";
+import { Locale, Pathname, Translation } from "@/shared/model";
 import { Img } from "@/shared/ui";
 
 import { Copyright } from "./Copyright/Copyright";
@@ -24,10 +22,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
   const locale = useLocale() as Locale;
   const tShared = useTranslations(Translation.Shared);
 
-  const { data: categoriesData } = useQuery({
-    queryFn: async () => ProductsService.getCategories(),
-    queryKey: [QueryKey.Categories],
-  });
+  const [{ data: categoriesData }] = useAtom(categoriesAtom);
 
   return (
     <footer className={clsx(s.footer, className)}>

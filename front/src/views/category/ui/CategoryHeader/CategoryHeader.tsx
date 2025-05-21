@@ -4,13 +4,12 @@ import { FC, Suspense } from "react";
 import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { clsx } from "clsx";
-
-import { useQuery } from "@tanstack/react-query";
+import { useAtom } from "jotai";
 
 import { FilterBadges, Filters, IFilter, Sort } from "@/features/filters";
-import { ProductsService } from "@/features/products";
 
-import { ILink, Locale, Pathname, QueryKey, Translation } from "@/shared/model";
+import { categoriesAtom } from "@/shared/lib";
+import { ILink, Locale, Pathname, Translation } from "@/shared/model";
 import { Breadcrumbs, Btn, Popup } from "@/shared/ui";
 
 import s from "./CategoryHeader.module.scss";
@@ -30,10 +29,7 @@ export const CategoryHeader: FC<CategoryHeaderProps> = ({
   const tShared = useTranslations(Translation.Shared);
   const tCategory = useTranslations(Translation.Category);
 
-  const { data: categoriesData } = useQuery({
-    queryFn: async () => ProductsService.getCategories(),
-    queryKey: [QueryKey.Categories],
-  });
+  const [{ data: categoriesData }] = useAtom(categoriesAtom);
 
   const categories = categoriesData?.data;
   const categorySlug = pathname.split("/")[2];

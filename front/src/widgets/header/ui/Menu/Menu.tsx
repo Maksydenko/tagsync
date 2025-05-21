@@ -1,15 +1,14 @@
 import { FC } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { clsx } from "clsx";
-
-import { useQuery } from "@tanstack/react-query";
+import { useAtom } from "jotai";
 
 import { Cart } from "@/features/cart";
-import { ProductsService } from "@/features/products";
 
 import { User } from "@/entities/user";
 
-import { Locale, QueryKey, Translation } from "@/shared/model";
+import { categoriesAtom } from "@/shared/lib";
+import { Locale, Translation } from "@/shared/model";
 import { Dropdown, LocaleSwitcher, ThemeSwitcher } from "@/shared/ui";
 
 import { menuData } from "../../model";
@@ -30,10 +29,7 @@ export const Menu: FC<MenuProps> = ({ className, isScrollLocked, onClick }) => {
   const locale = useLocale() as Locale;
   const tShared = useTranslations(Translation.Shared);
 
-  const { data: categoriesData } = useQuery({
-    queryFn: async () => ProductsService.getCategories(),
-    queryKey: [QueryKey.Categories],
-  });
+  const [{ data: categoriesData }] = useAtom(categoriesAtom);
 
   const elements = (
     <div className={s.menu__elements}>

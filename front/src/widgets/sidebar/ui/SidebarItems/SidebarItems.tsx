@@ -1,22 +1,16 @@
 "use client";
 
 import { FC } from "react";
+import { useAtom } from "jotai";
 
-import { useQuery } from "@tanstack/react-query";
-
-import { ProductsService } from "@/features/products";
-
-import { QueryKey } from "@/shared/model";
+import { categoriesAtom } from "@/shared/lib";
 
 import { SidebarItem } from "./SidebarItem";
 
 import s from "../Sidebar.module.scss";
 
 export const SidebarItems: FC = () => {
-  const { data: categoriesData } = useQuery({
-    queryFn: async () => ProductsService.getCategories(),
-    queryKey: [QueryKey.Categories],
-  });
+  const [{ data: categoriesData }] = useAtom(categoriesAtom);
 
   return (
     <ul className={s.sidebar__list}>
