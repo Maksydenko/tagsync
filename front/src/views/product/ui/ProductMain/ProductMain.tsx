@@ -212,7 +212,9 @@ export const ProductMain: FC<ProductMainProps> = ({
               className={s.productMain__btn}
               disabled={isAddToComparisonsPending || isComparisonsLoading}
               type="button"
-              onClick={() => addToComparisons()}
+              onClick={() => {
+                addToComparisons();
+              }}
             >
               <Img
                 className={s.productMain__icon}
@@ -226,7 +228,9 @@ export const ProductMain: FC<ProductMainProps> = ({
               className={s.productMain__btn}
               disabled={isAddToWishlistPending || isWishlistLoading}
               type="button"
-              onClick={() => addToWishlist()}
+              onClick={() => {
+                addToWishlist();
+              }}
             >
               <Img
                 className={s.productMain__icon}

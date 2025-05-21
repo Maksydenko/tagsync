@@ -78,21 +78,27 @@ export const ProductCounter: FC<ProductCounterProps> = ({
             className={s.productCounter__btn}
             icon="/img/icons/form/minus.svg"
             type="button"
-            onClick={() => addToCart(CartAction.Remove)}
+            onClick={() => {
+              addToCart(CartAction.Remove);
+            }}
           />
           <p className={s.productCounter__value}>{quantity}</p>
           <Btn
             className={s.productCounter__btn}
             icon="/img/icons/form/plus.svg"
             type="button"
-            onClick={() => addToCart(CartAction.Add)}
+            onClick={() => {
+              addToCart(CartAction.Add);
+            }}
           />
         </div>
         <Btn
           className={s.productCounter__btn}
           icon="/img/icons/form/trash.svg"
           type="button"
-          onClick={() => addToCart(CartAction.Clear)}
+          onClick={() => {
+            addToCart(CartAction.Clear);
+          }}
         />
       </div>
     </div>
