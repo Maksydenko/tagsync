@@ -6,6 +6,7 @@ export * from "./fontSize.enum";
 export * from "./locale.enum";
 export * from "./mutationKey.enum";
 export * from "./pathname.enum";
+export * from "./percent.enum";
 export * from "./phase.enum";
 export * from "./protocol.enum";
 export * from "./queryKey.enum";

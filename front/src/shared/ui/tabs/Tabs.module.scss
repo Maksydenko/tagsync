@@ -1,0 +1,91 @@
+@use "@/application/styles/module" as m;
+
+.tabs {
+  // .tabs__titles
+
+  &__titles {
+    display: flex;
+    font-size: m.rem(16);
+  }
+
+  // .tabs__title
+
+  &__title {
+    flex: 1 1 auto;
+    height: m.rem(40);
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: m.rem(5);
+    transition: opacity 0.3s ease 0s;
+
+    @include m.centered(flex);
+
+    &:hover,
+    &:focus-visible {
+      opacity: 0.5;
+    }
+
+    &:not(:last-child) {
+      margin-right: m.rem(5);
+    }
+
+    > * {
+      display: block;
+      padding: 0 m.rem(4);
+      text-align: center;
+      @include m.textNowrap;
+    }
+
+    // .tabs__title_active
+
+    &_active {
+      cursor: default;
+      outline: m.rem(2) solid var(--mainColor);
+      outline-offset: m.rem(2);
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  // .tabs__contents
+
+  &__contents {
+  }
+
+  // .tabs__content
+
+  &__content {
+    padding: m.rem(10) 0;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  // .tabs_vertical
+
+  &_vertical {
+    display: flex;
+
+    .tabs__titles {
+      flex: 0 0 auto;
+      flex-direction: column;
+    }
+
+    .tabs__title {
+      flex: 0 0 auto;
+
+      > * {
+        @media (max-width: m.$mobile) {
+          max-inline-size: m.rem(45);
+        }
+      }
+    }
+
+    .tabs__content {
+      padding-inline-start: m.rem(10);
+    }
+  }
+}
