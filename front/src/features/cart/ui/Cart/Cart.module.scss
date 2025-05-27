@@ -95,6 +95,7 @@
 
     @include m.centered(flex);
 
+    /* stylelint-disable-next-line no-descending-specificity */
     .cart__btn {
       position: relative;
     }
