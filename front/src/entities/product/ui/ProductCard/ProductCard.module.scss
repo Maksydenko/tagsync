@@ -51,7 +51,11 @@
       transition: opacity 0.3s ease 0s;
 
       @include m.centered(flex);
-      @include m.hover;
+
+      &:hover,
+      &:focus-visible {
+        opacity: 0.5;
+      }
     }
 
     .productCard__icon {

@@ -34,11 +34,16 @@
     &:last-child {
       font-weight: 700;
     }
+  }
 
-    > a {
-      transition: opacity 0.3s ease 0s;
+  // .breadcrumbs__link
 
-      @include m.hover;
+  &__link {
+    transition: opacity 0.3s ease 0s;
+
+    &:hover,
+    &:focus-visible {
+      opacity: 0.5;
     }
   }
 }

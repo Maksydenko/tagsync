@@ -17,11 +17,13 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
   breadcrumbs,
   className,
 }) => (
-    <ul className={clsx(s.breadcrumbs, className)}>
-      {breadcrumbs.map(({ label, value }) => (
-          <li key={value} className={s.breadcrumbs__breadcrumb}>
-            <Link href={value}>{label}</Link>
-          </li>
-        ))}
-    </ul>
-  );
+  <ul className={clsx(s.breadcrumbs, className)}>
+    {breadcrumbs.map(({ label, value }) => (
+      <li key={value} className={s.breadcrumbs__breadcrumb}>
+        <Link className={s.breadcrumbs__link} href={value}>
+          {label}
+        </Link>
+      </li>
+    ))}
+  </ul>
+);

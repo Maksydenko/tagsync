@@ -118,12 +118,11 @@
 }
 
 %btn_hover {
-  @include mixins.hover(
-    (
-      color: var(--mainColor),
-      background: transparent,
-    )
-  );
+  &:hover,
+  &:focus-visible {
+    color: var(--mainBgColor);
+    background: transparent;
+  }
 }
 
 %btn_active {

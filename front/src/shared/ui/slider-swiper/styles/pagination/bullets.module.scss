@@ -25,11 +25,10 @@
         transition: opacity 0.3s ease 0s, width 0.3s ease 0s,
           height 0.3s ease 0s;
 
-        @include m.hover(
-          (
-            opacity: 0.4,
-          )
-        );
+        &:hover,
+        &:focus-visible {
+          opacity: 0.4;
+        }
       }
 
       &:global(.swiper-pagination-bullet-active) {

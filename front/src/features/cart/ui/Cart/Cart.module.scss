@@ -58,29 +58,28 @@
         background: m.$darkColor;
         border-color: m.$darkColor;
 
-        &:not([aria-disabled="true"]) {
-          @include m.hover(
-            (
-              color: m.$darkColor,
-              background: m.$lightColor,
-              border-color: m.$darkColor,
-            )
-          );
-        }
-      }
-
-      &:last-child {
-        color: m.$darkColor;
-        background: transparent;
-        border-color: m.$darkColor;
-
         &:not(:disabled) {
-          @include m.hover(
-            (
-              color: m.$lightColor,
-              background: m.$darkColor,
-            )
-          );
+          &:hover,
+          &:focus-visible {
+            color: m.$darkColor;
+            background: m.$lightColor;
+            border-color: m.$darkColor;
+          }
+        }
+
+        /* stylelint-disable-next-line no-descending-specificity */
+        &:last-child {
+          color: m.$darkColor;
+          background: transparent;
+          border-color: m.$darkColor;
+
+          &:not(:disabled) {
+            &:hover,
+            &:focus-visible {
+              color: m.$lightColor;
+              background: m.$darkColor;
+            }
+          }
         }
       }
     }

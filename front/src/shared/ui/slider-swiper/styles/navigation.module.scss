@@ -16,10 +16,14 @@
     transition: opacity 0.3s ease 0s;
 
     @include m.centered(flex);
-    @include m.hover;
 
     @media (max-width: m.$mobile) {
       font-size: m.rem(32);
+    }
+
+    &:hover,
+    &:focus-visible {
+      opacity: 0.5;
     }
 
     &:disabled {

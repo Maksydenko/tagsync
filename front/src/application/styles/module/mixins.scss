@@ -57,38 +57,6 @@
   }
 }
 
-// Hover
-@mixin hover(
-  $styles: (
-    opacity: 0.5,
-  ),
-  $focus: true
-) {
-  @media (hover: hover) {
-    &:hover {
-      @each $property, $value in $styles {
-        #{$property}: $value;
-      }
-    }
-  }
-
-  @media (hover: none) {
-    &:active {
-      @each $property, $value in $styles {
-        #{$property}: $value;
-      }
-    }
-  }
-
-  @if ($focus == true) {
-    &:focus-visible {
-      @each $property, $value in $styles {
-        #{$property}: $value;
-      }
-    }
-  }
-}
-
 // Themized property
 @mixin theme($property, $lightValue, $darkValue) {
   #html {

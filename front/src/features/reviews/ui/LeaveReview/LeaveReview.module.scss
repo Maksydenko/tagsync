@@ -32,13 +32,12 @@
     border-color: m.$darkColor;
 
     &:not(:disabled) {
-      @include m.hover(
-        (
-          color: m.$darkColor,
-          background: m.$lightColor,
-          border-color: m.$darkColor,
-        )
-      );
+      &:hover,
+      &:focus-visible {
+        color: m.$darkColor;
+        background: m.$lightColor;
+        border-color: m.$darkColor;
+      }
     }
   }
 }
