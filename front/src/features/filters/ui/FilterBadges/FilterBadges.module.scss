@@ -35,7 +35,8 @@
       content: "";
       background: var(--mainBgColor);
       border-radius: m.rem(4);
-      transition: rotate 0.3s ease 0s, background 0.3s ease 0s;
+      transition: 0.3s ease 0s;
+      transition-property: rotate, background;
     }
 
     &::before {

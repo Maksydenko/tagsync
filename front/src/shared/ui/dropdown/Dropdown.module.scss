@@ -39,7 +39,8 @@
   border-radius: m.rem(5);
   box-shadow: 0 m.rem(10) m.rem(15) m.rem(-3) rgba(0, 0, 0, 0.1),
     0 m.rem(4) m.rem(6) m.rem(-2) rgba(0, 0, 0, 0.1);
-  transition: scale 0.1s ease-out 0s, opacity 0.1s ease-out 0s;
+  transition: 0.1s ease-out 0s;
+  transition-property: scale, opacity;
 
   &[data-closed] {
     opacity: 0;
@@ -65,7 +66,8 @@
     display: flex;
     align-items: center;
     border-radius: m.rem(5);
-    transition: color 0.3s ease 0s, background 0.3s ease 0s;
+    transition: 0.3s ease 0s;
+    transition-property: color, background;
 
     // .dropdownItems__item_active
 

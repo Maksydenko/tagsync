@@ -114,7 +114,8 @@
   background: var(--mainColor);
   border: utils.em(2, 16) solid var(--mainColor);
   border-radius: utils.em(5, 16);
-  transition: color 0.3s ease 0s, background 0.3s ease 0s;
+  transition: 0.3s ease 0s;
+  transition-property: color, background;
 }
 
 %btn_hover {

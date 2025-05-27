@@ -53,7 +53,8 @@
     cursor: pointer;
     user-select: none;
     border-radius: m.rem(4);
-    transition: color 0.3s ease 0s, background 0.3s ease 0s;
+    transition: 0.3s ease 0s;
+    transition-property: color, background;
 
     &[data-focus] {
       color: m.$lightColor;

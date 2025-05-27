@@ -73,7 +73,8 @@
     gap: m.rem(8);
     align-items: center;
     border-radius: m.rem(8);
-    transition: color 0.3s ease 0s, background 0.3s ease 0s;
+    transition: 0.3s ease 0s;
+    transition-property: color, background;
 
     &[data-focus] {
       color: m.$lightColor;

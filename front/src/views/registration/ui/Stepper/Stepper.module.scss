@@ -68,7 +68,8 @@
             font-size: m.rem(14);
             font-weight: 700;
             color: var(--mainColor);
-            transition: color 0.3s ease 0s;
+            transition: 0.3s ease 0s;
+            transition-property: color, background;
           }
         }
       }

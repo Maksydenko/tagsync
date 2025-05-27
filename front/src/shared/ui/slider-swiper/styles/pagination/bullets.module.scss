@@ -22,8 +22,8 @@
         width: m.rem(8) !important;
         height: m.rem(8) !important;
         opacity: 0.8;
-        transition: opacity 0.3s ease 0s, width 0.3s ease 0s,
-          height 0.3s ease 0s;
+        transition: 0.3s ease 0s;
+        transition-property: width, height, opacity;
 
         &:hover,
         &:focus-visible {
