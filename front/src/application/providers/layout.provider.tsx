@@ -6,6 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
+import { ScrollTop } from "@/widgets/scroll-top";
 import { Sidebar } from "@/widgets/sidebar";
 
 import { Locale, montserrat, openSans, Phase } from "@/shared/model";
@@ -32,10 +33,11 @@ export const LayoutProvider: FC<LayoutProviderProps> = async ({
     <body>
       <Providers locale={locale}>
         <div className="layout">
-          <Header />
+          <Header className="layout__header" />
           <Sidebar className="layout__sidebar" />
+          <ScrollTop className="layout__scrollTop" />
           <main>{children}</main>
-          <Footer />
+          <Footer className="layout__footer" />
         </div>
         {process.env.NEXT_PUBLIC_PHASE !== Phase.Development && (
           <>

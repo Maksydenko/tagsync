@@ -1,0 +1,51 @@
+@use "@/application/styles/module" as m;
+
+.scrollTop {
+  position: fixed;
+  inset-block-end: m.em(40, 40);
+  inset-inline-end: m.rem(calc(m.$containerPadding / 2));
+  z-index: 90;
+  visibility: hidden;
+  font-size: m.rem(60);
+  opacity: 0;
+  transition: 0.3s ease 0s;
+  transition-property: opacity, visibility;
+
+  // .scroll-top_active
+
+  &_active {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  @media (max-width: m.$mobile) {
+    font-size: m.rem(40);
+  }
+
+  // .scrollTop__btn
+
+  &__btn {
+    inline-size: m.em(40, 40);
+    block-size: m.em(40, 40);
+    color: m.$lightColor;
+    background: var(--mainColor);
+    border-radius: m.em(4, 40);
+    transition: opacity 0.3s ease 0s;
+
+    @include m.centered(flex);
+
+    &:hover,
+    &:focus-visible {
+      opacity: 0.5;
+    }
+  }
+
+  // .scrollTop__icon
+
+  &__icon {
+    inline-size: m.em(24, 40);
+    aspect-ratio: 1;
+    filter: invert(var(--iconReverseInvert));
+    rotate: 180deg;
+  }
+}

@@ -4,13 +4,7 @@ import { useCallback, useState } from "react";
 
 import { useWindowListener } from "./useWindowListener";
 
-interface IUseActiveOnScroll {
-  (isActive: number): {
-    isActive: boolean;
-  };
-}
-
-export const useActiveOnScroll: IUseActiveOnScroll = (breakpoint) => {
+export const useActiveOnScroll = (breakpoint: number) => {
   const [isActive, setIsActive] = useState(false);
 
   const handleActiveOnScroll = useCallback(() => {
@@ -24,7 +18,5 @@ export const useActiveOnScroll: IUseActiveOnScroll = (breakpoint) => {
   }, [breakpoint]);
   useWindowListener("scroll", handleActiveOnScroll);
 
-  return {
-    isActive,
-  };
+  return isActive;
 };

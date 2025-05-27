@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@gsap/react": "^2.1.2",
     "@headlessui/react": "^2.2.2",
     "@supabase/auth-helpers-nextjs": "^0.10.0",
     "@supabase/auth-helpers-react": "^0.5.0",
@@ -21,7 +20,7 @@
     "@vercel/speed-insights": "^1.2.0",
     "axios": "^1.9.0",
     "clsx": "^2.1.1",
-    "gsap": "^3.13.0",
+    "framer-motion": "^12.15.0",
     "http-status-codes": "^2.3.0",
     "initials": "^3.1.2",
     "jotai": "^2.12.4",
@@ -61,7 +60,7 @@
     "sass": "^1.87.0",
     "stylelint": "^16.19.1",
     "stylelint-config-recess-order": "^6.0.0",
-    "stylelint-config-recommended-scss": "^14.1.0",
+    "stylelint-config-recommended-scss": "^15.0.1",
     "typescript": "^5.8.3"
   }
 }
