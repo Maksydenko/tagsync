@@ -27,7 +27,6 @@ interface CartProps {
 
 export const Cart: FC<CartProps> = ({ className }) => {
   const tShared = useTranslations(Translation.Shared);
-
   const [isOpen, setIsOpen] = useAtom(cartOpenAtom);
 
   const invalidateCart = useInvalidateAtom([QueryKey.Cart]);

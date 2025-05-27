@@ -25,8 +25,8 @@ export const CategoryHeader: FC<CategoryHeaderProps> = ({
   filtersData,
 }) => {
   const pathname = usePathname();
-
   const locale = useLocale() as Locale;
+
   const tShared = useTranslations(Translation.Shared);
   const tCategory = useTranslations(Translation.Category);
 
