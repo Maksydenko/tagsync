@@ -4,7 +4,7 @@ import { FC } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
-import { useAtom } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
 import { useForm } from "react-hook-form";
 
 import { useMutation } from "@tanstack/react-query";
@@ -44,7 +44,7 @@ export const ProductMain: FC<ProductMainProps> = ({
   const { push } = useRouter();
   const tShared = useTranslations(Translation.Shared);
 
-  const [, setIsOpen] = useAtom(cartOpenAtom);
+  const setIsOpen = useSetAtom(cartOpenAtom);
 
   const [{ data: userData, isLoading: isUserLoading }] = useAtom(userAtom);
   const userEmail = userData?.data.email;
