@@ -1,1 +1,1 @@
-export * from "./ui";
+export { UserWrapper } from "./ui/UserWrapper";
