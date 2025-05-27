@@ -126,6 +126,7 @@
     align-items: center;
     justify-content: space-between;
 
+    /* stylelint-disable-next-line no-descending-specificity */
     .productCard__btn {
       position: relative;
       z-index: 2;
