@@ -8,8 +8,8 @@ import { ProductsService } from "@/features/products";
 
 import { IProduct, ProductsSlider } from "@/entities/product";
 import { IReview } from "@/entities/review";
+import { userAtom } from "@/entities/user";
 
-import { userAtom } from "@/shared/lib";
 import { Translation } from "@/shared/model";
 
 import { Characteristics } from "./Characteristics/Characteristics";

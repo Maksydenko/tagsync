@@ -6,11 +6,12 @@ import { useAtom } from "jotai";
 
 import { useMutation } from "@tanstack/react-query";
 
-import { CartService, ICartProduct } from "@/features/cart";
+import { cartAtom, CartService, ICartProduct } from "@/features/cart";
 
 import { CartAction } from "@/entities/product";
+import { userAtom } from "@/entities/user";
 
-import { cartAtom, useInvalidateAtom, userAtom } from "@/shared/lib";
+import { useInvalidateAtom } from "@/shared/lib";
 import { MutationKey, QueryKey } from "@/shared/model";
 import { Btn } from "@/shared/ui";
 

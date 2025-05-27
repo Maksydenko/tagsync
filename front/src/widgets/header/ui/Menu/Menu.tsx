@@ -5,9 +5,9 @@ import { useAtom } from "jotai";
 
 import { Cart } from "@/features/cart";
 
+import { categoriesAtom } from "@/entities/product";
 import { User } from "@/entities/user";
 
-import { categoriesAtom } from "@/shared/lib";
 import { Locale, Translation } from "@/shared/model";
 import { Dropdown, LocaleSwitcher, ThemeSwitcher } from "@/shared/ui";
 

@@ -5,11 +5,12 @@ import { useRouter } from "next/navigation";
 import { clsx } from "clsx";
 import { useAtom } from "jotai";
 
+import { cartAtom } from "@/features/cart";
 import { CheckoutForm } from "@/features/orders";
 
 import { CartProduct } from "@/entities/product";
+import { userAtom } from "@/entities/user";
 
-import { cartAtom, userAtom } from "@/shared/lib";
 import { Pathname } from "@/shared/model";
 
 import s from "./Checkout.module.scss";

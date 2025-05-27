@@ -7,9 +7,9 @@ import { useAtom } from "jotai";
 
 import { ColumnDef } from "@tanstack/react-table";
 
-import { ProductCard } from "@/entities/product";
+import { comparisonsAtom, ProductCard } from "@/entities/product";
+import { userAtom } from "@/entities/user";
 
-import { comparisonsAtom, userAtom } from "@/shared/lib";
 import { ILink, Locale } from "@/shared/model";
 import { Loader } from "@/shared/ui";
 

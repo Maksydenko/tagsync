@@ -3,7 +3,7 @@
 import { FC } from "react";
 import { useAtom } from "jotai";
 
-import { categoriesAtom } from "@/shared/lib";
+import { categoriesAtom } from "@/entities/product";
 
 import { SidebarItem } from "./SidebarItem";
 

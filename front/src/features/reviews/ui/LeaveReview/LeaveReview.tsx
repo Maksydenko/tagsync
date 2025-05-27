@@ -11,8 +11,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AuthForm } from "@/features/auth";
 
 import { IProduct } from "@/entities/product";
+import { userAtom } from "@/entities/user";
 
-import { userAtom } from "@/shared/lib";
 import { MutationKey, QueryKey, Translation } from "@/shared/model";
 import { Btn, Popup } from "@/shared/ui";
 

@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import { clsx } from "clsx";
 import { useAtom } from "jotai";
 
-import { userAtom } from "@/shared/lib";
+import { userAtom } from "@/entities/user";
+
 import { Pathname } from "@/shared/model";
 import { Loader } from "@/shared/ui";
 

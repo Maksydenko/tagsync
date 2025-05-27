@@ -4,9 +4,9 @@ import { FC } from "react";
 import { clsx } from "clsx";
 import { useAtom } from "jotai";
 
-import { ProductCard } from "@/entities/product";
+import { ProductCard, wishlistAtom } from "@/entities/product";
+import { userAtom } from "@/entities/user";
 
-import { userAtom, wishlistAtom } from "@/shared/lib";
 import { Loader } from "@/shared/ui";
 
 import s from "./WishlistProducts.module.scss";

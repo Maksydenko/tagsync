@@ -9,17 +9,15 @@ import { useAtom } from "jotai";
 import { useMutation } from "@tanstack/react-query";
 
 import { CartProduct } from "@/entities/product";
+import { userAtom } from "@/entities/user";
 
-import {
-  cartAtom,
-  cartOpenAtom,
-  useInvalidateAtom,
-  userAtom,
-} from "@/shared/lib";
+import { useInvalidateAtom } from "@/shared/lib";
 import { MutationKey, Pathname, QueryKey, Translation } from "@/shared/model";
 import { Btn, Img, Popup } from "@/shared/ui";
 
 import { CartService } from "../../api";
+
+import { cartAtom, cartOpenAtom } from "../../model";
 
 import s from "./Cart.module.scss";
 

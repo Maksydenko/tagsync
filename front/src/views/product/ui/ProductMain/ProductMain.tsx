@@ -9,20 +9,15 @@ import { useForm } from "react-hook-form";
 
 import { useMutation } from "@tanstack/react-query";
 
-import { CartService } from "@/features/cart";
+import { cartAtom, cartOpenAtom, CartService } from "@/features/cart";
 import { ComparisonsService } from "@/features/comparisons";
 import { WishlistService } from "@/features/wishlist";
 
 import { Checked } from "@/entities/indicator";
-import { IProduct } from "@/entities/product";
+import { comparisonsAtom, IProduct, wishlistAtom } from "@/entities/product";
+import { userAtom } from "@/entities/user";
 
-import {
-  cartAtom,
-  comparisonsAtom,
-  useInvalidateAtom,
-  wishlistAtom,
-} from "@/shared/lib";
-import { cartOpenAtom, userAtom } from "@/shared/lib";
+import { useInvalidateAtom } from "@/shared/lib";
 import {
   formatPrice,
   isValueInSet,

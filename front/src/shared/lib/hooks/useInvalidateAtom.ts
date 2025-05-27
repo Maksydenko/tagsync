@@ -6,7 +6,7 @@ import { QueryKey } from "@/shared/model";
 export const useInvalidateAtom = (queryKeys: QueryKey[]) => {
   const [queryClient] = useAtom(queryClientAtom);
 
-  return async () => {
+  return async () =>
     await Promise.all(
       queryKeys.map((key) =>
         queryClient.invalidateQueries({
@@ -14,5 +14,4 @@ export const useInvalidateAtom = (queryKeys: QueryKey[]) => {
         })
       )
     );
-  };
 };

@@ -11,8 +11,9 @@ import { useMutation } from "@tanstack/react-query";
 
 import { AuthForm, AuthService } from "@/features/auth";
 
+import { userAtom } from "@/entities/user";
+
 import { useInvalidateAtom } from "@/shared/lib";
-import { userAtom } from "@/shared/lib";
 import { MutationKey, QueryKey, Translation } from "@/shared/model";
 import { Btn } from "@/shared/ui";
 

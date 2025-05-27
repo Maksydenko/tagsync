@@ -10,20 +10,14 @@ import { useForm } from "react-hook-form";
 
 import { useMutation } from "@tanstack/react-query";
 
-import { CartService } from "@/features/cart";
+import { cartAtom, cartOpenAtom, CartService } from "@/features/cart";
 import { ComparisonsService } from "@/features/comparisons";
 import { WishlistService } from "@/features/wishlist";
 
 import { Checked } from "@/entities/indicator";
+import { userAtom } from "@/entities/user";
 
-import {
-  cartAtom,
-  cartOpenAtom,
-  comparisonsAtom,
-  useInvalidateAtom,
-  userAtom,
-  wishlistAtom,
-} from "@/shared/lib";
+import { useInvalidateAtom } from "@/shared/lib";
 import {
   formatPrice,
   isValueInSet,
@@ -35,6 +29,8 @@ import {
 import { Btn, Img, Loader, Rating } from "@/shared/ui";
 
 import { IProduct } from "../../api";
+
+import { comparisonsAtom, wishlistAtom } from "../../model";
 
 import s from "./ProductCard.module.scss";
 

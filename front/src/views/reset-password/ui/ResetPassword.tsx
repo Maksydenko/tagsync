@@ -4,9 +4,11 @@ import { FC } from "react";
 import { useTranslations } from "next-intl";
 import { useAtom } from "jotai";
 
-import { authAtom } from "@/shared/lib";
-
-import { ForgotPasswordForm, ResetPasswordForm } from "@/features/auth";
+import {
+  authAtom,
+  ForgotPasswordForm,
+  ResetPasswordForm,
+} from "@/features/auth";
 
 import { Translation } from "@/shared/model";
 

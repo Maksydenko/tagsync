@@ -8,7 +8,8 @@ import { useQuery } from "@tanstack/react-query";
 
 import { OrdersService } from "@/features/orders";
 
-import { userAtom } from "@/shared/lib";
+import { userAtom } from "@/entities/user";
+
 import { QueryKey } from "@/shared/model";
 import { Collapse, Loader } from "@/shared/ui";
 

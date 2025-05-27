@@ -8,7 +8,8 @@ import { useAtom } from "jotai";
 
 import { FilterBadges, Filters, IFilter, Sort } from "@/features/filters";
 
-import { categoriesAtom } from "@/shared/lib";
+import { categoriesAtom } from "@/entities/product";
+
 import { ILink, Locale, Pathname, Translation } from "@/shared/model";
 import { Breadcrumbs, Btn, Popup } from "@/shared/ui";
 

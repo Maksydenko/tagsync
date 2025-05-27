@@ -6,7 +6,8 @@ import { useLocale, useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import { useAtom } from "jotai";
 
-import { categoriesAtom } from "@/shared/lib";
+import { categoriesAtom } from "@/entities/product";
+
 import { Locale, Pathname, Translation } from "@/shared/model";
 import { Img } from "@/shared/ui";
 

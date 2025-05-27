@@ -13,7 +13,6 @@ import { useMutation } from "@tanstack/react-query";
 import { AuthService } from "@/features/auth";
 
 import { useInvalidateAtom } from "@/shared/lib";
-import { userAtom } from "@/shared/lib";
 import {
   MutationKey,
   Pathname,
@@ -22,6 +21,8 @@ import {
   userData as userLinksData,
 } from "@/shared/model";
 import { Dropdown, Img, Loader } from "@/shared/ui";
+
+import { userAtom } from "../../model";
 
 import s from "./User.module.scss";
 
