@@ -29,16 +29,18 @@ export const Cart: FC<CartProps> = ({ className }) => {
   const tShared = useTranslations(Translation.Shared);
   const [isOpen, setIsOpen] = useAtom(cartOpenAtom);
 
-  const invalidateCart = useInvalidateAtom([QueryKey.Cart]);
   const [{ data: userData }] = useAtom(userAtom);
   const userEmail = userData?.data.email;
 
   const [{ data: cartData, isLoading: isCartLoading }] = useAtom(
     cartAtom(userEmail)
   );
+
   const cart = cartData?.data;
   const cartItems = cart?.items;
   const cartTotalQuantity = cart?.total_quantity;
+
+  const invalidateCart = useInvalidateAtom([QueryKey.Cart]);
 
   const { mutate: clearCart } = useMutation({
     mutationFn: async () => {
