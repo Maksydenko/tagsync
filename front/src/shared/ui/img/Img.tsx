@@ -23,6 +23,7 @@ export const Img: FC<ImgProps> = ({
   isSvg,
   quality = 75,
   sizes = "(min-width: 0) 100vw",
+  src,
   style,
   width,
   ...props
@@ -32,25 +33,30 @@ export const Img: FC<ImgProps> = ({
 
   return (
     <div className={clsx(s.img, isSvg && s.img_svg, className)} style={style}>
-      {isLoading && customLoader}
-      <Image
-        alt={alt}
-        quality={quality}
-        {...(width && height
-          ? {
-              height: +height * 2,
-              width: +width * 2,
-            }
-          : {
-              fill,
-              sizes,
-            })}
-        ref={imgRef}
-        onLoad={() => {
-          setIsLoading(false);
-        }}
-        {...props}
-      />
+      {src && (
+        <>
+          {isLoading && customLoader}
+          <Image
+            alt={alt}
+            quality={quality}
+            src={src}
+            {...(width && height
+              ? {
+                  height: +height * 2,
+                  width: +width * 2,
+                }
+              : {
+                  fill,
+                  sizes,
+                })}
+            ref={imgRef}
+            onLoad={() => {
+              setIsLoading(false);
+            }}
+            {...props}
+          />
+        </>
+      )}
     </div>
   );
 };
