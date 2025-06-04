@@ -38,7 +38,6 @@ export const Footer: FC<FooterProps> = ({ className }) => {
                   height={35}
                   src="/img/logos/logo.png"
                   width={70}
-                  isPriority
                   isSvg
                 />
                 <p>TagSync</p>

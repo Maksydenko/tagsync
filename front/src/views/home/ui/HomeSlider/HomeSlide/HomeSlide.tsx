@@ -21,7 +21,7 @@ export const HomeSlide: FC<HomeSlideProps> = ({ className, slide }) => {
       <div className={s.homeSlide__body}>
         <Img
           className={s.homeSlide__img}
-          loader={<Loader className={s.homeSlide__loader} />}
+          customLoader={<Loader className={s.homeSlide__loader} />}
           quality={90}
           src={`/img/home/${locale}/${slide}.png`}
         />

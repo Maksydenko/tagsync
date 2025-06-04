@@ -80,8 +80,8 @@ export const Header: FC<HeaderProps> = ({ className }) => {
               height={35}
               src="/img/logos/logo.png"
               width={70}
-              isPriority
               isSvg
+              priority
             />
             <p>TagSync</p>
           </Link>

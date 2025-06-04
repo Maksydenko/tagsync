@@ -39,8 +39,8 @@ export const ProductSliders: FC<ProductSlidersProps> = ({
               <Img
                 alt={title}
                 className={s.productSliders__img}
+                customLoader={loader}
                 height={735}
-                loader={loader}
                 src={img}
                 width={735}
               />
@@ -55,14 +55,15 @@ export const ProductSliders: FC<ProductSlidersProps> = ({
           <SliderSwiper
             autoHeight={false}
             className={s.productSliders__slider}
-            slides={images?.map((img) => ({
+            slides={images?.map((img, index) => ({
               label: img,
               value: (
                 <Img
                   alt={title}
                   className={s.productSliders__img}
+                  customLoader={loader}
                   height={172}
-                  loader={loader}
+                  priority={index === 0}
                   src={img}
                   width={172}
                 />

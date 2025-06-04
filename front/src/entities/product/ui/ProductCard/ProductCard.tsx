@@ -223,7 +223,7 @@ export const ProductCard: FC<ProductCardProps> = ({
         <Img
           alt={title}
           className={s.productCard__img}
-          loader={<Loader />}
+          customLoader={<Loader />}
           src={images?.[0]}
         />
         <div className={s.productCard__content}>

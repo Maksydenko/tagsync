@@ -27,8 +27,8 @@ export const OrderCard: FC<OrderCardProps> = ({
               <Img
                 alt={product_title}
                 className={s.orderCard__img}
+                customLoader={<Loader />}
                 height={120}
-                loader={<Loader />}
                 src={images?.[0]}
                 width={120}
               />
