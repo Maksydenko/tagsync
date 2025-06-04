@@ -7,17 +7,20 @@ import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import { useAtom, useSetAtom } from "jotai";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 
 import { useMutation } from "@tanstack/react-query";
 
-import { cartAtom, cartOpenAtom, CartService } from "@/features/cart";
+import { addToLocalCart } from "@/application/store";
+
 import { ComparisonsService } from "@/features/comparisons";
 import { WishlistService } from "@/features/wishlist";
 
+import { cartAtom, cartOpenAtom, CartService } from "@/entities/cart";
 import { Checked } from "@/entities/indicator";
 import { userAtom } from "@/entities/user";
 
-import { useInvalidateAtom } from "@/shared/lib";
+import { useInvalidateAtom, useTypedSelector } from "@/shared/lib";
 import {
   formatPrice,
   isValueInSet,
@@ -43,8 +46,11 @@ interface ProductCardProps {
 export const ProductCard: FC<ProductCardProps> = ({
   className,
   isStable,
-  productData: { average_rating, images, price, product_id, slug, title },
+  productData,
 }) => {
+  const { average_rating, images, price, product_id, slug, title } =
+    productData;
+
   const { push } = useRouter();
   const tShared = useTranslations(Translation.Shared);
 
@@ -77,8 +83,12 @@ export const ProductCard: FC<ProductCardProps> = ({
   const [{ data: cartData, isLoading: isCartLoading }] = useAtom(
     cartAtom(userEmail)
   );
+  const localCart = useTypedSelector(({ localCart }) => localCart);
+  const dispatch = useDispatch();
+
+  const cart = cartData?.data ?? localCart;
   const isInCart = isValueInSet({
-    data: cartData?.data.items,
+    data: cart.items,
     key: "product_id",
     value: product_id,
   });
@@ -148,9 +158,7 @@ export const ProductCard: FC<ProductCardProps> = ({
       }
 
       if (!userData) {
-        push(Pathname.Login);
-
-        throw new Error();
+        return dispatch(addToLocalCart(productData));
       }
 
       return CartService.add({
@@ -160,7 +168,13 @@ export const ProductCard: FC<ProductCardProps> = ({
       });
     },
     mutationKey: [MutationKey.AddToCart],
-    onSuccess: async () => invalidateCart(),
+    onSuccess: async () => {
+      if (!userData) {
+        return;
+      }
+
+      await invalidateCart();
+    },
   });
 
   const form = useForm({

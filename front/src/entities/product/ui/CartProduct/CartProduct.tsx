@@ -2,7 +2,7 @@ import { FC } from "react";
 import Link from "next/link";
 import { clsx } from "clsx";
 
-import { ICartProduct } from "@/features/cart";
+import { ICartProduct } from "@/entities/cart";
 
 import { formatPrice } from "@/shared/model";
 import { Img } from "@/shared/ui";

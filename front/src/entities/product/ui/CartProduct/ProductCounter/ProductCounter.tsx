@@ -3,15 +3,21 @@
 import { FC } from "react";
 import { clsx } from "clsx";
 import { useAtom } from "jotai";
+import { useDispatch } from "react-redux";
 
 import { useMutation } from "@tanstack/react-query";
 
-import { cartAtom, CartService, ICartProduct } from "@/features/cart";
+import {
+  decrementLocalCartQuantity,
+  incrementLocalCartQuantity,
+  removeFromLocalCart,
+} from "@/application/store";
 
+import { cartAtom, CartService, ICartProduct } from "@/entities/cart";
 import { CartAction } from "@/entities/product";
 import { userAtom } from "@/entities/user";
 
-import { useInvalidateAtom } from "@/shared/lib";
+import { useInvalidateAtom, useTypedSelector } from "@/shared/lib";
 import { MutationKey, QueryKey } from "@/shared/model";
 import { Btn } from "@/shared/ui";
 
@@ -29,13 +35,18 @@ export const ProductCounter: FC<ProductCounterProps> = ({
   const [{ data: userData }] = useAtom(userAtom);
   const userEmail = userData?.data.email;
 
-  const invalidateCart = useInvalidateAtom([QueryKey.Cart]);
   const [{ data: cartData }] = useAtom(cartAtom(userEmail));
-  const cartItems = cartData?.data.items;
+  const localCart = useTypedSelector(({ localCart }) => localCart);
+
+  const cart = cartData?.data ?? localCart;
+  const cartItems = cart?.items;
+
+  const invalidateCart = useInvalidateAtom([QueryKey.Cart]);
+  const dispatch = useDispatch();
 
   const { mutate: addToCart } = useMutation({
     mutationFn: async (method: CartAction) => {
-      if (!userEmail || !cartItems) {
+      if (!cartItems) {
         return;
       }
 
@@ -43,32 +54,54 @@ export const ProductCounter: FC<ProductCounterProps> = ({
         (item) => item.product_id === product_id
       )!.quantity;
 
+      if (userEmail) {
+        switch (method) {
+          case CartAction.Add:
+            await CartService.add({
+              product_id,
+              quantity: 1,
+              userEmail,
+            });
+            break;
+          case CartAction.Clear:
+            await CartService.remove({
+              product_id,
+              quantity,
+              userEmail,
+            });
+            break;
+          case CartAction.Remove:
+            await CartService.remove({
+              product_id,
+              quantity: 1,
+              userEmail,
+            });
+            break;
+        }
+
+        return;
+      }
+
       switch (method) {
         case CartAction.Add:
-          await CartService.add({
-            product_id,
-            quantity: 1,
-            userEmail,
-          });
+          dispatch(incrementLocalCartQuantity(product_id));
           break;
         case CartAction.Clear:
-          await CartService.remove({
-            product_id,
-            quantity,
-            userEmail,
-          });
+          dispatch(removeFromLocalCart(product_id));
           break;
         case CartAction.Remove:
-          await CartService.remove({
-            product_id,
-            quantity: 1,
-            userEmail,
-          });
+          dispatch(decrementLocalCartQuantity(product_id));
           break;
       }
     },
     mutationKey: [MutationKey.AddToCart],
-    onSuccess: async () => invalidateCart(),
+    onSuccess: async () => {
+      if (!userEmail) {
+        return;
+      }
+
+      await invalidateCart();
+    },
   });
 
   return (

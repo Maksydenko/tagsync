@@ -5,13 +5,16 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import { useAtom } from "jotai";
+import { useDispatch } from "react-redux";
 
 import { useMutation } from "@tanstack/react-query";
+
+import { clearLocalCart } from "@/application/store";
 
 import { CartProduct } from "@/entities/product";
 import { userAtom } from "@/entities/user";
 
-import { useInvalidateAtom } from "@/shared/lib";
+import { useInvalidateAtom, useTypedSelector } from "@/shared/lib";
 import { MutationKey, Pathname, QueryKey, Translation } from "@/shared/model";
 import { Btn, Img, Popup } from "@/shared/ui";
 
@@ -27,7 +30,7 @@ interface CartProps {
 
 export const Cart: FC<CartProps> = ({ className }) => {
   const tShared = useTranslations(Translation.Shared);
-  const [isOpen, setIsOpen] = useAtom(cartOpenAtom);
+  const [isCartOpen, setIsCartOpen] = useAtom(cartOpenAtom);
 
   const [{ data: userData }] = useAtom(userAtom);
   const userEmail = userData?.data.email;
@@ -35,27 +38,32 @@ export const Cart: FC<CartProps> = ({ className }) => {
   const [{ data: cartData, isLoading: isCartLoading }] = useAtom(
     cartAtom(userEmail)
   );
+  const localCart = useTypedSelector(({ localCart }) => localCart);
 
-  const cart = cartData?.data;
+  const cart = cartData?.data ?? localCart;
   const cartItems = cart?.items;
   const cartTotalQuantity = cart?.total_quantity;
 
   const invalidateCart = useInvalidateAtom([QueryKey.Cart]);
+  const dispatch = useDispatch();
 
   const { mutate: clearCart } = useMutation({
     mutationFn: async () => {
-      if (!userEmail) {
-        return;
+      if (userEmail) {
+        return CartService.clear({
+          userEmail,
+        });
       }
 
-      return CartService.clear({
-        userEmail,
-      });
+      dispatch(clearLocalCart());
     },
     mutationKey: [MutationKey.CartClear],
     onSuccess: async () => {
-      await invalidateCart();
-      setIsOpen(false);
+      if (userEmail) {
+        await invalidateCart();
+      }
+
+      setIsCartOpen(false);
     },
   });
 
@@ -71,8 +79,8 @@ export const Cart: FC<CartProps> = ({ className }) => {
           </div>
         }
         className={s.cart__popup}
-        forceOpen={isCartLoading ? false : isOpen}
-        setForceOpen={setIsOpen}
+        forceOpen={isCartLoading ? false : isCartOpen}
+        setForceOpen={setIsCartOpen}
       >
         <div className={s.cart__body}>
           <h2 className={s.cart__title}>{tShared("cart.title")}</h2>
@@ -96,7 +104,7 @@ export const Cart: FC<CartProps> = ({ className }) => {
                     return e.preventDefault();
                   }
 
-                  setIsOpen(false);
+                  setIsCartOpen(false);
                 }}
               >
                 {tShared("cart.btns.checkout")}

@@ -5,9 +5,9 @@ import { useRouter } from "next/navigation";
 import { clsx } from "clsx";
 import { useAtom } from "jotai";
 
-import { cartAtom } from "@/features/cart";
 import { CheckoutForm } from "@/features/orders";
 
+import { cartAtom } from "@/entities/cart";
 import { CartProduct } from "@/entities/product";
 import { userAtom } from "@/entities/user";
 
@@ -28,7 +28,7 @@ export const Checkout: FC<CheckoutProps> = ({ className }) => {
   const cartItems = cartData?.data.items;
 
   useEffect(() => {
-    if (isUserLoading || userData) {
+    if (userData || isUserLoading) {
       return;
     }
 

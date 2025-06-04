@@ -6,18 +6,21 @@ import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import { useAtom, useSetAtom } from "jotai";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 
 import { useMutation } from "@tanstack/react-query";
 
-import { cartAtom, cartOpenAtom, CartService } from "@/features/cart";
+import { addToLocalCart } from "@/application/store";
+
 import { ComparisonsService } from "@/features/comparisons";
 import { WishlistService } from "@/features/wishlist";
 
+import { cartAtom, cartOpenAtom, CartService } from "@/entities/cart";
 import { Checked } from "@/entities/indicator";
 import { comparisonsAtom, IProduct, wishlistAtom } from "@/entities/product";
 import { userAtom } from "@/entities/user";
 
-import { useInvalidateAtom } from "@/shared/lib";
+import { useInvalidateAtom, useTypedSelector } from "@/shared/lib";
 import {
   formatPrice,
   isValueInSet,
@@ -38,13 +41,15 @@ interface ProductMainProps {
 
 export const ProductMain: FC<ProductMainProps> = ({
   className,
-  productData: { average_rating, price, product_id, slug, title },
+  productData,
   reviewsLength,
 }) => {
+  const { average_rating, price, product_id, slug, title } = productData;
+
   const { push } = useRouter();
   const tShared = useTranslations(Translation.Shared);
 
-  const setIsOpen = useSetAtom(cartOpenAtom);
+  const setIsCartOpen = useSetAtom(cartOpenAtom);
 
   const [{ data: userData, isLoading: isUserLoading }] = useAtom(userAtom);
   const userEmail = userData?.data.email;
@@ -79,8 +84,13 @@ export const ProductMain: FC<ProductMainProps> = ({
   const [{ data: cartData, isLoading: isCartLoading }] = useAtom(
     cartAtom(userEmail)
   );
+  const localCart = useTypedSelector(({ localCart }) => localCart);
+  const dispatch = useDispatch();
+
+  const cart = cartData?.data ?? localCart;
+  const cartItems = cart?.items;
   const isInCart = isValueInSet({
-    data: cartData?.data.items,
+    data: cartItems,
     key: "product_id",
     value: product_id,
   });
@@ -150,9 +160,7 @@ export const ProductMain: FC<ProductMainProps> = ({
       }
 
       if (!userData) {
-        push(Pathname.Login);
-
-        throw new Error();
+        return dispatch(addToLocalCart(productData));
       }
 
       return CartService.add({
@@ -162,7 +170,13 @@ export const ProductMain: FC<ProductMainProps> = ({
       });
     },
     mutationKey: [MutationKey.AddToCart],
-    onSuccess: async () => invalidateCart(),
+    onSuccess: async () => {
+      if (!userData) {
+        return;
+      }
+
+      await invalidateCart();
+    },
   });
 
   return (
@@ -193,7 +207,7 @@ export const ProductMain: FC<ProductMainProps> = ({
             isLoading={isAddToCartPending}
             onClick={() => {
               if (isInCart) {
-                return setIsOpen(true);
+                return setIsCartOpen(true);
               }
 
               addToCart();

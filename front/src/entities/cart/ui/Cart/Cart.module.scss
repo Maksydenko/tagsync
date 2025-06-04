@@ -66,19 +66,19 @@
             border-color: m.$darkColor;
           }
         }
+      }
 
-        /* stylelint-disable-next-line no-descending-specificity */
-        &:last-child {
-          color: m.$darkColor;
-          background: transparent;
-          border-color: m.$darkColor;
+      /* stylelint-disable-next-line no-descending-specificity */
+      &:last-child {
+        color: m.$darkColor;
+        background: transparent;
+        border-color: m.$darkColor;
 
-          &:not(:disabled) {
-            &:hover,
-            &:focus-visible {
-              color: m.$lightColor;
-              background: m.$darkColor;
-            }
+        &:not(:disabled) {
+          &:hover,
+          &:focus-visible {
+            color: m.$lightColor;
+            background: m.$darkColor;
           }
         }
       }

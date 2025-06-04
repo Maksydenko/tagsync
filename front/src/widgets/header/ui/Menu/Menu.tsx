@@ -3,8 +3,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import { useAtom } from "jotai";
 
-import { Cart } from "@/features/cart";
-
+import { Cart } from "@/entities/cart";
 import { categoriesAtom } from "@/entities/product";
 import { User } from "@/entities/user";
 

@@ -6,13 +6,18 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 
 import { AuthError } from "@supabase/supabase-js";
 import { useMutation } from "@tanstack/react-query";
 
+import { clearLocalCart } from "@/application/store";
+
 import { AuthForm, AuthService } from "@/features/auth";
 
-import { useInvalidateAtom } from "@/shared/lib";
+import { CartService } from "@/entities/cart";
+
+import { useInvalidateAtom, useTypedSelector } from "@/shared/lib";
 import {
   ErrorCode,
   MutationKey,
@@ -35,7 +40,12 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
   const { push } = useRouter();
 
   const tShared = useTranslations(Translation.Shared);
+
+  const localCart = useTypedSelector(({ localCart }) => localCart);
+  const dispatch = useDispatch();
+
   const invalidateUser = useInvalidateAtom([QueryKey.User]);
+  const invalidateCart = useInvalidateAtom([QueryKey.Cart]);
 
   const form = useForm<ILoginForm>({
     mode: "onChange",
@@ -48,6 +58,8 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
       if (error) {
         throw error;
       }
+
+      return data.email;
     },
     mutationKey: [MutationKey.Login],
     onError: (error: AuthError) => {
@@ -63,10 +75,26 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
       setSubmissionMessage(errorMessage);
       console.warn(error);
     },
-    onSuccess: async () => {
+    onSuccess: async (data) => {
       sessionStorage.removeItem(MutationKey.Credentials);
       await invalidateUser();
 
+      const userCart = await CartService.get(data);
+
+      if (!userCart.data.items.length && localCart.items.length) {
+        localCart.items.map(
+          async (item) =>
+            await CartService.add({
+              product_id: item.product_id,
+              quantity: item.quantity,
+              userEmail: data,
+            })
+        );
+
+        await invalidateCart();
+      }
+
+      dispatch(clearLocalCart());
       push(Pathname.Home);
     },
   });

@@ -4,7 +4,7 @@ import { atomWithQuery } from "jotai-tanstack-query";
 
 import { queryOptions } from "@tanstack/react-query";
 
-import { CartService } from "@/features/cart";
+import { CartService } from "@/entities/cart";
 
 import { QueryKey } from "@/shared/model";
 
