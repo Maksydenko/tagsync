@@ -10,11 +10,11 @@ import { Locale } from "@/shared/model";
 // an invalid value as the `[locale]` param and calls `notFound()`.
 
 const GlobalNotFound = () => (
-    <html lang={Locale.Default}>
-      <body>
-        <Error statusCode={StatusCodes.NOT_FOUND} />;
-      </body>
-    </html>
-  );
+  <html lang={Locale.Default}>
+    <body>
+      <Error statusCode={StatusCodes.NOT_FOUND} />;
+    </body>
+  </html>
+);
 
 export default GlobalNotFound;

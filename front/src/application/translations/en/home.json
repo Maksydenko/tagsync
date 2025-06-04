@@ -1,5 +1,6 @@
 {
   "home": {
+    "title": "Home",
     "recommendations": {
       "viewed": "Viewed products",
       "popular": "Popular products",

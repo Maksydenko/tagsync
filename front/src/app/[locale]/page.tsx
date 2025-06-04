@@ -1,11 +1,11 @@
 import { NextPage } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import Home from "@/views/home";
 
 import { RecommendationsService } from "@/features/recommendations/api/recommendations.service";
 
-import { IParams } from "@/shared/model";
+import { IPageProps, IParams, Translation } from "@/shared/model";
 
 interface HomePageProps {
   params: Promise<IParams>;
@@ -34,3 +34,16 @@ const HomePage: NextPage<HomePageProps> = async (props) => {
 };
 
 export default HomePage;
+
+export const generateMetadata = async ({ params }: IPageProps) => {
+  const { locale } = await params;
+  const tHome = await getTranslations({
+    locale,
+    namespace: Translation.Home,
+  });
+
+  return {
+    revalidate: process.env.REVALIDATE_TIMEOUT,
+    title: tHome("title"),
+  };
+};

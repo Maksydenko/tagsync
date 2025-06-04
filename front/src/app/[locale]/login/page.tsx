@@ -1,9 +1,9 @@
 import { NextPage } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import Login from "@/views/login";
 
-import { IParams } from "@/shared/model";
+import { IPageProps, IParams, Translation } from "@/shared/model";
 
 interface LoginPageProps {
   params: Promise<IParams>;
@@ -19,3 +19,16 @@ const LoginPage: NextPage<LoginPageProps> = async (props) => {
 };
 
 export default LoginPage;
+
+export const generateMetadata = async ({ params }: IPageProps) => {
+  const { locale } = await params;
+  const tLogin = await getTranslations({
+    locale,
+    namespace: Translation.Login,
+  });
+
+  return {
+    revalidate: process.env.REVALIDATE_TIMEOUT,
+    title: tLogin("title"),
+  };
+};

@@ -1,9 +1,9 @@
 import { NextPage } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import Orders from "@/views/orders";
 
-import { IPageProps } from "@/shared/model";
+import { IPageProps, Translation } from "@/shared/model";
 
 const OrdersPage: NextPage<IPageProps> = async (props) => {
   const params = await props.params;
@@ -15,3 +15,16 @@ const OrdersPage: NextPage<IPageProps> = async (props) => {
 };
 
 export default OrdersPage;
+
+export const generateMetadata = async ({ params }: IPageProps) => {
+  const { locale } = await params;
+  const tShared = await getTranslations({
+    locale,
+    namespace: Translation.Shared,
+  });
+
+  return {
+    revalidate: process.env.REVALIDATE_TIMEOUT,
+    title: tShared("user.orders"),
+  };
+};

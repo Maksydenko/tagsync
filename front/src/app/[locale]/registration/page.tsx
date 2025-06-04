@@ -1,9 +1,9 @@
 import { NextPage } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import Registration from "@/views/registration";
 
-import { IParams } from "@/shared/model";
+import { IPageProps, IParams, Translation } from "@/shared/model";
 
 interface RegistrationPageProps {
   params: Promise<IParams>;
@@ -19,3 +19,16 @@ const RegistrationPage: NextPage<RegistrationPageProps> = async (props) => {
 };
 
 export default RegistrationPage;
+
+export const generateMetadata = async ({ params }: IPageProps) => {
+  const { locale } = await params;
+  const tRegistration = await getTranslations({
+    locale,
+    namespace: Translation.Registration,
+  });
+
+  return {
+    revalidate: process.env.REVALIDATE_TIMEOUT,
+    title: tRegistration("title"),
+  };
+};
