@@ -75,20 +75,21 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
       setSubmissionMessage(errorMessage);
       console.warn(error);
     },
-    onSuccess: async (data) => {
+    onSuccess: async (userEmail) => {
       sessionStorage.removeItem(MutationKey.Credentials);
       await invalidateUser();
 
-      const userCart = await CartService.get(data);
+      const userCart = await CartService.get(userEmail);
 
       if (!userCart.data.items.length && localCart.items.length) {
-        localCart.items.map(
-          async (item) =>
-            await CartService.add({
+        await Promise.all(
+          localCart.items.map((item) =>
+            CartService.add({
               product_id: item.product_id,
               quantity: item.quantity,
-              userEmail: data,
+              userEmail,
             })
+          )
         );
 
         await invalidateCart();
