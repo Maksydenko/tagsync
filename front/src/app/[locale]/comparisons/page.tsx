@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import Comparisons from "@/views/comparisons";
 
+import { generateMetaTitle } from "@/shared/lib";
 import { IPageProps, Translation } from "@/shared/model";
 
 const ComparisonsPage: NextPage<IPageProps> = async (props) => {
@@ -25,6 +26,6 @@ export const generateMetadata = async ({ params }: IPageProps) => {
 
   return {
     revalidate: process.env.REVALIDATE_TIMEOUT,
-    title: tShared("user.comparisons"),
+    title: generateMetaTitle(tShared("user.comparisons")),
   };
 };

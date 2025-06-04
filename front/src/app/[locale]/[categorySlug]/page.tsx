@@ -45,9 +45,12 @@ export const generateMetadata = async ({ params }: IPageProps) => {
   const filtersData = await ProductsService.getFiltered(
     `?category=${categorySlug}&limit=1`
   );
+  const categoryTitle = filtersData.data.products[0].translations_slug[locale];
 
   return {
+    description: categoryTitle,
+    keywords: categoryTitle.split(" ").join(","),
     revalidate: process.env.REVALIDATE_TIMEOUT,
-    title: filtersData?.data.products[0].translations_slug[locale],
+    title: categoryTitle,
   };
 };

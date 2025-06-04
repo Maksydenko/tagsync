@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import Login from "@/views/login";
 
+import { generateMetaTitle } from "@/shared/lib";
 import { IPageProps, IParams, Translation } from "@/shared/model";
 
 interface LoginPageProps {
@@ -29,6 +30,6 @@ export const generateMetadata = async ({ params }: IPageProps) => {
 
   return {
     revalidate: process.env.REVALIDATE_TIMEOUT,
-    title: tLogin("title"),
+    title: generateMetaTitle(tLogin("title")),
   };
 };

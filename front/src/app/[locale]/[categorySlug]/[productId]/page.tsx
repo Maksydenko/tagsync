@@ -9,6 +9,7 @@ import { ProductsService } from "@/features/products";
 import { RecommendationsService } from "@/features/recommendations";
 import { ReviewsService } from "@/features/reviews";
 
+import { generateMetaTitle } from "@/shared/lib";
 import { IPageProps } from "@/shared/model";
 
 const ProductPage: NextPage<IPageProps> = async (props) => {
@@ -52,9 +53,12 @@ export default ProductPage;
 export const generateMetadata = async ({ params }: IPageProps) => {
   const { productId } = await params;
   const productData = await ProductsService.getAll(`?product_id=${productId}`);
+  const productTitle = productData.data.products?.[0].title;
 
   return {
+    description: productTitle,
+    keywords: productTitle.split(" ").join(","),
     revalidate: process.env.REVALIDATE_TIMEOUT,
-    title: productData.data.products?.[0].title,
+    title: generateMetaTitle(productTitle),
   };
 };

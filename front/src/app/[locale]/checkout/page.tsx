@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import Checkout from "@/views/checkout";
 
+import { generateMetaTitle } from "@/shared/lib";
 import { IPageProps, IParams, Translation } from "@/shared/model";
 
 interface CheckoutPageProps {
@@ -29,6 +30,6 @@ export const generateMetadata = async ({ params }: IPageProps) => {
 
   return {
     revalidate: process.env.REVALIDATE_TIMEOUT,
-    title: tShared("cart.btns.checkout"),
+    title: generateMetaTitle(tShared("cart.btns.checkout")),
   };
 };

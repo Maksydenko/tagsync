@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import Orders from "@/views/orders";
 
+import { generateMetaTitle } from "@/shared/lib";
 import { IPageProps, Translation } from "@/shared/model";
 
 const OrdersPage: NextPage<IPageProps> = async (props) => {
@@ -25,6 +26,6 @@ export const generateMetadata = async ({ params }: IPageProps) => {
 
   return {
     revalidate: process.env.REVALIDATE_TIMEOUT,
-    title: tShared("user.orders"),
+    title: generateMetaTitle(tShared("user.orders")),
   };
 };

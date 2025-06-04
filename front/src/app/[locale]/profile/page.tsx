@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import Profile from "@/views/profile";
 
+import { generateMetaTitle } from "@/shared/lib";
 import { IPageProps, Translation } from "@/shared/model";
 
 const ProfilePage: NextPage<IPageProps> = async (props) => {
@@ -25,6 +26,6 @@ export const generateMetadata = async ({ params }: IPageProps) => {
 
   return {
     revalidate: process.env.REVALIDATE_TIMEOUT,
-    title: tShared("user.profile"),
+    title: generateMetaTitle(tShared("user.profile")),
   };
 };

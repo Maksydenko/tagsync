@@ -5,6 +5,7 @@ import Home from "@/views/home";
 
 import { RecommendationsService } from "@/features/recommendations/api/recommendations.service";
 
+import { generateMetaTitle } from "@/shared/lib";
 import { IPageProps, IParams, Translation } from "@/shared/model";
 
 interface HomePageProps {
@@ -37,13 +38,18 @@ export default HomePage;
 
 export const generateMetadata = async ({ params }: IPageProps) => {
   const { locale } = await params;
+  const tShared = await getTranslations({
+    locale,
+    namespace: Translation.Shared,
+  });
   const tHome = await getTranslations({
     locale,
     namespace: Translation.Home,
   });
 
   return {
+    description: tShared("footer.text"),
     revalidate: process.env.REVALIDATE_TIMEOUT,
-    title: tHome("title"),
+    title: generateMetaTitle(tHome("title")),
   };
 };

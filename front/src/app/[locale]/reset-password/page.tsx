@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { ResetPassword } from "@/views/reset-password";
 
+import { generateMetaTitle } from "@/shared/lib";
 import { IPageProps, IParams, Translation } from "@/shared/model";
 
 interface ResetPasswordPageProps {
@@ -29,6 +30,6 @@ export const generateMetadata = async ({ params }: IPageProps) => {
 
   return {
     revalidate: process.env.REVALIDATE_TIMEOUT,
-    title: tResetPassword("title"),
+    title: generateMetaTitle(tResetPassword("title")),
   };
 };
