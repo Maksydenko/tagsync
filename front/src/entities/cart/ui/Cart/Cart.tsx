@@ -5,16 +5,15 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import { useAtom } from "jotai";
-import { useDispatch } from "react-redux";
 
 import { useMutation } from "@tanstack/react-query";
 
-import { clearLocalCart } from "@/application/store";
+import { useLocalCart } from "@/application/store";
 
 import { CartProduct } from "@/entities/product";
 import { userAtom } from "@/entities/user";
 
-import { useInvalidateAtom, useTypedSelector } from "@/shared/lib";
+import { useInvalidateAtom } from "@/shared/lib";
 import { MutationKey, Pathname, QueryKey, Translation } from "@/shared/model";
 import { Btn, Img, Popup } from "@/shared/ui";
 
@@ -35,17 +34,15 @@ export const Cart: FC<CartProps> = ({ className }) => {
   const [{ data: userData }] = useAtom(userAtom);
   const userEmail = userData?.data.email;
 
+  const invalidateCart = useInvalidateAtom([QueryKey.Cart]);
   const [{ data: cartData, isLoading: isCartLoading }] = useAtom(
     cartAtom(userEmail)
   );
-  const localCart = useTypedSelector(({ localCart }) => localCart);
+  const { clearLocalCart, localCart } = useLocalCart();
 
   const cart = cartData?.data ?? localCart;
   const cartItems = cart?.items;
   const cartTotalQuantity = cart?.total_quantity;
-
-  const invalidateCart = useInvalidateAtom([QueryKey.Cart]);
-  const dispatch = useDispatch();
 
   const { mutate: clearCart } = useMutation({
     mutationFn: async () => {
@@ -55,7 +52,7 @@ export const Cart: FC<CartProps> = ({ className }) => {
         });
       }
 
-      dispatch(clearLocalCart());
+      clearLocalCart();
     },
     mutationKey: [MutationKey.CartClear],
     onSuccess: async () => {

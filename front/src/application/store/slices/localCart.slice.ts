@@ -5,14 +5,14 @@ import { IProduct } from "@/entities/product";
 
 import { QueryKey } from "@/shared/model";
 
-const initialState: ICart = {
+const INITIAL_STATE: ICart = {
   cart_price: 0,
   items: [],
   total_quantity: 0,
 };
 
 export const localCartSlice = createSlice({
-  initialState,
+  initialState: INITIAL_STATE,
   name: QueryKey.Cart,
   reducers: {
     addToLocalCart: (state, { payload: product }: PayloadAction<IProduct>) => {

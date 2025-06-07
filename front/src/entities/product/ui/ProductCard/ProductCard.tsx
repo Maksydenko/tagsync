@@ -7,11 +7,10 @@ import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import { useAtom, useSetAtom } from "jotai";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
 
 import { useMutation } from "@tanstack/react-query";
 
-import { addToLocalCart } from "@/application/store";
+import { useLocalCart } from "@/application/store";
 
 import { ComparisonsService } from "@/features/comparisons";
 import { WishlistService } from "@/features/wishlist";
@@ -20,7 +19,7 @@ import { cartAtom, cartOpenAtom, CartService } from "@/entities/cart";
 import { Checked } from "@/entities/indicator";
 import { userAtom } from "@/entities/user";
 
-import { useInvalidateAtom, useTypedSelector } from "@/shared/lib";
+import { useInvalidateAtom } from "@/shared/lib";
 import {
   formatPrice,
   isValueInSet,
@@ -83,8 +82,7 @@ export const ProductCard: FC<ProductCardProps> = ({
   const [{ data: cartData, isLoading: isCartLoading }] = useAtom(
     cartAtom(userEmail)
   );
-  const localCart = useTypedSelector(({ localCart }) => localCart);
-  const dispatch = useDispatch();
+  const { addToLocalCart, localCart } = useLocalCart();
 
   const cart = cartData?.data ?? localCart;
   const isInCart = isValueInSet({
@@ -158,7 +156,7 @@ export const ProductCard: FC<ProductCardProps> = ({
       }
 
       if (!userData) {
-        return dispatch(addToLocalCart(productData));
+        return addToLocalCart(productData);
       }
 
       return CartService.add({

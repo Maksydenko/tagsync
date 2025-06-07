@@ -6,18 +6,17 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
 
 import { AuthError } from "@supabase/supabase-js";
 import { useMutation } from "@tanstack/react-query";
 
-import { clearLocalCart } from "@/application/store";
+import { useLocalCart } from "@/application/store";
 
 import { AuthForm, AuthService } from "@/features/auth";
 
 import { CartService } from "@/entities/cart";
 
-import { useInvalidateAtom, useTypedSelector } from "@/shared/lib";
+import { useInvalidateAtom } from "@/shared/lib";
 import {
   ErrorCode,
   MutationKey,
@@ -41,8 +40,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
 
   const tShared = useTranslations(Translation.Shared);
 
-  const localCart = useTypedSelector(({ localCart }) => localCart);
-  const dispatch = useDispatch();
+  const { clearLocalCart, localCart } = useLocalCart();
 
   const invalidateUser = useInvalidateAtom([QueryKey.User]);
   const invalidateCart = useInvalidateAtom([QueryKey.Cart]);
@@ -82,7 +80,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
       const userCart = await CartService.get(userEmail);
 
       if (!userCart.data.items.length && localCart.items.length) {
-        await Promise.all(
+        await Promise.allSettled(
           localCart.items.map((item) =>
             CartService.add({
               product_id: item.product_id,
@@ -95,7 +93,10 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
         await invalidateCart();
       }
 
-      dispatch(clearLocalCart());
+      if (localCart.items.length) {
+        clearLocalCart();
+      }
+
       push(Pathname.Home);
     },
   });
