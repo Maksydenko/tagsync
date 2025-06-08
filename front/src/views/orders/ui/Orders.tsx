@@ -4,7 +4,7 @@ import { clsx } from "clsx";
 
 import { UserWrapper } from "@/widgets/user-wrapper";
 
-import { Translation } from "@/shared/model";
+import { Translation } from "@/shared/config";
 
 import { OrdersList } from "./OrdersList/OrdersList";
 

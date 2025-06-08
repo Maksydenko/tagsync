@@ -4,7 +4,8 @@ import { FC, useTransition } from "react";
 import { useParams } from "next/navigation";
 import { useLocale } from "next-intl";
 
-import { ILink, Locale } from "@/shared/model";
+import { Locale } from "@/shared/config";
+import { ILink } from "@/shared/model";
 
 import { usePathname, useRouter } from "@/i18n/navigation";
 

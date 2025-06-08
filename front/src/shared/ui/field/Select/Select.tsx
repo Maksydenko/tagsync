@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
+import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import {
   FieldValues,
@@ -17,6 +18,7 @@ import {
   ListboxOptions,
 } from "@headlessui/react";
 
+import { Translation } from "@/shared/config";
 import { ILink } from "@/shared/model";
 
 import { Img } from "../../img/Img";
@@ -26,7 +28,7 @@ import s from "./Select.module.scss";
 interface SelectProps<T extends FieldValues> {
   className?: string;
   formReturn: UseFormReturn<T>;
-  icon?: ReactNode;
+  icon?: ILink<ReactNode> | null;
   items: ILink[];
   name: Path<T>;
   options?: RegisterOptions<T>;
@@ -35,17 +37,24 @@ interface SelectProps<T extends FieldValues> {
 export const Select = <T extends FieldValues>({
   className,
   formReturn: { register, setValue, watch },
-  icon = "/img/icons/form/arrow-down.svg",
+  icon = {
+    label: "",
+    value: "/img/icons/form/arrow-down.svg",
+  },
   items,
   name,
   options,
   ...props
 }: SelectProps<T>): ReactNode => {
+  const tShared = useTranslations(Translation.Shared);
   const {
     /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
     onChange,
     ...restRegister
   } = register(name, options);
+
+  const iconLabel = icon?.label || tShared("arrow");
+  const iconValue = icon?.value;
 
   return (
     <div className={clsx(s.select, className)}>
@@ -59,21 +68,23 @@ export const Select = <T extends FieldValues>({
           }}
         >
           <ListboxButton
+            aria-label={iconLabel}
             className={s.select__listbox}
             {...props}
             {...restRegister}
           >
             <p>{watch(name).label}</p>
-            {typeof icon === "string" ? (
+            {typeof iconValue === "string" ? (
               <Img
+                alt={iconLabel}
                 className={s.select__icon}
                 height={20}
-                src={icon}
+                src={iconValue}
                 width={20}
                 isSvg
               />
             ) : (
-              icon
+              iconValue
             )}
           </ListboxButton>
           <ListboxOptions

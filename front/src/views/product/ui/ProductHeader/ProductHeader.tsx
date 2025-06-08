@@ -6,7 +6,8 @@ import { clsx } from "clsx";
 
 import { IProduct } from "@/entities/product";
 
-import { ILink, Locale, Pathname, Translation } from "@/shared/model";
+import { Locale, Pathname, Translation } from "@/shared/config";
+import { ILink } from "@/shared/model";
 import { Breadcrumbs } from "@/shared/ui";
 
 import s from "./ProductHeader.module.scss";

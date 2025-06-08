@@ -6,7 +6,7 @@ import { UserWrapper } from "@/widgets/user-wrapper";
 
 import { ComparisonCharacteristics } from "@/entities/product";
 
-import { Translation } from "@/shared/model";
+import { Translation } from "@/shared/config";
 
 import s from "./Comparisons.module.scss";
 

@@ -15,7 +15,8 @@ import {
   ICredentialsForm,
 } from "@/features/auth";
 
-import { ErrorCode, MutationKey, Pathname, Translation } from "@/shared/model";
+import { Pathname, Translation } from "@/shared/config";
+import { ErrorCode, MutationKey } from "@/shared/model";
 import { Btn } from "@/shared/ui";
 
 import s from "./CredentialsForm.module.scss";

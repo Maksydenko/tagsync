@@ -3,8 +3,9 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { ResetPassword } from "@/views/reset-password";
 
+import { Translation } from "@/shared/config";
 import { generateMetaTitle } from "@/shared/lib";
-import { IPageProps, IParams, Translation } from "@/shared/model";
+import { IPageProps, IParams } from "@/shared/model";
 
 interface ResetPasswordPageProps {
   params: Promise<IParams>;

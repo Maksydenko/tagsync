@@ -1,6 +1,7 @@
 "use client";
 
 import { KeyboardEvent, ReactNode, useState } from "react";
+import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import {
   FieldValues,
@@ -9,6 +10,8 @@ import {
   RegisterOptions,
   UseFormReturn,
 } from "react-hook-form";
+
+import { Translation } from "@/shared/config";
 
 import { Img } from "../../img/Img";
 
@@ -33,6 +36,8 @@ export const Checkbox = <T extends FieldValues>({
   const TRIGGERED_KEYS = ["Enter", " "];
 
   const [isFocused, setIsFocused] = useState(false);
+  const tShared = useTranslations(Translation.Shared);
+
   const {
     formState: { errors },
     register,
@@ -88,6 +93,7 @@ export const Checkbox = <T extends FieldValues>({
       {label && (
         <label htmlFor={name}>
           <Img
+            alt={tShared("checkmark")}
             className={s.checkbox__icon}
             height={20}
             src="/img/icons/form/checkmark.svg"

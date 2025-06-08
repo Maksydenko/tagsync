@@ -11,7 +11,7 @@ import { cartAtom } from "@/entities/cart";
 import { CartProduct } from "@/entities/product";
 import { userAtom } from "@/entities/user";
 
-import { Pathname } from "@/shared/model";
+import { Pathname } from "@/shared/config";
 
 import s from "./Checkout.module.scss";
 

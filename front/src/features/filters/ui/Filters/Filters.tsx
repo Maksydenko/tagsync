@@ -6,7 +6,8 @@ import { useLocale, useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import { useForm } from "react-hook-form";
 
-import { Locale, SearchParam, Translation } from "@/shared/model";
+import { Locale, Translation } from "@/shared/config";
+import { SearchParam } from "@/shared/model";
 import { Collapse, Field } from "@/shared/ui";
 
 import { IFilter } from "../../api";
@@ -22,22 +23,30 @@ interface FiltersProps {
 
 export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
   const priceFilter = useMemo(
-    () =>
-      filtersData.find((filter) => filter.name === SearchParam.Price),
+    () => filtersData.find((filter) => filter.name === SearchParam.Price),
     [filtersData]
   );
-  const defaultPrice = useMemo(() => ({
+  const defaultPrice = useMemo(
+    () => ({
       max: Number(
         priceFilter?.values[priceFilter.values.length - 1].split("-")[1]
       ),
       min: Number(priceFilter?.values[0].split("-")[0]),
-    }), [priceFilter?.values]);
+    }),
+    [priceFilter?.values]
+  );
 
-  const filteredData = useMemo(() => filtersData.filter((filter) => filter.name !== SearchParam.Price), [filtersData]);
+  const filteredData = useMemo(
+    () => filtersData.filter((filter) => filter.name !== SearchParam.Price),
+    [filtersData]
+  );
 
-  const defaultFilters = useMemo(() => ({
+  const defaultFilters = useMemo(
+    () => ({
       [SearchParam.PriceRange]: defaultPrice,
-    }), [defaultPrice]);
+    }),
+    [defaultPrice]
+  );
 
   const searchParams = useSearchParams();
 

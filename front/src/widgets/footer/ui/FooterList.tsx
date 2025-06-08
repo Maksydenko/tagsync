@@ -5,7 +5,7 @@ import { useAtom } from "jotai";
 
 import { categoriesAtom } from "@/entities/product";
 
-import { Locale } from "@/shared/model";
+import { Locale } from "@/shared/config";
 
 import s from "./Footer.module.scss";
 

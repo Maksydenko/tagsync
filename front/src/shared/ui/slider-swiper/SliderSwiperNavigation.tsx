@@ -4,7 +4,8 @@ import { clsx } from "clsx";
 import { SwiperRef } from "swiper/react";
 import { SwiperOptions } from "swiper/types";
 
-import { Direction, SlideDirection, Translation } from "@/shared/model";
+import { Translation } from "@/shared/config";
+import { Direction, SlideDirection } from "@/shared/model";
 
 import { Img } from "../img/Img";
 

@@ -18,12 +18,8 @@ import {
   ComboboxOptions,
 } from "@headlessui/react";
 
-import {
-  checkKeyByTypes,
-  ILink,
-  ILinkWithIcon,
-  Translation,
-} from "@/shared/model";
+import { Translation } from "@/shared/config";
+import { checkKeyByTypes, ILink, ILinkWithIcon } from "@/shared/model";
 
 import { Img } from "../../img/Img";
 
@@ -48,14 +44,14 @@ export const Autocomplete = <T extends FieldValues>({
   options,
   ...props
 }: AutocompleteProps<T>): ReactNode => {
+  const tShared = useTranslations(Translation.Shared);
+
   const {
     /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
     onChange,
     ...restRegister
   } = register(name, options);
   const selected = watch(name);
-
-  const tShared = useTranslations(Translation.Shared);
 
   return (
     <div className={clsx(s.autocomplete, className)}>

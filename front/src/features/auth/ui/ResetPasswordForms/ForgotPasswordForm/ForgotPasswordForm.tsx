@@ -15,7 +15,8 @@ import {
   IForgotPasswordForm,
 } from "@/features/auth";
 
-import { MutationKey, Pathname, Translation } from "@/shared/model";
+import { Pathname, Translation } from "@/shared/config";
+import { MutationKey } from "@/shared/model";
 import { Btn } from "@/shared/ui";
 
 import s from "./ForgotPasswordForm.module.scss";

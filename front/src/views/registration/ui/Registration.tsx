@@ -5,7 +5,8 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import StepWizard, { StepWizardChildProps } from "react-step-wizard";
 
-import { Pathname, Translation, useMounted } from "@/shared/model";
+import { Pathname, Translation } from "@/shared/config";
+import { useMounted } from "@/shared/model";
 import { Btn, Loader } from "@/shared/ui";
 
 import { useChangeStep, useCreateSteps } from "../model";

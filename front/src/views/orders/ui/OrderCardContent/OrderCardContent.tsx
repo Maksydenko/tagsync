@@ -13,7 +13,8 @@ import {
 
 import { IOrder } from "@/features/orders";
 
-import { formatPrice, ILink, Translation } from "@/shared/model";
+import { Translation } from "@/shared/config";
+import { formatPrice, ILink } from "@/shared/model";
 import { Img, Table } from "@/shared/ui";
 
 import s from "./OrderCardContent.module.scss";

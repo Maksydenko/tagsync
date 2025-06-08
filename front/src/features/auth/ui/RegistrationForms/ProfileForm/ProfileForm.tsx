@@ -17,8 +17,9 @@ import {
   IProfileForm,
 } from "@/features/auth";
 
+import { Pathname, Translation } from "@/shared/config";
 import { useInvalidateAtom } from "@/shared/lib";
-import { MutationKey, Pathname, QueryKey, Translation } from "@/shared/model";
+import { MutationKey, QueryKey } from "@/shared/model";
 import { Btn } from "@/shared/ui";
 
 import s from "./ProfileForm.module.scss";

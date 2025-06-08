@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 
 import { IProduct, ProductsSlider } from "@/entities/product";
 
-import { Translation } from "@/shared/model";
+import { Translation } from "@/shared/config";
 
 import { HomeSlider } from "./HomeSlider/HomeSlider";
 

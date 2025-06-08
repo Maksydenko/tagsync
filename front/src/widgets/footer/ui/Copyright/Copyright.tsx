@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 
-import { Translation } from "@/shared/model";
+import { Translation } from "@/shared/config";
 
 import s from "./Copyright.module.scss";
 

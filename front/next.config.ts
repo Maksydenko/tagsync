@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
-import { Protocol } from "@/shared/model";
+import { Protocol } from "@/shared/config";
 
 const withNextIntl = createNextIntlPlugin();
 

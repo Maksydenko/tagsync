@@ -7,7 +7,7 @@ import { useAtom } from "jotai";
 
 import { userAtom } from "@/entities/user";
 
-import { Pathname } from "@/shared/model";
+import { Pathname } from "@/shared/config";
 import { Loader } from "@/shared/ui";
 
 import { UserWrapperList } from "./UserWrapperList/UserWrapperList";

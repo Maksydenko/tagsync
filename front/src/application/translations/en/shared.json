@@ -13,13 +13,6 @@
       "prev": "Previous",
       "next": "Next"
     },
-    "user": {
-      "profile": "Profile",
-      "comparisons": "Compare lists",
-      "wishlist": "Wishlist",
-      "orders": "Orders",
-      "logout": "Logout"
-    },
     "header": {
       "menu": {
         "open-menu": "Open menu",
@@ -97,6 +90,13 @@
       "user-already-exists": "This email already exists",
       "email-not-confirmed": "Email not confirmed"
     },
+    "user": {
+      "profile": "Profile",
+      "comparisons": "Compare lists",
+      "wishlist": "Wishlist",
+      "orders": "Orders",
+      "logout": "Logout"
+    },
     "product": {
       "wishlist": {
         "add-to-wishlist": "Add to wishlist",
@@ -130,10 +130,11 @@
         "clear": "Clear cart"
       }
     },
-    "scroll-to-top": "Scroll to top",
-    "arrow": "Arrow",
     "forgot-password": "Forgot password?",
     "continue": "Continue",
-    "logo": "Logo"
+    "scroll-to-top": "Scroll to top",
+    "logo": "Logo",
+    "arrow": "Arrow",
+    "checkmark": "Checkmark"
   }
 }

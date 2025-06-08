@@ -16,14 +16,9 @@ import { AuthForm } from "@/features/auth";
 
 import { CartService } from "@/entities/cart";
 
+import { Pathname, Translation } from "@/shared/config";
 import { useInvalidateAtom } from "@/shared/lib";
-import {
-  ErrorCode,
-  MutationKey,
-  Pathname,
-  QueryKey,
-  Translation,
-} from "@/shared/model";
+import { ErrorCode, MutationKey, QueryKey } from "@/shared/model";
 import { Btn } from "@/shared/ui";
 
 import { getLoginFields, ILoginForm } from "../../model";

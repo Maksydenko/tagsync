@@ -1,3 +1,3 @@
-import { BASE_FONT_SIZE } from "../constants/baseFontSize.const";
+import { FontSize } from "@/shared/config";
 
-export const transformPxToRem = (px: number) => `${px / BASE_FONT_SIZE}rem`;
+export const transformPxToRem = (px: number) => `${px / FontSize.Default}rem`;

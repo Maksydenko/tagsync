@@ -10,12 +10,11 @@ import { useAtom } from "jotai";
 
 import { useMutation } from "@tanstack/react-query";
 
+import { Pathname, Translation } from "@/shared/config";
 import { useInvalidateAtom } from "@/shared/lib";
 import {
   MutationKey,
-  Pathname,
   QueryKey,
-  Translation,
   userData as userLinksData,
 } from "@/shared/model";
 import { Dropdown, Img, Loader } from "@/shared/ui";

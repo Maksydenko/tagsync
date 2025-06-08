@@ -40,8 +40,6 @@ export const Btn: FC<BtnProps> = ({
     });
   }
 
-  const isStringChildren = typeof children === "string";
-
   const iconLabel = icon?.label;
   const iconValue = icon?.value;
 
@@ -55,7 +53,7 @@ export const Btn: FC<BtnProps> = ({
     >
       <div className={s.btn__body}>
         <div className={s.btn__content}>
-          {isStringChildren ? (
+          {typeof children === "string" ? (
             <div className={s.btn__box}>{children}</div>
           ) : (
             children

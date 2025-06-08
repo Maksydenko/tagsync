@@ -2,7 +2,8 @@ import { FC } from "react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 
-import { ILink, Translation } from "@/shared/model";
+import { Translation } from "@/shared/config";
+import { ILink } from "@/shared/model";
 
 import s from "../Menu.module.scss";
 

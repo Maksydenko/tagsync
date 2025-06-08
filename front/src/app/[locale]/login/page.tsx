@@ -3,8 +3,9 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import Login from "@/views/login";
 
+import { Translation } from "@/shared/config";
 import { generateMetaTitle } from "@/shared/lib";
-import { IPageProps, IParams, Translation } from "@/shared/model";
+import { IPageProps, IParams } from "@/shared/model";
 
 interface LoginPageProps {
   params: Promise<IParams>;

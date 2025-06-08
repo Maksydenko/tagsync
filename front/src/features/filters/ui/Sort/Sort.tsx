@@ -6,7 +6,8 @@ import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import { useForm } from "react-hook-form";
 
-import { ILink, SearchParam, Translation } from "@/shared/model";
+import { Translation } from "@/shared/config";
+import { ILink, SearchParam } from "@/shared/model";
 import { Select } from "@/shared/ui";
 
 import { getSortsData, useSortParams } from "../../model";

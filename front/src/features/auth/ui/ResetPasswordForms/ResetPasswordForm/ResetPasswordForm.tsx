@@ -15,7 +15,8 @@ import {
   IResetPasswordForm,
 } from "@/features/auth";
 
-import { MutationKey, Translation } from "@/shared/model";
+import { Translation } from "@/shared/config";
+import { MutationKey } from "@/shared/model";
 import { Btn } from "@/shared/ui";
 
 import s from "./ResetPasswordForm.module.scss";

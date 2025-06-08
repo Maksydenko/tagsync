@@ -1,11 +1,11 @@
 import { FC } from "react";
 import Link from "next/link";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import clsx from "clsx";
 
 import { ICategory } from "@/features/products";
 
-import { Locale } from "@/shared/model";
+import { Locale, Translation } from "@/shared/config";
 import { Img } from "@/shared/ui";
 
 import s from "../Sidebar.module.scss";
@@ -18,13 +18,15 @@ export const SidebarItem: FC<ItemProps> = ({
   category: { img, slug, translations_slug },
 }) => {
   const locale = useLocale() as Locale;
+  const tShared = useTranslations(Translation.Shared);
+
   const translatedSlug = translations_slug[locale];
 
   return (
     <li className={s.sidebar__item}>
       <Link className={clsx(s.sidebar__link)} href={`/${slug}`}>
         <Img
-          alt={translatedSlug}
+          alt={`${tShared("logo")} "${translatedSlug}"`}
           className={s.sidebar__icon}
           height={32}
           src={img}

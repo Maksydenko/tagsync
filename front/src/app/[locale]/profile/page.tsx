@@ -3,8 +3,9 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import Profile from "@/views/profile";
 
+import { Translation } from "@/shared/config";
 import { generateMetaTitle } from "@/shared/lib";
-import { IPageProps, Translation } from "@/shared/model";
+import { IPageProps } from "@/shared/model";
 
 const ProfilePage: NextPage<IPageProps> = async (props) => {
   const params = await props.params;

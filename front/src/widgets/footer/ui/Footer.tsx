@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 
-import { Pathname, Translation } from "@/shared/model";
+import { Pathname, Translation } from "@/shared/config";
 import { Img } from "@/shared/ui";
 
 import { Copyright } from "./Copyright/Copyright";
@@ -32,7 +32,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
             <div className={s.footer__box}>
               <Link className={s.footer__logo} href={Pathname.Home}>
                 <Img
-                  alt={tShared("logo")}
+                  alt={`${tShared("logo")} "TagSync"`}
                   className={s.footer__img}
                   height={35}
                   src="/img/logos/logo.png"

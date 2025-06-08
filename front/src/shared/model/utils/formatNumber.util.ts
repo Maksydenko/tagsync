@@ -1,4 +1,4 @@
-import { Locale } from "../enums";
+import { Locale } from "@/shared/config";
 
 interface IFormatNumber extends Intl.NumberFormatOptions {
   locales?: Locale;
@@ -11,7 +11,8 @@ export const formatNumber = ({
   number = 0,
   useGrouping = true,
   ...props
-}: IFormatNumber) => number.toLocaleString(locales, {
+}: IFormatNumber) =>
+  number.toLocaleString(locales, {
     minimumFractionDigits,
     useGrouping,
     ...props,

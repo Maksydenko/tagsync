@@ -5,7 +5,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 
-import { SearchParam, sortSearchParams, Translation } from "@/shared/model";
+import { Translation } from "@/shared/config";
+import { SearchParam, sortSearchParams } from "@/shared/model";
 
 import { IFilter } from "../../api";
 

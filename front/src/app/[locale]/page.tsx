@@ -5,15 +5,16 @@ import Home from "@/views/home";
 
 import { HomePageRecommendationsService } from "@/features/recommendations";
 
+import { Translation } from "@/shared/config";
 import { generateMetaTitle } from "@/shared/lib";
-import { IPageProps, IParams, Translation } from "@/shared/model";
+import { IPageProps, IParams } from "@/shared/model";
 
 interface HomePageProps {
   params: Promise<IParams>;
 }
 
-const HomePage: NextPage<HomePageProps> = async (promisedProps) => {
-  const params = await promisedProps.params;
+const HomePage: NextPage<HomePageProps> = async (props) => {
+  const params = await props.params;
   const { locale } = params;
 
   setRequestLocale(locale);

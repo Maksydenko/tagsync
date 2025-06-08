@@ -7,7 +7,7 @@ import { Cart } from "@/entities/cart";
 import { categoriesAtom } from "@/entities/product";
 import { User } from "@/entities/user";
 
-import { Locale, Translation } from "@/shared/model";
+import { Locale, Translation } from "@/shared/config";
 import { Dropdown, LocaleSwitcher, ThemeSwitcher } from "@/shared/ui";
 
 import { menuData } from "../../model";

@@ -8,7 +8,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
 
-import { Locale, montserrat, openSans, Phase } from "@/shared/model";
+import { Locale } from "@/shared/config";
+import { montserrat, openSans, Phase } from "@/shared/model";
 
 import { Providers } from "./providers";
 
