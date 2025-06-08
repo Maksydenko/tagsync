@@ -54,7 +54,10 @@ export const ProductSliders: FC<ProductSlidersProps> = ({
         <div className={s.productSliders__content}>
           <SliderSwiper
             autoHeight={false}
-            className={s.productSliders__slider}
+            className={clsx(
+              s.productSliders__slider,
+              !images.length && s.productSliders__slider_empty
+            )}
             slides={images?.map((img, index) => ({
               label: img,
               value: (
