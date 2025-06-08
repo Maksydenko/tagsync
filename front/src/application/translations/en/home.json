@@ -9,7 +9,7 @@
     "recommendations": {
       "viewed": "Viewed products",
       "popular": "Popular products",
-      "recommended": "Recommended products"
+      "top-rated": "Top rated products"
     }
   }
 }
