@@ -26,14 +26,13 @@ export const HomeSlide: FC<HomeSlideProps> = ({
   return (
     <div className={clsx(s.homeSlide, className)}>
       <div className={s.homeSlide__body}>
-        <div className={s.homeSlide__content} />
         <Img
           alt={tHome(`slider.${slide}`)}
           className={s.homeSlide__img}
           customLoader={<Loader className={s.homeSlide__loader} />}
           priority={isPriority}
           quality={90}
-          src={`/img/home/${locale}/${slide}.webp`}
+          src={`/img/home/${locale}/${slide}.png`}
         />
       </div>
     </div>
