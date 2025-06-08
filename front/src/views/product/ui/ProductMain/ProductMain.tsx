@@ -16,14 +16,13 @@ import { Checked } from "@/entities/indicator";
 import { comparisonsAtom, IProduct, wishlistAtom } from "@/entities/product";
 import { userAtom } from "@/entities/user";
 
+import { Pathname, Translation } from "@/shared/config";
 import { useInvalidateAtom } from "@/shared/lib";
 import {
   formatPrice,
   isValueInSet,
   MutationKey,
-  Pathname,
   QueryKey,
-  Translation,
 } from "@/shared/model";
 import { Btn, Img, Rating } from "@/shared/ui";
 

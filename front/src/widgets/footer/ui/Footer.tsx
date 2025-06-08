@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 
-import { Pathname, Translation } from "@/shared/model";
+import { Pathname, Translation } from "@/shared/config";
 import { Img } from "@/shared/ui";
 
 import { Copyright } from "./Copyright/Copyright";

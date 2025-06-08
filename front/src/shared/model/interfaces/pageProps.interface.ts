@@ -1,4 +1,4 @@
-import { Locale } from "../enums/locale.enum";
+import { Locale } from "../../config/enums/locale.enum";
 
 export interface IPageProps {
   params: Promise<IParams>;

@@ -12,7 +12,8 @@ import {
 } from "react-hook-form";
 import RootSelect, { OptionProps } from "react-select";
 
-import { ILink, Translation } from "@/shared/model";
+import { Translation } from "@/shared/config";
+import { ILink } from "@/shared/model";
 
 import { Img } from "../../img/Img";
 

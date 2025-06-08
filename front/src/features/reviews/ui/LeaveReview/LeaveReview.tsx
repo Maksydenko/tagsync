@@ -13,7 +13,8 @@ import { AuthForm } from "@/features/auth";
 import { IProduct } from "@/entities/product";
 import { userAtom } from "@/entities/user";
 
-import { MutationKey, QueryKey, Translation } from "@/shared/model";
+import { Translation } from "@/shared/config";
+import { MutationKey, QueryKey } from "@/shared/model";
 import { Btn, Popup } from "@/shared/ui";
 
 import { getLeaveReviewFields, ILeaveReviewForm } from "../../model";

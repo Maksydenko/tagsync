@@ -9,7 +9,7 @@ import { LeaveReview } from "@/features/reviews";
 import { IProduct } from "@/entities/product";
 import { IReview, ReviewCard } from "@/entities/review";
 
-import { Translation } from "@/shared/model";
+import { Translation } from "@/shared/config";
 
 import s from "./Reviews.module.scss";
 
@@ -38,10 +38,10 @@ export const Reviews: FC<ReviewsProps> = ({
         {!!reviewsData.length && (
           <ul className={s.reviews__list}>
             {reviewsData.map((review) => (
-                <li key={review.id}>
-                  <ReviewCard review={review} />
-                </li>
-              ))}
+              <li key={review.id}>
+                <ReviewCard review={review} />
+              </li>
+            ))}
           </ul>
         )}
       </div>

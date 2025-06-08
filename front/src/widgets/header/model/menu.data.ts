@@ -1,4 +1,5 @@
-import { ILink, Pathname } from "@/shared/model";
+import { Pathname } from "@/shared/config";
+import { ILink } from "@/shared/model";
 
 export const menuData: ILink<Pathname>[] = [
   {

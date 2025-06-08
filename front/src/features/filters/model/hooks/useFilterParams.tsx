@@ -22,9 +22,12 @@ export const useFilterParams = <T extends FieldValues>({
   filtersData,
   form,
 }: IUseFilterParams<T>) => {
-  const defaultFilters = useMemo(() => ({
+  const defaultFilters = useMemo(
+    () => ({
       [SearchParam.PriceRange]: defaultPrice,
-    }), [defaultPrice]);
+    }),
+    [defaultPrice]
+  );
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 

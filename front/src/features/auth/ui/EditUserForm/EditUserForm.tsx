@@ -13,8 +13,9 @@ import { AuthForm } from "@/features/auth";
 
 import { userAtom } from "@/entities/user";
 
+import { Translation } from "@/shared/config";
 import { useInvalidateAtom } from "@/shared/lib";
-import { MutationKey, QueryKey, Translation } from "@/shared/model";
+import { MutationKey, QueryKey } from "@/shared/model";
 import { Btn } from "@/shared/ui";
 
 import { getEditUserFields, IEditUserForm } from "../../model";

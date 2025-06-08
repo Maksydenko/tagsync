@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react";
 import { ThemeProvider } from "next-themes";
 
-import { Locale } from "@/shared/model";
+import { Locale } from "@/shared/config";
 
 import { NextIntlProvider } from "./nextIntlClient.provider";
 import { QueryProvider } from "./query/query.provider";

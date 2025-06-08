@@ -18,12 +18,8 @@ import {
   ComboboxOptions,
 } from "@headlessui/react";
 
-import {
-  checkKeyByTypes,
-  ILink,
-  ILinkWithIcon,
-  Translation,
-} from "@/shared/model";
+import { Translation } from "@/shared/config";
+import { checkKeyByTypes, ILink, ILinkWithIcon } from "@/shared/model";
 
 import { Img } from "../../img/Img";
 

@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 
 import { LoginForm } from "@/features/auth";
 
-import { Pathname, Translation } from "@/shared/model";
+import { Pathname, Translation } from "@/shared/config";
 import { Btn } from "@/shared/ui";
 
 import s from "./Login.module.scss";

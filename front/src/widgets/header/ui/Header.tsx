@@ -6,13 +6,8 @@ import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 
-import {
-  Breakpoint,
-  Pathname,
-  Translation,
-  useScrollLock,
-  useWindowListener,
-} from "@/shared/model";
+import { Breakpoint, Pathname, Translation } from "@/shared/config";
+import { useScrollLock, useWindowListener } from "@/shared/model";
 import { Img } from "@/shared/ui";
 
 import { Menu } from "./Menu/Menu";
@@ -25,8 +20,8 @@ interface HeaderProps {
 
 export const Header: FC<HeaderProps> = ({ className }) => {
   const BREAKPOINT = Breakpoint.DesktopSmall;
-  const pathname = usePathname();
 
+  const pathname = usePathname();
   const tShared = useTranslations(Translation.Shared);
 
   const { isScrollLocked, setIsScrollLocked } = useScrollLock([

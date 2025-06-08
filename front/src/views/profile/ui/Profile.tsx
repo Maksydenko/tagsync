@@ -6,7 +6,7 @@ import { UserWrapper } from "@/widgets/user-wrapper";
 
 import { EditUserForm } from "@/features/auth";
 
-import { Translation } from "@/shared/model";
+import { Translation } from "@/shared/config";
 
 import s from "./Profile.module.scss";
 

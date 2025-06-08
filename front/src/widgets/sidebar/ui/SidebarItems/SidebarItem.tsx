@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 import { ICategory } from "@/features/products";
 
-import { Locale, Translation } from "@/shared/model";
+import { Locale, Translation } from "@/shared/config";
 import { Img } from "@/shared/ui";
 
 import s from "../Sidebar.module.scss";

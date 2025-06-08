@@ -6,12 +6,8 @@ import { clsx } from "clsx";
 
 import { Menu, MenuButton } from "@headlessui/react";
 
-import {
-  ILink,
-  ILinkWithIcon,
-  Translation,
-  useWindowListener,
-} from "@/shared/model";
+import { Translation } from "@/shared/config";
+import { ILink, ILinkWithIcon, useWindowListener } from "@/shared/model";
 
 import { Img } from "../img/Img";
 import { DropdownItems } from "./DropdownItems/DropdownItems";

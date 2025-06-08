@@ -12,7 +12,8 @@ import {
 
 import { IProductCharacteristic } from "@/entities/product";
 
-import { ILink, Locale, Translation } from "@/shared/model";
+import { Locale, Translation } from "@/shared/config";
+import { ILink } from "@/shared/model";
 import { Table } from "@/shared/ui";
 
 import s from "./Characteristics.module.scss";

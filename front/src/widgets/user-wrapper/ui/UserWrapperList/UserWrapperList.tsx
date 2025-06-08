@@ -9,13 +9,12 @@ import { clsx } from "clsx";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useMutation } from "@tanstack/react-query";
 
+import { Pathname, Translation } from "@/shared/config";
 import { IDatabase, useInvalidateAtom } from "@/shared/lib";
 import {
   MutationKey,
-  Pathname,
   QueryKey,
   removeLocalePrefix,
-  Translation,
   userData,
 } from "@/shared/model";
 import { Img } from "@/shared/ui";

@@ -10,7 +10,7 @@ import { IProduct, ProductsSlider } from "@/entities/product";
 import { IReview } from "@/entities/review";
 import { userAtom } from "@/entities/user";
 
-import { Translation } from "@/shared/model";
+import { Translation } from "@/shared/config";
 
 import { Characteristics } from "./Characteristics/Characteristics";
 import { ProductHeader } from "./ProductHeader/ProductHeader";

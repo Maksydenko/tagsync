@@ -10,7 +10,8 @@ import { FilterBadges, Filters, IFilter, Sort } from "@/features/filters";
 
 import { categoriesAtom } from "@/entities/product";
 
-import { ILink, Locale, Pathname, Translation } from "@/shared/model";
+import { Locale, Pathname, Translation } from "@/shared/config";
+import { ILink } from "@/shared/model";
 import { Breadcrumbs, Btn, Popup } from "@/shared/ui";
 
 import s from "./CategoryHeader.module.scss";

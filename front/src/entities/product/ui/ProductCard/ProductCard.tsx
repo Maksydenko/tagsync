@@ -16,14 +16,13 @@ import { cartAtom, cartOpenAtom } from "@/entities/cart";
 import { Checked } from "@/entities/indicator";
 import { userAtom } from "@/entities/user";
 
+import { Pathname, Translation } from "@/shared/config";
 import { useInvalidateAtom } from "@/shared/lib";
 import {
   formatPrice,
   isValueInSet,
   MutationKey,
-  Pathname,
   QueryKey,
-  Translation,
 } from "@/shared/model";
 import { Btn, Img, Loader, Rating } from "@/shared/ui";
 

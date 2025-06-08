@@ -6,8 +6,8 @@ import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import ReactPaginate, { ReactPaginateProps } from "react-paginate";
 
-import { SlideDirection, sortSearchParams, Translation } from "@/shared/model";
-import { SearchParam } from "@/shared/model";
+import { Translation } from "@/shared/config";
+import { SearchParam, SlideDirection, sortSearchParams } from "@/shared/model";
 
 import { Img } from "../img/Img";
 

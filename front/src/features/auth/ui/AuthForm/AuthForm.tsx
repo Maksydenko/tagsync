@@ -7,7 +7,8 @@ import { FieldValues, UseFormReturn } from "react-hook-form";
 
 import { UseMutateFunction } from "@tanstack/react-query";
 
-import { IField, Translation } from "@/shared/model";
+import { Translation } from "@/shared/config";
+import { IField } from "@/shared/model";
 import { Field } from "@/shared/ui";
 
 import s from "./AuthForm.module.scss";

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { clsx } from "clsx";
 
-import { Breakpoint } from "@/shared/model";
+import { Breakpoint } from "@/shared/config";
 import { SliderSwiper } from "@/shared/ui";
 
 import { IProduct } from "../../api";

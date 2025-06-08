@@ -1,4 +1,5 @@
-import { Pathname } from "../enums";
+import { Pathname } from "@/shared/config";
+
 import { ILinkWithIcon } from "../interfaces";
 
 export const userData: ILinkWithIcon[] = [

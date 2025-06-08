@@ -10,7 +10,8 @@ import { ColumnDef } from "@tanstack/react-table";
 import { comparisonsAtom, ProductCard } from "@/entities/product";
 import { userAtom } from "@/entities/user";
 
-import { ILink, Locale } from "@/shared/model";
+import { Locale } from "@/shared/config";
+import { ILink } from "@/shared/model";
 import { Loader } from "@/shared/ui";
 
 import { ComparisonCharacteristicsTable } from "./ComparisonCharacteristicsTable/ComparisonCharacteristicsTable";

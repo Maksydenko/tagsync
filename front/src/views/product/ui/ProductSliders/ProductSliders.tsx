@@ -4,7 +4,8 @@ import { FC, useState } from "react";
 import { clsx } from "clsx";
 import { Swiper } from "swiper/types";
 
-import { Breakpoint, Direction, useBreakpointCheck } from "@/shared/model";
+import { Breakpoint } from "@/shared/config";
+import { Direction, useBreakpointCheck } from "@/shared/model";
 import { Img, Loader, SliderSwiper } from "@/shared/ui";
 
 import s from "./ProductSliders.module.scss";

@@ -10,7 +10,7 @@ import {
   ResetPasswordForm,
 } from "@/features/auth";
 
-import { Translation } from "@/shared/model";
+import { Translation } from "@/shared/config";
 
 import s from "./ResetPassword.module.scss";
 

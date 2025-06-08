@@ -18,7 +18,8 @@ import {
   ListboxOptions,
 } from "@headlessui/react";
 
-import { ILink, Translation } from "@/shared/model";
+import { Translation } from "@/shared/config";
+import { ILink } from "@/shared/model";
 
 import { Img } from "../../img/Img";
 

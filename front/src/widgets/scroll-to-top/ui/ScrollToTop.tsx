@@ -5,7 +5,8 @@ import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import { animate } from "framer-motion";
 
-import { Translation, useActiveOnScroll } from "@/shared/model";
+import { Translation } from "@/shared/config";
+import { useActiveOnScroll } from "@/shared/model";
 import { Img } from "@/shared/ui";
 
 import s from "./ScrollToTop.module.scss";

@@ -11,7 +11,7 @@ import {
   UseFormReturn,
 } from "react-hook-form";
 
-import { Translation } from "@/shared/model";
+import { Translation } from "@/shared/config";
 
 import { Img } from "../../img/Img";
 

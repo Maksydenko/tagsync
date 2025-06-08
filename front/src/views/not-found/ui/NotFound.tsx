@@ -3,7 +3,7 @@
 import { FC } from "react";
 import { useTranslations } from "next-intl";
 
-import { Translation } from "@/shared/model";
+import { Translation } from "@/shared/config";
 
 import { useRedirectToHomepage } from "../model";
 
