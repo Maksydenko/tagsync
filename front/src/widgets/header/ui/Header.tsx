@@ -3,11 +3,13 @@
 import { FC, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 
 import {
   Breakpoint,
   Pathname,
+  Translation,
   useScrollLock,
   useWindowListener,
 } from "@/shared/model";
@@ -24,6 +26,8 @@ interface HeaderProps {
 export const Header: FC<HeaderProps> = ({ className }) => {
   const BREAKPOINT = Breakpoint.DesktopSmall;
   const pathname = usePathname();
+
+  const tShared = useTranslations(Translation.Shared);
 
   const { isScrollLocked, setIsScrollLocked } = useScrollLock([
     "main",
@@ -75,7 +79,7 @@ export const Header: FC<HeaderProps> = ({ className }) => {
             onClick={unlockScroll}
           >
             <Img
-              alt="TagSync"
+              alt={tShared("logo")}
               className={s.header__img}
               height={35}
               src="/img/logos/logo.png"

@@ -1,6 +1,6 @@
 @use "@/application/styles/module" as m;
 
-.scrollTop {
+.scrollToTop {
   position: fixed;
   inset-block-end: m.em(40, 40);
   inset-inline-end: m.rem(calc(m.$containerPadding / 2));
@@ -22,7 +22,7 @@
     font-size: m.rem(40);
   }
 
-  // .scrollTop__btn
+  // .scrollToTop__btn
 
   &__btn {
     inline-size: m.em(40, 40);
@@ -40,7 +40,7 @@
     }
   }
 
-  // .scrollTop__icon
+  // .scrollToTop__icon
 
   &__icon {
     inline-size: m.em(24, 40);

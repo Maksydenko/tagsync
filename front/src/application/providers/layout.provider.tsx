@@ -17,8 +17,8 @@ import "@/application/styles/globals.scss";
 const Sidebar = dynamic(() =>
   import("@/widgets/sidebar").then((module) => module.Sidebar)
 );
-const ScrollTop = dynamic(() =>
-  import("@/widgets/scroll-top").then((module) => module.ScrollTop)
+const ScrollToTop = dynamic(() =>
+  import("@/widgets/scroll-to-top").then((module) => module.ScrollToTop)
 );
 
 interface LayoutProviderProps {
@@ -41,7 +41,7 @@ export const LayoutProvider: FC<LayoutProviderProps> = async ({
         <div className="layout">
           <Header className="layout__header" />
           <Sidebar className="layout__sidebar" />
-          <ScrollTop className="layout__scrollTop" />
+          <ScrollToTop className="layout__scrollToTop" />
           <main>{children}</main>
           <Footer className="layout__footer" />
         </div>

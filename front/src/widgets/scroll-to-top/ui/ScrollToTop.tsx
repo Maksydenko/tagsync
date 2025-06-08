@@ -1,19 +1,21 @@
 "use client";
 
 import { FC } from "react";
+import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import { animate } from "framer-motion";
 
-import { useActiveOnScroll } from "@/shared/model";
+import { Translation, useActiveOnScroll } from "@/shared/model";
 import { Img } from "@/shared/ui";
 
-import s from "./ScrollTop.module.scss";
+import s from "./ScrollToTop.module.scss";
 
-interface ScrollTopProps {
+interface ScrollToTopProps {
   className?: string;
 }
 
-export const ScrollTop: FC<ScrollTopProps> = ({ className }) => {
+export const ScrollToTop: FC<ScrollToTopProps> = ({ className }) => {
+  const tShared = useTranslations(Translation.Shared);
   const isActive = useActiveOnScroll(110);
 
   const handleClick = () => {
@@ -29,17 +31,21 @@ export const ScrollTop: FC<ScrollTopProps> = ({ className }) => {
 
   return (
     <div
-      className={clsx(s.scrollTop, isActive && s.scrollTop_active, className)}
+      className={clsx(
+        s.scrollToTop,
+        isActive && s.scrollToTop_active,
+        className
+      )}
     >
       <button
-        aria-label="Scroll top"
-        className={s.scrollTop__btn}
+        aria-label={tShared("scroll-to-top")}
+        className={s.scrollToTop__btn}
         type="button"
         onClick={handleClick}
       >
         <Img
-          alt="Scroll top"
-          className={s.scrollTop__icon}
+          alt={tShared("scroll-to-top")}
+          className={s.scrollToTop__icon}
           src="/img/icons/form/arrow-down.svg"
           isSvg
         />

@@ -40,6 +40,9 @@ export const Menu: FC<MenuProps> = ({ className, isScrollLocked, onClick }) => {
   return (
     <div className={clsx(s.menu, className)}>
       <button
+        aria-label={tShared(
+          `header.menu.${isScrollLocked ? "close" : "open"}-menu`
+        )}
         className={clsx(
           s.menu__button,
           isScrollLocked && s.menu__button_active

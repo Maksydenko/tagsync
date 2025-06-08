@@ -20,6 +20,12 @@
       "orders": "Orders",
       "logout": "Logout"
     },
+    "header": {
+      "menu": {
+        "open-menu": "Open menu",
+        "close-menu": "Close menu"
+      }
+    },
     "footer": {
       "text": "Our online store for computer components offers a convenient way to find compatible parts for PC assembly or upgrade. We will tell you which components will fit together and deliver your order anywhere in Ukraine.",
       "copyright": "All rights reserved"
@@ -124,7 +130,9 @@
         "clear": "Clear cart"
       }
     },
+    "scroll-to-top": "Scroll to top",
     "forgot-password": "Forgot password?",
-    "continue": "Continue"
+    "continue": "Continue",
+    "logo": "Logo"
   }
 }

@@ -33,7 +33,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
             <div className={s.footer__box}>
               <Link className={s.footer__logo} href={Pathname.Home}>
                 <Img
-                  alt="TagSync"
+                  alt={tShared("logo")}
                   className={s.footer__img}
                   height={35}
                   src="/img/logos/logo.png"
