@@ -66,9 +66,9 @@ export const SliderSwiperNavigation: FC<SliderSwiperNavigationProps> = ({
 
   const isVertical = direction === Direction.Vertical;
 
-  const getIcon = (direction: SlideDirection) => (
+  const getIcon = () => (
     <Img
-      alt={tShared(`slide-directions.${direction}`)}
+      alt={tShared("arrow")}
       className={s.sliderSwiper__icon}
       src="/img/icons/form/arrow-down.svg"
       isSvg
@@ -90,7 +90,7 @@ export const SliderSwiperNavigation: FC<SliderSwiperNavigationProps> = ({
           slide(SlideDirection.Prev);
         }}
       >
-        {getIcon(SlideDirection.Prev)}
+        {getIcon()}
       </button>
       <button
         aria-label=">"
@@ -105,7 +105,7 @@ export const SliderSwiperNavigation: FC<SliderSwiperNavigationProps> = ({
           slide(SlideDirection.Next);
         }}
       >
-        {getIcon(SlideDirection.Next)}
+        {getIcon()}
       </button>
     </>
   );
