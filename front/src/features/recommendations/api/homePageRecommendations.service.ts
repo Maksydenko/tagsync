@@ -27,7 +27,7 @@ export const HomePageRecommendationsService = {
     }
   },
 
-  getToprated: async () => {
+  getTopRated: async () => {
     try {
       const response: IResponse<IProduct[]> = await axiosInstance.get(
         `/MainPageRecommendations/toprated`

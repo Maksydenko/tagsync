@@ -12,15 +12,15 @@ interface HomePageProps {
   params: Promise<IParams>;
 }
 
-const HomePage: NextPage<HomePageProps> = async (props) => {
-  const params = await props.params;
+const HomePage: NextPage<HomePageProps> = async (promisedProps) => {
+  const params = await promisedProps.params;
   const { locale } = params;
 
   setRequestLocale(locale);
 
   const [popularData, topRatedData] = await Promise.all([
     HomePageRecommendationsService.getPopular(),
-    HomePageRecommendationsService.getToprated(),
+    HomePageRecommendationsService.getTopRated(),
   ]);
 
   return (
