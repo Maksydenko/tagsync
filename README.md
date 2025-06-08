@@ -6,8 +6,6 @@
 
 ## Launch
 
-### Front
-
 ```bash
 cd front
 yarn # first launch
