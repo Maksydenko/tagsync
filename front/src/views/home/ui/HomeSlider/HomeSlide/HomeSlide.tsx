@@ -26,6 +26,7 @@ export const HomeSlide: FC<HomeSlideProps> = ({
   return (
     <div className={clsx(s.homeSlide, className)}>
       <div className={s.homeSlide__body}>
+        <div className={s.homeSlide__content} />
         <Img
           alt={tHome(`slider.${slide}`)}
           className={s.homeSlide__img}

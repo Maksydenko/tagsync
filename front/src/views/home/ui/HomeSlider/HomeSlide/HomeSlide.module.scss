@@ -7,6 +7,14 @@
     position: relative;
   }
 
+  // .homeSlide__content
+
+  &__content {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
   // .homeSlide__title
 
   &__title {
