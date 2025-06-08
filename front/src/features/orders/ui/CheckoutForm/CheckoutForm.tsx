@@ -18,8 +18,6 @@ import { useInvalidateAtom } from "@/shared/lib";
 import { MutationKey, QueryKey, Translation } from "@/shared/model";
 import { Btn } from "@/shared/ui";
 
-import { OrdersService } from "../../api";
-
 import { getCheckoutFields, ICheckoutForm } from "../../model";
 
 import s from "./CheckoutForm.module.scss";
@@ -41,6 +39,10 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({ className }) => {
       if (!user) {
         return;
       }
+
+      const OrdersService = await import("@/features/orders").then(
+        (module) => module.OrdersService
+      );
 
       return OrdersService.checkout({
         address: data.address.trim(),

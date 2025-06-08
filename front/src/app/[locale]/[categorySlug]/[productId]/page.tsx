@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { NextPage } from "next";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
@@ -12,6 +13,10 @@ import { ReviewsService } from "@/features/reviews";
 import { generateMetaTitle } from "@/shared/lib";
 import { IPageProps } from "@/shared/model";
 
+const getProductById = cache(async (categorySlug: string, productId: string) =>
+  ProductsService.getAll(`?category=${categorySlug}&product_id=${productId}`)
+);
+
 const ProductPage: NextPage<IPageProps> = async (props) => {
   const params = await props.params;
   const { categorySlug, locale, productId } = params;
@@ -21,9 +26,7 @@ const ProductPage: NextPage<IPageProps> = async (props) => {
   try {
     const [productsData, reviewsData, similarData, relatedData] =
       await Promise.all([
-        ProductsService.getAll(
-          `?category=${categorySlug}&product_id=${productId}`
-        ),
+        getProductById(categorySlug, productId),
         ReviewsService.get(productId),
         RecommendationsService.getSimilar(productId),
         RecommendationsService.getCompatible(productId),
@@ -51,8 +54,8 @@ const ProductPage: NextPage<IPageProps> = async (props) => {
 export default ProductPage;
 
 export const generateMetadata = async ({ params }: IPageProps) => {
-  const { productId } = await params;
-  const productData = await ProductsService.getAll(`?product_id=${productId}`);
+  const { categorySlug, productId } = await params;
+  const productData = await getProductById(categorySlug, productId);
   const productTitle = productData.data.products?.[0].title;
 
   return {

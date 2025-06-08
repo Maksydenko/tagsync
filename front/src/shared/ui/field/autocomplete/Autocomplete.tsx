@@ -66,6 +66,7 @@ export const Autocomplete = <T extends FieldValues>({
       >
         <div className={s.autocomplete__body}>
           <ComboboxInput
+            aria-label={tShared("form.search.label")}
             className={clsx(s.autocomplete__input)}
             displayValue={(item: ILink) => item.label}
             onChange={({ target: { value } }) => {

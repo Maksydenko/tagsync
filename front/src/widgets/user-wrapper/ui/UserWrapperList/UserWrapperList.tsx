@@ -33,10 +33,12 @@ export const UserWrapperList: FC<UserWrapperListProps> = ({ className }) => {
   const tShared = useTranslations(Translation.Shared);
   const invalidateUser = useInvalidateAtom([QueryKey.User]);
 
-  const supabase = createClientComponentClient<IDatabase>();
-
   const { isPending: isLogoutPending, mutate: logout } = useMutation({
-    mutationFn: async () => supabase.auth.signOut(),
+    mutationFn: async () => {
+      const supabase = createClientComponentClient<IDatabase>();
+
+      return supabase.auth.signOut();
+    },
     mutationKey: [MutationKey.Logout],
     onSuccess: async () => {
       await invalidateUser();

@@ -44,7 +44,7 @@ export const ScrollToTop: FC<ScrollToTopProps> = ({ className }) => {
         onClick={handleClick}
       >
         <Img
-          alt={tShared("scroll-to-top")}
+          alt={tShared("arrow")}
           className={s.scrollToTop__icon}
           src="/img/icons/form/arrow-down.svg"
           isSvg

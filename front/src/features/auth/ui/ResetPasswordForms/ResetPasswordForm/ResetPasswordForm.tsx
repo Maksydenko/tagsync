@@ -11,7 +11,6 @@ import { useMutation } from "@tanstack/react-query";
 import {
   authAtom,
   AuthForm,
-  AuthService,
   getResetPasswordFields,
   IResetPasswordForm,
 } from "@/features/auth";
@@ -42,6 +41,10 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
       if (!accessToken || !refreshToken) {
         throw new Error();
       }
+
+      const AuthService = await import("@/features/auth").then(
+        (module) => module.AuthService
+      );
 
       return AuthService.resetPassword({
         accessToken,

@@ -12,7 +12,6 @@ import { useMutation } from "@tanstack/react-query";
 
 import {
   AuthForm,
-  AuthService,
   getProfileFields,
   ICredentialsForm,
   IProfileForm,
@@ -49,6 +48,10 @@ export const ProfileForm: FC<ProfileFormProps> = ({ className }) => {
         if (!parsedFormData) {
           throw new Error();
         }
+
+        const AuthService = await import("@/features/auth").then(
+          (module) => module.AuthService
+        );
 
         const { email, password } = parsedFormData;
 

@@ -12,7 +12,7 @@ import { useMutation } from "@tanstack/react-query";
 
 import { useLocalCart } from "@/application/store";
 
-import { AuthForm, AuthService } from "@/features/auth";
+import { AuthForm } from "@/features/auth";
 
 import { CartService } from "@/entities/cart";
 
@@ -41,6 +41,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
   const tShared = useTranslations(Translation.Shared);
 
   const { clearLocalCart, localCart } = useLocalCart();
+  const { items: localCartItems } = localCart;
 
   const invalidateUser = useInvalidateAtom([QueryKey.User]);
   const invalidateCart = useInvalidateAtom([QueryKey.Cart]);
@@ -51,6 +52,10 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
 
   const { isPending: isLoginPending, mutate: login } = useMutation({
     mutationFn: async (data: ILoginForm) => {
+      const AuthService = await import("@/features/auth").then(
+        (module) => module.AuthService
+      );
+
       const { error } = await AuthService.login(data);
 
       if (error) {
@@ -78,10 +83,11 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
       await invalidateUser();
 
       const userCart = await CartService.get(userEmail);
+      const { length: localCartItemsLength } = localCartItems;
 
-      if (!userCart.data.items.length && localCart.items.length) {
+      if (!userCart.data.items.length && localCartItemsLength) {
         await Promise.allSettled(
-          localCart.items.map((item) =>
+          localCartItems.map((item) =>
             CartService.add({
               product_id: item.product_id,
               quantity: item.quantity,
@@ -93,7 +99,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
         await invalidateCart();
       }
 
-      if (localCart.items.length) {
+      if (localCartItemsLength) {
         clearLocalCart();
       }
 

@@ -16,8 +16,6 @@ import { userAtom } from "@/entities/user";
 import { MutationKey, QueryKey, Translation } from "@/shared/model";
 import { Btn, Popup } from "@/shared/ui";
 
-import { ReviewsService } from "../../api";
-
 import { getLeaveReviewFields, ILeaveReviewForm } from "../../model";
 
 import s from "./LeaveReview.module.scss";
@@ -64,6 +62,10 @@ export const LeaveReview: FC<LeaveReviewProps> = ({ className, productId }) => {
       if (!userEmail) {
         return;
       }
+
+      const ReviewsService = await import("../../api").then(
+        (module) => module.ReviewsService
+      );
 
       await ReviewsService.add({
         comment: data.review,

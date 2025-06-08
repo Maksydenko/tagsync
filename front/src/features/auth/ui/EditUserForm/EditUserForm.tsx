@@ -9,7 +9,7 @@ import { StepWizardChildProps } from "react-step-wizard";
 
 import { useMutation } from "@tanstack/react-query";
 
-import { AuthForm, AuthService } from "@/features/auth";
+import { AuthForm } from "@/features/auth";
 
 import { userAtom } from "@/entities/user";
 
@@ -39,6 +39,10 @@ export const EditUserForm: FC<EditUserFormProps> = ({ className }) => {
       if (!user) {
         return;
       }
+
+      const AuthService = await import("@/features/auth").then(
+        (module) => module.AuthService
+      );
 
       return AuthService.changeUserData({
         address: data.address.trim(),

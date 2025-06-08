@@ -11,10 +11,7 @@ import { useMutation } from "@tanstack/react-query";
 
 import { useLocalCart } from "@/application/store";
 
-import { ComparisonsService } from "@/features/comparisons";
-import { WishlistService } from "@/features/wishlist";
-
-import { cartAtom, cartOpenAtom, CartService } from "@/entities/cart";
+import { cartAtom, cartOpenAtom } from "@/entities/cart";
 import { Checked } from "@/entities/indicator";
 import { comparisonsAtom, IProduct, wishlistAtom } from "@/entities/product";
 import { userAtom } from "@/entities/user";
@@ -106,6 +103,10 @@ export const ProductMain: FC<ProductMainProps> = ({
           throw new Error();
         }
 
+        const WishlistService = await import("@/features/wishlist").then(
+          (module) => module.WishlistService
+        );
+
         if (isWished) {
           return WishlistService.remove({
             product_id,
@@ -135,6 +136,10 @@ export const ProductMain: FC<ProductMainProps> = ({
           throw new Error();
         }
 
+        const ComparisonsService = await import("@/features/comparisons").then(
+          (module) => module.ComparisonsService
+        );
+
         if (isInComparisons) {
           return ComparisonsService.remove({
             product_id,
@@ -160,6 +165,10 @@ export const ProductMain: FC<ProductMainProps> = ({
       if (!userData) {
         return addToLocalCart(productData);
       }
+
+      const CartService = await import("@/entities/cart").then(
+        (module) => module.CartService
+      );
 
       return CartService.add({
         product_id,

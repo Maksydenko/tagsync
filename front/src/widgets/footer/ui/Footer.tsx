@@ -1,29 +1,28 @@
 "use client";
 
 import { FC } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
-import { useAtom } from "jotai";
 
-import { categoriesAtom } from "@/entities/product";
-
-import { Locale, Pathname, Translation } from "@/shared/model";
+import { Pathname, Translation } from "@/shared/model";
 import { Img } from "@/shared/ui";
 
 import { Copyright } from "./Copyright/Copyright";
 
 import s from "./Footer.module.scss";
 
+const FooterList = dynamic(() =>
+  import("./FooterList").then((module) => module.FooterList)
+);
+
 interface FooterProps {
   className?: string;
 }
 
 export const Footer: FC<FooterProps> = ({ className }) => {
-  const locale = useLocale() as Locale;
   const tShared = useTranslations(Translation.Shared);
-
-  const [{ data: categoriesData }] = useAtom(categoriesAtom);
 
   return (
     <footer className={clsx(s.footer, className)}>
@@ -50,15 +49,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
               <h6 className={s.footer__title}>
                 {tShared("pathnames.categories")}
               </h6>
-              <ul className={s.footer__list}>
-                {categoriesData?.data.map((category) => (
-                  <li key={category.slug} className={s.footer__item}>
-                    <Link className={s.footer__link} href={`/${category.slug}`}>
-                      {category.translations_slug[locale]}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <FooterList />
             </div>
           </div>
         </div>

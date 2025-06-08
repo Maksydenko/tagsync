@@ -11,7 +11,6 @@ import { useMutation } from "@tanstack/react-query";
 import {
   authAtom,
   AuthForm,
-  AuthService,
   getForgotPasswordFields,
   IForgotPasswordForm,
 } from "@/features/auth";
@@ -45,6 +44,10 @@ export const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({
     mutate: requestResetPassword,
   } = useMutation({
     mutationFn: async ({ email }: IForgotPasswordForm) => {
+      const AuthService = await import("@/features/auth").then(
+        (module) => module.AuthService
+      );
+
       await AuthService.requestResetPassword({
         email,
         redirectUrl: `${window.location.origin}${Pathname.ResetPassword}`,
