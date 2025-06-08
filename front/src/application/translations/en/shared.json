@@ -25,6 +25,9 @@
       "copyright": "All rights reserved"
     },
     "form": {
+      "search": {
+        "label": "Search"
+      },
       "email": {
         "label": "Email",
         "required": "Email is required",

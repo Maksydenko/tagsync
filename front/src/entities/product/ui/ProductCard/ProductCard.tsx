@@ -194,7 +194,11 @@ export const ProductCard: FC<ProductCardProps> = ({
   return (
     <div className={clsx(s.productCard, className)}>
       <div className={s.productCard__body}>
-        <Link className={s.productCard__link} href={`/${slug}/${product_id}`} />
+        <Link
+          aria-label={title}
+          className={s.productCard__link}
+          href={`/${slug}/${product_id}`}
+        />
         <div className={s.productCard__header}>
           <button
             aria-label={tShared(

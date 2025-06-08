@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import {
   FieldValues,
@@ -17,7 +18,12 @@ import {
   ComboboxOptions,
 } from "@headlessui/react";
 
-import { checkKeyByTypes, ILink, ILinkWithIcon } from "@/shared/model";
+import {
+  checkKeyByTypes,
+  ILink,
+  ILinkWithIcon,
+  Translation,
+} from "@/shared/model";
 
 import { Img } from "../../img/Img";
 
@@ -49,6 +55,8 @@ export const Autocomplete = <T extends FieldValues>({
   } = register(name, options);
   const selected = watch(name);
 
+  const tShared = useTranslations(Translation.Shared);
+
   return (
     <div className={clsx(s.autocomplete, className)}>
       <Combobox
@@ -66,8 +74,12 @@ export const Autocomplete = <T extends FieldValues>({
             {...props}
             {...restRegister}
           />
-          <ComboboxButton className={s.autocomplete__btn}>
+          <ComboboxButton
+            aria-label={tShared("form.search.label")}
+            className={s.autocomplete__btn}
+          >
             <Img
+              alt={tShared("form.search.label")}
               className={s.autocomplete__icon}
               src="/img/icons/form/loupe.svg"
               isSvg

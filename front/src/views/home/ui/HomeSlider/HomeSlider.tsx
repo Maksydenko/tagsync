@@ -20,9 +20,15 @@ export const HomeSlider: FC<HomeSliderProps> = ({ className }) => {
         <SliderSwiper
           autoHeight={false}
           className={s.homeSlider__slider}
-          slides={slides.map((slide) => ({
+          slides={slides.map((slide, index) => ({
             label: slide,
-            value: <HomeSlide className={s.homeSlider__slide} slide={slide} />,
+            value: (
+              <HomeSlide
+                className={s.homeSlider__slide}
+                isPriority={index === 0}
+                slide={slide}
+              />
+            ),
           }))}
           spaceBetween={0}
           autoplay

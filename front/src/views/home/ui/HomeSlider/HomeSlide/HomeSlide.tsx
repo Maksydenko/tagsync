@@ -10,10 +10,15 @@ import s from "./HomeSlide.module.scss";
 
 interface HomeSlideProps {
   className?: string;
+  isPriority?: boolean;
   slide: string;
 }
 
-export const HomeSlide: FC<HomeSlideProps> = ({ className, slide }) => {
+export const HomeSlide: FC<HomeSlideProps> = ({
+  className,
+  isPriority,
+  slide,
+}) => {
   const locale = useLocale();
 
   return (
@@ -22,6 +27,7 @@ export const HomeSlide: FC<HomeSlideProps> = ({ className, slide }) => {
         <Img
           className={s.homeSlide__img}
           customLoader={<Loader className={s.homeSlide__loader} />}
+          priority={isPriority}
           quality={90}
           src={`/img/home/${locale}/${slide}.png`}
         />

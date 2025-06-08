@@ -25,6 +25,9 @@
       "copyright": "Усі права захищені"
     },
     "form": {
+      "search": {
+        "label": "Пошук"
+      },
       "email": {
         "label": "Email",
         "required": "Email обов'язковий",
