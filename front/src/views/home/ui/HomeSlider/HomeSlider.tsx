@@ -24,6 +24,7 @@ export const HomeSlider: FC<HomeSliderProps> = ({ className }) => {
             label: slide,
             value: (
               <HomeSlide
+                key={slide}
                 className={s.homeSlider__slide}
                 isPriority={index === 0}
                 slide={slide}
@@ -32,8 +33,8 @@ export const HomeSlider: FC<HomeSliderProps> = ({ className }) => {
           }))}
           spaceBetween={0}
           autoplay
-          loop
           pagination
+          virtual
         />
       </div>
     </div>

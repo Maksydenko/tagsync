@@ -35,6 +35,7 @@ import "swiper/scss/pagination";
 import "swiper/scss/navigation";
 // import "swiper/scss/scrollbar";
 import "swiper/scss/thumbs";
+import "swiper/scss/virtual";
 
 export interface SliderSwiperProps extends SwiperProps {
   autoplayDelay?: number;
@@ -201,7 +202,7 @@ export const SliderSwiper: FC<SliderSwiperProps> = ({
     <SwiperSlide
       key={label}
       {...(hash && {
-        "data-hash": `${hash}-${index}`,
+        "data-hash": `${hash}${label}`,
       })}
       {...(virtual && {
         virtualIndex: index,
