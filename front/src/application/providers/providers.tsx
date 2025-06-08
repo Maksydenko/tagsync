@@ -6,19 +6,15 @@ import { Locale } from "@/shared/model";
 import { NextIntlProvider } from "./nextIntlClient.provider";
 import { QueryProvider } from "./query/query.provider";
 
-import { ReduxProvider } from "./reduxProvider";
-
 interface ProvidersProps {
   children: ReactNode;
   locale: Locale;
 }
 
 export const Providers: FC<ProvidersProps> = ({ children, locale }) => (
-  <ReduxProvider>
-    <QueryProvider>
-      <NextIntlProvider locale={locale}>
-        <ThemeProvider>{children}</ThemeProvider>
-      </NextIntlProvider>
-    </QueryProvider>
-  </ReduxProvider>
+  <QueryProvider>
+    <NextIntlProvider locale={locale}>
+      <ThemeProvider>{children}</ThemeProvider>
+    </NextIntlProvider>
+  </QueryProvider>
 );
