@@ -29,7 +29,7 @@ export const HomeSlide: FC<HomeSlideProps> = ({
           customLoader={<Loader className={s.homeSlide__loader} />}
           priority={isPriority}
           quality={90}
-          src={`/img/home/${locale}/${slide}.png`}
+          src={`/img/home/${locale}/${slide}.webp`}
         />
       </div>
     </div>
