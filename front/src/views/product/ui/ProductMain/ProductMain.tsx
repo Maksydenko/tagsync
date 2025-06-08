@@ -40,7 +40,7 @@ export const ProductMain: FC<ProductMainProps> = ({
   productData,
   reviewsLength,
 }) => {
-  const { average_rating, price, product_id, slug, title } = productData;
+  const { price, product_id, rating, slug, title } = productData;
 
   const { push } = useRouter();
   const tShared = useTranslations(Translation.Shared);
@@ -52,7 +52,7 @@ export const ProductMain: FC<ProductMainProps> = ({
 
   const form = useForm({
     defaultValues: {
-      rating: average_rating,
+      rating,
     },
   });
 
