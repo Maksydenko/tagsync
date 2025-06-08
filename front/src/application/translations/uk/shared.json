@@ -13,13 +13,6 @@
       "prev": "Попередній",
       "next": "Наступний"
     },
-    "user": {
-      "profile": "Особистий кабінет",
-      "comparisons": "Списки порівнянь",
-      "wishlist": "Список бажань",
-      "orders": "Замовлення",
-      "logout": "Вийти"
-    },
     "header": {
       "menu": {
         "open-menu": "Відкрити меню",
@@ -97,6 +90,13 @@
       "user-already-exists": "Цей email вже існує",
       "email-not-confirmed": "Email не підтверджено"
     },
+    "user": {
+      "profile": "Особистий кабінет",
+      "comparisons": "Списки порівнянь",
+      "wishlist": "Список бажань",
+      "orders": "Замовлення",
+      "logout": "Вийти"
+    },
     "product": {
       "wishlist": {
         "add-to-wishlist": "Додати в список бажаного",
@@ -131,9 +131,10 @@
       }
     },
     "scroll-to-top": "Прокрутити до гори",
-    "arrow": "Стрілка",
     "forgot-password": "Забули пароль?",
     "continue": "Продовжити",
-    "logo": "Лого"
+    "logo": "Лого",
+    "arrow": "Стрілка",
+    "checkmark": "Галочка"
   }
 }

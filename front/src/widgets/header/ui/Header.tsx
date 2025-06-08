@@ -79,7 +79,7 @@ export const Header: FC<HeaderProps> = ({ className }) => {
             onClick={unlockScroll}
           >
             <Img
-              alt={tShared("logo")}
+              alt={`${tShared("logo")} TagSync`}
               className={s.header__img}
               height={35}
               src="/img/logos/logo.png"

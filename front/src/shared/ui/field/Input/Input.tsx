@@ -43,8 +43,8 @@ export const Input = <T extends FieldValues>({
     register,
   } = formReturn;
 
-  const error = errors[name];
   const { onBlur: handleBlur, ...restRegister } = register(name, options);
+  const error = errors[name];
 
   const disabled = options?.disabled;
 

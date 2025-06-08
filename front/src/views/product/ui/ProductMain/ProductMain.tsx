@@ -228,7 +228,11 @@ export const ProductMain: FC<ProductMainProps> = ({
           </Btn>
           <div className={s.productMain__btns}>
             <button
-              aria-label={tShared("product.compare.add-to-compare")}
+              aria-label={tShared(
+                `product.compare.${
+                  isInComparisons ? "remove-from" : "add-to"
+                }-compare`
+              )}
               className={s.productMain__btn}
               disabled={isAddToComparisonsPending || isComparisonsLoading}
               type="button"
@@ -237,7 +241,11 @@ export const ProductMain: FC<ProductMainProps> = ({
               }}
             >
               <Img
-                alt={tShared("product.compare.add-to-compare")}
+                aria-label={tShared(
+                  `product.compare.${
+                    isInComparisons ? "remove-from" : "add-to"
+                  }-compare`
+                )}
                 className={s.productMain__icon}
                 src="/img/icons/product/compare.svg"
               />
@@ -246,6 +254,11 @@ export const ProductMain: FC<ProductMainProps> = ({
               )}
             </button>
             <button
+              aria-label={tShared(
+                `product.wishlist.${
+                  isWished ? "remove-from" : "add-to"
+                }-wishlist`
+              )}
               className={s.productMain__btn}
               disabled={isAddToWishlistPending || isWishlistLoading}
               type="button"
@@ -254,6 +267,11 @@ export const ProductMain: FC<ProductMainProps> = ({
               }}
             >
               <Img
+                alt={tShared(
+                  `product.wishlist.${
+                    isWished ? "remove-from" : "add-to"
+                  }-wishlist`
+                )}
                 className={s.productMain__icon}
                 src={`/img/icons/product/heart-${
                   isWished ? "fill" : "empty"

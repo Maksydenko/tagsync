@@ -57,7 +57,7 @@ export const ThemeItem: FC<ThemeItemProps> = ({ theme: { label, value } }) => {
           })}
       >
         <Img
-          alt={value}
+          alt={tShared(`themes.${value}`)}
           className={s.themeSwitcher__img}
           height={20}
           src={label}

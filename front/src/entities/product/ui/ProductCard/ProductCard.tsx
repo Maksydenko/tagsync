@@ -201,7 +201,9 @@ export const ProductCard: FC<ProductCardProps> = ({
         <div className={s.productCard__header}>
           <button
             aria-label={tShared(
-              `product.compare.${isWished ? "remove-from" : "add-to"}-compare`
+              `product.compare.${
+                isInComparisons ? "remove-from" : "add-to"
+              }-compare`
             )}
             className={s.productCard__btn}
             disabled={isAddToComparisonsPending || isComparisonsLoading}
@@ -212,7 +214,9 @@ export const ProductCard: FC<ProductCardProps> = ({
           >
             <Img
               alt={tShared(
-                `product.compare.${isWished ? "remove-from" : "add-to"}-compare`
+                `product.compare.${
+                  isInComparisons ? "remove-from" : "add-to"
+                }-compare`
               )}
               className={s.productCard__icon}
               src="/img/icons/product/compare.svg"

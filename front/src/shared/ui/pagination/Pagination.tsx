@@ -53,12 +53,12 @@ export const Pagination: FC<PaginationProps> = ({
   };
 
   const getIcon = (direction: SlideDirection) => (
-      <Img
-        alt={tShared(`slide-directions.${  direction}`)}
-        className={s.pagination__icon}
-        src="/img/icons/form/arrow-down.svg"
-      />
-    );
+    <Img
+      alt={tShared(`slide-directions.${direction}`)}
+      className={s.pagination__icon}
+      src="/img/icons/form/arrow-down.svg"
+    />
+  );
 
   return (
     <ReactPaginate
