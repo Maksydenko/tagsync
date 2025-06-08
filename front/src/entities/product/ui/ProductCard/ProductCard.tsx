@@ -44,8 +44,7 @@ export const ProductCard: FC<ProductCardProps> = ({
   isStable,
   productData,
 }) => {
-  const { average_rating, images, price, product_id, slug, title } =
-    productData;
+  const { images, price, product_id, rating, slug, title } = productData;
 
   const { push } = useRouter();
   const tShared = useTranslations(Translation.Shared);
@@ -187,7 +186,7 @@ export const ProductCard: FC<ProductCardProps> = ({
 
   const form = useForm({
     defaultValues: {
-      rating: average_rating,
+      rating,
     },
   });
 

@@ -20,18 +20,18 @@ export const CategoryProducts: FC<CategoryProductsProps> = ({
   className,
   productsData,
 }) => (
-    <div className={clsx(s.categoryProducts, className)}>
-      <div className={s.categoryProducts__body}>
-        <div className={s.categoryProducts__content}>
-          {productsData.products.map((product) => (
-              <ProductCard key={product.product_id} productData={product} />
-            ))}
-        </div>
-        <Pagination
-          className={s.categoryProducts__pagination}
-          itemsPerPage={+process.env.NEXT_PUBLIC_PRODUCTS_PER_PAGE!}
-          itemsPerTotal={productsData.count_category}
-        />
+  <div className={clsx(s.categoryProducts, className)}>
+    <div className={s.categoryProducts__body}>
+      <div className={s.categoryProducts__content}>
+        {productsData.products.map((product) => (
+          <ProductCard key={product.product_id} productData={product} />
+        ))}
       </div>
+      <Pagination
+        className={s.categoryProducts__pagination}
+        itemsPerPage={+process.env.NEXT_PUBLIC_PRODUCTS_PER_PAGE!}
+        itemsPerTotal={productsData.count_category}
+      />
     </div>
-  );
+  </div>
+);

@@ -1,11 +1,11 @@
 import { ITranslations } from "@/shared/api";
 
 export interface IProduct {
-  average_rating: null | number;
   characteristics: IProductCharacteristic[];
   images: string[];
   price: string;
   product_id: number;
+  rating: null | number;
   slug: string;
   title: string;
   translations_slug: ITranslations;
