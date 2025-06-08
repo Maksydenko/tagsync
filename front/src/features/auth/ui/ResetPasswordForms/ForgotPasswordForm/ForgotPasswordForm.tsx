@@ -47,7 +47,7 @@ export const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({
     mutationFn: async ({ email }: IForgotPasswordForm) => {
       await AuthService.requestResetPassword({
         email,
-        redirectUrl: `${window.location.origin}/${Pathname.ResetPassword}`,
+        redirectUrl: `${window.location.origin}${Pathname.ResetPassword}`,
       });
     },
     mutationKey: [MutationKey.RequestResetPassword],
