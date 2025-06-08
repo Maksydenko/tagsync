@@ -1,7 +1,7 @@
 "use client";
 
 import { FC } from "react";
-import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import { useAtom } from "jotai";
@@ -10,18 +10,21 @@ import { useMutation } from "@tanstack/react-query";
 
 import { useLocalCart } from "@/application/store";
 
-import { CartProduct } from "@/entities/product";
 import { userAtom } from "@/entities/user";
 
 import { useInvalidateAtom } from "@/shared/lib";
 import { MutationKey, Pathname, QueryKey, Translation } from "@/shared/model";
-import { Btn, Img, Popup } from "@/shared/ui";
-
-import { CartService } from "../../api";
+import { Img, Popup } from "@/shared/ui";
 
 import { cartAtom, cartOpenAtom } from "../../model";
 
 import s from "./Cart.module.scss";
+
+const Link = dynamic(() => import("next/link"));
+const Btn = dynamic(() => import("@/shared/ui").then((module) => module.Btn));
+const CartProduct = dynamic(() =>
+  import("@/entities/product").then((module) => module.CartProduct)
+);
 
 interface CartProps {
   className?: string;
@@ -46,6 +49,10 @@ export const Cart: FC<CartProps> = ({ className }) => {
 
   const { mutate: clearCart } = useMutation({
     mutationFn: async () => {
+      const CartService = await import("../../api").then(
+        (module) => module.CartService
+      );
+
       if (userEmail) {
         return CartService.clear({
           userEmail,
@@ -69,7 +76,14 @@ export const Cart: FC<CartProps> = ({ className }) => {
       <Popup
         btn={
           <div className={s.cart__btn}>
-            <Img className={s.cart__icon} src="/img/icons/product/cart.svg" />
+            <Img
+              alt={tShared("cart.title")}
+              className={s.cart__icon}
+              height={20}
+              src="/img/icons/product/cart.svg"
+              width={20}
+              isSvg
+            />
             {!!cartTotalQuantity && (
               <p className={s.cart__counter}>{cartTotalQuantity}</p>
             )}

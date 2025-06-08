@@ -201,7 +201,10 @@ export const ProductMain: FC<ProductMainProps> = ({
           <Btn
             className={s.productMain__btn}
             disabled={isAddToCartPending || isCartLoading}
-            icon="/img/icons/product/cart.svg"
+            icon={{
+              label: tShared(`product.cart.${isInCart ? "in" : "add-to"}-cart`),
+              value: "/img/icons/product/cart.svg",
+            }}
             isLoading={isAddToCartPending}
             onClick={() => {
               if (isInCart) {
@@ -216,6 +219,7 @@ export const ProductMain: FC<ProductMainProps> = ({
           </Btn>
           <div className={s.productMain__btns}>
             <button
+              aria-label={tShared("product.compare.add-to-compare")}
               className={s.productMain__btn}
               disabled={isAddToComparisonsPending || isComparisonsLoading}
               type="button"
@@ -224,6 +228,7 @@ export const ProductMain: FC<ProductMainProps> = ({
               }}
             >
               <Img
+                alt={tShared("product.compare.add-to-compare")}
                 className={s.productMain__icon}
                 src="/img/icons/product/compare.svg"
               />

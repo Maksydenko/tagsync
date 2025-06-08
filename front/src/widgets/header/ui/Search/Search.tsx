@@ -4,8 +4,6 @@ import { useForm } from "react-hook-form";
 
 import { useQuery } from "@tanstack/react-query";
 
-import { ProductsService } from "@/features/products";
-
 import { QueryKey } from "@/shared/model";
 import { Autocomplete } from "@/shared/ui";
 
@@ -23,7 +21,13 @@ export const Search: FC<SearchProps> = ({ className }) => {
 
   const { data: searchData } = useQuery({
     enabled: !!search,
-    queryFn: async () => ProductsService.search(`?query=${search}`),
+    queryFn: async () => {
+      const ProductsService = await import("@/features/products").then(
+        (module) => module.ProductsService
+      );
+
+      return ProductsService.search(`?query=${search}`);
+    },
     queryKey: [QueryKey.Search, search],
   });
 

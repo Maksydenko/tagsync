@@ -10,8 +10,6 @@ import { useAtom } from "jotai";
 
 import { useMutation } from "@tanstack/react-query";
 
-import { AuthService } from "@/features/auth";
-
 import { useInvalidateAtom } from "@/shared/lib";
 import {
   MutationKey,
@@ -42,7 +40,13 @@ export const User: FC<UserProps> = ({ className, onClick }) => {
   const userName = `${user?.firstName} ${user?.lastName}`;
 
   const { mutate: logout } = useMutation({
-    mutationFn: async () => AuthService.logout(),
+    mutationFn: async () => {
+      const AuthService = await import("@/features/auth").then(
+        (module) => module.AuthService
+      );
+
+      return AuthService.logout();
+    },
     mutationKey: [MutationKey.Logout],
     onSuccess: async () => {
       await invalidateUser();

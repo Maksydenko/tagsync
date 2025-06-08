@@ -12,10 +12,7 @@ import { useMutation } from "@tanstack/react-query";
 
 import { useLocalCart } from "@/application/store";
 
-import { ComparisonsService } from "@/features/comparisons";
-import { WishlistService } from "@/features/wishlist";
-
-import { cartAtom, cartOpenAtom, CartService } from "@/entities/cart";
+import { cartAtom, cartOpenAtom } from "@/entities/cart";
 import { Checked } from "@/entities/indicator";
 import { userAtom } from "@/entities/user";
 
@@ -56,7 +53,8 @@ export const ProductCard: FC<ProductCardProps> = ({
   const setIsOpen = useSetAtom(cartOpenAtom);
 
   const [{ data: userData, isLoading: isUserLoading }] = useAtom(userAtom);
-  const userEmail = userData?.data.email;
+  const user = userData?.data;
+  const userEmail = user?.email;
 
   const invalidateWishlist = useInvalidateAtom([QueryKey.Wishlist]);
   const [{ data: wishlistData, isLoading: isWishlistLoading }] = useAtom(
@@ -104,6 +102,10 @@ export const ProductCard: FC<ProductCardProps> = ({
           throw new Error();
         }
 
+        const WishlistService = await import("@/features/wishlist").then(
+          (module) => module.WishlistService
+        );
+
         if (isWished) {
           return WishlistService.remove({
             product_id,
@@ -127,22 +129,26 @@ export const ProductCard: FC<ProductCardProps> = ({
           throw new Error();
         }
 
-        if (!userData) {
+        if (!user) {
           push(Pathname.Login);
 
           throw new Error();
         }
 
+        const ComparisonsService = await import("@/features/comparisons").then(
+          (module) => module.ComparisonsService
+        );
+
         if (isInComparisons) {
           return ComparisonsService.remove({
             product_id,
-            userEmail: userData.data.email,
+            userEmail: user.email,
           });
         }
 
         return ComparisonsService.add({
           product_id,
-          userEmail: userData.data.email,
+          userEmail: user.email,
         });
       },
       mutationKey: [MutationKey.AddToComparisons],
@@ -155,19 +161,23 @@ export const ProductCard: FC<ProductCardProps> = ({
         throw new Error();
       }
 
-      if (!userData) {
+      if (!user) {
         return addToLocalCart(productData);
       }
+
+      const CartService = await import("@/entities/cart").then(
+        (module) => module.CartService
+      );
 
       return CartService.add({
         product_id,
         quantity: 1,
-        userEmail: userData.data.email,
+        userEmail: user.email,
       });
     },
     mutationKey: [MutationKey.AddToCart],
     onSuccess: async () => {
-      if (!userData) {
+      if (!user) {
         return;
       }
 
@@ -187,6 +197,9 @@ export const ProductCard: FC<ProductCardProps> = ({
         <Link className={s.productCard__link} href={`/${slug}/${product_id}`} />
         <div className={s.productCard__header}>
           <button
+            aria-label={tShared(
+              `product.compare.${isWished ? "remove-from" : "add-to"}-compare`
+            )}
             className={s.productCard__btn}
             disabled={isAddToComparisonsPending || isComparisonsLoading}
             type="button"
@@ -195,6 +208,9 @@ export const ProductCard: FC<ProductCardProps> = ({
             }}
           >
             <Img
+              alt={tShared(
+                `product.compare.${isWished ? "remove-from" : "add-to"}-compare`
+              )}
               className={s.productCard__icon}
               src="/img/icons/product/compare.svg"
             />
@@ -203,6 +219,9 @@ export const ProductCard: FC<ProductCardProps> = ({
             )}
           </button>
           <button
+            aria-label={tShared(
+              `product.wishlist.${isWished ? "remove-from" : "add-to"}-wishlist`
+            )}
             className={s.productCard__btn}
             disabled={isAddToWishlistPending || isWishlistLoading}
             type="button"
@@ -211,6 +230,11 @@ export const ProductCard: FC<ProductCardProps> = ({
             }}
           >
             <Img
+              alt={tShared(
+                `product.wishlist.${
+                  isWished ? "remove-from" : "add-to"
+                }-wishlist`
+              )}
               className={s.productCard__icon}
               src={`/img/icons/product/heart-${
                 isWished ? "fill" : "empty"
@@ -253,10 +277,14 @@ export const ProductCard: FC<ProductCardProps> = ({
               </div>
             </div>
             <Btn
-              aria-label={tShared("product.cart.add-to-cart")}
               className={s.productCard__btn}
               disabled={isCartLoading}
-              icon="/img/icons/product/cart.svg"
+              icon={{
+                label: tShared(
+                  `product.cart.${isInCart ? "in" : "add-to"}-cart`
+                ),
+                value: "/img/icons/product/cart.svg",
+              }}
               isLoading={isAddToCartPending}
               onClick={() => {
                 if (isInCart) {

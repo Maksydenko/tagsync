@@ -17,10 +17,12 @@ export const ScrollTop: FC<ScrollTopProps> = ({ className }) => {
   const isActive = useActiveOnScroll(110);
 
   const handleClick = () => {
-    animate(window.scrollY, 0, {
+    const { scrollTo, scrollY } = window;
+
+    animate(scrollY, 0, {
       duration: 0.8,
       onUpdate: (value) => {
-        window.scrollTo(0, value);
+        scrollTo(0, value);
       },
     });
   };

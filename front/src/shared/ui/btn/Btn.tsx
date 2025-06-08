@@ -7,6 +7,8 @@ import {
 } from "react";
 import { clsx } from "clsx";
 
+import { ILink } from "@/shared/model";
+
 import { Img } from "../img/Img";
 import { Loader } from "../loader/Loader";
 
@@ -14,7 +16,7 @@ import s from "./Btn.module.scss";
 
 interface BtnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;
-  icon?: ReactNode;
+  icon?: ILink<ReactNode>;
   isLoading?: boolean;
 }
 
@@ -40,14 +42,15 @@ export const Btn: FC<BtnProps> = ({
 
   const isStringChildren = typeof children === "string";
 
+  const iconLabel = icon?.label;
+  const iconValue = icon?.value;
+
   return (
     <button
       aria-disabled={isDisabled}
+      aria-label={props["aria-label"] || iconLabel}
       className={clsx(classNames, className)}
       disabled={isDisabled}
-      {...(isStringChildren && {
-        "aria-label": children,
-      })}
       {...props}
     >
       <div className={s.btn__body}>
@@ -57,19 +60,17 @@ export const Btn: FC<BtnProps> = ({
           ) : (
             children
           )}
-          {typeof icon === "string" ? (
+          {typeof iconValue === "string" ? (
             <Img
+              alt={iconLabel}
               className={s.btn__icon}
-              src={icon}
-              {...(isStringChildren && {
-                alt: children,
-              })}
               height={20}
+              src={iconValue}
               width={20}
               isSvg
             />
           ) : (
-            icon
+            iconValue
           )}
         </div>
         {isLoading && <Loader className={s.btn__loader} />}

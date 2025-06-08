@@ -89,6 +89,14 @@
       "email-not-confirmed": "Email not confirmed"
     },
     "product": {
+      "wishlist": {
+        "add-to-wishlist": "Add to wishlist",
+        "remove-from-wishlist": "Remove from wishlist"
+      },
+      "compare": {
+        "add-to-compare": "Add to compare",
+        "remove-from-compare": "Remove from compare"
+      },
       "cart": {
         "add-to-cart": "Add to cart",
         "in-cart": "In cart"
@@ -103,6 +111,11 @@
     },
     "cart": {
       "title": "Cart",
+      "counter": {
+        "increment": "Increment",
+        "decrement": "Decrement",
+        "clear": "Clear"
+      },
       "btns": {
         "checkout": "Checkout",
         "clear": "Clear cart"

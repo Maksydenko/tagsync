@@ -10,16 +10,11 @@ import { HomeSlider } from "./HomeSlider/HomeSlider";
 import s from "./Home.module.scss";
 
 interface HomeProps {
-  alsoViewedData: IProduct[];
-  priceBasedData: IProduct[];
-  similarData: IProduct[];
+  popularData: IProduct[];
+  topRatedData: IProduct[];
 }
 
-export const Home: FC<HomeProps> = ({
-  alsoViewedData,
-  priceBasedData,
-  similarData,
-}) => {
+export const Home: FC<HomeProps> = ({ popularData, topRatedData }) => {
   const tHome = useTranslations(Translation.Home);
 
   return (
@@ -28,16 +23,12 @@ export const Home: FC<HomeProps> = ({
       <div className={s.home__container}>
         <div className={s.home__body}>
           <ProductsSlider
-            productsData={alsoViewedData}
+            productsData={popularData}
             title={tHome("recommendations.popular")}
           />
           <ProductsSlider
-            productsData={priceBasedData}
+            productsData={topRatedData}
             title={tHome("recommendations.recommended")}
-          />
-          <ProductsSlider
-            productsData={similarData}
-            title={tHome("recommendations.viewed")}
           />
         </div>
       </div>

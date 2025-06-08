@@ -89,6 +89,14 @@
       "email-not-confirmed": "Email не підтверджено"
     },
     "product": {
+      "wishlist": {
+        "add-to-wishlist": "Додати в список бажаного",
+        "remove-from-wishlist": "Видалити зі списку бажаного"
+      },
+      "compare": {
+        "add-to-compare": "Додати до списку порівнянь",
+        "remove-from-compare": "Видалити зі списку порівнянь"
+      },
       "cart": {
         "add-to-cart": "Додати в кошик",
         "in-cart": "У кошику"
@@ -103,6 +111,11 @@
     },
     "cart": {
       "title": "Кошик",
+      "counter": {
+        "increment": "Збільшити",
+        "decrement": "Зменшити",
+        "clear": "Очистити"
+      },
       "btns": {
         "checkout": "Оформити замовлення",
         "clear": "Очистити кошик"

@@ -66,7 +66,10 @@ export const CategoryHeader: FC<CategoryHeaderProps> = ({
               btn={
                 <Btn
                   className={s.categoryHeader__btn}
-                  icon="/img/icons/form/filter.svg"
+                  icon={{
+                    label: tCategory("filters.label"),
+                    value: "/img/icons/form/filter.svg",
+                  }}
                   type="button"
                   asChild
                 >

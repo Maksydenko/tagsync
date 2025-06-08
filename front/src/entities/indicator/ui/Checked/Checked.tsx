@@ -10,11 +10,11 @@ interface CheckedProps {
 }
 
 export const Checked: FC<CheckedProps> = ({ className }) => (
-    <div className={clsx(s.checked, className)}>
-      <Img
-        className={s.checked__icon}
-        src="/img/icons/form/checkmark.svg"
-        isSvg
-      />
-    </div>
-  );
+  <div className={clsx(s.checked, className)}>
+    <Img
+      className={s.checked__icon}
+      src="/img/icons/form/checkmark.svg"
+      isSvg
+    />
+  </div>
+);

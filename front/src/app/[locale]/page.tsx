@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import Home from "@/views/home";
 
-import { RecommendationsService } from "@/features/recommendations/api/recommendations.service";
+import { HomePageRecommendationsService } from "@/features/recommendations";
 
 import { generateMetaTitle } from "@/shared/lib";
 import { IPageProps, IParams, Translation } from "@/shared/model";
@@ -18,19 +18,13 @@ const HomePage: NextPage<HomePageProps> = async (props) => {
 
   setRequestLocale(locale);
 
-  // TODO: handle common recommendations
-  const [alsoViewedData, similarData, priceBasedData] = await Promise.all([
-    RecommendationsService.getAlsoViewed(1),
-    RecommendationsService.getSimilar(1),
-    RecommendationsService.getPriceBased(1),
+  const [popularData, topRatedData] = await Promise.all([
+    HomePageRecommendationsService.getPopular(),
+    HomePageRecommendationsService.getToprated(),
   ]);
 
   return (
-    <Home
-      alsoViewedData={alsoViewedData.data}
-      priceBasedData={priceBasedData.data}
-      similarData={similarData.data}
-    />
+    <Home popularData={popularData.data} topRatedData={topRatedData.data} />
   );
 };
 

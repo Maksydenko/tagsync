@@ -21,39 +21,39 @@ export const ProductsSlider: FC<ProductsSliderProps> = ({
   productsData,
   title,
 }) => (
-    <div className={clsx(s.productsSlider, className)}>
-      <div className={s.productsSlider__body}>
-        {title && <h2 className={s.productsSlider__title}>{title}</h2>}
-        <SliderSwiper
-          breakpoints={{
-            [Breakpoint.Mobile]: {
-              slidesPerView: 3,
-            },
-            [Breakpoint.MobileSmall]: {
-              slidesPerView: 2,
-            },
-            [Breakpoint.Tablet]: {
-              slidesPerView: 4,
-            },
-          }}
-          className={s.productsSlider__slider}
-          slides={productsData.map((product) => {
-            const { product_id } = product;
+  <div className={clsx(s.productsSlider, className)}>
+    <div className={s.productsSlider__body}>
+      {title && <h2 className={s.productsSlider__title}>{title}</h2>}
+      <SliderSwiper
+        breakpoints={{
+          [Breakpoint.Mobile]: {
+            slidesPerView: 3,
+          },
+          [Breakpoint.MobileSmall]: {
+            slidesPerView: 2,
+          },
+          [Breakpoint.Tablet]: {
+            slidesPerView: 4,
+          },
+        }}
+        className={s.productsSlider__slider}
+        slides={productsData.map((product) => {
+          const { product_id } = product;
 
-            return {
-              label: product_id?.toString(),
-              value: (
-                <ProductCard
-                  key={product_id}
-                  className={s.productsSlider__productCard}
-                  productData={product}
-                  isStable
-                />
-              ),
-            };
-          })}
-          slidesPerView={1}
-        />
-      </div>
+          return {
+            label: product_id?.toString(),
+            value: (
+              <ProductCard
+                key={product_id}
+                className={s.productsSlider__productCard}
+                productData={product}
+                isStable
+              />
+            ),
+          };
+        })}
+        slidesPerView={1}
+      />
     </div>
-  );
+  </div>
+);

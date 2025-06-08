@@ -1,4 +1,5 @@
 import { FC, ReactNode } from "react";
+import dynamic from "next/dynamic";
 import { clsx } from "clsx";
 
 import { Analytics } from "@vercel/analytics/react";
@@ -6,14 +7,19 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
-import { ScrollTop } from "@/widgets/scroll-top";
-import { Sidebar } from "@/widgets/sidebar";
 
 import { Locale, montserrat, openSans, Phase } from "@/shared/model";
 
 import { Providers } from "./providers";
 
 import "@/application/styles/globals.scss";
+
+const Sidebar = dynamic(() =>
+  import("@/widgets/sidebar").then((module) => module.Sidebar)
+);
+const ScrollTop = dynamic(() =>
+  import("@/widgets/scroll-top").then((module) => module.ScrollTop)
+);
 
 interface LayoutProviderProps {
   children: ReactNode;
