@@ -28,7 +28,7 @@ export const Home: FC<HomeProps> = ({ popularData, topRatedData }) => {
           />
           <ProductsSlider
             productsData={topRatedData}
-            title={tHome("recommendations.recommended")}
+            title={tHome("recommendations.top-rated")}
           />
         </div>
       </div>
