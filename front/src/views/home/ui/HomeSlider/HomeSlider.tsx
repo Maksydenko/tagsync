@@ -33,8 +33,8 @@ export const HomeSlider: FC<HomeSliderProps> = ({ className }) => {
           }))}
           spaceBetween={0}
           autoplay
+          loop
           pagination
-          virtual
         />
       </div>
     </div>
