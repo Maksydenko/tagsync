@@ -59,6 +59,13 @@
     inline-size: m.rem(600);
     aspect-ratio: 1;
 
+    // .productSliders__slider_empty
+
+    &_empty {
+      background: m.$whiteColor;
+      border-radius: m.rem(4);
+    }
+
     @media (max-width: m.$desktopMedium) {
       inline-size: 75vw;
       block-size: m.rem(600);
