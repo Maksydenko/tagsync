@@ -1,6 +1,11 @@
 {
   "home": {
     "title": "Home",
+    "slider": {
+      "gaming": "Gaming",
+      "recommendations": "Recommendations",
+      "delivery": "Delivery"
+    },
     "recommendations": {
       "viewed": "Viewed products",
       "popular": "Popular products",

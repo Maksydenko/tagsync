@@ -1,9 +1,10 @@
 "use client";
 
 import { FC } from "react";
-import { useLocale } from "next-intl";
+import { Locale, useLocale, useTranslations } from "next-intl";
 import { clsx } from "clsx";
 
+import { Translation } from "@/shared/model";
 import { Img, Loader } from "@/shared/ui";
 
 import s from "./HomeSlide.module.scss";
@@ -19,12 +20,14 @@ export const HomeSlide: FC<HomeSlideProps> = ({
   isPriority,
   slide,
 }) => {
-  const locale = useLocale();
+  const locale = useLocale() as Locale;
+  const tHome = useTranslations(Translation.Home);
 
   return (
     <div className={clsx(s.homeSlide, className)}>
       <div className={s.homeSlide__body}>
         <Img
+          alt={tHome(`slider.${slide}`)}
           className={s.homeSlide__img}
           customLoader={<Loader className={s.homeSlide__loader} />}
           priority={isPriority}

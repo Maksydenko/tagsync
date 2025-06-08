@@ -1,6 +1,11 @@
 {
   "home": {
     "title": "Головна",
+    "slider": {
+      "gaming": "Геймінг",
+      "recommendations": "Рекомендації",
+      "delivery": "Доставка"
+    },
     "recommendations": {
       "viewed": "Переглянуті товари",
       "popular": "Популярні товари",
