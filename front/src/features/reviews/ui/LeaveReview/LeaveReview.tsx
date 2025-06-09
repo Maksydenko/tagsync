@@ -34,7 +34,7 @@ export const LeaveReview: FC<LeaveReviewProps> = ({ className, productId }) => {
   const queryClient = useQueryClient();
 
   const [{ data: userData }] = useAtom(userAtom);
-  const userEmail = userData?.data.email;
+  const user = userData?.data;
 
   const form = useForm<ILeaveReviewForm>({
     // TODO: remove default values
@@ -60,7 +60,7 @@ export const LeaveReview: FC<LeaveReviewProps> = ({ className, productId }) => {
 
   const { isPending: isLeaveReviewPending, mutate: leaveReview } = useMutation({
     mutationFn: async (data: ILeaveReviewForm) => {
-      if (!userEmail) {
+      if (!user) {
         return;
       }
 
@@ -70,9 +70,11 @@ export const LeaveReview: FC<LeaveReviewProps> = ({ className, productId }) => {
 
       await ReviewsService.add({
         comment: data.review,
+        firstName: user.firstName,
+        lastName: user.lastName,
         product_id: productId,
         rating: data.rating,
-        userEmail,
+        userEmail: user.email,
       });
     },
     mutationKey: [MutationKey.LeaveReview],
