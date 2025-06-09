@@ -27,7 +27,10 @@ export const ReviewCard: FC<ReviewCardProps> = ({ className, review }) => {
     <div className={clsx(s.reviewCard, className)}>
       <div className={s.reviewCard__body}>
         <div className={s.reviewCard__header}>
-          <h3 className={s.reviewCard__title}>{review.userEmail}</h3>
+          <h3 className={s.reviewCard__title}>
+            {[review.firstName, review.lastName].filter(Boolean).join(" ") ||
+              review.userEmail.split("@")[0]}
+          </h3>
           <p className={s.reviewCard__date}>
             {formatDate({
               date: new Date(review.createdAt),
