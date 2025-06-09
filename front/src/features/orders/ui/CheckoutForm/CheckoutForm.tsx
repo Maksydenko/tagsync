@@ -48,7 +48,7 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({ className }) => {
       return OrdersService.checkout({
         address: data.address.trim(),
         city: data.city.trim(),
-        fullName: `${data.name.trim()} ${data.surname.trim()}`,
+        fullName: [data.name.trim(), data.surname.trim()].join(" "),
         phone: data.phone.replace(/\s+/g, ""),
         userEmail: user?.email.trim(),
       });
