@@ -117,7 +117,7 @@ export const ProductCounter: FC<ProductCounterProps> = ({
           <Btn
             className={s.productCounter__btn}
             icon={{
-              label: tShared("product.cart.counter.decrement"),
+              label: tShared("cart.counter.decrement"),
               value: "/img/icons/form/minus.svg",
             }}
             type="button"
@@ -129,7 +129,7 @@ export const ProductCounter: FC<ProductCounterProps> = ({
           <Btn
             className={s.productCounter__btn}
             icon={{
-              label: tShared("product.cart.counter.increment"),
+              label: tShared("cart.counter.increment"),
               value: "/img/icons/form/plus.svg",
             }}
             type="button"
@@ -141,7 +141,7 @@ export const ProductCounter: FC<ProductCounterProps> = ({
         <Btn
           className={s.productCounter__btn}
           icon={{
-            label: tShared("product.cart.counter.clear"),
+            label: tShared("cart.counter.clear"),
             value: "/img/icons/form/trash.svg",
           }}
           type="button"
