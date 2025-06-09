@@ -48,7 +48,7 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({ className }) => {
       return OrdersService.checkout({
         address: data.address.trim(),
         city: data.city.trim(),
-        fullName: `${data.name.trim()} ${data.surname.trim()}`,
+        fullName: [data.name.trim(), data.surname.trim()].join(" "),
         phone: data.phone.replace(/\s+/g, ""),
         userEmail: user?.email.trim(),
       });
@@ -74,12 +74,18 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({ className }) => {
   const { reset } = form;
 
   useEffect(() => {
+    if (!user) {
+      return;
+    }
+
+    const { address, city, firstName, lastName, phone } = user;
+
     reset({
-      address: user?.address,
-      city: user?.city,
-      name: user?.firstName,
-      phone: user?.phone,
-      surname: user?.lastName,
+      address,
+      city,
+      name: firstName,
+      phone,
+      surname: lastName,
     });
   }, [reset, user]);
 
