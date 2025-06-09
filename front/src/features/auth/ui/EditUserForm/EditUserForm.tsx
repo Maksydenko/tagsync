@@ -30,8 +30,8 @@ export const EditUserForm: FC<EditUserFormProps> = ({ className }) => {
   const tShared = useTranslations(Translation.Shared);
   const [submissionMessage, setSubmissionMessage] = useState("");
 
-  const [{ data: userData }] = useAtom(userAtom);
   const invalidateUser = useInvalidateAtom([QueryKey.User]);
+  const [{ data: userData }] = useAtom(userAtom);
 
   const user = userData?.data;
 
@@ -75,13 +75,19 @@ export const EditUserForm: FC<EditUserFormProps> = ({ className }) => {
   const { reset } = form;
 
   useEffect(() => {
+    if (!user) {
+      return;
+    }
+
+    const { address, city, email, firstName, lastName, phone } = user;
+
     reset({
-      address: user?.address,
-      city: user?.city,
-      email: user?.email,
-      name: user?.firstName,
-      phone: user?.phone,
-      surname: user?.lastName,
+      address,
+      city,
+      email,
+      name: firstName,
+      phone,
+      surname: lastName,
     });
   }, [reset, user]);
 
