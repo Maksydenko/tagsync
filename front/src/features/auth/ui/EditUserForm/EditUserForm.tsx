@@ -36,7 +36,13 @@ export const EditUserForm: FC<EditUserFormProps> = ({ className }) => {
   const user = userData?.data;
 
   const { isPending: isEditUserPending, mutate: editUser } = useMutation({
-    mutationFn: async (data: IEditUserForm) => {
+    mutationFn: async ({
+      address,
+      city,
+      name,
+      phone,
+      surname,
+    }: IEditUserForm) => {
       if (!user) {
         return;
       }
@@ -46,12 +52,12 @@ export const EditUserForm: FC<EditUserFormProps> = ({ className }) => {
       );
 
       return AuthService.changeUserData({
-        address: data.address.trim(),
-        city: data.city.trim(),
+        address: address.trim(),
+        city: city.trim(),
         email: user.email,
-        firstName: data.name.trim(),
-        lastName: data.surname.trim(),
-        phone: data.phone.replace(/\s+/g, ""),
+        firstName: name.trim(),
+        lastName: surname.trim(),
+        phone: phone.replace(/\s+/g, ""),
       });
     },
     mutationKey: [MutationKey.EditUser],

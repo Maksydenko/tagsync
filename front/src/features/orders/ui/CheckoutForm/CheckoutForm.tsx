@@ -36,7 +36,13 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({ className }) => {
   const user = userData?.data;
 
   const { isPending: isCheckoutPending, mutate: checkout } = useMutation({
-    mutationFn: async (data: ICheckoutForm) => {
+    mutationFn: async ({
+      address,
+      city,
+      name,
+      phone,
+      surname,
+    }: ICheckoutForm) => {
       if (!user) {
         return;
       }
@@ -46,10 +52,10 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({ className }) => {
       );
 
       return OrdersService.checkout({
-        address: data.address.trim(),
-        city: data.city.trim(),
-        fullName: [data.name.trim(), data.surname.trim()].join(" "),
-        phone: data.phone.replace(/\s+/g, ""),
+        address: address.trim(),
+        city: city.trim(),
+        fullName: [name.trim(), surname.trim()].join(" "),
+        phone: phone.replace(/\s+/g, ""),
         userEmail: user?.email.trim(),
       });
     },
