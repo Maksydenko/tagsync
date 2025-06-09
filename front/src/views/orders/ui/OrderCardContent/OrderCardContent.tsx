@@ -65,7 +65,6 @@ export const OrderCardContent: FC<OrderCardContentProps> = ({
     getCoreRowModel: getCoreRowModel(),
   });
 
-  console.log(order);
 
   return (
     <div className={clsx(s.orderCardContent, className)}>
