@@ -1,8 +1,8 @@
-import { FC, MutableRefObject, useEffect, useState } from "react";
+import { FC, MutableRefObject, useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import { SwiperRef } from "swiper/react";
-import { SwiperOptions } from "swiper/types";
+import { Swiper, SwiperOptions } from "swiper/types";
 
 import { Translation } from "@/shared/config";
 import { Direction, SlideDirection } from "@/shared/model";
@@ -32,6 +32,38 @@ export const SliderSwiperNavigation: FC<SliderSwiperNavigationProps> = ({
   );
 
   const tShared = useTranslations(Translation.Shared);
+  const isVertical = direction === Direction.Vertical;
+
+  const updateNavigation = useCallback(
+    ({ isBeginning, isEnd, params, slides }: Swiper) => {
+      const isEnoughSlides = slides.length > (params.slidesPerView as number);
+
+      setIsFirstSlide(!isEnoughSlides || isBeginning);
+      setIsLastSlide(!isEnoughSlides || isEnd);
+    },
+    []
+  );
+
+  useEffect(() => {
+    if (loop) {
+      return;
+    }
+
+    const { current: swiperElement } = swiperRef;
+    const swiper = swiperElement?.swiper;
+
+    if (!swiper) {
+      return;
+    }
+
+    updateNavigation(swiper);
+
+    swiper.on("slideChange", updateNavigation);
+
+    return () => {
+      swiper.off("slideChange", updateNavigation);
+    };
+  }, [loop, swiperRef, updateNavigation]);
 
   const slide = (slideDirection: SlideDirection) => {
     const { current: swiperElement } = swiperRef;
@@ -49,65 +81,37 @@ export const SliderSwiperNavigation: FC<SliderSwiperNavigationProps> = ({
     slides[slideDirection]();
   };
 
-  useEffect(() => {
-    if (loop) {
-      return;
-    }
+  const getBtn = (direction: SlideDirection) => {
+    const isPrevDirection = direction === SlideDirection.Prev;
 
-    const { current: swiperElement } = swiperRef;
-    const swiper = swiperElement?.swiper;
-
-    swiper?.on("slideChange", () => {
-      const { isBeginning, isEnd } = swiper;
-
-      setIsFirstSlide(isBeginning);
-      setIsLastSlide(isEnd);
-    });
-  }, [loop, swiperRef]);
-
-  const isVertical = direction === Direction.Vertical;
-
-  const getIcon = () => (
-    <Img
-      alt={tShared("arrow")}
-      className={s.sliderSwiper__icon}
-      src="/img/icons/form/arrow-down.svg"
-      isSvg
-    />
-  );
+    return (
+      <button
+        aria-label={tShared(`slide-directions.${direction}`)}
+        className={clsx(
+          s.sliderSwiper__btn,
+          s[`sliderSwiper__btn_${isPrevDirection ? "prev" : "next"}`],
+          isVertical && s.sliderSwiper__btn_vertical
+        )}
+        disabled={isPrevDirection ? isFirstSlide : isLastSlide}
+        type="button"
+        onClick={() => {
+          slide(direction);
+        }}
+      >
+        <Img
+          alt={tShared("arrow")}
+          className={s.sliderSwiper__icon}
+          src="/img/icons/form/arrow-down.svg"
+          isSvg
+        />
+      </button>
+    );
+  };
 
   return (
     <>
-      <button
-        aria-label="<"
-        className={clsx(
-          s.sliderSwiper__btn,
-          s.sliderSwiper__btn_prev,
-          isVertical && s.sliderSwiper__btn_vertical
-        )}
-        disabled={isFirstSlide}
-        type="button"
-        onClick={() => {
-          slide(SlideDirection.Prev);
-        }}
-      >
-        {getIcon()}
-      </button>
-      <button
-        aria-label=">"
-        className={clsx(
-          s.sliderSwiper__btn,
-          s.sliderSwiper__btn_next,
-          isVertical && s.sliderSwiper__btn_vertical
-        )}
-        disabled={isLastSlide}
-        type="button"
-        onClick={() => {
-          slide(SlideDirection.Next);
-        }}
-      >
-        {getIcon()}
-      </button>
+      {getBtn(SlideDirection.Prev)}
+      {getBtn(SlideDirection.Next)}
     </>
   );
 };
