@@ -1,6 +1,7 @@
 "use client";
 
 import { FC, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { clsx } from "clsx";
 import { useAtom } from "jotai";
@@ -14,7 +15,7 @@ import { AuthForm } from "@/features/auth";
 
 import { userAtom } from "@/entities/user";
 
-import { Translation } from "@/shared/config";
+import { Pathname, Translation } from "@/shared/config";
 import { useInvalidateAtom } from "@/shared/lib";
 import { MutationKey, QueryKey } from "@/shared/model";
 import { Btn } from "@/shared/ui";
@@ -28,8 +29,10 @@ interface CheckoutFormProps extends Partial<StepWizardChildProps> {
 }
 
 export const CheckoutForm: FC<CheckoutFormProps> = ({ className }) => {
-  const tShared = useTranslations(Translation.Shared);
   const [submissionMessage, setSubmissionMessage] = useState("");
+  const { push } = useRouter();
+
+  const tShared = useTranslations(Translation.Shared);
 
   const invalidateCart = useInvalidateAtom([QueryKey.Cart]);
   const [{ data: userData }] = useAtom(userAtom);
@@ -71,7 +74,10 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({ className }) => {
       setSubmissionMessage(errorMessage);
       console.warn(error);
     },
-    onSuccess: async () => invalidateCart(),
+    onSuccess: async () => {
+      await invalidateCart();
+      push(Pathname.Orders);
+    },
   });
 
   const form = useForm<ICheckoutForm>({
