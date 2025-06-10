@@ -2,6 +2,8 @@
 
 <img src="./front/public/img/logos/logo.png" height="50" alt="TagSync">
 
+Our online store for computer components offers a convenient way to find compatible parts for PC assembly or upgrade. We will tell you which components will fit together and deliver your order anywhere in Ukraine.
+
 🔗 **Webpage:** [link](https://tagsync.vercel.app/)
 
 ## Launch
