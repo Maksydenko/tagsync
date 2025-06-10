@@ -1,0 +1,5 @@
+cd front
+yarn tsc
+yarn lint
+yarn eslint
+yarn stylelint
