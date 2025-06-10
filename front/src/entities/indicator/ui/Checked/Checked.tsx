@@ -1,11 +1,11 @@
-import { FC } from "react";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
+import { FC } from 'react';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
 
-import { Translation } from "@/shared/config";
-import { Img } from "@/shared/ui";
+import { Translation } from '@/shared/config';
+import { Img } from '@/shared/ui';
 
-import s from "./Checked.module.scss";
+import s from './Checked.module.scss';
 
 interface CheckedProps {
   className?: string;
@@ -17,7 +17,7 @@ export const Checked: FC<CheckedProps> = ({ className }) => {
   return (
     <div className={clsx(s.checked, className)}>
       <Img
-        alt={tShared("checkmark")}
+        alt={tShared('checkmark')}
         className={s.checked__icon}
         src="/img/icons/form/checkmark.svg"
         isSvg

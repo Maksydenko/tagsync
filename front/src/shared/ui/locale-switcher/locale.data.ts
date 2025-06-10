@@ -1,13 +1,13 @@
-import { Locale } from "@/shared/config";
-import { ILink } from "@/shared/model";
+import { Locale } from '@/shared/config';
+import { ILink } from '@/shared/model';
 
 export const localeData: ILink[] = [
   {
-    label: "en",
+    label: 'en',
     value: Locale.EN,
   },
   {
-    label: "uk",
+    label: 'uk',
     value: Locale.UK,
   },
 ];

@@ -1,11 +1,11 @@
-import { NextPage } from "next";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { NextPage } from 'next';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
-import Orders from "@/views/orders";
+import Orders from '@/views/orders';
 
-import { Translation } from "@/shared/config";
-import { generateMetaTitle } from "@/shared/lib";
-import { IPageProps } from "@/shared/model";
+import { Translation } from '@/shared/config';
+import { generateMetaTitle } from '@/shared/lib';
+import { IPageProps } from '@/shared/model';
 
 const OrdersPage: NextPage<IPageProps> = async (props) => {
   const params = await props.params;
@@ -27,6 +27,6 @@ export const generateMetadata = async ({ params }: IPageProps) => {
 
   return {
     revalidate: process.env.REVALIDATE_TIMEOUT,
-    title: generateMetaTitle(tShared("user.orders")),
+    title: generateMetaTitle(tShared('user.orders')),
   };
 };

@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { useLocale, useTranslations } from "next-intl";
-import { clsx } from "clsx";
+import { FC } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
 
-import { IProduct } from "@/entities/product";
+import { IProduct } from '@/entities/product';
 
-import { Locale, Pathname, Translation } from "@/shared/config";
-import { ILink } from "@/shared/model";
-import { Breadcrumbs } from "@/shared/ui";
+import { Locale, Pathname, Translation } from '@/shared/config';
+import { ILink } from '@/shared/model';
+import { Breadcrumbs } from '@/shared/ui';
 
-import s from "./ProductHeader.module.scss";
+import s from './ProductHeader.module.scss';
 
 interface ProductHeaderProps {
   className?: string;
@@ -26,7 +26,7 @@ export const ProductHeader: FC<ProductHeaderProps> = ({
 
   const breadcrumbs: ILink[] = [
     {
-      label: tShared("pathnames.home"),
+      label: tShared('pathnames.home'),
       value: Pathname.Home,
     },
     {

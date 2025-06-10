@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { FC, Fragment } from "react";
-import { clsx } from "clsx";
+import { FC, Fragment } from 'react';
+import { clsx } from 'clsx';
 
 import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
   useReactTable,
-} from "@tanstack/react-table";
+} from '@tanstack/react-table';
 
-import { ILink } from "@/shared/model";
+import { ILink } from '@/shared/model';
 
-import s from "./ComparisonCharacteristicsTable.module.scss";
+import s from './ComparisonCharacteristicsTable.module.scss';
 
 interface ComparisonCharacteristicsTableProps {
   className?: string;

@@ -1,4 +1,4 @@
-import { IProduct } from "@/entities/product";
+import { IProduct } from '@/entities/product';
 
 export interface IAddToCart {
   product_id: number;

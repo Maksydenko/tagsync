@@ -1,12 +1,12 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import { MenuItems } from "@headlessui/react";
+import { MenuItems } from '@headlessui/react';
 
-import { ILink, ILinkWithIcon } from "@/shared/model";
+import { ILink, ILinkWithIcon } from '@/shared/model';
 
-import { DropdownItem } from "./DropdownItem";
+import { DropdownItem } from './DropdownItem';
 
-import s from "../Dropdown.module.scss";
+import s from '../Dropdown.module.scss';
 
 interface DropdownItemsProps {
   items: (

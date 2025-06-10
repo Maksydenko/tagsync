@@ -1,2 +1,2 @@
-export * from "./homePageRecommendations.service";
-export * from "./recommendations.service";
+export * from './homePageRecommendations.service';
+export * from './recommendations.service';

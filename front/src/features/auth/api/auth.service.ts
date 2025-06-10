@@ -1,9 +1,9 @@
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
-import { axiosInstance, IResponse } from "@/application/api";
+import { axiosInstance, IResponse } from '@/application/api';
 
-import { IResult } from "@/shared/api";
-import { IDatabase } from "@/shared/lib";
+import { IResult } from '@/shared/api';
+import { IDatabase } from '@/shared/lib';
 
 import {
   IEmailExists,
@@ -12,15 +12,15 @@ import {
   IRequestResetPassword,
   IResetPassword,
   IUserData,
-} from "./interfaces";
+} from './interfaces';
 
 const { auth } = createClientComponentClient<IDatabase>();
 
 export const AuthService = {
-  addUserData: async (data: Omit<IUserData, "avatarUrl">) => {
+  addUserData: async (data: Omit<IUserData, 'avatarUrl'>) => {
     try {
       const response: IResponse<IResult> = await axiosInstance.post(
-        "/UserRegistration/addUserData",
+        '/UserRegistration/addUserData',
         data
       );
 
@@ -33,7 +33,7 @@ export const AuthService = {
   changeUserData: async (data: Partial<IUserData>) => {
     try {
       const response: IResponse<IResult> = await axiosInstance.post(
-        "/UserRegistration/changeUserData",
+        '/UserRegistration/changeUserData',
         data
       );
 
@@ -92,7 +92,7 @@ export const AuthService = {
   register: async (data: IRegister) => {
     try {
       const response: IResponse<IResult> = await axiosInstance.post(
-        "/UserRegistration/register",
+        '/UserRegistration/register',
         data
       );
 
@@ -104,7 +104,7 @@ export const AuthService = {
 
   requestResetPassword: async (data: IRequestResetPassword) => {
     const response: IResponse<IResult> = await axiosInstance.post(
-      "/UserRegistration/requestPasswordReset",
+      '/UserRegistration/requestPasswordReset',
       data
     );
 

@@ -1,8 +1,8 @@
-import { SwiperOptions } from "swiper/types";
+import { SwiperOptions } from 'swiper/types';
 
 export interface IBreakpoint {
   isBreakpoint: boolean | undefined;
-  slides: SwiperOptions["slidesPerView"];
+  slides: SwiperOptions['slidesPerView'];
 }
 
 export interface IBreakpoints {

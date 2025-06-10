@@ -1,24 +1,24 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
-import { useAtom } from "jotai";
+import { FC } from 'react';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
+import { useAtom } from 'jotai';
 
-import { useMutation } from "@tanstack/react-query";
+import { useMutation } from '@tanstack/react-query';
 
-import { useLocalCart } from "@/application/store";
+import { useLocalCart } from '@/application/store';
 
-import { cartAtom, ICartProduct } from "@/entities/cart";
-import { CartAction } from "@/entities/product";
-import { userAtom } from "@/entities/user";
+import { cartAtom, ICartProduct } from '@/entities/cart';
+import { CartAction } from '@/entities/product';
+import { userAtom } from '@/entities/user';
 
-import { Translation } from "@/shared/config";
-import { useInvalidateAtom } from "@/shared/lib";
-import { MutationKey, QueryKey } from "@/shared/model";
-import { Btn } from "@/shared/ui";
+import { Translation } from '@/shared/config';
+import { useInvalidateAtom } from '@/shared/lib';
+import { MutationKey, QueryKey } from '@/shared/model';
+import { Btn } from '@/shared/ui';
 
-import s from "./ProductCounter.module.scss";
+import s from './ProductCounter.module.scss';
 
 interface ProductCounterProps {
   className?: string;
@@ -57,7 +57,7 @@ export const ProductCounter: FC<ProductCounterProps> = ({
       )!.quantity;
 
       if (userEmail) {
-        const CartService = await import("@/entities/cart").then(
+        const CartService = await import('@/entities/cart').then(
           (module) => module.CartService
         );
 
@@ -117,8 +117,8 @@ export const ProductCounter: FC<ProductCounterProps> = ({
           <Btn
             className={s.productCounter__btn}
             icon={{
-              label: tShared("cart.counter.decrement"),
-              value: "/img/icons/form/minus.svg",
+              label: tShared('cart.counter.decrement'),
+              value: '/img/icons/form/minus.svg',
             }}
             type="button"
             onClick={() => {
@@ -129,8 +129,8 @@ export const ProductCounter: FC<ProductCounterProps> = ({
           <Btn
             className={s.productCounter__btn}
             icon={{
-              label: tShared("cart.counter.increment"),
-              value: "/img/icons/form/plus.svg",
+              label: tShared('cart.counter.increment'),
+              value: '/img/icons/form/plus.svg',
             }}
             type="button"
             onClick={() => {
@@ -141,8 +141,8 @@ export const ProductCounter: FC<ProductCounterProps> = ({
         <Btn
           className={s.productCounter__btn}
           icon={{
-            label: tShared("cart.counter.clear"),
-            value: "/img/icons/form/trash.svg",
+            label: tShared('cart.counter.clear'),
+            value: '/img/icons/form/trash.svg',
           }}
           type="button"
           onClick={() => {

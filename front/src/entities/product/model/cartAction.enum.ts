@@ -1,5 +1,5 @@
 export enum CartAction {
-  Clear = "clear",
-  Decrement = "decrement",
-  Increment = "increment",
+  Clear = 'clear',
+  Decrement = 'decrement',
+  Increment = 'increment',
 }

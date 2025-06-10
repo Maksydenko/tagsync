@@ -1,17 +1,17 @@
-import { cache } from "react";
-import { NextPage } from "next";
-import { notFound } from "next/navigation";
-import { setRequestLocale } from "next-intl/server";
-import { StatusCodes } from "http-status-codes";
+import { cache } from 'react';
+import { NextPage } from 'next';
+import { notFound } from 'next/navigation';
+import { setRequestLocale } from 'next-intl/server';
+import { StatusCodes } from 'http-status-codes';
 
-import Product from "@/views/product";
+import Product from '@/views/product';
 
-import { ProductsService } from "@/features/products";
-import { RecommendationsService } from "@/features/recommendations";
-import { ReviewsService } from "@/features/reviews";
+import { ProductsService } from '@/features/products';
+import { RecommendationsService } from '@/features/recommendations';
+import { ReviewsService } from '@/features/reviews';
 
-import { generateMetaTitle } from "@/shared/lib";
-import { IPageProps } from "@/shared/model";
+import { generateMetaTitle } from '@/shared/lib';
+import { IPageProps } from '@/shared/model';
 
 const getProductById = cache(async (categorySlug: string, productId: string) =>
   ProductsService.getAll(`?category=${categorySlug}&product_id=${productId}`)
@@ -60,7 +60,7 @@ export const generateMetadata = async ({ params }: IPageProps) => {
 
   return {
     description: productTitle,
-    keywords: productTitle.split(" ").join(","),
+    keywords: productTitle.split(' ').join(','),
     revalidate: process.env.REVALIDATE_TIMEOUT,
     title: generateMetaTitle(productTitle),
   };

@@ -1,9 +1,9 @@
-import { FC } from "react";
-import { clsx } from "clsx";
+import { FC } from 'react';
+import { clsx } from 'clsx';
 
-import { LocaleSwitcherItems } from "./LocaleSwitcherItems/LocaleSwitcherItems";
+import { LocaleSwitcherItems } from './LocaleSwitcherItems/LocaleSwitcherItems';
 
-import s from "./LocaleSwitcher.module.scss";
+import s from './LocaleSwitcher.module.scss';
 
 interface LocaleSwitcherProps {
   className?: string;

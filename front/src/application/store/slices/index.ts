@@ -1,1 +1,1 @@
-export * from "./localCart.slice";
+export * from './localCart.slice';

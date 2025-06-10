@@ -1,13 +1,13 @@
-import { NextPage } from "next";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { NextPage } from 'next';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
-import Home from "@/views/home";
+import Home from '@/views/home';
 
-import { HomePageRecommendationsService } from "@/features/recommendations";
+import { HomePageRecommendationsService } from '@/features/recommendations';
 
-import { Translation } from "@/shared/config";
-import { generateMetaTitle } from "@/shared/lib";
-import { IPageProps, IParams } from "@/shared/model";
+import { Translation } from '@/shared/config';
+import { generateMetaTitle } from '@/shared/lib';
+import { IPageProps, IParams } from '@/shared/model';
 
 interface HomePageProps {
   params: Promise<IParams>;
@@ -43,8 +43,8 @@ export const generateMetadata = async ({ params }: IPageProps) => {
   });
 
   return {
-    description: tShared("footer.text"),
+    description: tShared('footer.text'),
     revalidate: process.env.REVALIDATE_TIMEOUT,
-    title: generateMetaTitle(tHome("title")),
+    title: generateMetaTitle(tHome('title')),
   };
 };

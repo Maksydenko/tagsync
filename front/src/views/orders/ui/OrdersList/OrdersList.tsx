@@ -1,22 +1,22 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { clsx } from "clsx";
-import { useAtom } from "jotai";
+import { FC } from 'react';
+import { clsx } from 'clsx';
+import { useAtom } from 'jotai';
 
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from '@tanstack/react-query';
 
-import { OrdersService } from "@/features/orders";
+import { OrdersService } from '@/features/orders';
 
-import { userAtom } from "@/entities/user";
+import { userAtom } from '@/entities/user';
 
-import { QueryKey } from "@/shared/model";
-import { Collapse, Loader } from "@/shared/ui";
+import { QueryKey } from '@/shared/model';
+import { Collapse, Loader } from '@/shared/ui';
 
-import { OrderCard } from "../OrderCard/OrderCard";
-import { OrderCardContent } from "../OrderCardContent/OrderCardContent";
+import { OrderCard } from '../OrderCard/OrderCard';
+import { OrderCardContent } from '../OrderCardContent/OrderCardContent';
 
-import s from "./OrdersList.module.scss";
+import s from './OrdersList.module.scss';
 
 interface OrdersListProps {
   className?: string;

@@ -1,4 +1,4 @@
-import { formatNumber } from "./formatNumber.util";
+import { formatNumber } from './formatNumber.util';
 
 interface IFormatPrice extends Intl.NumberFormatOptions {
   price: number;

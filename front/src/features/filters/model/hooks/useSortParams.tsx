@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
-import { SearchParam, sortSearchParams } from "@/shared/model";
+import { SearchParam, sortSearchParams } from '@/shared/model';
 
-import { parseSortValue } from "../utils";
+import { parseSortValue } from '../utils';
 
 export const useSortParams = (sortValue: string) => {
   const { push } = useRouter();

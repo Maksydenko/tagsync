@@ -1,6 +1,6 @@
-import { QueryClient } from "@tanstack/react-query";
+import { QueryClient } from '@tanstack/react-query';
 
-import { QueryKey } from "@/shared/model";
+import { QueryKey } from '@/shared/model';
 
 export const invalidateQueries = async (
   queryClient: QueryClient,

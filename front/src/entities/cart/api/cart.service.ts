@@ -1,13 +1,13 @@
-import { axiosInstance, IResponse } from "@/application/api";
+import { axiosInstance, IResponse } from '@/application/api';
 
-import { IResult } from "@/shared/api";
+import { IResult } from '@/shared/api';
 
-import { IAddToCart, ICart, IClearCart } from "./cart.interface";
+import { IAddToCart, ICart, IClearCart } from './cart.interface';
 
 export const CartService = {
   add: async (data: IAddToCart) => {
     const response: IResponse<IResult> = await axiosInstance.post(
-      "/Cart/add",
+      '/Cart/add',
       data
     );
 
@@ -16,7 +16,7 @@ export const CartService = {
 
   clear: async (data: IClearCart) => {
     const response: IResponse<IResult> = await axiosInstance.post(
-      "/Cart/clear",
+      '/Cart/clear',
       data
     );
 
@@ -33,7 +33,7 @@ export const CartService = {
 
   remove: async (data: IAddToCart) => {
     const response: IResponse<IResult> = await axiosInstance.delete(
-      "/Cart/remove",
+      '/Cart/remove',
       {
         data,
       }

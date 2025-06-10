@@ -1,14 +1,14 @@
-import { FC } from "react";
-import { clsx } from "clsx";
+import { FC } from 'react';
+import { clsx } from 'clsx';
 
-import { Breakpoint } from "@/shared/config";
-import { SliderSwiper } from "@/shared/ui";
+import { Breakpoint } from '@/shared/config';
+import { SliderSwiper } from '@/shared/ui';
 
-import { IProduct } from "../../api";
+import { IProduct } from '../../api';
 
-import { ProductCard } from "../ProductCard/ProductCard";
+import { ProductCard } from '../ProductCard/ProductCard';
 
-import s from "./ProductsSlider.module.scss";
+import s from './ProductsSlider.module.scss';
 
 interface ProductsSliderProps {
   className?: string;

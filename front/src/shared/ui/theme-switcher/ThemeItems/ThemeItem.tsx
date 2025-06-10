@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import { FC, KeyboardEventHandler } from "react";
-import { useTranslations } from "next-intl";
-import { useTheme } from "next-themes";
-import { clsx } from "clsx";
+import { FC, KeyboardEventHandler } from 'react';
+import { useTranslations } from 'next-intl';
+import { useTheme } from 'next-themes';
+import { clsx } from 'clsx';
 
-import { ILink, useMounted } from "@/shared/model";
-import { Img } from "@/shared/ui";
+import { ILink, useMounted } from '@/shared/model';
+import { Img } from '@/shared/ui';
 
-import s from "../ThemeSwitcher.module.scss";
+import s from '../ThemeSwitcher.module.scss';
 
 interface ThemeItemProps {
   theme: ILink;
 }
 
 export const ThemeItem: FC<ThemeItemProps> = ({ theme: { label, value } }) => {
-  const tShared = useTranslations("shared");
+  const tShared = useTranslations('shared');
   const { setTheme, theme } = useTheme();
 
   const isMounted = useMounted();
@@ -26,7 +26,7 @@ export const ThemeItem: FC<ThemeItemProps> = ({ theme: { label, value } }) => {
   };
 
   const handleKeyDown: KeyboardEventHandler<HTMLLabelElement> = ({ key }) => {
-    if (key !== "Enter" && key !== " ") {
+    if (key !== 'Enter' && key !== ' ') {
       return;
     }
 

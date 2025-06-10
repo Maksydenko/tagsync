@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import dynamic from "next/dynamic";
-import Link from "next/link";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
+import { FC } from 'react';
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
 
-import { Pathname, Translation } from "@/shared/config";
-import { Img } from "@/shared/ui";
+import { Pathname, Translation } from '@/shared/config';
+import { Img } from '@/shared/ui';
 
-import { Copyright } from "./Copyright/Copyright";
+import { Copyright } from './Copyright/Copyright';
 
-import s from "./Footer.module.scss";
+import s from './Footer.module.scss';
 
 const FooterList = dynamic(() =>
-  import("./FooterList").then((module) => module.FooterList)
+  import('./FooterList').then((module) => module.FooterList)
 );
 
 interface FooterProps {
@@ -32,7 +32,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
             <div className={s.footer__box}>
               <Link className={s.footer__logo} href={Pathname.Home}>
                 <Img
-                  alt={`${tShared("logo")} "TagSync"`}
+                  alt={`${tShared('logo')} "TagSync"`}
                   className={s.footer__img}
                   height={35}
                   src="/img/logos/logo.png"
@@ -42,12 +42,12 @@ export const Footer: FC<FooterProps> = ({ className }) => {
                 <p>TagSync</p>
               </Link>
               <div className={s.footer__text}>
-                <p>{tShared("footer.text")}</p>
+                <p>{tShared('footer.text')}</p>
               </div>
             </div>
             <div className={s.footer__box}>
               <h6 className={s.footer__title}>
-                {tShared("pathnames.categories")}
+                {tShared('pathnames.categories')}
               </h6>
               <FooterList />
             </div>

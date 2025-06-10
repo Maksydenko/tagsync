@@ -1,8 +1,8 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import { localeData } from "../locale.data";
+import { localeData } from '../locale.data';
 
-import { LocaleSwitcherItem } from "./LocaleSwitcherItem";
+import { LocaleSwitcherItem } from './LocaleSwitcherItem';
 
 interface LocaleSwitcherItemsProps {
   onClick?: () => void;

@@ -1,2 +1,2 @@
-export * from "./enums";
-export * from "./form.config";
+export * from './enums';
+export * from './form.config';

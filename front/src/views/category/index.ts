@@ -1,3 +1,3 @@
-import { Category } from "./ui/Category";
+import { Category } from './ui/Category';
 
 export default Category;

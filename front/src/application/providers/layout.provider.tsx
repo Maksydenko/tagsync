@@ -1,25 +1,25 @@
-import { FC, ReactNode } from "react";
-import dynamic from "next/dynamic";
-import { clsx } from "clsx";
+import { FC, ReactNode } from 'react';
+import dynamic from 'next/dynamic';
+import { clsx } from 'clsx';
 
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
-import { Footer } from "@/widgets/footer";
-import { Header } from "@/widgets/header";
+import { Footer } from '@/widgets/footer';
+import { Header } from '@/widgets/header';
 
-import { Locale } from "@/shared/config";
-import { montserrat, openSans, Phase } from "@/shared/model";
+import { Locale } from '@/shared/config';
+import { montserrat, openSans, Phase } from '@/shared/model';
 
-import { Providers } from "./providers";
+import { Providers } from './providers';
 
-import "@/application/styles/globals.scss";
+import '@/application/styles/globals.scss';
 
 const Sidebar = dynamic(() =>
-  import("@/widgets/sidebar").then((module) => module.Sidebar)
+  import('@/widgets/sidebar').then((module) => module.Sidebar)
 );
 const ScrollToTop = dynamic(() =>
-  import("@/widgets/scroll-to-top").then((module) => module.ScrollToTop)
+  import('@/widgets/scroll-to-top').then((module) => module.ScrollToTop)
 );
 
 interface LayoutProviderProps {

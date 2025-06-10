@@ -1,14 +1,14 @@
-import { persistReducer, persistStore } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import { persistReducer, persistStore } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit';
 
-import { Phase } from "@/shared/model";
+import { Phase } from '@/shared/model';
 
-import { rootReducers } from "./rootReducers";
+import { rootReducers } from './rootReducers';
 
 const persistConfig = {
-  key: "root",
+  key: 'root',
   storage,
 };
 

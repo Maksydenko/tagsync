@@ -1,2 +1,2 @@
-export { AuthService } from "./auth.service";
-export * from "./interfaces";
+export { AuthService } from './auth.service';
+export * from './interfaces';

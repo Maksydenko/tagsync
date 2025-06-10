@@ -1,8 +1,8 @@
-import { DateTime } from "luxon";
+import { DateTime } from 'luxon';
 
-import { Locale } from "@/shared/config";
+import { Locale } from '@/shared/config';
 
-import { DateFormat } from "../enums";
+import { DateFormat } from '../enums';
 
 interface IFormatDate {
   date: Date;

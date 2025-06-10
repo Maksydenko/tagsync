@@ -1,2 +1,2 @@
-export * from "./checkoutForm.interface";
-export * from "./getCheckoutFields.util";
+export * from './checkoutForm.interface';
+export * from './getCheckoutFields.util';

@@ -1,9 +1,9 @@
-import { AbstractIntlMessages, hasLocale } from "next-intl";
-import { getRequestConfig } from "next-intl/server";
+import { AbstractIntlMessages, hasLocale } from 'next-intl';
+import { getRequestConfig } from 'next-intl/server';
 
-import { Translation } from "@/shared/config";
+import { Translation } from '@/shared/config';
 
-import { routing } from "./routing";
+import { routing } from './routing';
 
 const importMessages = async (
   translations: Translation[],

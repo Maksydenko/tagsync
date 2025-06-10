@@ -1,12 +1,12 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode } from 'react';
 
-import { TabPanels } from "@headlessui/react";
+import { TabPanels } from '@headlessui/react';
 
-import { ILink } from "@/shared/model";
+import { ILink } from '@/shared/model';
 
-import { TabsContent } from "./TabsContent";
+import { TabsContent } from './TabsContent';
 
-import s from "../Tabs.module.scss";
+import s from '../Tabs.module.scss';
 
 interface TabsContentsProps {
   tabs: ILink<ReactNode>[];

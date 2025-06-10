@@ -1,9 +1,9 @@
-import { axiosInstance, IResponse } from "@/application/api";
+import { axiosInstance, IResponse } from '@/application/api';
 
-import { IProduct } from "@/entities/product";
+import { IProduct } from '@/entities/product';
 
 export const RecommendationsService = {
-  getAlsoViewed: async (id: IProduct["product_id"]) => {
+  getAlsoViewed: async (id: IProduct['product_id']) => {
     try {
       const response: IResponse<IProduct[]> = await axiosInstance.get(
         `/Recommendation/also-viewed/${id}`
@@ -15,7 +15,7 @@ export const RecommendationsService = {
     }
   },
 
-  getCompatible: async (id: IProduct["product_id"]) => {
+  getCompatible: async (id: IProduct['product_id']) => {
     try {
       const response: IResponse<IProduct[]> = await axiosInstance.get(
         `/Recommendation/compatible/${id}`
@@ -27,7 +27,7 @@ export const RecommendationsService = {
     }
   },
 
-  getPriceBased: async (id: IProduct["product_id"]) => {
+  getPriceBased: async (id: IProduct['product_id']) => {
     try {
       const response: IResponse<IProduct[]> = await axiosInstance.get(
         `/Recommendation/price-based/${id}`
@@ -39,7 +39,7 @@ export const RecommendationsService = {
     }
   },
 
-  getSimilar: async (id: IProduct["product_id"]) => {
+  getSimilar: async (id: IProduct['product_id']) => {
     try {
       const response: IResponse<IProduct[]> = await axiosInstance.get(
         `/Recommendation/similar/${id}`

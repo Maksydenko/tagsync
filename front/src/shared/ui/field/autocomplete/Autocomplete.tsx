@@ -1,14 +1,14 @@
-import { ReactNode } from "react";
-import Link from "next/link";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
+import { ReactNode } from 'react';
+import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
 import {
   FieldValues,
   Path,
   PathValue,
   RegisterOptions,
   UseFormReturn,
-} from "react-hook-form";
+} from 'react-hook-form';
 
 import {
   Combobox,
@@ -16,14 +16,14 @@ import {
   ComboboxInput,
   ComboboxOption,
   ComboboxOptions,
-} from "@headlessui/react";
+} from '@headlessui/react';
 
-import { Translation } from "@/shared/config";
-import { checkKeyByTypes, ILink, ILinkWithIcon } from "@/shared/model";
+import { Translation } from '@/shared/config';
+import { checkKeyByTypes, ILink, ILinkWithIcon } from '@/shared/model';
 
-import { Img } from "../../img/Img";
+import { Img } from '../../img/Img';
 
-import s from "./Autocomplete.module.scss";
+import s from './Autocomplete.module.scss';
 
 interface AutocompleteProps<T extends FieldValues> {
   className?: string;
@@ -58,11 +58,11 @@ export const Autocomplete = <T extends FieldValues>({
       <Combobox
         value={selected}
         // onChange={(value) => setSelected(value)}
-        onClose={() => setValue(name, "" as PathValue<T, Path<T>>)}
+        onClose={() => setValue(name, '' as PathValue<T, Path<T>>)}
       >
         <div className={s.autocomplete__body}>
           <ComboboxInput
-            aria-label={tShared("form.search.label")}
+            aria-label={tShared('form.search.label')}
             className={clsx(s.autocomplete__input)}
             displayValue={(item: ILink) => item.label}
             onChange={({ target: { value } }) => {
@@ -72,11 +72,11 @@ export const Autocomplete = <T extends FieldValues>({
             {...restRegister}
           />
           <ComboboxButton
-            aria-label={tShared("form.search.label")}
+            aria-label={tShared('form.search.label')}
             className={s.autocomplete__btn}
           >
             <Img
-              alt={tShared("form.search.label")}
+              alt={tShared('form.search.label')}
               className={s.autocomplete__icon}
               src="/img/icons/form/loupe.svg"
               isSvg
@@ -94,7 +94,7 @@ export const Autocomplete = <T extends FieldValues>({
             const icon = checkKeyByTypes<
               ILinkWithIcon<(() => unknown) | string>,
               ILink<(() => unknown) | string>
-            >(item, "icon")
+            >(item, 'icon')
               ? item?.icon
               : null;
 
@@ -112,7 +112,7 @@ export const Autocomplete = <T extends FieldValues>({
                     isSvg
                   />
                 )}
-                {typeof value === "string" ? (
+                {typeof value === 'string' ? (
                   <Link href={value}>{label}</Link>
                 ) : (
                   <button type="button" onClick={value}>

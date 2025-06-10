@@ -1,11 +1,11 @@
-import { NextPage } from "next";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { NextPage } from 'next';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
-import Checkout from "@/views/checkout";
+import Checkout from '@/views/checkout';
 
-import { Translation } from "@/shared/config";
-import { generateMetaTitle } from "@/shared/lib";
-import { IPageProps, IParams } from "@/shared/model";
+import { Translation } from '@/shared/config';
+import { generateMetaTitle } from '@/shared/lib';
+import { IPageProps, IParams } from '@/shared/model';
 
 interface CheckoutPageProps {
   params: Promise<IParams>;
@@ -31,6 +31,6 @@ export const generateMetadata = async ({ params }: IPageProps) => {
 
   return {
     revalidate: process.env.REVALIDATE_TIMEOUT,
-    title: generateMetaTitle(tShared("cart.btns.checkout")),
+    title: generateMetaTitle(tShared('cart.btns.checkout')),
   };
 };

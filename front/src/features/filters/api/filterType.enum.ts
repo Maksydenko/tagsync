@@ -1,4 +1,4 @@
 export enum FilterType {
-  Int = "int",
-  String = "string",
+  Int = 'int',
+  String = 'string',
 }

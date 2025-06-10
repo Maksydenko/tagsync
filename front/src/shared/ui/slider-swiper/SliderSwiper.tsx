@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { FC, ReactNode, useEffect, useRef } from "react";
-import { clsx } from "clsx";
+import { FC, ReactNode, useEffect, useRef } from 'react';
+import { clsx } from 'clsx';
 // import Swiper core and required modules
 import {
   Autoplay,
@@ -15,27 +15,27 @@ import {
   // Scrollbar,
   Thumbs,
   Virtual,
-} from "swiper/modules";
+} from 'swiper/modules';
 // Import Swiper React components
-import { Swiper, SwiperProps, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 
-import { Direction, ILink } from "@/shared/model";
+import { Direction, ILink } from '@/shared/model';
 
-import { IBreakpoints } from "./breakpoints.interface";
+import { IBreakpoints } from './breakpoints.interface';
 
-import { useBullets } from "./useBullets";
+import { useBullets } from './useBullets';
 
-import { SliderSwiperNavigation } from "./SliderSwiperNavigation";
+import { SliderSwiperNavigation } from './SliderSwiperNavigation';
 
-import s from "./SliderSwiper.module.scss";
+import s from './SliderSwiper.module.scss';
 
 // Import Swiper styles
-import "swiper/scss";
-import "swiper/scss/pagination";
-import "swiper/scss/navigation";
+import 'swiper/scss';
+import 'swiper/scss/pagination';
+import 'swiper/scss/navigation';
 // import "swiper/scss/scrollbar";
-import "swiper/scss/thumbs";
-import "swiper/scss/virtual";
+import 'swiper/scss/thumbs';
+import 'swiper/scss/virtual';
 
 export interface SliderSwiperProps extends SwiperProps {
   autoplayDelay?: number;
@@ -52,7 +52,7 @@ export interface SliderSwiperProps extends SwiperProps {
   mousewheelSensitivity?: number;
   paginationClickable?: boolean;
   paginationDynamicBullets?: boolean;
-  paginationType?: "bullets" | "fraction" | "progressbar";
+  paginationType?: 'bullets' | 'fraction' | 'progressbar';
   scrollbarDraggable?: boolean;
   slides: ILink<ReactNode>[];
 }
@@ -110,7 +110,7 @@ export const SliderSwiper: FC<SliderSwiperProps> = ({
 
   // No swiping
   noSwiping,
-  noSwipingClass = "swiper-no-swiping",
+  noSwipingClass = 'swiper-no-swiping',
   // Update slider when slider items change
   observer = true,
   onSwiper,
@@ -121,7 +121,7 @@ export const SliderSwiper: FC<SliderSwiperProps> = ({
   // Dynamic bullets
   paginationDynamicBullets,
   // Types: bullets, fraction, progressbar
-  paginationType = "bullets",
+  paginationType = 'bullets',
   // Turn on/off parallax
   parallax,
   // Scrollbar
@@ -160,7 +160,7 @@ export const SliderSwiper: FC<SliderSwiperProps> = ({
 
   const isBullets =
     pagination &&
-    paginationType === "bullets" &&
+    paginationType === 'bullets' &&
     /* eslint-disable-next-line react-hooks/rules-of-hooks */
     useBullets({
       breakpoints,
@@ -176,10 +176,10 @@ export const SliderSwiper: FC<SliderSwiperProps> = ({
       return;
     }
 
-    swiperCurrent.querySelectorAll("*").forEach(
+    swiperCurrent.querySelectorAll('*').forEach(
       /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
       (element: any) => {
-        element.setAttribute("tabIndex", "-1");
+        element.setAttribute('tabIndex', '-1');
       }
     );
   }, []);
@@ -202,7 +202,7 @@ export const SliderSwiper: FC<SliderSwiperProps> = ({
     <SwiperSlide
       key={label}
       {...(hash && {
-        "data-hash": `${hash}${label}`,
+        'data-hash': `${hash}${label}`,
       })}
       {...(virtual && {
         virtualIndex: index,

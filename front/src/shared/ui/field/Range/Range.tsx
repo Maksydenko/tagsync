@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { ReactNode } from "react";
-import { clsx } from "clsx";
-import Slider, { SliderProps } from "rc-slider";
+import { ReactNode } from 'react';
+import { clsx } from 'clsx';
+import Slider, { SliderProps } from 'rc-slider';
 import {
   FieldValues,
   Path,
   PathValue,
   RegisterOptions,
   UseFormReturn,
-} from "react-hook-form";
+} from 'react-hook-form';
 
-import { formatNumber } from "@/shared/model";
+import { formatNumber } from '@/shared/model';
 
-import "rc-slider/assets/index.css";
-import s from "./Range.module.scss";
+import 'rc-slider/assets/index.css';
+import s from './Range.module.scss';
 
 interface RangeProps<T extends FieldValues> extends SliderProps {
   className?: string;
@@ -74,10 +74,10 @@ export const Range = <T extends FieldValues>({
           onChange={(value) => {
             setValue(name, value as PathValue<T, Path<T>>);
           }}
-          {...(typeof defaultMin === "number" && {
+          {...(typeof defaultMin === 'number' && {
             min: defaultMin,
           })}
-          {...(typeof defaultMax === "number" && {
+          {...(typeof defaultMax === 'number' && {
             max: defaultMax,
           })}
           {...props}

@@ -1,4 +1,4 @@
-import { FontSize } from "@/shared/config";
+import { FontSize } from '@/shared/config';
 
 export const transformPxToRem = (px: number) => {
   if (Number.isNaN(px)) {

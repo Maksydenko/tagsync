@@ -1,9 +1,9 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { ICart } from "@/entities/cart";
-import { IProduct } from "@/entities/product";
+import { ICart } from '@/entities/cart';
+import { IProduct } from '@/entities/product';
 
-import { QueryKey } from "@/shared/model";
+import { QueryKey } from '@/shared/model';
 
 const INITIAL_STATE: ICart = {
   cart_price: 0,
@@ -41,7 +41,7 @@ export const localCartSlice = createSlice({
 
     decrementLocalCartQuantity: (
       state,
-      { payload: productId }: PayloadAction<IProduct["product_id"]>
+      { payload: productId }: PayloadAction<IProduct['product_id']>
     ) => {
       const existingProduct = state.items.find(
         (item) => item.product_id === productId
@@ -69,7 +69,7 @@ export const localCartSlice = createSlice({
 
     incrementLocalCartQuantity: (
       state,
-      { payload: productId }: PayloadAction<IProduct["product_id"]>
+      { payload: productId }: PayloadAction<IProduct['product_id']>
     ) => {
       const existingProduct = state.items.find(
         (item) => item.product_id === productId
@@ -93,7 +93,7 @@ export const localCartSlice = createSlice({
 
     removeFromLocalCart: (
       state,
-      { payload: productId }: PayloadAction<IProduct["product_id"]>
+      { payload: productId }: PayloadAction<IProduct['product_id']>
     ) => {
       const existingProduct = state.items.find(
         (item) => item.product_id === productId

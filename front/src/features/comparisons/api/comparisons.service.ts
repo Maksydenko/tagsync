@@ -1,15 +1,15 @@
-import { axiosInstance, IResponse } from "@/application/api";
+import { axiosInstance, IResponse } from '@/application/api';
 
-import { IResult } from "@/shared/api";
+import { IResult } from '@/shared/api';
 
-import { TComparison } from "./comparisons.type";
+import { TComparison } from './comparisons.type';
 
-import { IAddComparison } from "./addComparison.interface";
+import { IAddComparison } from './addComparison.interface';
 
 export const ComparisonsService = {
   add: async (data: IAddComparison) => {
     const response: IResponse<IResult> = await axiosInstance.post(
-      "/Comparison/add",
+      '/Comparison/add',
       data
     );
 
@@ -26,7 +26,7 @@ export const ComparisonsService = {
 
   remove: async (data: IAddComparison) => {
     const response: IResponse<IResult> = await axiosInstance.delete(
-      "/Comparison/remove",
+      '/Comparison/remove',
       {
         data,
       }

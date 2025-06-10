@@ -2,7 +2,7 @@ import type {
   CSSMotionProps,
   MotionEndEventHandler,
   MotionEventHandler,
-} from "rc-motion";
+} from 'rc-motion';
 
 const getCollapsedHeight: MotionEventHandler = () => ({
   height: 0,
@@ -19,12 +19,12 @@ const getCurrentHeight: MotionEventHandler = (node) => ({
 });
 
 const skipOpacityTransition: MotionEndEventHandler = (_, event) =>
-  (event as TransitionEvent).propertyName === "height";
+  (event as TransitionEvent).propertyName === 'height';
 
 const collapseMotion: CSSMotionProps = {
-  leavedClassName: "rc-collapse-content-hidden",
+  leavedClassName: 'rc-collapse-content-hidden',
   motionDeadline: 500,
-  motionName: "rc-collapse-motion",
+  motionName: 'rc-collapse-motion',
   onEnterActive: getRealHeight,
   onEnterEnd: skipOpacityTransition,
   onEnterStart: getCollapsedHeight,

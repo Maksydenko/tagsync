@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { HTMLInputTypeAttribute, ReactNode, useState } from "react";
-import { clsx } from "clsx";
+import { HTMLInputTypeAttribute, ReactNode, useState } from 'react';
+import { clsx } from 'clsx';
 import {
   FieldValues,
   Path,
   RegisterOptions,
   UseFormReturn,
-} from "react-hook-form";
+} from 'react-hook-form';
 
-import { Img } from "@/shared/ui";
+import { Img } from '@/shared/ui';
 
-import s from "./Input.module.scss";
+import s from './Input.module.scss';
 
 interface InputProps<T extends FieldValues> {
   className?: string;
@@ -48,8 +48,8 @@ export const Input = <T extends FieldValues>({
 
   const disabled = options?.disabled;
 
-  const isPassword = type === "password";
-  const Tag = type === "textarea" ? "textarea" : "input";
+  const isPassword = type === 'password';
+  const Tag = type === 'textarea' ? 'textarea' : 'input';
 
   return (
     <div className={clsx(s.input, className)}>
@@ -64,7 +64,7 @@ export const Input = <T extends FieldValues>({
         disabled={disabled}
         id={name}
         placeholder={placeholder}
-        type={showPassword ? "text" : type}
+        type={showPassword ? 'text' : type}
         onBlur={(e) => {
           handleBlur(e);
           onBlur?.();
@@ -85,7 +85,7 @@ export const Input = <T extends FieldValues>({
             className={s.input__icon}
             height={20}
             src={`/img/icons/form/eye-${
-              showPassword ? "opened" : "closed"
+              showPassword ? 'opened' : 'closed'
             }.svg`}
             width={20}
             isSvg

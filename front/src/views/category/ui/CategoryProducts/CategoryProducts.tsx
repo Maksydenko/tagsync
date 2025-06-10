@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { clsx } from "clsx";
+import { FC } from 'react';
+import { clsx } from 'clsx';
 
-import { IProducts } from "@/features/products";
+import { IProducts } from '@/features/products';
 
-import { ProductCard } from "@/entities/product";
+import { ProductCard } from '@/entities/product';
 
-import { Pagination } from "@/shared/ui";
+import { Pagination } from '@/shared/ui';
 
-import s from "./CategoryProducts.module.scss";
+import s from './CategoryProducts.module.scss';
 
 interface CategoryProductsProps {
   className?: string;

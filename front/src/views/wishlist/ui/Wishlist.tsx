@@ -1,14 +1,14 @@
-import { FC } from "react";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
+import { FC } from 'react';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
 
-import { UserWrapper } from "@/widgets/user-wrapper";
+import { UserWrapper } from '@/widgets/user-wrapper';
 
-import { Translation } from "@/shared/config";
+import { Translation } from '@/shared/config';
 
-import { WishlistProducts } from "./WishlistProducts/WishlistProducts";
+import { WishlistProducts } from './WishlistProducts/WishlistProducts';
 
-import s from "./Wishlist.module.scss";
+import s from './Wishlist.module.scss';
 
 interface WishlistProps {
   className?: string;
@@ -19,7 +19,7 @@ export const Wishlist: FC<WishlistProps> = ({ className }) => {
 
   return (
     <div className={clsx(s.wishlistPage, className)}>
-      <UserWrapper className={s.wishlist} title={tShared("user.wishlist")}>
+      <UserWrapper className={s.wishlist} title={tShared('user.wishlist')}>
         <WishlistProducts className={s.wishlist__products} />
       </UserWrapper>
     </div>

@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { clsx } from "clsx";
-import { useForm } from "react-hook-form";
+import { FC } from 'react';
+import { clsx } from 'clsx';
+import { useForm } from 'react-hook-form';
 
-import { formatDate } from "@/shared/model";
-import { Rating } from "@/shared/ui";
+import { formatDate } from '@/shared/model';
+import { Rating } from '@/shared/ui';
 
-import { IReview } from "../../api";
+import { IReview } from '../../api';
 
-import s from "./ReviewCard.module.scss";
+import s from './ReviewCard.module.scss';
 
 interface ReviewCardProps {
   className?: string;
@@ -28,8 +28,8 @@ export const ReviewCard: FC<ReviewCardProps> = ({ className, review }) => {
       <div className={s.reviewCard__body}>
         <div className={s.reviewCard__header}>
           <h3 className={s.reviewCard__title}>
-            {[review.firstName, review.lastName].filter(Boolean).join(" ") ||
-              review.userEmail.split("@")[0]}
+            {[review.firstName, review.lastName].filter(Boolean).join(' ') ||
+              review.userEmail.split('@')[0]}
           </h3>
           <p className={s.reviewCard__date}>
             {formatDate({

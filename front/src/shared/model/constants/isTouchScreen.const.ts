@@ -1,4 +1,4 @@
-import { isBrowser } from "./isBrowser.const";
+import { isBrowser } from './isBrowser.const';
 
 export const isTouchScreen =
-  isBrowser && ("ontouchstart" in window || navigator.maxTouchPoints > 0);
+  isBrowser && ('ontouchstart' in window || navigator.maxTouchPoints > 0);

@@ -1,35 +1,35 @@
-"use client";
+'use client';
 
-import { FC, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
-import { useAtom } from "jotai";
-import { useForm } from "react-hook-form";
-import { StepWizardChildProps } from "react-step-wizard";
+import { FC, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
+import { useAtom } from 'jotai';
+import { useForm } from 'react-hook-form';
+import { StepWizardChildProps } from 'react-step-wizard';
 
-import { AuthError } from "@supabase/supabase-js";
-import { useMutation } from "@tanstack/react-query";
+import { AuthError } from '@supabase/supabase-js';
+import { useMutation } from '@tanstack/react-query';
 
-import { AuthForm } from "@/features/auth";
+import { AuthForm } from '@/features/auth';
 
-import { userAtom } from "@/entities/user";
+import { userAtom } from '@/entities/user';
 
-import { Pathname, Translation } from "@/shared/config";
-import { useInvalidateAtom } from "@/shared/lib";
-import { MutationKey, QueryKey } from "@/shared/model";
-import { Btn } from "@/shared/ui";
+import { Pathname, Translation } from '@/shared/config';
+import { useInvalidateAtom } from '@/shared/lib';
+import { MutationKey, QueryKey } from '@/shared/model';
+import { Btn } from '@/shared/ui';
 
-import { getCheckoutFields, ICheckoutForm } from "../../model";
+import { getCheckoutFields, ICheckoutForm } from '../../model';
 
-import s from "./CheckoutForm.module.scss";
+import s from './CheckoutForm.module.scss';
 
 interface CheckoutFormProps extends Partial<StepWizardChildProps> {
   className?: string;
 }
 
 export const CheckoutForm: FC<CheckoutFormProps> = ({ className }) => {
-  const [submissionMessage, setSubmissionMessage] = useState("");
+  const [submissionMessage, setSubmissionMessage] = useState('');
   const { push } = useRouter();
 
   const tShared = useTranslations(Translation.Shared);
@@ -50,26 +50,26 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({ className }) => {
         return;
       }
 
-      const OrdersService = await import("@/features/orders").then(
+      const OrdersService = await import('@/features/orders').then(
         (module) => module.OrdersService
       );
 
       return OrdersService.checkout({
         address: address.trim(),
         city: city.trim(),
-        fullName: [name.trim(), surname.trim()].join(" "),
-        phone: phone.replace(/\s+/g, ""),
+        fullName: [name.trim(), surname.trim()].join(' '),
+        phone: phone.replace(/\s+/g, ''),
         userEmail: user?.email.trim(),
       });
     },
     mutationKey: [MutationKey.Checkout],
     onError: (error: AuthError) => {
       const errorMessages = {
-        default: "errors.unknown",
+        default: 'errors.unknown',
       };
       const errorMessage =
         errorMessages[error.code as keyof typeof errorMessages] ||
-        errorMessages["default"];
+        errorMessages['default'];
 
       setSubmissionMessage(errorMessage);
       console.warn(error);
@@ -81,7 +81,7 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({ className }) => {
   });
 
   const form = useForm<ICheckoutForm>({
-    mode: "onChange",
+    mode: 'onChange',
   });
   const { reset } = form;
 
@@ -109,7 +109,7 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({ className }) => {
           isLoading={isCheckoutPending}
           type="submit"
         >
-          {tShared("form.submit")}
+          {tShared('form.submit')}
         </Btn>
       }
       className={clsx(s.checkoutForm, className)}

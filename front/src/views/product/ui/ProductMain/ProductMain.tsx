@@ -1,32 +1,32 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { useRouter } from "next/navigation";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
-import { useAtom, useSetAtom } from "jotai";
-import { useForm } from "react-hook-form";
+import { FC } from 'react';
+import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
+import { useAtom, useSetAtom } from 'jotai';
+import { useForm } from 'react-hook-form';
 
-import { useMutation } from "@tanstack/react-query";
+import { useMutation } from '@tanstack/react-query';
 
-import { useLocalCart } from "@/application/store";
+import { useLocalCart } from '@/application/store';
 
-import { cartAtom, cartOpenAtom } from "@/entities/cart";
-import { Checked } from "@/entities/indicator";
-import { comparisonsAtom, IProduct, wishlistAtom } from "@/entities/product";
-import { userAtom } from "@/entities/user";
+import { cartAtom, cartOpenAtom } from '@/entities/cart';
+import { Checked } from '@/entities/indicator';
+import { comparisonsAtom, IProduct, wishlistAtom } from '@/entities/product';
+import { userAtom } from '@/entities/user';
 
-import { Pathname, Translation } from "@/shared/config";
-import { useInvalidateAtom } from "@/shared/lib";
+import { Pathname, Translation } from '@/shared/config';
+import { useInvalidateAtom } from '@/shared/lib';
 import {
   formatPrice,
   isValueInSet,
   MutationKey,
   QueryKey,
-} from "@/shared/model";
-import { Btn, Img, Rating } from "@/shared/ui";
+} from '@/shared/model';
+import { Btn, Img, Rating } from '@/shared/ui';
 
-import s from "./ProductMain.module.scss";
+import s from './ProductMain.module.scss';
 
 interface ProductMainProps {
   className?: string;
@@ -61,7 +61,7 @@ export const ProductMain: FC<ProductMainProps> = ({
   );
   const isWished = isValueInSet({
     data: wishlistData?.data,
-    key: "product_id",
+    key: 'product_id',
     value: product_id,
   });
 
@@ -71,7 +71,7 @@ export const ProductMain: FC<ProductMainProps> = ({
   );
   const isInComparisons = isValueInSet({
     data: comparisonsData?.data[slug.toLocaleLowerCase()],
-    key: "product_id",
+    key: 'product_id',
     value: product_id,
   });
 
@@ -85,7 +85,7 @@ export const ProductMain: FC<ProductMainProps> = ({
   const cartItems = cart?.items;
   const isInCart = isValueInSet({
     data: cartItems,
-    key: "product_id",
+    key: 'product_id',
     value: product_id,
   });
 
@@ -102,7 +102,7 @@ export const ProductMain: FC<ProductMainProps> = ({
           throw new Error();
         }
 
-        const WishlistService = await import("@/features/wishlist").then(
+        const WishlistService = await import('@/features/wishlist').then(
           (module) => module.WishlistService
         );
 
@@ -135,7 +135,7 @@ export const ProductMain: FC<ProductMainProps> = ({
           throw new Error();
         }
 
-        const ComparisonsService = await import("@/features/comparisons").then(
+        const ComparisonsService = await import('@/features/comparisons').then(
           (module) => module.ComparisonsService
         );
 
@@ -165,7 +165,7 @@ export const ProductMain: FC<ProductMainProps> = ({
         return addToLocalCart(productData);
       }
 
-      const CartService = await import("@/entities/cart").then(
+      const CartService = await import('@/entities/cart').then(
         (module) => module.CartService
       );
 
@@ -210,8 +210,8 @@ export const ProductMain: FC<ProductMainProps> = ({
             className={s.productMain__btn}
             disabled={isAddToCartPending || isCartLoading}
             icon={{
-              label: tShared(`product.cart.${isInCart ? "in" : "add-to"}-cart`),
-              value: "/img/icons/product/cart.svg",
+              label: tShared(`product.cart.${isInCart ? 'in' : 'add-to'}-cart`),
+              value: '/img/icons/product/cart.svg',
             }}
             isLoading={isAddToCartPending}
             onClick={() => {
@@ -222,14 +222,14 @@ export const ProductMain: FC<ProductMainProps> = ({
               addToCart();
             }}
           >
-            <p>{tShared(`product.cart.${isInCart ? "in" : "add-to"}-cart`)}</p>
+            <p>{tShared(`product.cart.${isInCart ? 'in' : 'add-to'}-cart`)}</p>
             {isInCart && <Checked className={s.productMain__indicator} />}
           </Btn>
           <div className={s.productMain__btns}>
             <button
               aria-label={tShared(
                 `product.compare.${
-                  isInComparisons ? "remove-from" : "add-to"
+                  isInComparisons ? 'remove-from' : 'add-to'
                 }-compare`
               )}
               className={s.productMain__btn}
@@ -242,7 +242,7 @@ export const ProductMain: FC<ProductMainProps> = ({
               <Img
                 aria-label={tShared(
                   `product.compare.${
-                    isInComparisons ? "remove-from" : "add-to"
+                    isInComparisons ? 'remove-from' : 'add-to'
                   }-compare`
                 )}
                 className={s.productMain__icon}
@@ -255,7 +255,7 @@ export const ProductMain: FC<ProductMainProps> = ({
             <button
               aria-label={tShared(
                 `product.wishlist.${
-                  isWished ? "remove-from" : "add-to"
+                  isWished ? 'remove-from' : 'add-to'
                 }-wishlist`
               )}
               className={s.productMain__btn}
@@ -268,12 +268,12 @@ export const ProductMain: FC<ProductMainProps> = ({
               <Img
                 alt={tShared(
                   `product.wishlist.${
-                    isWished ? "remove-from" : "add-to"
+                    isWished ? 'remove-from' : 'add-to'
                   }-wishlist`
                 )}
                 className={s.productMain__icon}
                 src={`/img/icons/product/heart-${
-                  isWished ? "fill" : "empty"
+                  isWished ? 'fill' : 'empty'
                 }.svg`}
               />
             </button>

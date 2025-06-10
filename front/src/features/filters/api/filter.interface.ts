@@ -1,6 +1,6 @@
-import { ITranslations } from "@/shared/api";
+import { ITranslations } from '@/shared/api';
 
-import { FilterType } from "./filterType.enum";
+import { FilterType } from './filterType.enum';
 
 export interface IFilter {
   name: string;

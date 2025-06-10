@@ -1,13 +1,13 @@
-import { FC } from "react";
-import Link from "next/link";
-import { clsx } from "clsx";
+import { FC } from 'react';
+import Link from 'next/link';
+import { clsx } from 'clsx';
 
-import { IOrder } from "@/features/orders";
+import { IOrder } from '@/features/orders';
 
-import { formatDate, formatPrice } from "@/shared/model";
-import { Img, Loader } from "@/shared/ui";
+import { formatDate, formatPrice } from '@/shared/model';
+import { Img, Loader } from '@/shared/ui';
 
-import s from "./OrderCard.module.scss";
+import s from './OrderCard.module.scss';
 
 interface OrderCardProps {
   className?: string;

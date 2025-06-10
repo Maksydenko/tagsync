@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
+import { FC } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
 
-import { Translation } from "@/shared/config";
-import { SearchParam, sortSearchParams } from "@/shared/model";
+import { Translation } from '@/shared/config';
+import { SearchParam, sortSearchParams } from '@/shared/model';
 
-import { IFilter } from "../../api";
+import { IFilter } from '../../api';
 
-import s from "./FilterBadges.module.scss";
+import s from './FilterBadges.module.scss';
 
 interface FilterBadgesProps {
   className?: string;
@@ -33,7 +33,7 @@ export const FilterBadges: FC<FilterBadgesProps> = ({
   }[] = [];
 
   filtersData.forEach(({ name, values }) => {
-    const paramValues = searchParams.get(name)?.split(",") || [];
+    const paramValues = searchParams.get(name)?.split(',') || [];
 
     values.forEach((value) => {
       if (paramValues.includes(value)) {
@@ -48,11 +48,11 @@ export const FilterBadges: FC<FilterBadgesProps> = ({
 
   const removeFilter = (groupKey: string, value: string) => {
     const params = new URLSearchParams(searchParams);
-    const values = params.get(groupKey)?.split(",").filter(Boolean) || [];
+    const values = params.get(groupKey)?.split(',').filter(Boolean) || [];
 
     const updatedValues = values.filter((v) => v !== value);
     if (updatedValues.length) {
-      params.set(groupKey, updatedValues.join(","));
+      params.set(groupKey, updatedValues.join(','));
     } else {
       params.delete(groupKey);
     }
@@ -82,7 +82,7 @@ export const FilterBadges: FC<FilterBadgesProps> = ({
               type="button"
               onClick={removeAllFilters}
             >
-              <p>{tCategory("filters.remove-all")}</p>
+              <p>{tCategory('filters.remove-all')}</p>
               <span className={s.filterBadges__icon} />
             </button>
           </li>

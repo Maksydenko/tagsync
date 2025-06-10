@@ -1,10 +1,10 @@
-import { SwiperOptions } from "swiper/types";
+import { SwiperOptions } from 'swiper/types';
 
-import { IBreakpoint } from "./breakpoints.interface";
+import { IBreakpoint } from './breakpoints.interface';
 
 interface IAddBreakpointDesktop {
   (
-    slidesPerView: SwiperOptions["slidesPerView"],
+    slidesPerView: SwiperOptions['slidesPerView'],
     breakpoints: IBreakpoint[]
   ): IBreakpoint[];
 }

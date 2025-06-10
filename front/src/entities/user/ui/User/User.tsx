@@ -1,27 +1,27 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
-import initials from "initials";
-import { useAtom } from "jotai";
+import { FC } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
+import initials from 'initials';
+import { useAtom } from 'jotai';
 
-import { useMutation } from "@tanstack/react-query";
+import { useMutation } from '@tanstack/react-query';
 
-import { Pathname, Translation } from "@/shared/config";
-import { useInvalidateAtom } from "@/shared/lib";
+import { Pathname, Translation } from '@/shared/config';
+import { useInvalidateAtom } from '@/shared/lib';
 import {
   MutationKey,
   QueryKey,
   userData as userLinksData,
-} from "@/shared/model";
-import { Dropdown, Img, Loader } from "@/shared/ui";
+} from '@/shared/model';
+import { Dropdown, Img, Loader } from '@/shared/ui';
 
-import { userAtom } from "../../model";
+import { userAtom } from '../../model';
 
-import s from "./User.module.scss";
+import s from './User.module.scss';
 
 interface UserProps {
   className?: string;
@@ -40,7 +40,7 @@ export const User: FC<UserProps> = ({ className, onClick }) => {
 
   const { mutate: logout } = useMutation({
     mutationFn: async () => {
-      const AuthService = await import("@/features/auth").then(
+      const AuthService = await import('@/features/auth').then(
         (module) => module.AuthService
       );
 
@@ -55,7 +55,7 @@ export const User: FC<UserProps> = ({ className, onClick }) => {
 
   const userIcon = (
     <Img
-      alt={tShared("user.profile")}
+      alt={tShared('user.profile')}
       className={s.user__icon}
       height={20}
       src="/img/icons/user.svg"
@@ -80,8 +80,8 @@ export const User: FC<UserProps> = ({ className, onClick }) => {
                 ...rest,
               })),
               {
-                icon: "/img/icons/logout.svg",
-                label: tShared("user.logout"),
+                icon: '/img/icons/logout.svg',
+                label: tShared('user.logout'),
                 value: () => {
                   logout();
                 },

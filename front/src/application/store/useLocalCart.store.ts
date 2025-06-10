@@ -1,10 +1,10 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
-import { ICart } from "@/entities/cart";
-import { IProduct } from "@/entities/product";
+import { ICart } from '@/entities/cart';
+import { IProduct } from '@/entities/product';
 
-import { QueryKey } from "@/shared/model";
+import { QueryKey } from '@/shared/model';
 
 const DEFAULT_LOCAL_CART: ICart = {
   cart_price: 0,
@@ -15,10 +15,10 @@ const DEFAULT_LOCAL_CART: ICart = {
 interface ILocalCartState {
   addToLocalCart: (product: IProduct) => void;
   clearLocalCart: () => void;
-  decrementLocalCartQuantity: (product: IProduct["product_id"]) => void;
-  incrementLocalCartQuantity: (product: IProduct["product_id"]) => void;
+  decrementLocalCartQuantity: (product: IProduct['product_id']) => void;
+  incrementLocalCartQuantity: (product: IProduct['product_id']) => void;
   localCart: ICart;
-  removeFromLocalCart: (product: IProduct["product_id"]) => void;
+  removeFromLocalCart: (product: IProduct['product_id']) => void;
 }
 
 export const useLocalCart = create<ILocalCartState>()(

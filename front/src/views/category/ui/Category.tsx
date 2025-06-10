@@ -1,12 +1,12 @@
-import { FC, Suspense } from "react";
+import { FC, Suspense } from 'react';
 
-import { Filters, IFilter } from "@/features/filters";
-import { IProducts } from "@/features/products";
+import { Filters, IFilter } from '@/features/filters';
+import { IProducts } from '@/features/products';
 
-import { CategoryHeader } from "./CategoryHeader/CategoryHeader";
-import { CategoryProducts } from "./CategoryProducts/CategoryProducts";
+import { CategoryHeader } from './CategoryHeader/CategoryHeader';
+import { CategoryProducts } from './CategoryProducts/CategoryProducts';
 
-import s from "./Category.module.scss";
+import s from './Category.module.scss';
 
 interface CategoryProps {
   filtersData: IFilter[];

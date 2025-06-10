@@ -1,10 +1,10 @@
-import { FC } from "react";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
+import { FC } from 'react';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
 
-import { Translation } from "@/shared/config";
+import { Translation } from '@/shared/config';
 
-import s from "./Copyright.module.scss";
+import s from './Copyright.module.scss';
 
 interface CopyrightProps {
   className?: string;
@@ -17,7 +17,7 @@ export const Copyright: FC<CopyrightProps> = ({ className }) => {
     <div className={clsx(s.copyright, className)}>
       <div className={s.copyright__container}>
         <p>
-          {tShared("footer.copyright")} © {new Date().getFullYear()}
+          {tShared('footer.copyright')} © {new Date().getFullYear()}
         </p>
       </div>
     </div>

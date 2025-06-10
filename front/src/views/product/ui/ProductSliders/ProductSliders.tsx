@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { FC, useState } from "react";
-import { clsx } from "clsx";
-import { Swiper } from "swiper/types";
+import { FC, useState } from 'react';
+import { clsx } from 'clsx';
+import { Swiper } from 'swiper/types';
 
-import { Breakpoint } from "@/shared/config";
-import { Direction, useBreakpointCheck } from "@/shared/model";
-import { Img, Loader, SliderSwiper } from "@/shared/ui";
+import { Breakpoint } from '@/shared/config';
+import { Direction, useBreakpointCheck } from '@/shared/model';
+import { Img, Loader, SliderSwiper } from '@/shared/ui';
 
-import s from "./ProductSliders.module.scss";
+import s from './ProductSliders.module.scss';
 
 interface ProductSlidersProps {
   className?: string;

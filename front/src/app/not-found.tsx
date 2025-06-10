@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import Error from "next/error";
-import { StatusCodes } from "http-status-codes";
+import Error from 'next/error';
+import { StatusCodes } from 'http-status-codes';
 
-import { Locale } from "@/shared/config";
+import { Locale } from '@/shared/config';
 
 // This page renders when a route like `/unknown.txt` is requested.
 // In this case, the layout at `app/[locale]/layout.tsx` receives

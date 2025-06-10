@@ -1,4 +1,4 @@
 export enum Protocol {
-  Http = "http",
-  Https = "https",
+  Http = 'http',
+  Https = 'https',
 }

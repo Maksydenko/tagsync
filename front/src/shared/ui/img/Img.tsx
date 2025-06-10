@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { FC, ReactNode, useRef, useState } from "react";
-import Image, { ImageProps } from "next/image";
-import { clsx } from "clsx";
+import { FC, ReactNode, useRef, useState } from 'react';
+import Image, { ImageProps } from 'next/image';
+import { clsx } from 'clsx';
 
-import s from "./Img.module.scss";
+import s from './Img.module.scss';
 
-interface ImgProps extends Omit<ImageProps, "alt"> {
+interface ImgProps extends Omit<ImageProps, 'alt'> {
   alt?: string;
   className?: string;
   customLoader?: ReactNode;
@@ -15,14 +15,14 @@ interface ImgProps extends Omit<ImageProps, "alt"> {
 }
 
 export const Img: FC<ImgProps> = ({
-  alt = "",
+  alt = '',
   className,
   customLoader,
   fill = true,
   height,
   isSvg,
   quality = 75,
-  sizes = "(min-width: 0) 100vw",
+  sizes = '(min-width: 0) 100vw',
   src,
   style,
   width,

@@ -1,6 +1,6 @@
-import { IProduct } from "@/entities/product";
+import { IProduct } from '@/entities/product';
 
-import { ITranslations } from "@/shared/api";
+import { ITranslations } from '@/shared/api';
 
 export interface ICategory {
   count: number;

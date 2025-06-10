@@ -1,2 +1,2 @@
-export * from "./result.interface";
-export * from "./translations.interface";
+export * from './result.interface';
+export * from './translations.interface';

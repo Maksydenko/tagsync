@@ -1,12 +1,12 @@
-import { axiosInstance, IResponse } from "@/application/api";
+import { axiosInstance, IResponse } from '@/application/api';
 
-import { IProduct } from "@/entities/product";
+import { IProduct } from '@/entities/product';
 
 export const HomePageRecommendationsService = {
   getLastviewed: async () => {
     try {
       const response: IResponse<IProduct[]> = await axiosInstance.get(
-        `/MainPageRecommendations/lastviewed`
+        '/MainPageRecommendations/lastviewed'
       );
 
       return response;
@@ -18,7 +18,7 @@ export const HomePageRecommendationsService = {
   getPopular: async () => {
     try {
       const response: IResponse<IProduct[]> = await axiosInstance.get(
-        `/MainPageRecommendations/popular`
+        '/MainPageRecommendations/popular'
       );
 
       return response;
@@ -30,7 +30,7 @@ export const HomePageRecommendationsService = {
   getTopRated: async () => {
     try {
       const response: IResponse<IProduct[]> = await axiosInstance.get(
-        `/MainPageRecommendations/toprated`
+        '/MainPageRecommendations/toprated'
       );
 
       return response;

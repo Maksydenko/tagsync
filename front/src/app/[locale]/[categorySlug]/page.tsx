@@ -1,11 +1,11 @@
-import { NextPage } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { NextPage } from 'next';
+import { setRequestLocale } from 'next-intl/server';
 
-import Category from "@/views/category";
+import Category from '@/views/category';
 
-import { ProductsService } from "@/features/products";
+import { ProductsService } from '@/features/products';
 
-import { IPageProps } from "@/shared/model";
+import { IPageProps } from '@/shared/model';
 
 const CategoryPage: NextPage<IPageProps> = async (props) => {
   const params = await props.params;
@@ -49,7 +49,7 @@ export const generateMetadata = async ({ params }: IPageProps) => {
 
   return {
     description: categoryTitle,
-    keywords: categoryTitle.split(" ").join(","),
+    keywords: categoryTitle.split(' ').join(','),
     revalidate: process.env.REVALIDATE_TIMEOUT,
     title: categoryTitle,
   };

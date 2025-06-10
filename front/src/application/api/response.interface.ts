@@ -1,4 +1,4 @@
-import { StatusCodes } from "http-status-codes";
+import { StatusCodes } from 'http-status-codes';
 
 export interface IResponse<T = unknown> {
   config: IConfig;
@@ -32,7 +32,7 @@ interface IConfigHeaders {
 }
 
 interface IResponseHeaders {
-  "content-type": string;
+  'content-type': string;
 }
 
 interface ITransitional {

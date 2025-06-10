@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { ReactNode } from "react";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
-import { FieldValues, UseFormReturn } from "react-hook-form";
+import { ReactNode } from 'react';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
+import { FieldValues, UseFormReturn } from 'react-hook-form';
 
-import { UseMutateFunction } from "@tanstack/react-query";
+import { UseMutateFunction } from '@tanstack/react-query';
 
-import { Translation } from "@/shared/config";
-import { IField } from "@/shared/model";
-import { Field } from "@/shared/ui";
+import { Translation } from '@/shared/config';
+import { IField } from '@/shared/model';
+import { Field } from '@/shared/ui';
 
-import s from "./AuthForm.module.scss";
+import s from './AuthForm.module.scss';
 
 interface AuthFormProps<T extends FieldValues> {
   btns: ReactNode;

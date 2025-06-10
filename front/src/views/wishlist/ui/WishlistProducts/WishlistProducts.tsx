@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { clsx } from "clsx";
-import { useAtom } from "jotai";
+import { FC } from 'react';
+import { clsx } from 'clsx';
+import { useAtom } from 'jotai';
 
-import { ProductCard, wishlistAtom } from "@/entities/product";
-import { userAtom } from "@/entities/user";
+import { ProductCard, wishlistAtom } from '@/entities/product';
+import { userAtom } from '@/entities/user';
 
-import { Loader } from "@/shared/ui";
+import { Loader } from '@/shared/ui';
 
-import s from "./WishlistProducts.module.scss";
+import s from './WishlistProducts.module.scss';
 
 interface WishlistProductsProps {
   className?: string;

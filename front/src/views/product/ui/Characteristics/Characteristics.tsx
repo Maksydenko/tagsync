@@ -1,22 +1,22 @@
-"use client";
+'use client';
 
-import { FC, useMemo } from "react";
-import { useLocale, useTranslations } from "next-intl";
-import { clsx } from "clsx";
+import { FC, useMemo } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
 
 import {
   ColumnDef,
   getCoreRowModel,
   useReactTable,
-} from "@tanstack/react-table";
+} from '@tanstack/react-table';
 
-import { IProductCharacteristic } from "@/entities/product";
+import { IProductCharacteristic } from '@/entities/product';
 
-import { Locale, Translation } from "@/shared/config";
-import { ILink } from "@/shared/model";
-import { Table } from "@/shared/ui";
+import { Locale, Translation } from '@/shared/config';
+import { ILink } from '@/shared/model';
+import { Table } from '@/shared/ui';
 
-import s from "./Characteristics.module.scss";
+import s from './Characteristics.module.scss';
 
 interface CharacteristicsProps {
   characteristics: IProductCharacteristic[];
@@ -32,12 +32,12 @@ export const Characteristics: FC<CharacteristicsProps> = ({
 
   const columns: ColumnDef<ILink>[] = [
     {
-      accessorKey: "label",
-      header: "",
+      accessorKey: 'label',
+      header: '',
     },
     {
-      accessorKey: "value",
-      header: "",
+      accessorKey: 'value',
+      header: '',
     },
   ];
 
@@ -61,7 +61,7 @@ export const Characteristics: FC<CharacteristicsProps> = ({
     <div className={clsx(s.characteristics, className)}>
       <div className={s.characteristics__body}>
         <h2 className={s.characteristics__title}>
-          {tProduct("characteristics")}
+          {tProduct('characteristics')}
         </h2>
         <Table className={s.characteristics__table} table={table} />
       </div>

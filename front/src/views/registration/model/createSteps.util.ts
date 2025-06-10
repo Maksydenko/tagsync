@@ -1,4 +1,4 @@
-import { StepProps } from "rc-steps/lib/Step";
+import { StepProps } from 'rc-steps/lib/Step';
 
 export const createSteps = (
   currentStep: number,

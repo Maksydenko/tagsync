@@ -1,25 +1,25 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
+import { FC } from 'react';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
 
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { useMutation } from "@tanstack/react-query";
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { useMutation } from '@tanstack/react-query';
 
-import { Pathname, Translation } from "@/shared/config";
-import { IDatabase, useInvalidateAtom } from "@/shared/lib";
+import { Pathname, Translation } from '@/shared/config';
+import { IDatabase, useInvalidateAtom } from '@/shared/lib';
 import {
   MutationKey,
   QueryKey,
   removeLocalePrefix,
   userData,
-} from "@/shared/model";
-import { Img } from "@/shared/ui";
+} from '@/shared/model';
+import { Img } from '@/shared/ui';
 
-import s from "./UserWrapperList.module.scss";
+import s from './UserWrapperList.module.scss';
 
 interface UserWrapperListProps {
   className?: string;
@@ -77,12 +77,12 @@ export const UserWrapperList: FC<UserWrapperListProps> = ({ className }) => {
             }}
           >
             <Img
-              alt={tShared("user.logout")}
+              alt={tShared('user.logout')}
               className={s.userWrapperList__icon}
               src="/img/icons/logout.svg"
               isSvg
             />
-            {tShared("user.logout")}
+            {tShared('user.logout')}
           </button>
         </li>
       </ul>

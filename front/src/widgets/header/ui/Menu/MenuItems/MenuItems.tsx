@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { FC } from "react";
+import { FC } from 'react';
 
-import { ILink } from "@/shared/model";
+import { ILink } from '@/shared/model';
 
-import { MenuItem } from "./MenuItem";
+import { MenuItem } from './MenuItem';
 
 interface MenuItemsProps {
   links: ILink[];

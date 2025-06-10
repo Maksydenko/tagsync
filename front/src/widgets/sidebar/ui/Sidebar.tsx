@@ -1,9 +1,9 @@
-import { FC } from "react";
-import clsx from "clsx";
+import { FC } from 'react';
+import clsx from 'clsx';
 
-import { SidebarItems } from "./SidebarItems/SidebarItems";
+import { SidebarItems } from './SidebarItems/SidebarItems';
 
-import s from "./Sidebar.module.scss";
+import s from './Sidebar.module.scss';
 
 interface SidebarProps {
   className?: string;

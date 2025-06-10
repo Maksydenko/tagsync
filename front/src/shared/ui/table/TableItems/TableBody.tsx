@@ -1,8 +1,8 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
-import { flexRender, Table as TTable } from "@tanstack/react-table";
+import { flexRender, Table as TTable } from '@tanstack/react-table';
 
-import s from "../Table.module.scss";
+import s from '../Table.module.scss';
 
 interface TableBodyProps<T> {
   table: TTable<T>;

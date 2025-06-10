@@ -1,11 +1,11 @@
-import { atomFamily } from "jotai/utils";
-import { atomWithQuery } from "jotai-tanstack-query";
+import { atomFamily } from 'jotai/utils';
+import { atomWithQuery } from 'jotai-tanstack-query';
 
-import { queryOptions } from "@tanstack/react-query";
+import { queryOptions } from '@tanstack/react-query';
 
-import { ComparisonsService } from "@/features/comparisons";
+import { ComparisonsService } from '@/features/comparisons';
 
-import { QueryKey } from "@/shared/model";
+import { QueryKey } from '@/shared/model';
 
 export const comparisonsAtom = atomFamily((userEmail: string | undefined) =>
   atomWithQuery(() =>

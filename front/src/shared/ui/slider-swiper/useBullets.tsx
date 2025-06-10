@@ -1,13 +1,13 @@
-import { SwiperOptions } from "swiper/types";
+import { SwiperOptions } from 'swiper/types';
 
-import { addBreakpointDesktop } from "./addBreakpointDesktop.util";
+import { addBreakpointDesktop } from './addBreakpointDesktop.util';
 
-import { IBreakpoint, IBreakpoints } from "./breakpoints.interface";
+import { IBreakpoint, IBreakpoints } from './breakpoints.interface';
 
 interface IUseBullets {
   breakpoints?: IBreakpoints;
   slidesLength: number;
-  slidesPerView: SwiperOptions["slidesPerView"];
+  slidesPerView: SwiperOptions['slidesPerView'];
 }
 
 export const useBullets = ({

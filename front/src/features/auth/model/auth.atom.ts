@@ -1,6 +1,6 @@
-import { atom } from "jotai";
+import { atom } from 'jotai';
 
-import { isBrowser } from "@/shared/model";
+import { isBrowser } from '@/shared/model';
 
 export const authAtom = atom(() => {
   if (!isBrowser) {
@@ -14,8 +14,8 @@ export const authAtom = atom(() => {
   const hashParams = new URLSearchParams(window.location.hash.substring(1));
 
   return {
-    accessToken: hashParams.get("access_token"),
-    errorCode: hashParams.get("error_code"),
-    refreshToken: hashParams.get("refresh_token"),
+    accessToken: hashParams.get('access_token'),
+    errorCode: hashParams.get('error_code'),
+    refreshToken: hashParams.get('refresh_token'),
   };
 });

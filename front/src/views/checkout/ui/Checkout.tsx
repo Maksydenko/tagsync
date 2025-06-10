@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import { FC, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { clsx } from "clsx";
-import { useAtom } from "jotai";
+import { FC, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { clsx } from 'clsx';
+import { useAtom } from 'jotai';
 
-import { CheckoutForm } from "@/features/orders";
+import { CheckoutForm } from '@/features/orders';
 
-import { cartAtom } from "@/entities/cart";
-import { CartProduct } from "@/entities/product";
-import { userAtom } from "@/entities/user";
+import { cartAtom } from '@/entities/cart';
+import { CartProduct } from '@/entities/product';
+import { userAtom } from '@/entities/user';
 
-import { Pathname } from "@/shared/config";
+import { Pathname } from '@/shared/config';
 
-import s from "./Checkout.module.scss";
+import s from './Checkout.module.scss';
 
 interface CheckoutProps {
   className?: string;

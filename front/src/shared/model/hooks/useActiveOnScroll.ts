@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useCallback, useState } from "react";
+import { useCallback, useState } from 'react';
 
-import { useWindowListener } from "./useWindowListener";
+import { useWindowListener } from './useWindowListener';
 
 export const useActiveOnScroll = (breakpoint: number) => {
   const [isActive, setIsActive] = useState(false);
@@ -16,7 +16,7 @@ export const useActiveOnScroll = (breakpoint: number) => {
       setIsActive(false);
     }
   }, [breakpoint]);
-  useWindowListener("scroll", handleActiveOnScroll);
+  useWindowListener('scroll', handleActiveOnScroll);
 
   return isActive;
 };

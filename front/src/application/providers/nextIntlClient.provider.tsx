@@ -1,9 +1,9 @@
-import { FC, ReactNode } from "react";
-import { notFound } from "next/navigation";
-import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getMessages, setRequestLocale } from "next-intl/server";
+import { FC, ReactNode } from 'react';
+import { notFound } from 'next/navigation';
+import { hasLocale, NextIntlClientProvider } from 'next-intl';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 
-import { routing } from "@/i18n/routing";
+import { routing } from '@/i18n/routing';
 
 interface NextIntlProviderProps {
   children: ReactNode;

@@ -1,26 +1,26 @@
-import { Pathname } from "@/shared/config";
+import { Pathname } from '@/shared/config';
 
-import { ILinkWithIcon } from "../interfaces";
+import { ILinkWithIcon } from '../interfaces';
 
 export const userData: ILinkWithIcon[] = [
   {
-    icon: "/img/icons/user.svg",
-    label: "profile",
+    icon: '/img/icons/user.svg',
+    label: 'profile',
     value: Pathname.Profile,
   },
   {
-    icon: "/img/icons/product/compare.svg",
-    label: "comparisons",
+    icon: '/img/icons/product/compare.svg',
+    label: 'comparisons',
     value: Pathname.Comparisons,
   },
   {
-    icon: "/img/icons/product/heart-empty.svg",
-    label: "wishlist",
+    icon: '/img/icons/product/heart-empty.svg',
+    label: 'wishlist',
     value: Pathname.Wishlist,
   },
   {
-    icon: "/img/icons/order.svg",
-    label: "orders",
+    icon: '/img/icons/order.svg',
+    label: 'orders',
     value: Pathname.Orders,
   },
 ];

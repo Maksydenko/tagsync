@@ -1,2 +1,2 @@
-export * from "./getSortsData.util";
-export * from "./parseSortValue.util";
+export * from './getSortsData.util';
+export * from './parseSortValue.util';

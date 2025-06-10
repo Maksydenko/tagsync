@@ -2,9 +2,9 @@ import {
   defaultShouldDehydrateQuery,
   isServer,
   QueryClient,
-} from "@tanstack/react-query";
+} from '@tanstack/react-query';
 
-import { QueryStatus, Time } from "@/shared/model";
+import { QueryStatus, Time } from '@/shared/model';
 
 const makeQueryClient = () => {
   const STALE_TIME_IN_SECONDS = 60;

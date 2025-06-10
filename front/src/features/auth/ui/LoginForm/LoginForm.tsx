@@ -1,36 +1,36 @@
-"use client";
+'use client';
 
-import { FC, useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
-import { useForm } from "react-hook-form";
+import { FC, useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
+import { useForm } from 'react-hook-form';
 
-import { AuthError } from "@supabase/supabase-js";
-import { useMutation } from "@tanstack/react-query";
+import { AuthError } from '@supabase/supabase-js';
+import { useMutation } from '@tanstack/react-query';
 
-import { useLocalCart } from "@/application/store";
+import { useLocalCart } from '@/application/store';
 
-import { AuthForm } from "@/features/auth";
+import { AuthForm } from '@/features/auth';
 
-import { CartService } from "@/entities/cart";
+import { CartService } from '@/entities/cart';
 
-import { Pathname, Translation } from "@/shared/config";
-import { useInvalidateAtom } from "@/shared/lib";
-import { ErrorCode, MutationKey, QueryKey } from "@/shared/model";
-import { Btn } from "@/shared/ui";
+import { Pathname, Translation } from '@/shared/config';
+import { useInvalidateAtom } from '@/shared/lib';
+import { ErrorCode, MutationKey, QueryKey } from '@/shared/model';
+import { Btn } from '@/shared/ui';
 
-import { getLoginFields, ILoginForm } from "../../model";
+import { getLoginFields, ILoginForm } from '../../model';
 
-import s from "./LoginForm.module.scss";
+import s from './LoginForm.module.scss';
 
 interface LoginFormProps {
   className?: string;
 }
 
 export const LoginForm: FC<LoginFormProps> = ({ className }) => {
-  const [submissionMessage, setSubmissionMessage] = useState("");
+  const [submissionMessage, setSubmissionMessage] = useState('');
   const { push } = useRouter();
 
   const tShared = useTranslations(Translation.Shared);
@@ -42,12 +42,12 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
   const invalidateCart = useInvalidateAtom([QueryKey.Cart]);
 
   const form = useForm<ILoginForm>({
-    mode: "onChange",
+    mode: 'onChange',
   });
 
   const { isPending: isLoginPending, mutate: login } = useMutation({
     mutationFn: async (data: ILoginForm) => {
-      const AuthService = await import("@/features/auth").then(
+      const AuthService = await import('@/features/auth').then(
         (module) => module.AuthService
       );
 
@@ -62,13 +62,13 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
     mutationKey: [MutationKey.Login],
     onError: (error: AuthError) => {
       const errorMessages = {
-        default: "errors.unknown",
-        [ErrorCode.EmailNotConfirmed]: "errors.email-not-confirmed",
-        [ErrorCode.InvalidCredentials]: "errors.invalid-credentials",
+        default: 'errors.unknown',
+        [ErrorCode.EmailNotConfirmed]: 'errors.email-not-confirmed',
+        [ErrorCode.InvalidCredentials]: 'errors.invalid-credentials',
       };
       const errorMessage =
         errorMessages[error.code as keyof typeof errorMessages] ||
-        errorMessages["default"];
+        errorMessages['default'];
 
       setSubmissionMessage(errorMessage);
       console.warn(error);
@@ -111,10 +111,10 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
             isLoading={isLoginPending}
             type="submit"
           >
-            {tShared("form.submit")}
+            {tShared('form.submit')}
           </Btn>
           <Link className={s.loginForm__link} href={Pathname.ResetPassword}>
-            {tShared("forgot-password")}
+            {tShared('forgot-password')}
           </Link>
         </>
       }

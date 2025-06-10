@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { clsx } from "clsx";
+import { FC } from 'react';
+import { clsx } from 'clsx';
 
-import s from "./Loader.module.scss";
+import s from './Loader.module.scss';
 
 interface LoaderProps {
   className?: string;

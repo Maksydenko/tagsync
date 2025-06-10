@@ -1,1 +1,1 @@
-export const formatLabel = (label: string, required?: boolean) => label + (required ? "*" : "");
+export const formatLabel = (label: string, required?: boolean) => label + (required ? '*' : '');

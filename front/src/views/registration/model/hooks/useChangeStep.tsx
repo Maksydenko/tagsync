@@ -1,5 +1,5 @@
-import { RefObject, useCallback, useState } from "react";
-import { StepWizardChildProps } from "react-step-wizard";
+import { RefObject, useCallback, useState } from 'react';
+import { StepWizardChildProps } from 'react-step-wizard';
 
 export const useChangeStep = (
   stepWizardRef: RefObject<null | StepWizardChildProps>

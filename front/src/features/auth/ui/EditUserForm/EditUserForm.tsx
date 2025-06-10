@@ -1,26 +1,26 @@
-"use client";
+'use client';
 
-import { FC, useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
-import { useAtom } from "jotai";
-import { useForm } from "react-hook-form";
-import { StepWizardChildProps } from "react-step-wizard";
+import { FC, useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
+import { useAtom } from 'jotai';
+import { useForm } from 'react-hook-form';
+import { StepWizardChildProps } from 'react-step-wizard';
 
-import { useMutation } from "@tanstack/react-query";
+import { useMutation } from '@tanstack/react-query';
 
-import { AuthForm } from "@/features/auth";
+import { AuthForm } from '@/features/auth';
 
-import { userAtom } from "@/entities/user";
+import { userAtom } from '@/entities/user';
 
-import { Translation } from "@/shared/config";
-import { useInvalidateAtom } from "@/shared/lib";
-import { MutationKey, QueryKey } from "@/shared/model";
-import { Btn } from "@/shared/ui";
+import { Translation } from '@/shared/config';
+import { useInvalidateAtom } from '@/shared/lib';
+import { MutationKey, QueryKey } from '@/shared/model';
+import { Btn } from '@/shared/ui';
 
-import { getEditUserFields, IEditUserForm } from "../../model";
+import { getEditUserFields, IEditUserForm } from '../../model';
 
-import s from "./EditUserForm.module.scss";
+import s from './EditUserForm.module.scss';
 
 interface EditUserFormProps extends Partial<StepWizardChildProps> {
   className?: string;
@@ -28,7 +28,7 @@ interface EditUserFormProps extends Partial<StepWizardChildProps> {
 
 export const EditUserForm: FC<EditUserFormProps> = ({ className }) => {
   const tShared = useTranslations(Translation.Shared);
-  const [submissionMessage, setSubmissionMessage] = useState("");
+  const [submissionMessage, setSubmissionMessage] = useState('');
 
   const invalidateUser = useInvalidateAtom([QueryKey.User]);
   const [{ data: userData }] = useAtom(userAtom);
@@ -47,7 +47,7 @@ export const EditUserForm: FC<EditUserFormProps> = ({ className }) => {
         return;
       }
 
-      const AuthService = await import("@/features/auth").then(
+      const AuthService = await import('@/features/auth').then(
         (module) => module.AuthService
       );
 
@@ -57,17 +57,17 @@ export const EditUserForm: FC<EditUserFormProps> = ({ className }) => {
         email: user.email,
         firstName: name.trim(),
         lastName: surname.trim(),
-        phone: phone.replace(/\s+/g, ""),
+        phone: phone.replace(/\s+/g, ''),
       });
     },
     mutationKey: [MutationKey.EditUser],
     onError: (error) => {
       const errorMessages = {
-        default: "errors.unknown",
+        default: 'errors.unknown',
       };
       const errorMessage =
         errorMessages[error.message as keyof typeof errorMessages] ||
-        errorMessages["default"];
+        errorMessages['default'];
 
       setSubmissionMessage(errorMessage);
       console.warn(error);
@@ -76,7 +76,7 @@ export const EditUserForm: FC<EditUserFormProps> = ({ className }) => {
   });
 
   const form = useForm<IEditUserForm>({
-    mode: "onChange",
+    mode: 'onChange',
   });
   const { reset } = form;
 
@@ -105,7 +105,7 @@ export const EditUserForm: FC<EditUserFormProps> = ({ className }) => {
           isLoading={isEditUserPending}
           type="submit"
         >
-          {tShared("form.submit")}
+          {tShared('form.submit')}
         </Btn>
       }
       className={clsx(s.editUserForm, className)}

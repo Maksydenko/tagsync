@@ -1,7 +1,7 @@
-import type { NextConfig } from "next";
-import createNextIntlPlugin from "next-intl/plugin";
+import type { NextConfig } from 'next';
+import createNextIntlPlugin from 'next-intl/plugin';
 
-import { Protocol } from "@/shared/config";
+import { Protocol } from '@/shared/config';
 
 const withNextIntl = createNextIntlPlugin();
 
@@ -12,8 +12,8 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         hostname: backURI.hostname,
-        pathname: "/storage/**",
-        protocol: backURI.protocol.split(":")[0] as Protocol,
+        pathname: '/storage/**',
+        protocol: backURI.protocol.split(':')[0] as Protocol,
       },
     ],
   },

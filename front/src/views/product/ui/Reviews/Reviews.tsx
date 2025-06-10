@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
+import { FC } from 'react';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
 
-import { LeaveReview } from "@/features/reviews";
+import { LeaveReview } from '@/features/reviews';
 
-import { IProduct } from "@/entities/product";
-import { IReview, ReviewCard } from "@/entities/review";
+import { IProduct } from '@/entities/product';
+import { IReview, ReviewCard } from '@/entities/review';
 
-import { Translation } from "@/shared/config";
+import { Translation } from '@/shared/config';
 
-import s from "./Reviews.module.scss";
+import s from './Reviews.module.scss';
 
 interface ReviewsProps {
   className?: string;
-  productId: IProduct["product_id"];
+  productId: IProduct['product_id'];
   reviewsData: IReview[];
 }
 
@@ -31,7 +31,7 @@ export const Reviews: FC<ReviewsProps> = ({
       <div className={s.reviews__body}>
         <div className={s.reviews__header}>
           <h2 className={s.reviews__title}>
-            {tProduct("reviews")} ({reviewsData.length})
+            {tProduct('reviews')} ({reviewsData.length})
           </h2>
           <LeaveReview productId={productId} />
         </div>

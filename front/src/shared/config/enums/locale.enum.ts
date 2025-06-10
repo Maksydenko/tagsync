@@ -1,5 +1,5 @@
 export enum Locale {
-  EN = "en",
+  EN = 'en',
   Default = EN,
-  UK = "uk",
+  UK = 'uk',
 }

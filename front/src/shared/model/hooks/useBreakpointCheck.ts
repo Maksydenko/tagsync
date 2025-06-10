@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useCallback, useState } from "react";
+import { useCallback, useState } from 'react';
 
-import { useWindowListener } from "./useWindowListener";
+import { useWindowListener } from './useWindowListener';
 
 export const useBreakpointCheck = (breakpoint: number) => {
   const [isBreakpoint, setIsBreakpoint] = useState(false);
@@ -13,7 +13,7 @@ export const useBreakpointCheck = (breakpoint: number) => {
 
     setIsBreakpoint(isLessBreakpoint);
   }, [breakpoint]);
-  useWindowListener("resize", handleBreakpointCheck);
+  useWindowListener('resize', handleBreakpointCheck);
 
   return isBreakpoint;
 };
