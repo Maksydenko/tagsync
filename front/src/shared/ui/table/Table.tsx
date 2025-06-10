@@ -1,12 +1,12 @@
-import { ReactNode } from "react";
-import { clsx } from "clsx";
+import { ReactNode } from 'react';
+import { clsx } from 'clsx';
 
-import { Table as TTable } from "@tanstack/react-table";
+import { Table as TTable } from '@tanstack/react-table';
 
-import { TableBody } from "./TableItems/TableBody";
-import { TableHead } from "./TableItems/TableHead";
+import { TableBody } from './TableItems/TableBody';
+import { TableHead } from './TableItems/TableHead';
 
-import s from "./Table.module.scss";
+import s from './Table.module.scss';
 
 interface TableProps<T> {
   className?: string;
@@ -14,8 +14,8 @@ interface TableProps<T> {
 }
 
 export const Table = <T,>({ className, table }: TableProps<T>): ReactNode => (
-    <table className={clsx(s.table, className)}>
-      <TableHead table={table} />
-      <TableBody table={table} />
-    </table>
-  );
+  <table className={clsx(s.table, className)}>
+    <TableHead table={table} />
+    <TableBody table={table} />
+  </table>
+);

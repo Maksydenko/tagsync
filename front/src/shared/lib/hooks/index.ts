@@ -1,1 +1,1 @@
-export * from "./useInvalidateAtom";
+export * from './useInvalidateAtom';

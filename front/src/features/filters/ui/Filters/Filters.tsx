@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { FC, useMemo } from "react";
-import { useSearchParams } from "next/navigation";
-import { useLocale, useTranslations } from "next-intl";
-import { clsx } from "clsx";
-import { useForm } from "react-hook-form";
+import { FC, useMemo } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { useLocale, useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
+import { useForm } from 'react-hook-form';
 
-import { Locale, Translation } from "@/shared/config";
-import { SearchParam } from "@/shared/model";
-import { Collapse, Field } from "@/shared/ui";
+import { Locale, Translation } from '@/shared/config';
+import { SearchParam } from '@/shared/model';
+import { Collapse, Field } from '@/shared/ui';
 
-import { IFilter } from "../../api";
+import { IFilter } from '../../api';
 
-import { useFilterParams } from "../../model";
+import { useFilterParams } from '../../model';
 
-import s from "./Filters.module.scss";
+import s from './Filters.module.scss';
 
 interface FiltersProps {
   className?: string;
@@ -29,9 +29,9 @@ export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
   const defaultPrice = useMemo(
     () => ({
       max: Number(
-        priceFilter?.values[priceFilter.values.length - 1].split("-")[1]
+        priceFilter?.values[priceFilter.values.length - 1].split('-')[1]
       ),
-      min: Number(priceFilter?.values[0].split("-")[0]),
+      min: Number(priceFilter?.values[0].split('-')[0])
     }),
     [priceFilter?.values]
   );
@@ -43,7 +43,7 @@ export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
 
   const defaultFilters = useMemo(
     () => ({
-      [SearchParam.PriceRange]: defaultPrice,
+      [SearchParam.PriceRange]: defaultPrice
     }),
     [defaultPrice]
   );
@@ -62,7 +62,7 @@ export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
     const defaultPrice = [defaultMin, defaultMax];
 
     if (priceParam) {
-      const [minParam, maxParam] = priceParam.split("-");
+      const [minParam, maxParam] = priceParam.split('-');
 
       const min = Number(minParam);
       const max = Number(maxParam);
@@ -78,9 +78,9 @@ export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
 
     filteredData.forEach((group) => {
       const paramName =
-        group.type === "int" ? `${group.name}_range` : group.name;
+        group.type === 'int' ? `${group.name}_range` : group.name;
       const param = searchParams.get(paramName);
-      const activeValues = param?.split(",") || [];
+      const activeValues = param?.split(',') || [];
 
       activeValues.forEach((value) => {
         if (value) {
@@ -95,13 +95,13 @@ export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   const form = useForm<any>({
     defaultValues,
-    mode: "onChange",
+    mode: 'onChange'
   });
 
   useFilterParams({
     defaultPrice,
     filtersData: filteredData,
-    form,
+    form
   });
 
   const filterFields = [
@@ -113,27 +113,27 @@ export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
             name={SearchParam.PriceRange}
             options={{
               max: defaultFilters[SearchParam.PriceRange].max,
-              min: defaultFilters[SearchParam.PriceRange].min,
+              min: defaultFilters[SearchParam.PriceRange].min
             }}
             type="ranges"
           />
         </div>
       ),
       key: SearchParam.PriceRange,
-      label: tCategory("filters.price"),
+      label: tCategory('filters.price')
     },
     ...filteredData.map(
       ({
         name: filterName,
         translations: filterTranslations,
         type: groupType,
-        values: filterValues,
+        values: filterValues
       }) => ({
         children: (
           <div className={s.filters__fields}>
             {filterValues.map((value) => {
               const fieldName = `${
-                groupType === "int" ? `${filterName}_range` : filterName
+                groupType === 'int' ? `${filterName}_range` : filterName
               }-${value}`;
 
               return (
@@ -150,9 +150,9 @@ export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
           </div>
         ),
         key: filterName,
-        label: filterTranslations?.[locale] || filterName,
+        label: filterTranslations?.[locale] || filterName
       })
-    ),
+    )
   ];
 
   return (

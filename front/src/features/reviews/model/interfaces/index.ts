@@ -1,1 +1,1 @@
-export * from "./leaveReviewForm.interface";
+export * from './leaveReviewForm.interface';

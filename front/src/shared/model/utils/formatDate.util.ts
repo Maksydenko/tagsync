@@ -1,8 +1,8 @@
-import { DateTime } from "luxon";
+import { DateTime } from 'luxon';
 
-import { Locale } from "@/shared/config";
+import { Locale } from '@/shared/config';
 
-import { DateFormat } from "../enums";
+import { DateFormat } from '../enums';
 
 interface IFormatDate {
   date: Date;
@@ -13,8 +13,8 @@ interface IFormatDate {
 export const formatDate = ({
   date,
   format = DateFormat.Default,
-  locale = Locale.Default,
+  locale = Locale.Default
 }: IFormatDate) =>
   DateTime.fromISO(date.toISOString(), {
-    locale,
+    locale
   }).toFormat(format);

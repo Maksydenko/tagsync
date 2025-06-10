@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { FC, useEffect } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
+import { FC, useEffect } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
 
-import { Breakpoint, Pathname, Translation } from "@/shared/config";
-import { useScrollLock, useWindowListener } from "@/shared/model";
-import { Img } from "@/shared/ui";
+import { Breakpoint, Pathname, Translation } from '@/shared/config';
+import { useScrollLock, useWindowListener } from '@/shared/model';
+import { Img } from '@/shared/ui';
 
-import { Menu } from "./Menu/Menu";
+import { Menu } from './Menu/Menu';
 
-import s from "./Header.module.scss";
+import s from './Header.module.scss';
 
 interface HeaderProps {
   className?: string;
@@ -25,8 +25,8 @@ export const Header: FC<HeaderProps> = ({ className }) => {
   const tShared = useTranslations(Translation.Shared);
 
   const { isScrollLocked, setIsScrollLocked } = useScrollLock([
-    "main",
-    "footer",
+    'main',
+    'footer'
   ]);
 
   const unlockScroll = () => {
@@ -44,7 +44,7 @@ export const Header: FC<HeaderProps> = ({ className }) => {
       unlockScroll();
     }
   };
-  useWindowListener("resize", unlockScrollOnBreakpoint);
+  useWindowListener('resize', unlockScrollOnBreakpoint);
 
   const handleClick = () => {
     const isLessBreakpoint = window.innerWidth < BREAKPOINT;
@@ -74,7 +74,7 @@ export const Header: FC<HeaderProps> = ({ className }) => {
             onClick={unlockScroll}
           >
             <Img
-              alt={`${tShared("logo")} "TagSync"`}
+              alt={`${tShared('logo')} "TagSync"`}
               className={s.header__img}
               height={35}
               src="/img/logos/logo.png"

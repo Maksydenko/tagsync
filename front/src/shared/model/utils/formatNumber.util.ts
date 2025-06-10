@@ -1,4 +1,4 @@
-import { Locale } from "@/shared/config";
+import { Locale } from '@/shared/config';
 
 interface IFormatNumber extends Intl.NumberFormatOptions {
   locales?: Locale;
@@ -17,6 +17,6 @@ export const formatNumber = ({
 
   return number.toLocaleString(locales, {
     useGrouping,
-    ...props,
+    ...props
   });
 };

@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { Locale, useLocale, useTranslations } from "next-intl";
-import { clsx } from "clsx";
+import { FC } from 'react';
+import { Locale, useLocale, useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
 
-import { Translation } from "@/shared/config";
-import { Img, Loader } from "@/shared/ui";
+import { Translation } from '@/shared/config';
+import { Img, Loader } from '@/shared/ui';
 
-import s from "./HomeSlide.module.scss";
+import s from './HomeSlide.module.scss';
 
 interface HomeSlideProps {
   className?: string;
@@ -18,7 +18,7 @@ interface HomeSlideProps {
 export const HomeSlide: FC<HomeSlideProps> = ({
   className,
   isPriority,
-  slide,
+  slide
 }) => {
   const locale = useLocale() as Locale;
   const tHome = useTranslations(Translation.Home);

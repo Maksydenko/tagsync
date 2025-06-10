@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { FC, ReactNode, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { clsx } from "clsx";
-import { useAtom } from "jotai";
+import { FC, ReactNode, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { clsx } from 'clsx';
+import { useAtom } from 'jotai';
 
-import { userAtom } from "@/entities/user";
+import { userAtom } from '@/entities/user';
 
-import { Pathname } from "@/shared/config";
-import { Loader } from "@/shared/ui";
+import { Pathname } from '@/shared/config';
+import { Loader } from '@/shared/ui';
 
-import { UserWrapperList } from "./UserWrapperList/UserWrapperList";
+import { UserWrapperList } from './UserWrapperList/UserWrapperList';
 
-import s from "./UserWrapper.module.scss";
+import s from './UserWrapper.module.scss';
 
 interface UserWrapperProps {
   children: ReactNode;
@@ -23,7 +23,7 @@ interface UserWrapperProps {
 export const UserWrapper: FC<UserWrapperProps> = ({
   children,
   className,
-  title,
+  title
 }) => {
   const { push } = useRouter();
   const [{ data: userData, isLoading: isUserLoading }] = useAtom(userAtom);

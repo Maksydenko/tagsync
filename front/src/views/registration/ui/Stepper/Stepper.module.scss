@@ -1,4 +1,4 @@
-@use "@/application/styles/module" as m;
+@use '@/application/styles/module' as m;
 
 .stepper {
   position: relative;
@@ -27,7 +27,7 @@
     &::after {
       inset-inline-end: 0;
       z-index: 1;
-      content: "";
+      content: '';
       background: m.$grayColor;
     }
 
@@ -48,7 +48,7 @@
           visibility: hidden;
           inline-size: m.rem(16);
           block-size: m.rem(16);
-          content: "";
+          content: '';
           background: var(--mainColor);
           border-radius: 50%;
           opacity: 0;

@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import { FC, useRef } from "react";
-import Link from "next/link";
-import { useTranslations } from "next-intl";
-import StepWizard, { StepWizardChildProps } from "react-step-wizard";
+import { FC, useRef } from 'react';
+import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import StepWizard, { StepWizardChildProps } from 'react-step-wizard';
 
-import { Pathname, Translation } from "@/shared/config";
-import { useMounted } from "@/shared/model";
-import { Btn, Loader } from "@/shared/ui";
+import { Pathname, Translation } from '@/shared/config';
+import { useMounted } from '@/shared/model';
+import { Btn, Loader } from '@/shared/ui';
 
-import { useChangeStep, useCreateSteps } from "../model";
+import { useChangeStep, useCreateSteps } from '../model';
 
-import { Stepper } from "./Stepper/Stepper";
+import { Stepper } from './Stepper/Stepper';
 
-import s from "./Registration.module.scss";
+import s from './Registration.module.scss';
 
 export const Registration: FC = () => {
   const stepWizardRef = useRef<null | StepWizardChildProps>(null);
@@ -34,7 +34,7 @@ export const Registration: FC = () => {
           <div className={s.registration__content}>
             <div className={s.registration__box}>
               <h2 className={s.registration__title}>
-                {tRegistration("title")}
+                {tRegistration('title')}
               </h2>
               {isMounted ? (
                 <StepWizard
@@ -63,15 +63,15 @@ export const Registration: FC = () => {
           <div className={s.registration__content}>
             <div className={s.registration__box}>
               <h2 className={s.registration__title}>
-                {tRegistration("login.title")}
+                {tRegistration('login.title')}
               </h2>
               <div className={s.registration__text}>
-                <p>{tRegistration("login.text")}</p>
+                <p>{tRegistration('login.text')}</p>
               </div>
             </div>
             <Btn asChild>
               <Link className={s.registration__btn} href={Pathname.Login}>
-                {tShared("continue")}
+                {tShared('continue')}
               </Link>
             </Btn>
           </div>

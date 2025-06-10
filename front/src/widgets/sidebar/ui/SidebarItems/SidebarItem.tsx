@@ -1,21 +1,21 @@
-import { FC } from "react";
-import Link from "next/link";
-import { useLocale, useTranslations } from "next-intl";
-import clsx from "clsx";
+import { FC } from 'react';
+import Link from 'next/link';
+import { useLocale, useTranslations } from 'next-intl';
+import clsx from 'clsx';
 
-import { ICategory } from "@/features/products";
+import { ICategory } from '@/features/products';
 
-import { Locale, Translation } from "@/shared/config";
-import { Img } from "@/shared/ui";
+import { Locale, Translation } from '@/shared/config';
+import { Img } from '@/shared/ui';
 
-import s from "../Sidebar.module.scss";
+import s from '../Sidebar.module.scss';
 
 interface ItemProps {
   category: ICategory;
 }
 
 export const SidebarItem: FC<ItemProps> = ({
-  category: { img, slug, translations_slug },
+  category: { img, slug, translations_slug }
 }) => {
   const locale = useLocale() as Locale;
   const tShared = useTranslations(Translation.Shared);
@@ -26,7 +26,7 @@ export const SidebarItem: FC<ItemProps> = ({
     <li className={s.sidebar__item}>
       <Link className={clsx(s.sidebar__link)} href={`/${slug}`}>
         <Img
-          alt={`${tShared("logo")} "${translatedSlug}"`}
+          alt={`${tShared('logo')} "${translatedSlug}"`}
           className={s.sidebar__icon}
           height={32}
           src={img}

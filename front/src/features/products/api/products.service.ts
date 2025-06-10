@@ -1,10 +1,10 @@
-import { axiosInstance, IResponse } from "@/application/api";
+import { axiosInstance, IResponse } from '@/application/api';
 
-import { IFilter } from "@/features/filters";
+import { IFilter } from '@/features/filters';
 
-import { IResult } from "@/shared/api";
+import { IResult } from '@/shared/api';
 
-import { ICategory, IProducts, ITrackView } from "./interfaces";
+import { ICategory, IProducts, ITrackView } from './interfaces';
 
 export const ProductsService = {
   getAll: async (query: string) => {
@@ -21,9 +21,8 @@ export const ProductsService = {
 
   getCategories: async () => {
     try {
-      const response: IResponse<ICategory[]> = await axiosInstance.get(
-        "/products/category"
-      );
+      const response: IResponse<ICategory[]> =
+        await axiosInstance.get('/products/category');
 
       return response;
     } catch (err) {
@@ -70,7 +69,7 @@ export const ProductsService = {
   trackView: async (data: ITrackView) => {
     try {
       const response: IResponse<IResult> = await axiosInstance.post(
-        "/view",
+        '/view',
         data
       );
 
@@ -78,5 +77,5 @@ export const ProductsService = {
     } catch (err) {
       throw err;
     }
-  },
+  }
 };

@@ -1,11 +1,11 @@
-import { FC } from "react";
-import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { FC } from 'react';
+import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
-import { Translation } from "@/shared/config";
-import { ILink } from "@/shared/model";
+import { Translation } from '@/shared/config';
+import { ILink } from '@/shared/model';
 
-import s from "../Menu.module.scss";
+import s from '../Menu.module.scss';
 
 interface MenuItemProps {
   link: ILink;
@@ -14,7 +14,7 @@ interface MenuItemProps {
 
 export const MenuItem: FC<MenuItemProps> = ({
   link: { label, value },
-  onClick,
+  onClick
 }) => {
   const tShared = useTranslations(Translation.Shared);
 

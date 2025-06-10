@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useEffect, useMemo, useRef } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { FieldValues, UseFormReturn } from "react-hook-form";
+import { useEffect, useMemo, useRef } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { FieldValues, UseFormReturn } from 'react-hook-form';
 
-import { SearchParam, sortSearchParams, Time } from "@/shared/model";
+import { SearchParam, sortSearchParams, Time } from '@/shared/model';
 
-import { IFilter } from "../../api";
+import { IFilter } from '../../api';
 
 interface IUseFilterParams<T extends FieldValues> {
   defaultPrice: {
@@ -20,11 +20,11 @@ interface IUseFilterParams<T extends FieldValues> {
 export const useFilterParams = <T extends FieldValues>({
   defaultPrice,
   filtersData,
-  form,
+  form
 }: IUseFilterParams<T>) => {
   const defaultFilters = useMemo(
     () => ({
-      [SearchParam.PriceRange]: defaultPrice,
+      [SearchParam.PriceRange]: defaultPrice
     }),
     [defaultPrice]
   );
@@ -66,7 +66,7 @@ export const useFilterParams = <T extends FieldValues>({
         filtersData.forEach(
           ({ name: filterName, type: filterType, values: filterValues }) => {
             const filterNameParam =
-              filterType === "int" ? `${filterName}_range` : filterName;
+              filterType === 'int' ? `${filterName}_range` : filterName;
 
             params.delete(filterNameParam);
 
@@ -75,7 +75,7 @@ export const useFilterParams = <T extends FieldValues>({
             );
 
             if (checked.length) {
-              params.set(filterNameParam, checked.join(","));
+              params.set(filterNameParam, checked.join(','));
             }
           }
         );
@@ -97,6 +97,6 @@ export const useFilterParams = <T extends FieldValues>({
     filtersData,
     form,
     push,
-    searchParams,
+    searchParams
   ]);
 };

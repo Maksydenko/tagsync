@@ -1,19 +1,19 @@
-import { SwiperOptions } from "swiper/types";
+import { SwiperOptions } from 'swiper/types';
 
-import { addBreakpointDesktop } from "./addBreakpointDesktop.util";
+import { addBreakpointDesktop } from './addBreakpointDesktop.util';
 
-import { IBreakpoint, IBreakpoints } from "./breakpoints.interface";
+import { IBreakpoint, IBreakpoints } from './breakpoints.interface';
 
 interface IUseBullets {
   breakpoints?: IBreakpoints;
   slidesLength: number;
-  slidesPerView: SwiperOptions["slidesPerView"];
+  slidesPerView: SwiperOptions['slidesPerView'];
 }
 
 export const useBullets = ({
   breakpoints,
   slidesLength,
-  slidesPerView = 1,
+  slidesPerView = 1
 }: IUseBullets) => {
   if (!breakpoints) {
     if (+slidesPerView < slidesLength) {
@@ -25,9 +25,9 @@ export const useBullets = ({
 
   const breakpointsArray: IBreakpoint[] = Object.entries(breakpoints).map(
     ([, { isBreakpoint, slidesPerView: slides }]) => ({
-        isBreakpoint,
-        slides,
-      })
+      isBreakpoint,
+      slides
+    })
   );
 
   const breakpointsWithDesktop = addBreakpointDesktop(

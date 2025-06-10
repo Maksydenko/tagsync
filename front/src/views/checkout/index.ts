@@ -1,3 +1,3 @@
-import { Checkout } from "./ui/Checkout";
+import { Checkout } from './ui/Checkout';
 
 export default Checkout;

@@ -1,13 +1,13 @@
-import { axiosInstance } from "@/application/api";
+import { axiosInstance } from '@/application/api';
 
-import { IProduct } from "@/entities/product";
+import { IProduct } from '@/entities/product';
 
-import { IAddReview } from "./reviews.interface";
+import { IAddReview } from './reviews.interface';
 
 export const ReviewsService = {
   add: async (data: IAddReview) => {
     try {
-      const response = await axiosInstance.post("/Review/add", data);
+      const response = await axiosInstance.post('/Review/add', data);
 
       return response;
     } catch (err) {
@@ -15,13 +15,13 @@ export const ReviewsService = {
     }
   },
 
-  get: async (id: IProduct["product_id"]) => {
+  get: async (id: IProduct['product_id']) => {
     try {
-      const response = await axiosInstance.get(`/Review/${  id}`);
+      const response = await axiosInstance.get(`/Review/${id}`);
 
       return response;
     } catch (err) {
       throw err;
     }
-  },
+  }
 };

@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { useTranslations } from "next-intl";
-import { useAtom } from "jotai";
+import { FC } from 'react';
+import { useTranslations } from 'next-intl';
+import { useAtom } from 'jotai';
 
 import {
   authAtom,
   ForgotPasswordForm,
-  ResetPasswordForm,
-} from "@/features/auth";
+  ResetPasswordForm
+} from '@/features/auth';
 
-import { Translation } from "@/shared/config";
+import { Translation } from '@/shared/config';
 
-import s from "./ResetPassword.module.scss";
+import s from './ResetPassword.module.scss';
 
 export const ResetPassword: FC = () => {
   const tResetPassword = useTranslations(Translation.ResetPassword);
@@ -25,7 +25,7 @@ export const ResetPassword: FC = () => {
       <div className={s.resetPassword__container}>
         <div className={s.resetPassword__body}>
           <h2 className={s.resetPassword__title}>
-            {tResetPassword(`${isResetPassword ? "reset" : "forgot"}-password`)}
+            {tResetPassword(`${isResetPassword ? 'reset' : 'forgot'}-password`)}
           </h2>
           {isResetPassword ? (
             <ResetPasswordForm className={s.resetPassword__form} />

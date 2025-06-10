@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
-import ReactPaginate, { ReactPaginateProps } from "react-paginate";
+import { FC } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
+import ReactPaginate, { ReactPaginateProps } from 'react-paginate';
 
-import { Translation } from "@/shared/config";
-import { SearchParam, SlideDirection, sortSearchParams } from "@/shared/model";
+import { Translation } from '@/shared/config';
+import { SearchParam, SlideDirection, sortSearchParams } from '@/shared/model';
 
-import { Img } from "../img/Img";
+import { Img } from '../img/Img';
 
-import s from "./Pagination.module.scss";
+import s from './Pagination.module.scss';
 
-interface PaginationProps extends Omit<ReactPaginateProps, "pageCount"> {
+interface PaginationProps extends Omit<ReactPaginateProps, 'pageCount'> {
   className?: string;
   itemsPerPage: number;
   itemsPerTotal: number;
@@ -37,8 +37,8 @@ export const Pagination: FC<PaginationProps> = ({
   const forcePage = page - 1;
   const pageCount = Math.ceil(itemsPerTotal / itemsPerPage);
 
-  const handlePageChange: ReactPaginateProps["onPageChange"] = ({
-    selected,
+  const handlePageChange: ReactPaginateProps['onPageChange'] = ({
+    selected
   }) => {
     const page = ++selected;
     const params = new URLSearchParams(searchParams.toString());

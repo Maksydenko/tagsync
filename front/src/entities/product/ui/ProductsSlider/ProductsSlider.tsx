@@ -1,14 +1,14 @@
-import { FC } from "react";
-import { clsx } from "clsx";
+import { FC } from 'react';
+import { clsx } from 'clsx';
 
-import { Breakpoint } from "@/shared/config";
-import { SliderSwiper } from "@/shared/ui";
+import { Breakpoint } from '@/shared/config';
+import { SliderSwiper } from '@/shared/ui';
 
-import { IProduct } from "../../api";
+import { IProduct } from '../../api';
 
-import { ProductCard } from "../ProductCard/ProductCard";
+import { ProductCard } from '../ProductCard/ProductCard';
 
-import s from "./ProductsSlider.module.scss";
+import s from './ProductsSlider.module.scss';
 
 interface ProductsSliderProps {
   className?: string;
@@ -19,7 +19,7 @@ interface ProductsSliderProps {
 export const ProductsSlider: FC<ProductsSliderProps> = ({
   className,
   productsData,
-  title,
+  title
 }) => {
   if (!productsData.length) {
     return null;
@@ -32,14 +32,14 @@ export const ProductsSlider: FC<ProductsSliderProps> = ({
         <SliderSwiper
           breakpoints={{
             [Breakpoint.Mobile]: {
-              slidesPerView: 3,
+              slidesPerView: 3
             },
             [Breakpoint.MobileSmall]: {
-              slidesPerView: 2,
+              slidesPerView: 2
             },
             [Breakpoint.Tablet]: {
-              slidesPerView: 4,
-            },
+              slidesPerView: 4
+            }
           }}
           className={s.productsSlider__slider}
           slides={productsData.map((product) => {
@@ -54,7 +54,7 @@ export const ProductsSlider: FC<ProductsSliderProps> = ({
                   productData={product}
                   isStable
                 />
-              ),
+              )
             };
           })}
           slidesPerView={1}

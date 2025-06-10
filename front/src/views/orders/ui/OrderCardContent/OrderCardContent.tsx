@@ -1,23 +1,23 @@
-"use client";
+'use client';
 
-import { FC, useMemo } from "react";
-import Link from "next/link";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
+import { FC, useMemo } from 'react';
+import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
 
 import {
   ColumnDef,
   getCoreRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
+  useReactTable
+} from '@tanstack/react-table';
 
-import { IOrder } from "@/features/orders";
+import { IOrder } from '@/features/orders';
 
-import { Translation } from "@/shared/config";
-import { formatPrice, ILink } from "@/shared/model";
-import { Img, Table } from "@/shared/ui";
+import { Translation } from '@/shared/config';
+import { formatPrice, ILink } from '@/shared/model';
+import { Img, Table } from '@/shared/ui';
 
-import s from "./OrderCardContent.module.scss";
+import s from './OrderCardContent.module.scss';
 
 interface OrderCardContentProps {
   className?: string;
@@ -26,35 +26,35 @@ interface OrderCardContentProps {
 
 export const OrderCardContent: FC<OrderCardContentProps> = ({
   className,
-  order,
+  order
 }) => {
   const tShared = useTranslations(Translation.Shared);
 
   const columns: ColumnDef<ILink>[] = [
     {
-      accessorKey: "label",
-      header: "",
+      accessorKey: 'label',
+      header: ''
     },
     {
-      accessorKey: "value",
-      header: "",
-    },
+      accessorKey: 'value',
+      header: ''
+    }
   ];
 
   const data: ILink[] = useMemo(
     () => [
       {
-        label: tShared("form.name.label"),
-        value: order.full_name,
+        label: tShared('form.name.label'),
+        value: order.full_name
       },
       {
-        label: tShared("form.address.label"),
-        value: order.address,
+        label: tShared('form.address.label'),
+        value: order.address
       },
       {
-        label: tShared("form.phone.label"),
-        value: order.phone,
-      },
+        label: tShared('form.phone.label'),
+        value: order.phone
+      }
     ],
     [order, tShared]
   );
@@ -62,7 +62,7 @@ export const OrderCardContent: FC<OrderCardContentProps> = ({
   const table = useReactTable({
     columns,
     data,
-    getCoreRowModel: getCoreRowModel(),
+    getCoreRowModel: getCoreRowModel()
   });
 
   return (
@@ -77,7 +77,7 @@ export const OrderCardContent: FC<OrderCardContentProps> = ({
               product_title,
               quantity,
               slug,
-              total_price,
+              total_price
             }) => {
               const productUrl = `/${slug}/${product_id}`;
 
@@ -99,13 +99,13 @@ export const OrderCardContent: FC<OrderCardContentProps> = ({
                     <div className={s.orderCardContent__prices}>
                       <p className={s.orderCardContent__price}>
                         {formatPrice({
-                          price: price_per_item,
+                          price: price_per_item
                         })}
                       </p>
                       <p className={s.orderCardContent__quantity}>{quantity}</p>
                       <p className={s.orderCardContent__total}>
                         {formatPrice({
-                          price: total_price,
+                          price: total_price
                         })}
                       </p>
                     </div>

@@ -1,24 +1,24 @@
-"use client";
+'use client';
 
-import { FC, useEffect } from "react";
-import { useTranslations } from "next-intl";
-import { useAtom } from "jotai";
+import { FC, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
+import { useAtom } from 'jotai';
 
-import { ProductsService } from "@/features/products";
+import { ProductsService } from '@/features/products';
 
-import { IProduct, ProductsSlider } from "@/entities/product";
-import { IReview } from "@/entities/review";
-import { userAtom } from "@/entities/user";
+import { IProduct, ProductsSlider } from '@/entities/product';
+import { IReview } from '@/entities/review';
+import { userAtom } from '@/entities/user';
 
-import { Translation } from "@/shared/config";
+import { Translation } from '@/shared/config';
 
-import { Characteristics } from "./Characteristics/Characteristics";
-import { ProductHeader } from "./ProductHeader/ProductHeader";
-import { ProductMain } from "./ProductMain/ProductMain";
-import { ProductSliders } from "./ProductSliders/ProductSliders";
-import { Reviews } from "./Reviews/Reviews";
+import { Characteristics } from './Characteristics/Characteristics';
+import { ProductHeader } from './ProductHeader/ProductHeader';
+import { ProductMain } from './ProductMain/ProductMain';
+import { ProductSliders } from './ProductSliders/ProductSliders';
+import { Reviews } from './Reviews/Reviews';
 
-import s from "./Product.module.scss";
+import s from './Product.module.scss';
 
 interface ProductProps {
   productData: IProduct;
@@ -31,7 +31,7 @@ export const Product: FC<ProductProps> = ({
   productData,
   relatedData,
   reviewsData,
-  similarData,
+  similarData
 }) => {
   const { characteristics, images, product_id, title } = productData;
   const tProduct = useTranslations(Translation.Product);
@@ -46,7 +46,7 @@ export const Product: FC<ProductProps> = ({
 
     ProductsService.trackView({
       product_id,
-      userEmail,
+      userEmail
     });
   }, [product_id, userEmail]);
 
@@ -74,11 +74,11 @@ export const Product: FC<ProductProps> = ({
             </div>
             <ProductsSlider
               productsData={relatedData}
-              title={tProduct("related-products")}
+              title={tProduct('related-products')}
             />
             <ProductsSlider
               productsData={similarData}
-              title={tProduct("similar-products")}
+              title={tProduct('similar-products')}
             />
             <Reviews
               className={s.product__reviews}

@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { clsx } from "clsx";
+import { FC } from 'react';
+import { clsx } from 'clsx';
 
-import { useMounted } from "@/shared/model";
+import { useMounted } from '@/shared/model';
 
-import { themeData } from "./theme.data";
+import { themeData } from './theme.data';
 
-import { ThemeItems } from "./ThemeItems/ThemeItems";
+import { ThemeItems } from './ThemeItems/ThemeItems';
 
-import s from "./ThemeSwitcher.module.scss";
+import s from './ThemeSwitcher.module.scss';
 
 interface IThemeSwitcher {
   className?: string;

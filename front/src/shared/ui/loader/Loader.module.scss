@@ -1,4 +1,4 @@
-@use "@/application/styles/module" as m;
+@use '@/application/styles/module' as m;
 
 .loader {
   font-size: m.rem(30);
@@ -9,9 +9,10 @@
     display: block;
     inline-size: m.em(40, 40);
     aspect-ratio: 1;
-    content: "";
-    background: radial-gradient(farthest-side, m.$primaryColor 94%, #0000)
-        top/m.em(8, 40) m.em(8, 40) no-repeat,
+    content: '';
+    background:
+      radial-gradient(farthest-side, m.$primaryColor 94%, #0000) top/m.em(8, 40)
+        m.em(8, 40) no-repeat,
       conic-gradient(#0000 30%, m.$primaryColor);
     border-radius: 50%;
     mask: radial-gradient(

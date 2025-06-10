@@ -1,2 +1,2 @@
-export * from "./orders.interface";
-export * from "./orders.service";
+export * from './orders.interface';
+export * from './orders.service';

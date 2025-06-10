@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import { ReactNode } from "react";
-import Image from "next/image";
-import { clsx } from "clsx";
+import { ReactNode } from 'react';
+import Image from 'next/image';
+import { clsx } from 'clsx';
 import {
   FieldValues,
   Path,
   PathValue,
   RegisterOptions,
-  UseFormReturn,
-} from "react-hook-form";
+  UseFormReturn
+} from 'react-hook-form';
 import {
   Rating as RootRating,
-  RatingProps as RootRatingProps,
-} from "react-simple-star-rating";
+  RatingProps as RootRatingProps
+} from 'react-simple-star-rating';
 
-import s from "./Rating.module.scss";
+import s from './Rating.module.scss';
 
 interface RatingProps<T extends FieldValues> extends RootRatingProps {
   className?: string;
@@ -49,8 +49,8 @@ export const Rating = <T extends FieldValues>({
       <RootRating
         allowFraction={isDisabled}
         allowHover={!isDisabled}
-        emptyIcon={getIcon("empty")}
-        fillIcon={getIcon("fill")}
+        emptyIcon={getIcon('empty')}
+        fillIcon={getIcon('fill')}
         initialValue={getValues(name) as number}
         readonly={isDisabled}
         transition

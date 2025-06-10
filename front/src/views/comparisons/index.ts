@@ -1,3 +1,3 @@
-import { Comparisons } from "./ui/Comparisons";
+import { Comparisons } from './ui/Comparisons';
 
 export default Comparisons;

@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { FC, ReactNode, useRef } from "react";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
+import { FC, ReactNode, useRef } from 'react';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
 
-import { Menu, MenuButton } from "@headlessui/react";
+import { Menu, MenuButton } from '@headlessui/react';
 
-import { Translation } from "@/shared/config";
-import { ILink, ILinkWithIcon, useWindowListener } from "@/shared/model";
+import { Translation } from '@/shared/config';
+import { ILink, ILinkWithIcon, useWindowListener } from '@/shared/model';
 
-import { Img } from "../img/Img";
-import { DropdownItems } from "./DropdownItems/DropdownItems";
+import { Img } from '../img/Img';
+import { DropdownItems } from './DropdownItems/DropdownItems';
 
-import s from "./Dropdown.module.scss";
+import s from './Dropdown.module.scss';
 
 interface DropdownProps {
   ariaLabel?: string;
@@ -31,11 +31,11 @@ export const Dropdown: FC<DropdownProps> = ({
   children,
   className,
   icon = {
-    label: "",
-    value: "/img/icons/form/arrow-down.svg",
+    label: '',
+    value: '/img/icons/form/arrow-down.svg'
   },
   isDisabled,
-  items,
+  items
 }) => {
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
   const tShared = useTranslations(Translation.Shared);
@@ -43,15 +43,15 @@ export const Dropdown: FC<DropdownProps> = ({
   const handleClose = () => {
     const { current: menuButtonElement } = menuButtonRef;
 
-    if (!menuButtonElement?.hasAttribute("data-open")) {
+    if (!menuButtonElement?.hasAttribute('data-open')) {
       return;
     }
 
     menuButtonElement.click();
   };
-  useWindowListener("resize", handleClose);
+  useWindowListener('resize', handleClose);
 
-  const iconLabel = icon?.label || tShared("arrow");
+  const iconLabel = icon?.label || tShared('arrow');
   const iconValue = icon?.value;
 
   return (
@@ -62,12 +62,12 @@ export const Dropdown: FC<DropdownProps> = ({
         className={s.dropdown__btn}
         disabled={isDisabled}
       >
-        {typeof children === "string" ? (
+        {typeof children === 'string' ? (
           <div className={s.dropdown__box}>{children}</div>
         ) : (
           children
         )}
-        {typeof iconValue === "string" ? (
+        {typeof iconValue === 'string' ? (
           <Img
             alt={iconLabel}
             className={s.dropdown__icon}

@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { useSearchParams } from "next/navigation";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
-import { useForm } from "react-hook-form";
+import { FC } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
+import { useForm } from 'react-hook-form';
 
-import { Translation } from "@/shared/config";
-import { ILink, SearchParam } from "@/shared/model";
-import { Select } from "@/shared/ui";
+import { Translation } from '@/shared/config';
+import { ILink, SearchParam } from '@/shared/model';
+import { Select } from '@/shared/ui';
 
-import { getSortsData, useSortParams } from "../../model";
+import { getSortsData, useSortParams } from '../../model';
 
-import s from "./Sort.module.scss";
+import s from './Sort.module.scss';
 
 interface SortProps {
   className?: string;
@@ -29,7 +29,7 @@ export const Sort: FC<SortProps> = ({ className }) => {
 
   const urlSortValue = urlSortBy
     ? urlSortOrder
-      ? [urlSortBy, urlSortOrder].join(",")
+      ? [urlSortBy, urlSortOrder].join(',')
       : urlSortBy
     : null;
 
@@ -40,9 +40,9 @@ export const Sort: FC<SortProps> = ({ className }) => {
     [SearchParam.SortBy]: ILink;
   }>({
     defaultValues: {
-      [SearchParam.SortBy]: defaultSort,
+      [SearchParam.SortBy]: defaultSort
     },
-    mode: "onChange",
+    mode: 'onChange'
   });
 
   const watchedSort = form.watch(SearchParam.SortBy);

@@ -1,13 +1,13 @@
-import { axiosInstance, IResponse } from "@/application/api";
+import { axiosInstance, IResponse } from '@/application/api';
 
-import { IResult } from "@/shared/api";
+import { IResult } from '@/shared/api';
 
-import { ICheckout, IOrder } from "./orders.interface";
+import { ICheckout, IOrder } from './orders.interface';
 
 export const OrdersService = {
   checkout: async (data: ICheckout) => {
     const response: IResponse<IResult> = await axiosInstance.post(
-      "/Orders/checkout",
+      '/Orders/checkout',
       data
     );
 
@@ -20,5 +20,5 @@ export const OrdersService = {
     );
 
     return response;
-  },
+  }
 };

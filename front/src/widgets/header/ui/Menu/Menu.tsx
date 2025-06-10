@@ -1,21 +1,21 @@
-import { FC } from "react";
-import { useLocale, useTranslations } from "next-intl";
-import { clsx } from "clsx";
-import { useAtom } from "jotai";
+import { FC } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
+import { useAtom } from 'jotai';
 
-import { Cart } from "@/entities/cart";
-import { categoriesAtom } from "@/entities/product";
-import { User } from "@/entities/user";
+import { Cart } from '@/entities/cart';
+import { categoriesAtom } from '@/entities/product';
+import { User } from '@/entities/user';
 
-import { Locale, Translation } from "@/shared/config";
-import { Dropdown, LocaleSwitcher, ThemeSwitcher } from "@/shared/ui";
+import { Locale, Translation } from '@/shared/config';
+import { Dropdown, LocaleSwitcher, ThemeSwitcher } from '@/shared/ui';
 
-import { menuData } from "../../model";
+import { menuData } from '../../model';
 
-import { Search } from "../Search/Search";
-import { MenuItems } from "./MenuItems/MenuItems";
+import { Search } from '../Search/Search';
+import { MenuItems } from './MenuItems/MenuItems';
 
-import s from "./Menu.module.scss";
+import s from './Menu.module.scss';
 
 interface MenuProps {
   breakpoint: number;
@@ -41,7 +41,7 @@ export const Menu: FC<MenuProps> = ({ className, isScrollLocked, onClick }) => {
     <div className={clsx(s.menu, className)}>
       <button
         aria-label={tShared(
-          `header.menu.${isScrollLocked ? "close" : "open"}-menu`
+          `header.menu.${isScrollLocked ? 'close' : 'open'}-menu`
         )}
         className={clsx(
           s.menu__button,
@@ -64,11 +64,11 @@ export const Menu: FC<MenuProps> = ({ className, isScrollLocked, onClick }) => {
                 categoriesData?.data?.map((category) => ({
                   icon: category.img,
                   label: category.translations_slug[locale],
-                  value: category.slug,
+                  value: category.slug
                 })) || []
               }
             >
-              {tShared("pathnames.categories")}
+              {tShared('pathnames.categories')}
             </Dropdown>
           </ul>
           <LocaleSwitcher className={s.menu__localeSwitcher} />
@@ -80,7 +80,7 @@ export const Menu: FC<MenuProps> = ({ className, isScrollLocked, onClick }) => {
       <User
         className={s.menu__user}
         {...(isScrollLocked && {
-          onClick,
+          onClick
         })}
       />
     </div>

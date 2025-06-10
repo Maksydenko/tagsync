@@ -1,13 +1,13 @@
-import { FC } from "react";
-import Link from "next/link";
-import { useLocale } from "next-intl";
-import { useAtom } from "jotai";
+import { FC } from 'react';
+import Link from 'next/link';
+import { useLocale } from 'next-intl';
+import { useAtom } from 'jotai';
 
-import { categoriesAtom } from "@/entities/product";
+import { categoriesAtom } from '@/entities/product';
 
-import { Locale } from "@/shared/config";
+import { Locale } from '@/shared/config';
 
-import s from "./Footer.module.scss";
+import s from './Footer.module.scss';
 
 export const FooterList: FC = () => {
   const locale = useLocale() as Locale;

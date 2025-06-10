@@ -1,10 +1,10 @@
 import {
   defaultShouldDehydrateQuery,
   isServer,
-  QueryClient,
-} from "@tanstack/react-query";
+  QueryClient
+} from '@tanstack/react-query';
 
-import { QueryStatus, Time } from "@/shared/model";
+import { QueryStatus, Time } from '@/shared/model';
 
 const makeQueryClient = () => {
   const STALE_TIME_IN_SECONDS = 60;
@@ -13,17 +13,16 @@ const makeQueryClient = () => {
     defaultOptions: {
       dehydrate: {
         // include pending queries in dehydration
-        shouldDehydrateQuery: (query) => (
-            defaultShouldDehydrateQuery(query) ||
-            query.state.status === QueryStatus.Pending
-          ),
+        shouldDehydrateQuery: (query) =>
+          defaultShouldDehydrateQuery(query) ||
+          query.state.status === QueryStatus.Pending
       },
       queries: {
         refetchOnWindowFocus: false,
         retry: 1,
-        staleTime: STALE_TIME_IN_SECONDS * Time.MillisecondsInSecond,
-      },
-    },
+        staleTime: STALE_TIME_IN_SECONDS * Time.MillisecondsInSecond
+      }
+    }
   });
 };
 

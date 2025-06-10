@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { TSetState } from "../types";
+import { TSetState } from '../types';
 
 interface IUseScrollLock {
   (inerts?: string[]): {
@@ -20,13 +20,13 @@ export const useScrollLock: IUseScrollLock = (inerts = []) => {
 
   const setInerts: IHandleInerts = (elements) => {
     elements.forEach((element) => {
-      element?.setAttribute("inert", "");
+      element?.setAttribute('inert', '');
     });
   };
 
   const removeInerts: IHandleInerts = (elements) => {
     elements.forEach((element) => {
-      element?.removeAttribute("inert");
+      element?.removeAttribute('inert');
     });
   };
 
@@ -36,21 +36,21 @@ export const useScrollLock: IUseScrollLock = (inerts = []) => {
     const inertElements = inerts.map((inert) => document.querySelector(inert));
 
     if (isScrollLocked) {
-      body.classList.add("lock");
+      body.classList.add('lock');
       setInerts(inertElements);
     } else {
-      body.classList.remove("lock");
+      body.classList.remove('lock');
       removeInerts(inertElements);
     }
 
     return () => {
-      body.classList.remove("lock");
+      body.classList.remove('lock');
       removeInerts(inertElements);
     };
   }, [inerts, isScrollLocked]);
 
   return {
     isScrollLocked,
-    setIsScrollLocked,
+    setIsScrollLocked
   };
 };

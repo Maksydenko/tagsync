@@ -1,29 +1,29 @@
-"use client";
+'use client';
 
-import { ReactNode } from "react";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
+import { ReactNode } from 'react';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
 import {
   FieldValues,
   Path,
   PathValue,
   RegisterOptions,
-  UseFormReturn,
-} from "react-hook-form";
+  UseFormReturn
+} from 'react-hook-form';
 
 import {
   Listbox,
   ListboxButton,
   ListboxOption,
-  ListboxOptions,
-} from "@headlessui/react";
+  ListboxOptions
+} from '@headlessui/react';
 
-import { Translation } from "@/shared/config";
-import { ILink } from "@/shared/model";
+import { Translation } from '@/shared/config';
+import { ILink } from '@/shared/model';
 
-import { Img } from "../../img/Img";
+import { Img } from '../../img/Img';
 
-import s from "./Select.module.scss";
+import s from './Select.module.scss';
 
 interface SelectProps<T extends FieldValues> {
   className?: string;
@@ -38,8 +38,8 @@ export const Select = <T extends FieldValues>({
   className,
   formReturn: { register, setValue, watch },
   icon = {
-    label: "",
-    value: "/img/icons/form/arrow-down.svg",
+    label: '',
+    value: '/img/icons/form/arrow-down.svg'
   },
   items,
   name,
@@ -53,7 +53,7 @@ export const Select = <T extends FieldValues>({
     ...restRegister
   } = register(name, options);
 
-  const iconLabel = icon?.label || tShared("arrow");
+  const iconLabel = icon?.label || tShared('arrow');
   const iconValue = icon?.value;
 
   return (
@@ -74,7 +74,7 @@ export const Select = <T extends FieldValues>({
             {...restRegister}
           >
             <p>{watch(name).label}</p>
-            {typeof iconValue === "string" ? (
+            {typeof iconValue === 'string' ? (
               <Img
                 alt={iconLabel}
                 className={s.select__icon}

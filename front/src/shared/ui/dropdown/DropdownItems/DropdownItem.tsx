@@ -1,15 +1,15 @@
-import { FC } from "react";
-import Link from "next/link";
-import { clsx } from "clsx";
+import { FC } from 'react';
+import Link from 'next/link';
+import { clsx } from 'clsx';
 
-import { MenuItem } from "@headlessui/react";
+import { MenuItem } from '@headlessui/react';
 
-import { ILink, ILinkWithIcon } from "@/shared/model";
-import { checkKeyByTypes } from "@/shared/model";
+import { ILink, ILinkWithIcon } from '@/shared/model';
+import { checkKeyByTypes } from '@/shared/model';
 
-import { Img } from "../../img/Img";
+import { Img } from '../../img/Img';
 
-import s from "../Dropdown.module.scss";
+import s from '../Dropdown.module.scss';
 
 interface DropdownItemProps {
   item:
@@ -22,7 +22,7 @@ export const DropdownItem: FC<DropdownItemProps> = ({ item }) => {
   const icon = checkKeyByTypes<
     ILinkWithIcon<(() => unknown) | string>,
     ILink<(() => unknown) | string>
-  >(item, "icon")
+  >(item, 'icon')
     ? item?.icon
     : null;
 
@@ -40,7 +40,7 @@ export const DropdownItem: FC<DropdownItemProps> = ({ item }) => {
             focus && s.dropdownItems__item_active
           )}
         >
-          {typeof value === "string" ? (
+          {typeof value === 'string' ? (
             <Link href={value}>
               {iconElement}
               <p>{label}</p>

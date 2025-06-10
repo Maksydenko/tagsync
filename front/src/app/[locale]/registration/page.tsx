@@ -1,11 +1,11 @@
-import { NextPage } from "next";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { NextPage } from 'next';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
-import Registration from "@/views/registration";
+import Registration from '@/views/registration';
 
-import { Translation } from "@/shared/config";
-import { generateMetaTitle } from "@/shared/lib";
-import { IPageProps, IParams } from "@/shared/model";
+import { Translation } from '@/shared/config';
+import { generateMetaTitle } from '@/shared/lib';
+import { IPageProps, IParams } from '@/shared/model';
 
 interface RegistrationPageProps {
   params: Promise<IParams>;
@@ -26,11 +26,11 @@ export const generateMetadata = async ({ params }: IPageProps) => {
   const { locale } = await params;
   const tRegistration = await getTranslations({
     locale,
-    namespace: Translation.Registration,
+    namespace: Translation.Registration
   });
 
   return {
     revalidate: process.env.REVALIDATE_TIMEOUT,
-    title: generateMetaTitle(tRegistration("title")),
+    title: generateMetaTitle(tRegistration('title'))
   };
 };

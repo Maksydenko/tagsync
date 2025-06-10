@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { FC, ReactNode } from "react";
-import { clsx } from "clsx";
-import RootCollapse, { CollapseProps as RootCollapseProps } from "rc-collapse";
+import { FC, ReactNode } from 'react';
+import { clsx } from 'clsx';
+import RootCollapse, { CollapseProps as RootCollapseProps } from 'rc-collapse';
 
-import motion from "./motion.util";
+import motion from './motion.util';
 
-import { Img } from "../img/Img";
+import { Img } from '../img/Img';
 
-import "rc-collapse/assets/index.css";
-import s from "./Collapse.module.scss";
+import 'rc-collapse/assets/index.css';
+import s from './Collapse.module.scss';
 
-interface CollapseProps extends Omit<RootCollapseProps, "expandIcon"> {
+interface CollapseProps extends Omit<RootCollapseProps, 'expandIcon'> {
   className?: string;
   expandIcon?: ReactNode;
   isReverseIcon?: boolean;

@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { FC, useTransition } from "react";
-import { useParams } from "next/navigation";
-import { useLocale } from "next-intl";
+import { FC, useTransition } from 'react';
+import { useParams } from 'next/navigation';
+import { useLocale } from 'next-intl';
 
-import { Locale } from "@/shared/config";
-import { ILink } from "@/shared/model";
+import { Locale } from '@/shared/config';
+import { ILink } from '@/shared/model';
 
-import { usePathname, useRouter } from "@/i18n/navigation";
+import { usePathname, useRouter } from '@/i18n/navigation';
 
-import s from "../LocaleSwitcher.module.scss";
+import s from '../LocaleSwitcher.module.scss';
 
 interface LocaleSwitcherItemProps {
   locale: ILink;
@@ -17,7 +17,7 @@ interface LocaleSwitcherItemProps {
 }
 
 export const LocaleSwitcherItem: FC<LocaleSwitcherItemProps> = ({
-  locale: { label, value },
+  locale: { label, value }
 }) => {
   const [isPending, startTransition] = useTransition();
 
@@ -39,10 +39,10 @@ export const LocaleSwitcherItem: FC<LocaleSwitcherItemProps> = ({
           // are used in combination with a given `pathname`. Since the two will
           // always match for the current route, we can skip runtime checks
           params,
-          pathname,
+          pathname
         },
         {
-          locale: nextLocale,
+          locale: nextLocale
         }
       );
     });

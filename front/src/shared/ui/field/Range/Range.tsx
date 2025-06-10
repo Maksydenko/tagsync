@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { ReactNode } from "react";
-import { clsx } from "clsx";
-import Slider, { SliderProps } from "rc-slider";
+import { ReactNode } from 'react';
+import { clsx } from 'clsx';
+import Slider, { SliderProps } from 'rc-slider';
 import {
   FieldValues,
   Path,
   PathValue,
   RegisterOptions,
-  UseFormReturn,
-} from "react-hook-form";
+  UseFormReturn
+} from 'react-hook-form';
 
-import { formatNumber } from "@/shared/model";
+import { formatNumber } from '@/shared/model';
 
-import "rc-slider/assets/index.css";
-import s from "./Range.module.scss";
+import 'rc-slider/assets/index.css';
+import s from './Range.module.scss';
 
 interface RangeProps<T extends FieldValues> extends SliderProps {
   className?: string;
@@ -59,12 +59,12 @@ export const Range = <T extends FieldValues>({
         <div className={s.range__content}>
           <p className={s.range__label}>
             {formatNumber({
-              number: min,
+              number: min
             })}
           </p>
           <p className={s.range__label}>
             {formatNumber({
-              number: max,
+              number: max
             })}
           </p>
         </div>
@@ -74,11 +74,11 @@ export const Range = <T extends FieldValues>({
           onChange={(value) => {
             setValue(name, value as PathValue<T, Path<T>>);
           }}
-          {...(typeof defaultMin === "number" && {
-            min: defaultMin,
+          {...(typeof defaultMin === 'number' && {
+            min: defaultMin
           })}
-          {...(typeof defaultMax === "number" && {
-            max: defaultMax,
+          {...(typeof defaultMax === 'number' && {
+            max: defaultMax
           })}
           {...props}
           {...restRegister}

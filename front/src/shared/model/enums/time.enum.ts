@@ -9,5 +9,5 @@ export enum Time {
     Time.MinutesInHour *
     Time.SecondsInMinute *
     Time.MillisecondsInSecond,
-  MillisecondsInWeek = Time.DaysInWeek * Time.MillisecondsInDay,
+  MillisecondsInWeek = Time.DaysInWeek * Time.MillisecondsInDay
 }

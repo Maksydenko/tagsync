@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import { ReactNode, useEffect, useState } from "react";
-import { clsx } from "clsx";
+import { ReactNode, useEffect, useState } from 'react';
+import { clsx } from 'clsx';
 import {
   FieldValues,
   Path,
   PathValue,
   RegisterOptions,
-  UseFormReturn,
-} from "react-hook-form";
+  UseFormReturn
+} from 'react-hook-form';
 import PhoneInputWithCountrySelect, {
   Country,
   getCountries,
-  getCountryCallingCode,
-} from "react-phone-number-input";
+  getCountryCallingCode
+} from 'react-phone-number-input';
 
-import s from "./Phone.module.scss";
+import s from './Phone.module.scss';
 
 interface PhoneProps<T extends FieldValues> {
   className?: string;
@@ -40,7 +40,7 @@ export const Phone = <T extends FieldValues>({
     register,
     setValue,
     trigger,
-    watch,
+    watch
   } = formReturn;
 
   const error = errors[name];
@@ -56,7 +56,7 @@ export const Phone = <T extends FieldValues>({
       return;
     }
 
-    const countryCode = phoneValue.slice(1).split(" ")[0];
+    const countryCode = phoneValue.slice(1).split(' ')[0];
 
     const matchedCountry = getCountries().find(
       (country) => getCountryCallingCode(country) === countryCode

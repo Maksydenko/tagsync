@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { FC, ReactNode, useState } from "react";
-import { clsx } from "clsx";
+import { FC, ReactNode, useState } from 'react';
+import { clsx } from 'clsx';
 
-import { Button, Dialog, DialogPanel } from "@headlessui/react";
+import { Button, Dialog, DialogPanel } from '@headlessui/react';
 
-import { TSetState } from "@/shared/model";
+import { TSetState } from '@/shared/model';
 
-import s from "./Popup.module.scss";
+import s from './Popup.module.scss';
 
 interface PopupProps {
   btn: ReactNode;
@@ -23,10 +23,10 @@ export const Popup: FC<PopupProps> = ({
   children,
   className,
   forceOpen,
-  setForceOpen,
+  setForceOpen
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const isForceOpen = typeof forceOpen === "boolean" && setForceOpen;
+  const isForceOpen = typeof forceOpen === 'boolean' && setForceOpen;
 
   const handleOpen = () => {
     if (isForceOpen) {

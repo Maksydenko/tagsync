@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { FC, ReactNode } from "react";
-import { clsx } from "clsx";
+import { FC, ReactNode } from 'react';
+import { clsx } from 'clsx';
 
-import { TabGroup } from "@headlessui/react";
+import { TabGroup } from '@headlessui/react';
 
-import { ILink } from "@/shared/model";
+import { ILink } from '@/shared/model';
 
-import { TabsContents } from "./TabsContents/TabsContents";
-import { TabsTitles } from "./TabsTitles/TabsTitles";
+import { TabsContents } from './TabsContents/TabsContents';
+import { TabsTitles } from './TabsTitles/TabsTitles';
 
-import s from "./Tabs.module.scss";
+import s from './Tabs.module.scss';
 
 interface TabsProps {
   className?: string;
@@ -23,14 +23,14 @@ const Tabs: FC<TabsProps> = ({
   className,
   defaultTab = 0,
   isVertical,
-  tabs,
+  tabs
 }) => (
-    <div className={clsx(s.tabs, isVertical && s.tabs_vertical, className)}>
-      <TabGroup defaultIndex={defaultTab} vertical={isVertical}>
-        <TabsTitles isVertical={isVertical} tabs={tabs} />
-        <TabsContents tabs={tabs} />
-      </TabGroup>
-    </div>
-  );
+  <div className={clsx(s.tabs, isVertical && s.tabs_vertical, className)}>
+    <TabGroup defaultIndex={defaultTab} vertical={isVertical}>
+      <TabsTitles isVertical={isVertical} tabs={tabs} />
+      <TabsContents tabs={tabs} />
+    </TabGroup>
+  </div>
+);
 
 export default Tabs;

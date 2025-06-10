@@ -1,4 +1,4 @@
-import { Key } from "react";
+import { Key } from 'react';
 
 export interface ILink<T = string> {
   id?: Key;

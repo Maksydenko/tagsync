@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { ChangeEvent, FC, useEffect, useState } from "react";
-import { clsx } from "clsx";
+import { ChangeEvent, FC, useEffect, useState } from 'react';
+import { clsx } from 'clsx';
 
-import { TSetState } from "@/shared/model";
+import { TSetState } from '@/shared/model';
 
-import s from "./File.module.scss";
+import s from './File.module.scss';
 
 interface FileProps {
   accept?: string[];
@@ -20,12 +20,12 @@ export const File: FC<FileProps> = ({
   className,
   maxSize = 10,
   selectedFile,
-  setSelectedFile,
+  setSelectedFile
 }) => {
   const [isActive, setIsActive] = useState(false);
 
-  const defaultSubHint = `${accept ? accept.join(", ") : ""} file${
-    maxSize > 0 ? ` up to ${maxSize}MB` : ""
+  const defaultSubHint = `${accept ? accept.join(', ') : ''} file${
+    maxSize > 0 ? ` up to ${maxSize}MB` : ''
   }`;
   const [subHint, setSubHint] = useState(defaultSubHint);
 
@@ -53,7 +53,7 @@ export const File: FC<FileProps> = ({
         accept &&
         !accept.some((type) => name.toLocaleLowerCase().endsWith(type))
       ) {
-        alert(`File type must be ${accept.join(", ")}!`);
+        alert(`File type must be ${accept.join(', ')}!`);
         setSelectedFile(null);
         return;
       }
@@ -87,9 +87,9 @@ export const File: FC<FileProps> = ({
       >
         <div className={s.file__box}>
           <input
-            accept={accept && accept.join(",")}
+            accept={accept && accept.join(',')}
             className={s.file__input}
-            type={"file"}
+            type={'file'}
             onChange={handleChangeFile}
           />
           <p className={s.file__hint}>

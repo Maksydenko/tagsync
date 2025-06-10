@@ -1,9 +1,9 @@
-import { FC } from "react";
-import { clsx } from "clsx";
+import { FC } from 'react';
+import { clsx } from 'clsx';
 
-import { LocaleSwitcherItems } from "./LocaleSwitcherItems/LocaleSwitcherItems";
+import { LocaleSwitcherItems } from './LocaleSwitcherItems/LocaleSwitcherItems';
 
-import s from "./LocaleSwitcher.module.scss";
+import s from './LocaleSwitcher.module.scss';
 
 interface LocaleSwitcherProps {
   className?: string;
@@ -12,9 +12,9 @@ interface LocaleSwitcherProps {
 
 export const LocaleSwitcher: FC<LocaleSwitcherProps> = ({
   className,
-  onClick,
+  onClick
 }) => (
-    <ul className={clsx(s.localeSwitcher, className)}>
-      <LocaleSwitcherItems onClick={onClick} />
-    </ul>
-  );
+  <ul className={clsx(s.localeSwitcher, className)}>
+    <LocaleSwitcherItems onClick={onClick} />
+  </ul>
+);

@@ -1,11 +1,11 @@
-import { NextPage } from "next";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { NextPage } from 'next';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
-import Login from "@/views/login";
+import Login from '@/views/login';
 
-import { Translation } from "@/shared/config";
-import { generateMetaTitle } from "@/shared/lib";
-import { IPageProps, IParams } from "@/shared/model";
+import { Translation } from '@/shared/config';
+import { generateMetaTitle } from '@/shared/lib';
+import { IPageProps, IParams } from '@/shared/model';
 
 interface LoginPageProps {
   params: Promise<IParams>;
@@ -26,11 +26,11 @@ export const generateMetadata = async ({ params }: IPageProps) => {
   const { locale } = await params;
   const tLogin = await getTranslations({
     locale,
-    namespace: Translation.Login,
+    namespace: Translation.Login
   });
 
   return {
     revalidate: process.env.REVALIDATE_TIMEOUT,
-    title: generateMetaTitle(tLogin("title")),
+    title: generateMetaTitle(tLogin('title'))
   };
 };

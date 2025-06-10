@@ -1,30 +1,30 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import dynamic from "next/dynamic";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
-import { useAtom } from "jotai";
+import { FC } from 'react';
+import dynamic from 'next/dynamic';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
+import { useAtom } from 'jotai';
 
-import { useMutation } from "@tanstack/react-query";
+import { useMutation } from '@tanstack/react-query';
 
-import { useLocalCart } from "@/application/store";
+import { useLocalCart } from '@/application/store';
 
-import { userAtom } from "@/entities/user";
+import { userAtom } from '@/entities/user';
 
-import { Pathname, Translation } from "@/shared/config";
-import { useInvalidateAtom } from "@/shared/lib";
-import { MutationKey, QueryKey } from "@/shared/model";
-import { Img, Popup } from "@/shared/ui";
+import { Pathname, Translation } from '@/shared/config';
+import { useInvalidateAtom } from '@/shared/lib';
+import { MutationKey, QueryKey } from '@/shared/model';
+import { Img, Popup } from '@/shared/ui';
 
-import { cartAtom, cartOpenAtom } from "../../model";
+import { cartAtom, cartOpenAtom } from '../../model';
 
-import s from "./Cart.module.scss";
+import s from './Cart.module.scss';
 
-const Link = dynamic(() => import("next/link"));
-const Btn = dynamic(() => import("@/shared/ui").then((module) => module.Btn));
+const Link = dynamic(() => import('next/link'));
+const Btn = dynamic(() => import('@/shared/ui').then((module) => module.Btn));
 const CartProduct = dynamic(() =>
-  import("@/entities/product").then((module) => module.CartProduct)
+  import('@/entities/product').then((module) => module.CartProduct)
 );
 
 interface CartProps {
@@ -50,13 +50,13 @@ export const Cart: FC<CartProps> = ({ className }) => {
 
   const { mutate: clearCart } = useMutation({
     mutationFn: async () => {
-      const CartService = await import("../../api").then(
+      const CartService = await import('../../api').then(
         (module) => module.CartService
       );
 
       if (userEmail) {
         return CartService.clear({
-          userEmail,
+          userEmail
         });
       }
 
@@ -69,7 +69,7 @@ export const Cart: FC<CartProps> = ({ className }) => {
       }
 
       setIsCartOpen(false);
-    },
+    }
   });
 
   return (
@@ -78,7 +78,7 @@ export const Cart: FC<CartProps> = ({ className }) => {
         btn={
           <div className={s.cart__btn}>
             <Img
-              alt={tShared("cart.title")}
+              alt={tShared('cart.title')}
               className={s.cart__icon}
               height={20}
               src="/img/icons/product/cart.svg"
@@ -95,7 +95,7 @@ export const Cart: FC<CartProps> = ({ className }) => {
         setForceOpen={setIsCartOpen}
       >
         <div className={s.cart__body}>
-          <h2 className={s.cart__title}>{tShared("cart.title")}</h2>
+          <h2 className={s.cart__title}>{tShared('cart.title')}</h2>
           <div className={s.cart__content}>
             {cartItems?.map((product) => (
               <CartProduct
@@ -119,7 +119,7 @@ export const Cart: FC<CartProps> = ({ className }) => {
                   setIsCartOpen(false);
                 }}
               >
-                {tShared("cart.btns.checkout")}
+                {tShared('cart.btns.checkout')}
               </Link>
             </Btn>
             <Btn
@@ -129,7 +129,7 @@ export const Cart: FC<CartProps> = ({ className }) => {
                 clearCart();
               }}
             >
-              {tShared("cart.btns.clear")}
+              {tShared('cart.btns.clear')}
             </Btn>
           </div>
         </div>

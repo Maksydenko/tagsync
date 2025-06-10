@@ -1,1 +1,1 @@
-export * from "./setState.type";
+export * from './setState.type';

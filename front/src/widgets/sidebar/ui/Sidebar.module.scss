@@ -1,4 +1,4 @@
-@use "@/application/styles/module" as m;
+@use '@/application/styles/module' as m;
 
 $sidebarLinkInlineSize: 72;
 $linkPadding: m.rem(20);
@@ -70,7 +70,7 @@ $linkPadding: m.rem(20);
         position: absolute;
         inset: 0;
         z-index: -1;
-        content: "";
+        content: '';
         background: m.$primaryColor;
       }
     }
@@ -100,7 +100,7 @@ $linkPadding: m.rem(20);
       inset: 0;
       z-index: -2;
       // inline-size: m.rem($sidebarLinkInlineSize); // for square
-      content: "";
+      content: '';
       background: m.$grayColor;
       opacity: 0.5;
     }

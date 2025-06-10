@@ -1,15 +1,15 @@
-import { FC } from "react";
-import Link from "next/link";
-import { clsx } from "clsx";
+import { FC } from 'react';
+import Link from 'next/link';
+import { clsx } from 'clsx';
 
-import { ICartProduct } from "@/entities/cart";
+import { ICartProduct } from '@/entities/cart';
 
-import { formatPrice } from "@/shared/model";
-import { Img } from "@/shared/ui";
+import { formatPrice } from '@/shared/model';
+import { Img } from '@/shared/ui';
 
-import { ProductCounter } from "./ProductCounter/ProductCounter";
+import { ProductCounter } from './ProductCounter/ProductCounter';
 
-import s from "./CartProduct.module.scss";
+import s from './CartProduct.module.scss';
 
 interface CartProductProps {
   className?: string;
@@ -18,7 +18,7 @@ interface CartProductProps {
 
 export const CartProduct: FC<CartProductProps> = ({
   className,
-  productData,
+  productData
 }) => {
   const { all_price, images, product_id, slug, title } = productData;
 
@@ -32,7 +32,7 @@ export const CartProduct: FC<CartProductProps> = ({
           <h3 className={s.cartProduct__title}>{title}</h3>
           <p className={s.cartProduct__price}>
             {formatPrice({
-              price: +all_price,
+              price: +all_price
             })}
           </p>
           <ProductCounter

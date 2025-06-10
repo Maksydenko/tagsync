@@ -1,6 +1,6 @@
-import { QueryClient } from "@tanstack/react-query";
+import { QueryClient } from '@tanstack/react-query';
 
-import { QueryKey } from "@/shared/model";
+import { QueryKey } from '@/shared/model';
 
 export const invalidateQueries = async (
   queryClient: QueryClient,
@@ -9,7 +9,7 @@ export const invalidateQueries = async (
   await Promise.allSettled(
     queryKeys.map((key) =>
       queryClient.invalidateQueries({
-        queryKey: [key],
+        queryKey: [key]
       })
     )
   );

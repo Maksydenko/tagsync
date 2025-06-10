@@ -1,13 +1,13 @@
-import { NextPage } from "next";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { NextPage } from 'next';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
-import Home from "@/views/home";
+import Home from '@/views/home';
 
-import { HomePageRecommendationsService } from "@/features/recommendations";
+import { HomePageRecommendationsService } from '@/features/recommendations';
 
-import { Translation } from "@/shared/config";
-import { generateMetaTitle } from "@/shared/lib";
-import { IPageProps, IParams } from "@/shared/model";
+import { Translation } from '@/shared/config';
+import { generateMetaTitle } from '@/shared/lib';
+import { IPageProps, IParams } from '@/shared/model';
 
 interface HomePageProps {
   params: Promise<IParams>;
@@ -21,7 +21,7 @@ const HomePage: NextPage<HomePageProps> = async (props) => {
 
   const [popularData, topRatedData] = await Promise.all([
     HomePageRecommendationsService.getPopular(),
-    HomePageRecommendationsService.getTopRated(),
+    HomePageRecommendationsService.getTopRated()
   ]);
 
   return (
@@ -35,16 +35,16 @@ export const generateMetadata = async ({ params }: IPageProps) => {
   const { locale } = await params;
   const tShared = await getTranslations({
     locale,
-    namespace: Translation.Shared,
+    namespace: Translation.Shared
   });
   const tHome = await getTranslations({
     locale,
-    namespace: Translation.Home,
+    namespace: Translation.Home
   });
 
   return {
-    description: tShared("footer.text"),
+    description: tShared('footer.text'),
     revalidate: process.env.REVALIDATE_TIMEOUT,
-    title: generateMetaTitle(tHome("title")),
+    title: generateMetaTitle(tHome('title'))
   };
 };

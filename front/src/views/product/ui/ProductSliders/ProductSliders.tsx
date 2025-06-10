@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { FC, useState } from "react";
-import { clsx } from "clsx";
-import { Swiper } from "swiper/types";
+import { FC, useState } from 'react';
+import { clsx } from 'clsx';
+import { Swiper } from 'swiper/types';
 
-import { Breakpoint } from "@/shared/config";
-import { Direction, useBreakpointCheck } from "@/shared/model";
-import { Img, Loader, SliderSwiper } from "@/shared/ui";
+import { Breakpoint } from '@/shared/config';
+import { Direction, useBreakpointCheck } from '@/shared/model';
+import { Img, Loader, SliderSwiper } from '@/shared/ui';
 
-import s from "./ProductSliders.module.scss";
+import s from './ProductSliders.module.scss';
 
 interface ProductSlidersProps {
   className?: string;
@@ -19,7 +19,7 @@ interface ProductSlidersProps {
 export const ProductSliders: FC<ProductSlidersProps> = ({
   className,
   images,
-  title,
+  title
 }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<null | Swiper>(null);
   const isMobile = useBreakpointCheck(Breakpoint.Mobile);
@@ -45,7 +45,7 @@ export const ProductSliders: FC<ProductSlidersProps> = ({
                 src={img}
                 width={735}
               />
-            ),
+            )
           }))}
           slidesPerView={4}
           spaceBetween={16}
@@ -71,10 +71,10 @@ export const ProductSliders: FC<ProductSlidersProps> = ({
                   src={img}
                   width={172}
                 />
-              ),
+              )
             }))}
             thumbs={{
-              swiper: thumbsSwiper,
+              swiper: thumbsSwiper
             }}
             pagination
           />

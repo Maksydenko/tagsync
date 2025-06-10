@@ -1,12 +1,12 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode } from 'react';
 
-import { TabList } from "@headlessui/react";
+import { TabList } from '@headlessui/react';
 
-import { ILink } from "@/shared/model";
+import { ILink } from '@/shared/model';
 
-import { TabsTitle } from "./TabsTitle";
+import { TabsTitle } from './TabsTitle';
 
-import s from "../Tabs.module.scss";
+import s from '../Tabs.module.scss';
 
 interface TitlesProps {
   isVertical?: boolean;

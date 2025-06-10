@@ -1,7 +1,7 @@
-import { useAtom } from "jotai";
-import { queryClientAtom } from "jotai-tanstack-query";
+import { useAtom } from 'jotai';
+import { queryClientAtom } from 'jotai-tanstack-query';
 
-import { QueryKey } from "@/shared/model";
+import { QueryKey } from '@/shared/model';
 
 export const useInvalidateAtom = (queryKeys: QueryKey[]) => {
   const [queryClient] = useAtom(queryClientAtom);
@@ -10,7 +10,7 @@ export const useInvalidateAtom = (queryKeys: QueryKey[]) => {
     await Promise.allSettled(
       queryKeys.map((key) =>
         queryClient.invalidateQueries({
-          queryKey: [key],
+          queryKey: [key]
         })
       )
     );

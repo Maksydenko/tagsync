@@ -3,16 +3,16 @@ import {
   cloneElement,
   FC,
   isValidElement,
-  ReactNode,
-} from "react";
-import { clsx } from "clsx";
+  ReactNode
+} from 'react';
+import { clsx } from 'clsx';
 
-import { ILink } from "@/shared/model";
+import { ILink } from '@/shared/model';
 
-import { Img } from "../img/Img";
-import { Loader } from "../loader/Loader";
+import { Img } from '../img/Img';
+import { Loader } from '../loader/Loader';
 
-import s from "./Btn.module.scss";
+import s from './Btn.module.scss';
 
 interface BtnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;
@@ -36,7 +36,7 @@ export const Btn: FC<BtnProps> = ({
     return cloneElement(children, {
       /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
       /* @ts-ignore */
-      className: clsx(classNames, children.props.className),
+      className: clsx(classNames, children.props.className)
     });
   }
 
@@ -46,19 +46,19 @@ export const Btn: FC<BtnProps> = ({
   return (
     <button
       aria-disabled={isDisabled}
-      aria-label={props["aria-label"] || iconLabel}
+      aria-label={props['aria-label'] || iconLabel}
       className={clsx(classNames, className)}
       disabled={isDisabled}
       {...props}
     >
       <div className={s.btn__body}>
         <div className={s.btn__content}>
-          {typeof children === "string" ? (
+          {typeof children === 'string' ? (
             <div className={s.btn__box}>{children}</div>
           ) : (
             children
           )}
-          {typeof iconValue === "string" ? (
+          {typeof iconValue === 'string' ? (
             <Img
               alt={iconLabel}
               className={s.btn__icon}

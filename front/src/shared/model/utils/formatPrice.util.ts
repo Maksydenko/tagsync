@@ -1,4 +1,4 @@
-import { formatNumber } from "./formatNumber.util";
+import { formatNumber } from './formatNumber.util';
 
 interface IFormatPrice extends Intl.NumberFormatOptions {
   price: number;
@@ -21,7 +21,7 @@ export const formatPrice = ({
     maximumFractionDigits: fractionDigits,
     minimumFractionDigits: fractionDigits,
     number: roundedPrice,
-    ...props,
+    ...props
   });
 
   if (!formattedNumber) {

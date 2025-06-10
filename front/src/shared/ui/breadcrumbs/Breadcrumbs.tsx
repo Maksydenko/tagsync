@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import Link from "next/link";
-import { clsx } from "clsx";
+import { FC } from 'react';
+import Link from 'next/link';
+import { clsx } from 'clsx';
 
-import { ILink } from "@/shared/model";
+import { ILink } from '@/shared/model';
 
-import s from "./Breadcrumbs.module.scss";
+import s from './Breadcrumbs.module.scss';
 
 interface BreadcrumbsProps {
   breadcrumbs: ILink[];
@@ -15,7 +15,7 @@ interface BreadcrumbsProps {
 
 export const Breadcrumbs: FC<BreadcrumbsProps> = ({
   breadcrumbs,
-  className,
+  className
 }) => (
   <ul className={clsx(s.breadcrumbs, className)}>
     {breadcrumbs.map(({ label, value }) => (

@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import { FC } from "react";
+import { FC } from 'react';
 
 import {
   QueryClientProvider,
-  QueryClientProviderProps,
-} from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+  QueryClientProviderProps
+} from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
-import { Phase } from "@/shared/model";
+import { Phase } from '@/shared/model';
 
-import { getQueryClient } from "./queryClient.util";
+import { getQueryClient } from './queryClient.util';
 
 export const QueryProvider: FC<Partial<QueryClientProviderProps>> = ({
-  children,
+  children
 }) => {
   const queryClient = getQueryClient();
 

@@ -1,2 +1,2 @@
-export * from "./axiosInstance";
-export * from "./response.interface";
+export * from './axiosInstance';
+export * from './response.interface';

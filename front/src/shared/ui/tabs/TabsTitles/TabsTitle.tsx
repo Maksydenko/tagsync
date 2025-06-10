@@ -1,11 +1,11 @@
-import { FC, ReactNode } from "react";
-import { clsx } from "clsx";
+import { FC, ReactNode } from 'react';
+import { clsx } from 'clsx';
 
-import { Tab } from "@headlessui/react";
+import { Tab } from '@headlessui/react';
 
-import { ILink, Percent } from "@/shared/model";
+import { ILink, Percent } from '@/shared/model';
 
-import s from "../Tabs.module.scss";
+import s from '../Tabs.module.scss';
 
 interface TabsTitleProps {
   isVertical?: boolean;
@@ -16,13 +16,13 @@ interface TabsTitleProps {
 export const TabsTitle: FC<TabsTitleProps> = ({
   isVertical,
   tab: { value },
-  tabsLength,
+  tabsLength
 }) => {
-  const titleItem = typeof value === "string" ? <p>{value}</p> : value;
+  const titleItem = typeof value === 'string' ? <p>{value}</p> : value;
 
   const tabWidth = Percent.Full / tabsLength;
   const titleStyle = {
-    inlineSize: `${tabWidth}%`,
+    inlineSize: `${tabWidth}%`
   };
 
   return (

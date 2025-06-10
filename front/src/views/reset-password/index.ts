@@ -1,1 +1,1 @@
-export * from "./ui/ResetPassword";
+export * from './ui/ResetPassword';

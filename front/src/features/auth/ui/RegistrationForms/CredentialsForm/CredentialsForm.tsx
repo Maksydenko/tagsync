@@ -1,25 +1,25 @@
-"use client";
+'use client';
 
-import { FC, useState } from "react";
-import Link from "next/link";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
-import { useForm } from "react-hook-form";
-import { StepWizardChildProps } from "react-step-wizard";
+import { FC, useState } from 'react';
+import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
+import { useForm } from 'react-hook-form';
+import { StepWizardChildProps } from 'react-step-wizard';
 
-import { useMutation } from "@tanstack/react-query";
+import { useMutation } from '@tanstack/react-query';
 
 import {
   AuthForm,
   getCredentialsFields,
-  ICredentialsForm,
-} from "@/features/auth";
+  ICredentialsForm
+} from '@/features/auth';
 
-import { Pathname, Translation } from "@/shared/config";
-import { ErrorCode, MutationKey } from "@/shared/model";
-import { Btn } from "@/shared/ui";
+import { Pathname, Translation } from '@/shared/config';
+import { ErrorCode, MutationKey } from '@/shared/model';
+import { Btn } from '@/shared/ui';
 
-import s from "./CredentialsForm.module.scss";
+import s from './CredentialsForm.module.scss';
 
 interface CredentialsFormProps extends Partial<StepWizardChildProps> {
   className?: string;
@@ -27,9 +27,9 @@ interface CredentialsFormProps extends Partial<StepWizardChildProps> {
 
 export const CredentialsForm: FC<CredentialsFormProps> = ({
   className,
-  nextStep,
+  nextStep
 }) => {
-  const [submissionMessage, setSubmissionMessage] = useState("");
+  const [submissionMessage, setSubmissionMessage] = useState('');
   const tShared = useTranslations(Translation.Shared);
 
   const storedFormData = sessionStorage.getItem(MutationKey.Credentials);
@@ -38,12 +38,12 @@ export const CredentialsForm: FC<CredentialsFormProps> = ({
 
   const form = useForm<ICredentialsForm>({
     defaultValues: parsedFormData,
-    mode: "onChange",
+    mode: 'onChange'
   });
 
   const { isPending: isRegisterPending, mutate: register } = useMutation({
     mutationFn: async (data: ICredentialsForm) => {
-      const AuthService = await import("@/features/auth").then(
+      const AuthService = await import('@/features/auth').then(
         (module) => module.AuthService
       );
 
@@ -58,12 +58,12 @@ export const CredentialsForm: FC<CredentialsFormProps> = ({
     mutationKey: [MutationKey.Credentials],
     onError: (error) => {
       const errorMessages = {
-        default: "errors.unknown",
-        [ErrorCode.UserAlreadyExists]: "errors.user-already-exists",
+        default: 'errors.unknown',
+        [ErrorCode.UserAlreadyExists]: 'errors.user-already-exists'
       };
       const errorMessage =
         errorMessages[error.message as keyof typeof errorMessages] ||
-        errorMessages["default"];
+        errorMessages['default'];
 
       setSubmissionMessage(errorMessage);
       console.warn(error);
@@ -71,9 +71,9 @@ export const CredentialsForm: FC<CredentialsFormProps> = ({
     onSuccess: (data) => {
       sessionStorage.setItem(MutationKey.Credentials, JSON.stringify(data));
 
-      setSubmissionMessage("");
+      setSubmissionMessage('');
       nextStep?.();
-    },
+    }
   });
 
   return (
@@ -85,13 +85,13 @@ export const CredentialsForm: FC<CredentialsFormProps> = ({
             isLoading={isRegisterPending}
             type="submit"
           >
-            {tShared("form.submit")}
+            {tShared('form.submit')}
           </Btn>
           <Link
             className={s.credentialsForm__link}
             href={Pathname.ResetPassword}
           >
-            {tShared("forgot-password")}
+            {tShared('forgot-password')}
           </Link>
         </>
       }

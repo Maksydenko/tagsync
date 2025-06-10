@@ -1,26 +1,26 @@
-"use client";
+'use client';
 
-import { HTMLInputTypeAttribute, ReactNode, useState } from "react";
-import { clsx } from "clsx";
+import { HTMLInputTypeAttribute, ReactNode, useState } from 'react';
+import { clsx } from 'clsx';
 import {
   FieldValues,
   Path,
   RegisterOptions,
-  UseFormReturn,
-} from "react-hook-form";
+  UseFormReturn
+} from 'react-hook-form';
 
-import { ILink } from "@/shared/model";
+import { ILink } from '@/shared/model';
 
-import { formatLabel } from "./formatLabel.util";
+import { formatLabel } from './formatLabel.util';
 
-import { Checkbox } from "./Checkbox/Checkbox";
-import { Input } from "./Input/Input";
-import { Phone } from "./Phone/Phone";
-import { Range } from "./Range/Range";
-import { Rating } from "./Rating/Rating";
-import { Select } from "./Select/Select";
+import { Checkbox } from './Checkbox/Checkbox';
+import { Input } from './Input/Input';
+import { Phone } from './Phone/Phone';
+import { Range } from './Range/Range';
+import { Rating } from './Rating/Rating';
+import { Select } from './Select/Select';
 
-import s from "./Field.module.scss";
+import s from './Field.module.scss';
 
 interface FieldProps<T extends FieldValues> {
   className?: string;
@@ -50,7 +50,7 @@ export const Field = <T extends FieldValues>({
   const [isFocused, setIsFocused] = useState(false);
 
   const {
-    formState: { errors },
+    formState: { errors }
   } = formReturn;
   const error = errors[name];
 
@@ -61,7 +61,7 @@ export const Field = <T extends FieldValues>({
   let field;
 
   switch (type) {
-    case "checkbox":
+    case 'checkbox':
       return (
         <Checkbox
           {...props}
@@ -72,21 +72,21 @@ export const Field = <T extends FieldValues>({
           options={options}
         />
       );
-    case "range":
-    case "ranges":
+    case 'range':
+    case 'ranges':
       field = (
         <Range
           {...props}
           formReturn={formReturn}
           name={name}
           options={options}
-          {...(type === "ranges" && {
-            range: true,
+          {...(type === 'ranges' && {
+            range: true
           })}
         />
       );
       break;
-    case "rating":
+    case 'rating':
       field = (
         <Rating
           {...props}
@@ -96,12 +96,12 @@ export const Field = <T extends FieldValues>({
         />
       );
       break;
-    case "select":
+    case 'select':
       field = (
         <Select {...props} formReturn={formReturn} items={items} name={name} />
       );
       break;
-    case "tel":
+    case 'tel':
       field = (
         <Phone
           {...props}
@@ -151,7 +151,7 @@ export const Field = <T extends FieldValues>({
           </label>
         )}
         {field}
-        {typeof error?.message === "string" && (
+        {typeof error?.message === 'string' && (
           <p className={s.field__error}>{error.message}</p>
         )}
       </div>

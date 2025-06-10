@@ -1,4 +1,4 @@
-@use "@/application/styles/module" as m;
+@use '@/application/styles/module' as m;
 
 .range {
   // .range__body
@@ -50,8 +50,8 @@
   }
 
   :global(
-      .rc-slider-handle-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging
-    ) {
+    .rc-slider-handle-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging
+  ) {
     border-color: m.$secondaryColor;
     box-shadow: 0 0 0 m.rem(5) m.$secondaryColor;
   }

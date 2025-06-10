@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { useAtom } from "jotai";
+import { FC } from 'react';
+import { useAtom } from 'jotai';
 
-import { categoriesAtom } from "@/entities/product";
+import { categoriesAtom } from '@/entities/product';
 
-import { SidebarItem } from "./SidebarItem";
+import { SidebarItem } from './SidebarItem';
 
-import s from "../Sidebar.module.scss";
+import s from '../Sidebar.module.scss';
 
 export const SidebarItems: FC = () => {
   const [{ data: categoriesData }] = useAtom(categoriesAtom);

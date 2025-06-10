@@ -1,34 +1,34 @@
-"use client";
+'use client';
 
-import { FC, useCallback, useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
-import { useAtom } from "jotai";
-import { useForm } from "react-hook-form";
+import { FC, useCallback, useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
+import { useAtom } from 'jotai';
+import { useForm } from 'react-hook-form';
 
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { AuthForm } from "@/features/auth";
+import { AuthForm } from '@/features/auth';
 
-import { IProduct } from "@/entities/product";
-import { userAtom } from "@/entities/user";
+import { IProduct } from '@/entities/product';
+import { userAtom } from '@/entities/user';
 
-import { Translation } from "@/shared/config";
-import { MutationKey, QueryKey } from "@/shared/model";
-import { Btn, Popup } from "@/shared/ui";
+import { Translation } from '@/shared/config';
+import { MutationKey, QueryKey } from '@/shared/model';
+import { Btn, Popup } from '@/shared/ui';
 
-import { getLeaveReviewFields, ILeaveReviewForm } from "../../model";
+import { getLeaveReviewFields, ILeaveReviewForm } from '../../model';
 
-import s from "./LeaveReview.module.scss";
+import s from './LeaveReview.module.scss';
 
 interface LeaveReviewProps {
   className?: string;
-  productId: IProduct["product_id"];
+  productId: IProduct['product_id'];
 }
 
 export const LeaveReview: FC<LeaveReviewProps> = ({ className, productId }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [submissionMessage, setSubmissionMessage] = useState("");
+  const [submissionMessage, setSubmissionMessage] = useState('');
 
   const tShared = useTranslations(Translation.Shared);
   const queryClient = useQueryClient();
@@ -39,15 +39,15 @@ export const LeaveReview: FC<LeaveReviewProps> = ({ className, productId }) => {
   const form = useForm<ILeaveReviewForm>({
     // TODO: remove default values
     defaultValues: {
-      rating: 5,
+      rating: 5
     },
-    mode: "onChange",
+    mode: 'onChange'
   });
 
   const close = useCallback(() => {
     form.reset();
     setIsOpen(false);
-    setSubmissionMessage("");
+    setSubmissionMessage('');
   }, [form]);
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export const LeaveReview: FC<LeaveReviewProps> = ({ className, productId }) => {
         return;
       }
 
-      const ReviewsService = await import("../../api").then(
+      const ReviewsService = await import('../../api').then(
         (module) => module.ReviewsService
       );
 
@@ -74,26 +74,26 @@ export const LeaveReview: FC<LeaveReviewProps> = ({ className, productId }) => {
         lastName: user.lastName,
         product_id: productId,
         rating: data.rating,
-        userEmail: user.email,
+        userEmail: user.email
       });
     },
     mutationKey: [MutationKey.LeaveReview],
     onError: (error) => {
       const errorMessages = {
-        default: "errors.unknown",
+        default: 'errors.unknown'
       };
-      const errorMessage = errorMessages["default"];
+      const errorMessage = errorMessages['default'];
 
       setSubmissionMessage(errorMessage);
       console.warn(error);
     },
     onSuccess: async () => {
       await queryClient.invalidateQueries({
-        queryKey: [QueryKey.Reviews],
+        queryKey: [QueryKey.Reviews]
       });
 
       close();
-    },
+    }
   });
 
   return (
@@ -101,7 +101,7 @@ export const LeaveReview: FC<LeaveReviewProps> = ({ className, productId }) => {
       <Popup
         btn={
           <Btn className={s.leaveReview__btn} asChild>
-            <p>{tShared("review.leave-review")}</p>
+            <p>{tShared('review.leave-review')}</p>
           </Btn>
         }
         className={s.leaveReview__popup}
@@ -110,7 +110,7 @@ export const LeaveReview: FC<LeaveReviewProps> = ({ className, productId }) => {
       >
         <div className={s.leaveReview__body}>
           <h2 className={s.leaveReview__title}>
-            {tShared("review.leave-review")}
+            {tShared('review.leave-review')}
           </h2>
           <AuthForm
             btns={
@@ -119,7 +119,7 @@ export const LeaveReview: FC<LeaveReviewProps> = ({ className, productId }) => {
                 isLoading={isLeaveReviewPending}
                 type="submit"
               >
-                {tShared("form.submit")}
+                {tShared('form.submit')}
               </Btn>
             }
             className={s.leaveReview__form}

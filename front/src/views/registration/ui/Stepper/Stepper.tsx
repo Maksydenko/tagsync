@@ -1,12 +1,12 @@
-import { FC, useCallback, useEffect, useMemo, useState } from "react";
-import { clsx } from "clsx";
-import Steps from "rc-steps";
+import { FC, useCallback, useEffect, useMemo, useState } from 'react';
+import { clsx } from 'clsx';
+import Steps from 'rc-steps';
 
-import { transformPxToRem, useWindowListener } from "@/shared/model";
+import { transformPxToRem, useWindowListener } from '@/shared/model';
 
-import { createSteps } from "../../model";
+import { createSteps } from '../../model';
 
-import s from "./Stepper.module.scss";
+import s from './Stepper.module.scss';
 
 interface StepperProps {
   className?: string;
@@ -19,17 +19,20 @@ export const Stepper: FC<StepperProps> = ({
   className,
   current,
   onChange,
-  stepsLength,
+  stepsLength
 }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [progressbarWidth, setProgressbarWidth] = useState(0);
 
-  const items = useMemo(() => createSteps(currentStep, stepsLength), [currentStep, stepsLength]);
+  const items = useMemo(
+    () => createSteps(currentStep, stepsLength),
+    [currentStep, stepsLength]
+  );
 
   const { length: itemsLength } = items;
 
   const createStepsGap = useCallback(() => {
-    const allSteps = document.querySelectorAll("#stepper .rc-steps-item");
+    const allSteps = document.querySelectorAll('#stepper .rc-steps-item');
     const [step1, step2] = allSteps;
 
     if (!step1 || !step2) {
@@ -43,10 +46,10 @@ export const Stepper: FC<StepperProps> = ({
 
     setProgressbarWidth(stepsGap + rect1.width / itemsLength);
   }, [itemsLength]);
-  useWindowListener("resize", createStepsGap);
+  useWindowListener('resize', createStepsGap);
 
   const handleKeyDownCallback = useCallback((e: KeyboardEvent) => {
-    if (e.key !== "Enter") {
+    if (e.key !== 'Enter') {
       return;
     }
 
@@ -54,10 +57,10 @@ export const Stepper: FC<StepperProps> = ({
   }, []);
 
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyDownCallback);
+    window.addEventListener('keydown', handleKeyDownCallback);
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDownCallback);
+      window.removeEventListener('keydown', handleKeyDownCallback);
     };
   }, [handleKeyDownCallback]);
 
@@ -77,7 +80,7 @@ export const Stepper: FC<StepperProps> = ({
       <span
         className={s.stepper__progressbar}
         style={{
-          inlineSize: transformPxToRem(progressbarWidth * current),
+          inlineSize: transformPxToRem(progressbarWidth * current) || 'auto'
         }}
       />
     </div>

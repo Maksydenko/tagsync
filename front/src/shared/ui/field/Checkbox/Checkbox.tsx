@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import { KeyboardEvent, ReactNode, useState } from "react";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
+import { KeyboardEvent, ReactNode, useState } from 'react';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
 import {
   FieldValues,
   Path,
   PathValue,
   RegisterOptions,
-  UseFormReturn,
-} from "react-hook-form";
+  UseFormReturn
+} from 'react-hook-form';
 
-import { Translation } from "@/shared/config";
+import { Translation } from '@/shared/config';
 
-import { Img } from "../../img/Img";
+import { Img } from '../../img/Img';
 
-import s from "./Checkbox.module.scss";
+import s from './Checkbox.module.scss';
 
 interface CheckboxProps<T extends FieldValues> {
   className?: string;
@@ -33,7 +33,7 @@ export const Checkbox = <T extends FieldValues>({
   options,
   ...props
 }: CheckboxProps<T>): ReactNode => {
-  const TRIGGERED_KEYS = ["Enter", " "];
+  const TRIGGERED_KEYS = ['Enter', ' '];
 
   const [isFocused, setIsFocused] = useState(false);
   const tShared = useTranslations(Translation.Shared);
@@ -42,7 +42,7 @@ export const Checkbox = <T extends FieldValues>({
     formState: { errors },
     register,
     setValue,
-    watch,
+    watch
   } = formReturn;
 
   const error = errors[name];
@@ -93,7 +93,7 @@ export const Checkbox = <T extends FieldValues>({
       {label && (
         <label htmlFor={name}>
           <Img
-            alt={tShared("checkmark")}
+            alt={tShared('checkmark')}
             className={s.checkbox__icon}
             height={20}
             src="/img/icons/form/checkmark.svg"

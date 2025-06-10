@@ -1,4 +1,4 @@
-@use "@/application/styles/module" as m;
+@use '@/application/styles/module' as m;
 
 .filterBadges {
   // .filterBadges__body
@@ -32,7 +32,7 @@
       inset-block-start: 50%;
       inset-inline: 0;
       block-size: m.rem(2);
-      content: "";
+      content: '';
       background: var(--mainBgColor);
       border-radius: m.rem(4);
       transition: 0.3s ease 0s;

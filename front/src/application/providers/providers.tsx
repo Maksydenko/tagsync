@@ -1,10 +1,10 @@
-import { FC, ReactNode } from "react";
-import { ThemeProvider } from "next-themes";
+import { FC, ReactNode } from 'react';
+import { ThemeProvider } from 'next-themes';
 
-import { Locale } from "@/shared/config";
+import { Locale } from '@/shared/config';
 
-import { NextIntlProvider } from "./nextIntlClient.provider";
-import { QueryProvider } from "./query/query.provider";
+import { NextIntlProvider } from './nextIntlClient.provider';
+import { QueryProvider } from './query/query.provider';
 
 interface ProvidersProps {
   children: ReactNode;

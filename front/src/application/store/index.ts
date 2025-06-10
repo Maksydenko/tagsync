@@ -1,1 +1,1 @@
-export * from "./useLocalCart.store";
+export * from './useLocalCart.store';

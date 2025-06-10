@@ -1,7 +1,7 @@
 // Mixins
 
 // Connection utils
-@use "./utils";
+@use './utils';
 
 // ============================================================================
 
@@ -18,9 +18,8 @@
   $addSize: calc(($startSize - $minSize) / 16);
 
   $calcSize: calc(
-    #{utils.rem($minSize)} + #{$addSize} * (100vw - #{utils.rem($widthTo)}) / #{calc(
-        $widthFrom / 16
-      ) - calc($widthTo / 16)}
+    #{utils.rem($minSize)} + #{$addSize} * (100vw - #{utils.rem($widthTo)}) /
+      #{calc($widthFrom / 16) - calc($widthTo / 16)}
   );
 
   // If there is less container
@@ -51,8 +50,9 @@
     font-family: $fontName;
     font-style: $style;
     font-weight: $weight;
-    src: url("/fonts/#{$fileName}/#{$fileName}.woff2") format("woff2"),
-      url("/fonts/#{$fileName}/#{$fileName}.woff") format("woff");
+    src:
+      url('/fonts/#{$fileName}/#{$fileName}.woff2') format('woff2'),
+      url('/fonts/#{$fileName}/#{$fileName}.woff') format('woff');
     font-display: swap;
   }
 }
@@ -60,11 +60,11 @@
 // Themized property
 @mixin theme($property, $lightValue, $darkValue) {
   #html {
-    &[data-theme="light"] {
+    &[data-theme='light'] {
       --#{$property}: #{$lightValue};
     }
 
-    &[data-theme="dark"] {
+    &[data-theme='dark'] {
       --#{$property}: #{$darkValue};
     }
   }

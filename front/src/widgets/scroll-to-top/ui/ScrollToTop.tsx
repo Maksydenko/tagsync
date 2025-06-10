@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
-import { animate } from "framer-motion";
+import { FC } from 'react';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
+import { animate } from 'framer-motion';
 
-import { Translation } from "@/shared/config";
-import { useActiveOnScroll } from "@/shared/model";
-import { Img } from "@/shared/ui";
+import { Translation } from '@/shared/config';
+import { useActiveOnScroll } from '@/shared/model';
+import { Img } from '@/shared/ui';
 
-import s from "./ScrollToTop.module.scss";
+import s from './ScrollToTop.module.scss';
 
 interface ScrollToTopProps {
   className?: string;
@@ -26,7 +26,7 @@ export const ScrollToTop: FC<ScrollToTopProps> = ({ className }) => {
       duration: 0.8,
       onUpdate: (value) => {
         scrollTo(0, value);
-      },
+      }
     });
   };
 
@@ -39,13 +39,13 @@ export const ScrollToTop: FC<ScrollToTopProps> = ({ className }) => {
       )}
     >
       <button
-        aria-label={tShared("scroll-to-top")}
+        aria-label={tShared('scroll-to-top')}
         className={s.scrollToTop__btn}
         type="button"
         onClick={handleClick}
       >
         <Img
-          alt={tShared("arrow")}
+          alt={tShared('arrow')}
           className={s.scrollToTop__icon}
           src="/img/icons/form/arrow-down.svg"
           isSvg

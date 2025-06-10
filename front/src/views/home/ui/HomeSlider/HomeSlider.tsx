@@ -1,18 +1,18 @@
-import { FC } from "react";
-import { clsx } from "clsx";
+import { FC } from 'react';
+import { clsx } from 'clsx';
 
-import { SliderSwiper } from "@/shared/ui";
+import { SliderSwiper } from '@/shared/ui';
 
-import { HomeSlide } from "./HomeSlide/HomeSlide";
+import { HomeSlide } from './HomeSlide/HomeSlide';
 
-import s from "./HomeSlider.module.scss";
+import s from './HomeSlider.module.scss';
 
 interface HomeSliderProps {
   className?: string;
 }
 
 export const HomeSlider: FC<HomeSliderProps> = ({ className }) => {
-  const slides = ["gaming", "recommendations", "delivery"];
+  const slides = ['gaming', 'recommendations', 'delivery'];
 
   return (
     <div className={clsx(s.homeSlider, className)}>
@@ -29,7 +29,7 @@ export const HomeSlider: FC<HomeSliderProps> = ({ className }) => {
                 isPriority={index === 0}
                 slide={slide}
               />
-            ),
+            )
           }))}
           spaceBetween={0}
           autoplay

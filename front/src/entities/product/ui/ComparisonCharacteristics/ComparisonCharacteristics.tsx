@@ -1,29 +1,29 @@
-"use client";
+'use client';
 
-import { FC, useMemo } from "react";
-import { useLocale } from "next-intl";
-import { clsx } from "clsx";
-import { useAtom } from "jotai";
+import { FC, useMemo } from 'react';
+import { useLocale } from 'next-intl';
+import { clsx } from 'clsx';
+import { useAtom } from 'jotai';
 
-import { ColumnDef } from "@tanstack/react-table";
+import { ColumnDef } from '@tanstack/react-table';
 
-import { comparisonsAtom, ProductCard } from "@/entities/product";
-import { userAtom } from "@/entities/user";
+import { comparisonsAtom, ProductCard } from '@/entities/product';
+import { userAtom } from '@/entities/user';
 
-import { Locale } from "@/shared/config";
-import { ILink } from "@/shared/model";
-import { Loader } from "@/shared/ui";
+import { Locale } from '@/shared/config';
+import { ILink } from '@/shared/model';
+import { Loader } from '@/shared/ui';
 
-import { ComparisonCharacteristicsTable } from "./ComparisonCharacteristicsTable/ComparisonCharacteristicsTable";
+import { ComparisonCharacteristicsTable } from './ComparisonCharacteristicsTable/ComparisonCharacteristicsTable';
 
-import s from "./ComparisonCharacteristics.module.scss";
+import s from './ComparisonCharacteristics.module.scss';
 
 interface ComparisonCharacteristicsProps {
   className?: string;
 }
 
 export const ComparisonCharacteristics: FC<ComparisonCharacteristicsProps> = ({
-  className,
+  className
 }) => {
   const locale = useLocale() as Locale;
   const [{ data: userData }] = useAtom(userAtom);
@@ -57,7 +57,7 @@ export const ComparisonCharacteristics: FC<ComparisonCharacteristicsProps> = ({
             if (!allCharacteristics.has(characteristic.name)) {
               allCharacteristics.set(characteristic.name, {
                 label,
-                value: Array(products.length).fill("—"),
+                value: Array(products.length).fill('—')
               });
             }
 
@@ -65,7 +65,7 @@ export const ComparisonCharacteristics: FC<ComparisonCharacteristicsProps> = ({
             entry.value[index] =
               characteristic?.value_translations?.[locale] ||
               characteristic.value ||
-              "—";
+              '—';
           });
         });
 
@@ -83,7 +83,7 @@ export const ComparisonCharacteristics: FC<ComparisonCharacteristicsProps> = ({
               isStable
             />
           ),
-          id: product.product_id.toString(),
+          id: product.product_id.toString()
         })
       );
 
@@ -91,7 +91,7 @@ export const ComparisonCharacteristics: FC<ComparisonCharacteristicsProps> = ({
         columns,
         data,
         groupId,
-        products,
+        products
       };
     });
   }, [comparisonsRecord, locale]);
@@ -107,7 +107,7 @@ export const ComparisonCharacteristics: FC<ComparisonCharacteristicsProps> = ({
               columns: groupColumns,
               data: groupData,
               groupId,
-              products: groupProducts,
+              products: groupProducts
             }) => (
               <div key={groupId} className={s.comparisonCharacteristics__group}>
                 <ComparisonCharacteristicsTable

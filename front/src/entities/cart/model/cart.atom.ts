@@ -1,12 +1,12 @@
-import { atom } from "jotai";
-import { atomFamily } from "jotai/utils";
-import { atomWithQuery } from "jotai-tanstack-query";
+import { atom } from 'jotai';
+import { atomFamily } from 'jotai/utils';
+import { atomWithQuery } from 'jotai-tanstack-query';
 
-import { queryOptions } from "@tanstack/react-query";
+import { queryOptions } from '@tanstack/react-query';
 
-import { CartService } from "@/entities/cart";
+import { CartService } from '@/entities/cart';
 
-import { QueryKey } from "@/shared/model";
+import { QueryKey } from '@/shared/model';
 
 export const cartOpenAtom = atom(false);
 
@@ -15,7 +15,7 @@ export const cartAtom = atomFamily((userEmail: string | undefined) =>
     queryOptions({
       enabled: !!userEmail,
       queryFn: () => CartService.get(userEmail!),
-      queryKey: [QueryKey.Cart, userEmail],
+      queryKey: [QueryKey.Cart, userEmail]
     })
   )
 );

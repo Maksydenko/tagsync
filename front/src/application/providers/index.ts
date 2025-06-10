@@ -1,1 +1,1 @@
-export { LayoutProvider } from "./layout.provider";
+export { LayoutProvider } from './layout.provider';

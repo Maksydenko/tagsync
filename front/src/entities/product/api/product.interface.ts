@@ -1,4 +1,4 @@
-import { ITranslations } from "@/shared/api";
+import { ITranslations } from '@/shared/api';
 
 export interface IProduct {
   characteristics: IProductCharacteristic[];

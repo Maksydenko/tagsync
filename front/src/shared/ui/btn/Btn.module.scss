@@ -1,4 +1,4 @@
-@use "@/application/styles/module" as m;
+@use '@/application/styles/module' as m;
 
 .btn {
   @extend %btn;
@@ -42,11 +42,11 @@
     }
   }
 
-  &[aria-disabled="true"] {
+  &[aria-disabled='true'] {
     cursor: default;
   }
 
-  &:not([aria-disabled="true"]) {
+  &:not([aria-disabled='true']) {
     &:hover,
     &:focus-visible {
       color: var(--mainColor);

@@ -1,40 +1,40 @@
-"use client";
+'use client';
 
-import { FC, useState } from "react";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
-import { useAtom } from "jotai";
-import { useForm } from "react-hook-form";
+import { FC, useState } from 'react';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
+import { useAtom } from 'jotai';
+import { useForm } from 'react-hook-form';
 
-import { useMutation } from "@tanstack/react-query";
+import { useMutation } from '@tanstack/react-query';
 
 import {
   authAtom,
   AuthForm,
   getResetPasswordFields,
-  IResetPasswordForm,
-} from "@/features/auth";
+  IResetPasswordForm
+} from '@/features/auth';
 
-import { Translation } from "@/shared/config";
-import { MutationKey } from "@/shared/model";
-import { Btn } from "@/shared/ui";
+import { Translation } from '@/shared/config';
+import { MutationKey } from '@/shared/model';
+import { Btn } from '@/shared/ui';
 
-import s from "./ResetPasswordForm.module.scss";
+import s from './ResetPasswordForm.module.scss';
 
 interface ResetPasswordFormProps {
   className?: string;
 }
 
 export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
-  className,
+  className
 }) => {
-  const [submissionMessage, setSubmissionMessage] = useState("");
+  const [submissionMessage, setSubmissionMessage] = useState('');
   const tShared = useTranslations(Translation.Shared);
 
   const [{ accessToken, refreshToken }] = useAtom(authAtom);
 
   const form = useForm<IResetPasswordForm>({
-    mode: "onChange",
+    mode: 'onChange'
   });
 
   const { isPending: isResetPasswordPending, mutate: login } = useMutation({
@@ -43,31 +43,31 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
         throw new Error();
       }
 
-      const AuthService = await import("@/features/auth").then(
+      const AuthService = await import('@/features/auth').then(
         (module) => module.AuthService
       );
 
       return AuthService.resetPassword({
         accessToken,
         password,
-        refreshToken,
+        refreshToken
       });
     },
     mutationKey: [MutationKey.ResetPassword],
     onError: (error) => {
       const errorMessages = {
-        default: "errors.unknown",
+        default: 'errors.unknown'
       };
       const errorMessage =
         errorMessages[error.message as keyof typeof errorMessages] ||
-        errorMessages["default"];
+        errorMessages['default'];
 
       setSubmissionMessage(errorMessage);
       console.warn(error);
     },
     onSuccess: () => {
       // TODO: handle success message
-    },
+    }
   });
 
   return (
@@ -78,7 +78,7 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
           isLoading={isResetPasswordPending}
           type="submit"
         >
-          {tShared("form.submit")}
+          {tShared('form.submit')}
         </Btn>
       }
       className={clsx(s.resetPasswordForm, className)}

@@ -1,2 +1,2 @@
-export * from "./reviews.interface";
-export * from "./reviews.service";
+export * from './reviews.interface';
+export * from './reviews.service';

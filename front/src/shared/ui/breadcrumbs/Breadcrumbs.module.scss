@@ -1,4 +1,4 @@
-@use "@/application/styles/module" as m;
+@use '@/application/styles/module' as m;
 
 .breadcrumbs {
   display: flex;
@@ -22,7 +22,7 @@
         position: absolute;
         top: 50%;
         right: m.rem(calc(-46 / 2));
-        content: "/";
+        content: '/';
         transform: translate(50%, -50%);
 
         @media (max-width: m.$mobile) {

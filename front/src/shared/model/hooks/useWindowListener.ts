@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 export const useWindowListener = (type: string, listener: () => void) => {
   useEffect(() => {

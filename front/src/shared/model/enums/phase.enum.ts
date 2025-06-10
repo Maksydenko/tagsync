@@ -1,5 +1,5 @@
 export enum Phase {
-  Development = "development",
-  Production = "production",
-  Staging = "staging",
+  Development = 'development',
+  Production = 'production',
+  Staging = 'staging'
 }

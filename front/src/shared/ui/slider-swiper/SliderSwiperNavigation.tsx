@@ -1,20 +1,20 @@
-import { FC, MutableRefObject, useCallback, useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
-import { clsx } from "clsx";
-import { SwiperRef } from "swiper/react";
-import { Swiper, SwiperOptions } from "swiper/types";
+import { FC, MutableRefObject, useCallback, useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
+import { SwiperRef } from 'swiper/react';
+import { Swiper, SwiperOptions } from 'swiper/types';
 
-import { Translation } from "@/shared/config";
-import { Direction, SlideDirection } from "@/shared/model";
+import { Translation } from '@/shared/config';
+import { Direction, SlideDirection } from '@/shared/model';
 
-import { Img } from "../img/Img";
+import { Img } from '../img/Img';
 
-import s from "./SliderSwiper.module.scss";
+import s from './SliderSwiper.module.scss';
 
 interface SliderSwiperNavigationProps {
   direction: Direction;
-  initialSlide: SwiperOptions["initialSlide"];
-  loop: SwiperOptions["loop"];
+  initialSlide: SwiperOptions['initialSlide'];
+  loop: SwiperOptions['loop'];
   slidesLength: number;
   swiperRef: MutableRefObject<SwiperRef>;
 }
@@ -24,7 +24,7 @@ export const SliderSwiperNavigation: FC<SliderSwiperNavigationProps> = ({
   initialSlide,
   loop,
   slidesLength,
-  swiperRef,
+  swiperRef
 }) => {
   const [isFirstSlide, setIsFirstSlide] = useState(!loop && initialSlide === 0);
   const [isLastSlide, setIsLastSlide] = useState(
@@ -58,10 +58,10 @@ export const SliderSwiperNavigation: FC<SliderSwiperNavigationProps> = ({
 
     updateNavigation(swiper);
 
-    swiper.on("slideChange", updateNavigation);
+    swiper.on('slideChange', updateNavigation);
 
     return () => {
-      swiper.off("slideChange", updateNavigation);
+      swiper.off('slideChange', updateNavigation);
     };
   }, [loop, swiperRef, updateNavigation]);
 
@@ -75,7 +75,7 @@ export const SliderSwiperNavigation: FC<SliderSwiperNavigationProps> = ({
       },
       [SlideDirection.Prev]: () => {
         swiper?.slidePrev();
-      },
+      }
     };
 
     slides[slideDirection]();
@@ -89,7 +89,7 @@ export const SliderSwiperNavigation: FC<SliderSwiperNavigationProps> = ({
         aria-label={tShared(`slide-directions.${direction}`)}
         className={clsx(
           s.sliderSwiper__btn,
-          s[`sliderSwiper__btn_${isPrevDirection ? "prev" : "next"}`],
+          s[`sliderSwiper__btn_${isPrevDirection ? 'prev' : 'next'}`],
           isVertical && s.sliderSwiper__btn_vertical
         )}
         disabled={isPrevDirection ? isFirstSlide : isLastSlide}
@@ -99,7 +99,7 @@ export const SliderSwiperNavigation: FC<SliderSwiperNavigationProps> = ({
         }}
       >
         <Img
-          alt={tShared("arrow")}
+          alt={tShared('arrow')}
           className={s.sliderSwiper__icon}
           src="/img/icons/form/arrow-down.svg"
           isSvg

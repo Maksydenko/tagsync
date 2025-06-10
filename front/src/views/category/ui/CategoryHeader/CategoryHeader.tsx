@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { FC, Suspense } from "react";
-import { usePathname } from "next/navigation";
-import { useLocale, useTranslations } from "next-intl";
-import { clsx } from "clsx";
-import { useAtom } from "jotai";
+import { FC, Suspense } from 'react';
+import { usePathname } from 'next/navigation';
+import { useLocale, useTranslations } from 'next-intl';
+import { clsx } from 'clsx';
+import { useAtom } from 'jotai';
 
-import { FilterBadges, Filters, IFilter, Sort } from "@/features/filters";
+import { FilterBadges, Filters, IFilter, Sort } from '@/features/filters';
 
-import { categoriesAtom } from "@/entities/product";
+import { categoriesAtom } from '@/entities/product';
 
-import { Locale, Pathname, Translation } from "@/shared/config";
-import { ILink } from "@/shared/model";
-import { Breadcrumbs, Btn, Popup } from "@/shared/ui";
+import { Locale, Pathname, Translation } from '@/shared/config';
+import { ILink } from '@/shared/model';
+import { Breadcrumbs, Btn, Popup } from '@/shared/ui';
 
-import s from "./CategoryHeader.module.scss";
+import s from './CategoryHeader.module.scss';
 
 interface CategoryHeaderProps {
   className?: string;
@@ -23,7 +23,7 @@ interface CategoryHeaderProps {
 
 export const CategoryHeader: FC<CategoryHeaderProps> = ({
   className,
-  filtersData,
+  filtersData
 }) => {
   const pathname = usePathname();
   const locale = useLocale() as Locale;
@@ -34,7 +34,7 @@ export const CategoryHeader: FC<CategoryHeaderProps> = ({
   const [{ data: categoriesData }] = useAtom(categoriesAtom);
 
   const categories = categoriesData?.data;
-  const categorySlug = pathname.split("/")[2];
+  const categorySlug = pathname.split('/')[2];
   /* eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain */
   const category = categories?.find(
     (category) => category.slug === categorySlug
@@ -43,13 +43,13 @@ export const CategoryHeader: FC<CategoryHeaderProps> = ({
 
   const breadcrumbs: ILink[] = [
     {
-      label: tShared("pathnames.home"),
-      value: Pathname.Home,
+      label: tShared('pathnames.home'),
+      value: Pathname.Home
     },
     {
       label: categoryTitle,
-      value: categorySlug,
-    },
+      value: categorySlug
+    }
   ];
 
   return (
@@ -68,13 +68,13 @@ export const CategoryHeader: FC<CategoryHeaderProps> = ({
                 <Btn
                   className={s.categoryHeader__btn}
                   icon={{
-                    label: tCategory("filters.label"),
-                    value: "/img/icons/form/filter.svg",
+                    label: tCategory('filters.label'),
+                    value: '/img/icons/form/filter.svg'
                   }}
                   type="button"
                   asChild
                 >
-                  {tCategory("filters.label")}
+                  {tCategory('filters.label')}
                 </Btn>
               }
             >

@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
-import { Pathname } from "@/shared/config";
-import { Time } from "@/shared/model";
+import { Pathname } from '@/shared/config';
+import { Time } from '@/shared/model';
 
 export const useRedirectToHomepage = (): {
   time: number;
