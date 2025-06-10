@@ -15,7 +15,7 @@ interface ItemProps {
 }
 
 export const SidebarItem: FC<ItemProps> = ({
-  category: { img, slug, translations_slug },
+  category: { img, slug, translations_slug }
 }) => {
   const locale = useLocale() as Locale;
   const tShared = useTranslations(Translation.Shared);

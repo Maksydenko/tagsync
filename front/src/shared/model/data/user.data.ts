@@ -6,21 +6,21 @@ export const userData: ILinkWithIcon[] = [
   {
     icon: '/img/icons/user.svg',
     label: 'profile',
-    value: Pathname.Profile,
+    value: Pathname.Profile
   },
   {
     icon: '/img/icons/product/compare.svg',
     label: 'comparisons',
-    value: Pathname.Comparisons,
+    value: Pathname.Comparisons
   },
   {
     icon: '/img/icons/product/heart-empty.svg',
     label: 'wishlist',
-    value: Pathname.Wishlist,
+    value: Pathname.Wishlist
   },
   {
     icon: '/img/icons/order.svg',
     label: 'orders',
-    value: Pathname.Orders,
-  },
+    value: Pathname.Orders
+  }
 ];

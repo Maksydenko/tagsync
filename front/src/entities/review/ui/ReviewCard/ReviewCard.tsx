@@ -19,8 +19,8 @@ interface ReviewCardProps {
 export const ReviewCard: FC<ReviewCardProps> = ({ className, review }) => {
   const form = useForm({
     defaultValues: {
-      rating: review.rating,
-    },
+      rating: review.rating
+    }
   });
 
   return (
@@ -33,7 +33,7 @@ export const ReviewCard: FC<ReviewCardProps> = ({ className, review }) => {
           </h3>
           <p className={s.reviewCard__date}>
             {formatDate({
-              date: new Date(review.createdAt),
+              date: new Date(review.createdAt)
             })}
           </p>
         </div>
@@ -42,7 +42,7 @@ export const ReviewCard: FC<ReviewCardProps> = ({ className, review }) => {
           formReturn={form}
           name="rating"
           options={{
-            disabled: true,
+            disabled: true
           }}
         />
         <div className={s.reviewCard__text}>

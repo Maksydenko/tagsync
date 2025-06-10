@@ -24,5 +24,5 @@ export const dynamicParams = false;
 
 export const generateStaticParams = () =>
   routing.locales.map((locale) => ({
-    locale,
+    locale
   }));

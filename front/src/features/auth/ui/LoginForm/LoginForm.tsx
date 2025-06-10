@@ -42,7 +42,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
   const invalidateCart = useInvalidateAtom([QueryKey.Cart]);
 
   const form = useForm<ILoginForm>({
-    mode: 'onChange',
+    mode: 'onChange'
   });
 
   const { isPending: isLoginPending, mutate: login } = useMutation({
@@ -64,7 +64,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
       const errorMessages = {
         default: 'errors.unknown',
         [ErrorCode.EmailNotConfirmed]: 'errors.email-not-confirmed',
-        [ErrorCode.InvalidCredentials]: 'errors.invalid-credentials',
+        [ErrorCode.InvalidCredentials]: 'errors.invalid-credentials'
       };
       const errorMessage =
         errorMessages[error.code as keyof typeof errorMessages] ||
@@ -86,7 +86,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
             CartService.add({
               product_id: item.product_id,
               quantity: item.quantity,
-              userEmail,
+              userEmail
             })
           )
         );
@@ -99,7 +99,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
       }
 
       push(Pathname.Home);
-    },
+    }
   });
 
   return (

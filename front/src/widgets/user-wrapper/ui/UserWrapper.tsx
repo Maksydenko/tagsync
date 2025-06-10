@@ -23,7 +23,7 @@ interface UserWrapperProps {
 export const UserWrapper: FC<UserWrapperProps> = ({
   children,
   className,
-  title,
+  title
 }) => {
   const { push } = useRouter();
   const [{ data: userData, isLoading: isUserLoading }] = useAtom(userAtom);

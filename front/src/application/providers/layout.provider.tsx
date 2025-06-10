@@ -29,7 +29,7 @@ interface LayoutProviderProps {
 
 export const LayoutProvider: FC<LayoutProviderProps> = async ({
   children,
-  locale,
+  locale
 }) => (
   <html
     className={clsx(openSans.variable, montserrat.variable)}

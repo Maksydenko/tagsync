@@ -4,7 +4,7 @@ import { FC } from 'react';
 
 import {
   QueryClientProvider,
-  QueryClientProviderProps,
+  QueryClientProviderProps
 } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
@@ -13,7 +13,7 @@ import { Phase } from '@/shared/model';
 import { getQueryClient } from './queryClient.util';
 
 export const QueryProvider: FC<Partial<QueryClientProviderProps>> = ({
-  children,
+  children
 }) => {
   const queryClient = getQueryClient();
 

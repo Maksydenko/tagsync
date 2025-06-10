@@ -8,7 +8,7 @@ import {
   Path,
   PathValue,
   RegisterOptions,
-  UseFormReturn,
+  UseFormReturn
 } from 'react-hook-form';
 
 import { Translation } from '@/shared/config';
@@ -42,7 +42,7 @@ export const Checkbox = <T extends FieldValues>({
     formState: { errors },
     register,
     setValue,
-    watch,
+    watch
   } = formReturn;
 
   const error = errors[name];

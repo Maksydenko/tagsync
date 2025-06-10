@@ -18,6 +18,6 @@ export const useChangeStep = (
   return {
     currentStep,
     defaultStep: DEFAULT_STEP,
-    handleStepChange: changeStep,
+    handleStepChange: changeStep
   };
 };

@@ -10,4 +10,6 @@ interface TabsContentProps {
   content: ILink<ReactNode>['value'];
 }
 
-export const TabsContent: FC<TabsContentProps> = ({ content }) => <TabPanel className={s.tabs__content}>{content}</TabPanel>;
+export const TabsContent: FC<TabsContentProps> = ({ content }) => (
+  <TabPanel className={s.tabs__content}>{content}</TabPanel>
+);

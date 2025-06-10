@@ -18,7 +18,7 @@ interface HomeSlideProps {
 export const HomeSlide: FC<HomeSlideProps> = ({
   className,
   isPriority,
-  slide,
+  slide
 }) => {
   const locale = useLocale() as Locale;
   const tHome = useTranslations(Translation.Home);

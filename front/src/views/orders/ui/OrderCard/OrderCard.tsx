@@ -16,7 +16,7 @@ interface OrderCardProps {
 
 export const OrderCard: FC<OrderCardProps> = ({
   className,
-  orderData: { items, order_time, total_order_price },
+  orderData: { items, order_time, total_order_price }
 }) => (
   <div className={clsx(s.orderCard, className)}>
     <div className={s.orderCard__body}>
@@ -39,12 +39,12 @@ export const OrderCard: FC<OrderCardProps> = ({
       <div className={s.orderCard__content}>
         <p className={s.orderCard__date}>
           {formatDate({
-            date: new Date(order_time),
+            date: new Date(order_time)
           })}
         </p>
         <p className={s.orderCard__total}>
           {formatPrice({
-            price: total_order_price,
+            price: total_order_price
           })}
         </p>
       </div>

@@ -17,11 +17,11 @@ export const ReviewsService = {
 
   get: async (id: IProduct['product_id']) => {
     try {
-      const response = await axiosInstance.get(`/Review/${  id}`);
+      const response = await axiosInstance.get(`/Review/${id}`);
 
       return response;
     } catch (err) {
       throw err;
     }
-  },
+  }
 };

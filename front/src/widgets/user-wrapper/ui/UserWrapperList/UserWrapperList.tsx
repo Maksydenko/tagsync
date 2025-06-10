@@ -15,7 +15,7 @@ import {
   MutationKey,
   QueryKey,
   removeLocalePrefix,
-  userData,
+  userData
 } from '@/shared/model';
 import { Img } from '@/shared/ui';
 
@@ -42,7 +42,7 @@ export const UserWrapperList: FC<UserWrapperListProps> = ({ className }) => {
     onSuccess: async () => {
       await invalidateUser();
       push(Pathname.Login);
-    },
+    }
   });
 
   return (

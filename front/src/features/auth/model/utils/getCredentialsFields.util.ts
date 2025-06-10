@@ -10,73 +10,73 @@ export const getCredentialsFields = (
   tShared: ReturnType<typeof useTranslations>,
   formReturn: UseFormReturn<ICredentialsForm>
 ): IField<ICredentialsForm>[] => [
-    {
-      label: tShared('form.email.label'),
-      name: 'email',
-      options: {
-        maxLength: {
-          message: tShared('form.email.max', {
-            value: formConfig.email.max,
-          }),
-          value: formConfig.email.max,
-        },
-        pattern: {
-          message: tShared('form.email.pattern'),
-          value: formConfig.email.pattern,
-        },
-        required: tShared('form.email.required'),
+  {
+    label: tShared('form.email.label'),
+    name: 'email',
+    options: {
+      maxLength: {
+        message: tShared('form.email.max', {
+          value: formConfig.email.max
+        }),
+        value: formConfig.email.max
       },
-      type: 'email',
-    },
-    {
-      label: tShared('form.password.label'),
-      name: 'password',
-      options: {
-        maxLength: {
-          message: tShared('form.password.max', {
-            value: formConfig.password.max,
-          }),
-          value: formConfig.password.max,
-        },
-        minLength: {
-          message: tShared('form.password.min', {
-            value: formConfig.password.min,
-          }),
-          value: formConfig.password.min,
-        },
-        onChange: () => {
-          const { getValues, trigger } = formReturn;
-
-          if (!getValues('confirmPassword')) {
-            return;
-          }
-
-          trigger?.('confirmPassword');
-        },
-        pattern: {
-          message: tShared('form.password.pattern'),
-          value: formConfig.password.pattern,
-        },
-        required: tShared('form.password.required'),
+      pattern: {
+        message: tShared('form.email.pattern'),
+        value: formConfig.email.pattern
       },
-      type: 'password',
+      required: tShared('form.email.required')
     },
-    {
-      label: tShared('form.confirmPassword.label'),
-      name: 'confirmPassword',
-      options: {
-        required: tShared('form.confirmPassword.required'),
-        validate: (value, formValues) => {
-          if (!formValues.password) {
-            return;
-          }
-
-          return (
-            value === formValues.password ||
-            tShared('form.confirmPassword.pattern')
-          );
-        },
+    type: 'email'
+  },
+  {
+    label: tShared('form.password.label'),
+    name: 'password',
+    options: {
+      maxLength: {
+        message: tShared('form.password.max', {
+          value: formConfig.password.max
+        }),
+        value: formConfig.password.max
       },
-      type: 'password',
+      minLength: {
+        message: tShared('form.password.min', {
+          value: formConfig.password.min
+        }),
+        value: formConfig.password.min
+      },
+      onChange: () => {
+        const { getValues, trigger } = formReturn;
+
+        if (!getValues('confirmPassword')) {
+          return;
+        }
+
+        trigger?.('confirmPassword');
+      },
+      pattern: {
+        message: tShared('form.password.pattern'),
+        value: formConfig.password.pattern
+      },
+      required: tShared('form.password.required')
     },
-  ];
+    type: 'password'
+  },
+  {
+    label: tShared('form.confirmPassword.label'),
+    name: 'confirmPassword',
+    options: {
+      required: tShared('form.confirmPassword.required'),
+      validate: (value, formValues) => {
+        if (!formValues.password) {
+          return;
+        }
+
+        return (
+          value === formValues.password ||
+          tShared('form.confirmPassword.pattern')
+        );
+      }
+    },
+    type: 'password'
+  }
+];

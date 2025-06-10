@@ -21,7 +21,7 @@ export const formatPrice = ({
     maximumFractionDigits: fractionDigits,
     minimumFractionDigits: fractionDigits,
     number: roundedPrice,
-    ...props,
+    ...props
   });
 
   if (!formattedNumber) {

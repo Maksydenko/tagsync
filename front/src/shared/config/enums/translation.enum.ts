@@ -7,5 +7,5 @@ export enum Translation {
   Product = 'product',
   Registration = 'registration',
   ResetPassword = 'reset-password',
-  Shared = 'shared',
+  Shared = 'shared'
 }

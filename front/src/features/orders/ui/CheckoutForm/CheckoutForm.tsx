@@ -44,7 +44,7 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({ className }) => {
       city,
       name,
       phone,
-      surname,
+      surname
     }: ICheckoutForm) => {
       if (!user) {
         return;
@@ -59,13 +59,13 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({ className }) => {
         city: city.trim(),
         fullName: [name.trim(), surname.trim()].join(' '),
         phone: phone.replace(/\s+/g, ''),
-        userEmail: user?.email.trim(),
+        userEmail: user?.email.trim()
       });
     },
     mutationKey: [MutationKey.Checkout],
     onError: (error: AuthError) => {
       const errorMessages = {
-        default: 'errors.unknown',
+        default: 'errors.unknown'
       };
       const errorMessage =
         errorMessages[error.code as keyof typeof errorMessages] ||
@@ -77,11 +77,11 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({ className }) => {
     onSuccess: async () => {
       await invalidateCart();
       push(Pathname.Orders);
-    },
+    }
   });
 
   const form = useForm<ICheckoutForm>({
-    mode: 'onChange',
+    mode: 'onChange'
   });
   const { reset } = form;
 
@@ -97,7 +97,7 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({ className }) => {
       city,
       name: firstName,
       phone,
-      surname: lastName,
+      surname: lastName
     });
   }, [reset, user]);
 

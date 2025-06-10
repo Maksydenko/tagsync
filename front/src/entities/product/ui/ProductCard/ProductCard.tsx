@@ -22,7 +22,7 @@ import {
   formatPrice,
   isValueInSet,
   MutationKey,
-  QueryKey,
+  QueryKey
 } from '@/shared/model';
 import { Btn, Img, Loader, Rating } from '@/shared/ui';
 
@@ -41,7 +41,7 @@ interface ProductCardProps {
 export const ProductCard: FC<ProductCardProps> = ({
   className,
   isStable,
-  productData,
+  productData
 }) => {
   const { images, price, product_id, rating, slug, title } = productData;
 
@@ -61,7 +61,7 @@ export const ProductCard: FC<ProductCardProps> = ({
   const isWished = isValueInSet({
     data: wishlistData?.data,
     key: 'product_id',
-    value: product_id,
+    value: product_id
   });
 
   const invalidateComparisons = useInvalidateAtom([QueryKey.Comparisons]);
@@ -71,7 +71,7 @@ export const ProductCard: FC<ProductCardProps> = ({
   const isInComparisons = isValueInSet({
     data: comparisonsData?.data[slug.toLocaleLowerCase()],
     key: 'product_id',
-    value: product_id,
+    value: product_id
   });
 
   const invalidateCart = useInvalidateAtom([QueryKey.Cart]);
@@ -84,7 +84,7 @@ export const ProductCard: FC<ProductCardProps> = ({
   const isInCart = isValueInSet({
     data: cart.items,
     key: 'product_id',
-    value: product_id,
+    value: product_id
   });
 
   const { isPending: isAddToWishlistPending, mutate: addToWishlist } =
@@ -107,17 +107,17 @@ export const ProductCard: FC<ProductCardProps> = ({
         if (isWished) {
           return WishlistService.remove({
             product_id,
-            userEmail,
+            userEmail
           });
         }
 
         return WishlistService.add({
           product_id,
-          userEmail,
+          userEmail
         });
       },
       mutationKey: [MutationKey.AddToWishlist, userEmail],
-      onSuccess: async () => invalidateWishlist(),
+      onSuccess: async () => invalidateWishlist()
     });
 
   const { isPending: isAddToComparisonsPending, mutate: addToComparisons } =
@@ -140,17 +140,17 @@ export const ProductCard: FC<ProductCardProps> = ({
         if (isInComparisons) {
           return ComparisonsService.remove({
             product_id,
-            userEmail: user.email,
+            userEmail: user.email
           });
         }
 
         return ComparisonsService.add({
           product_id,
-          userEmail: user.email,
+          userEmail: user.email
         });
       },
       mutationKey: [MutationKey.AddToComparisons],
-      onSuccess: async () => invalidateComparisons(),
+      onSuccess: async () => invalidateComparisons()
     });
 
   const { isPending: isAddToCartPending, mutate: addToCart } = useMutation({
@@ -170,7 +170,7 @@ export const ProductCard: FC<ProductCardProps> = ({
       return CartService.add({
         product_id,
         quantity: 1,
-        userEmail: user.email,
+        userEmail: user.email
       });
     },
     mutationKey: [MutationKey.AddToCart],
@@ -180,13 +180,13 @@ export const ProductCard: FC<ProductCardProps> = ({
       }
 
       await invalidateCart();
-    },
+    }
   });
 
   const form = useForm({
     defaultValues: {
-      rating,
-    },
+      rating
+    }
   });
 
   return (
@@ -268,14 +268,14 @@ export const ProductCard: FC<ProductCardProps> = ({
             formReturn={form}
             name="rating"
             options={{
-              disabled: true,
+              disabled: true
             }}
           />
           <div className={s.productCard__footer}>
             <div className={s.productCard__box}>
               <p className={s.productCard__price}>
                 {formatPrice({
-                  price: +price,
+                  price: +price
                 })}
               </p>
               <div className={s.productCard__status}>
@@ -289,7 +289,7 @@ export const ProductCard: FC<ProductCardProps> = ({
                 label: tShared(
                   `product.cart.${isInCart ? 'in' : 'add-to'}-cart`
                 ),
-                value: '/img/icons/product/cart.svg',
+                value: '/img/icons/product/cart.svg'
               }}
               isLoading={isAddToCartPending}
               onClick={() => {

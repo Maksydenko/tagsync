@@ -17,7 +17,7 @@ interface LocaleSwitcherItemProps {
 }
 
 export const LocaleSwitcherItem: FC<LocaleSwitcherItemProps> = ({
-  locale: { label, value },
+  locale: { label, value }
 }) => {
   const [isPending, startTransition] = useTransition();
 
@@ -39,10 +39,10 @@ export const LocaleSwitcherItem: FC<LocaleSwitcherItemProps> = ({
           // are used in combination with a given `pathname`. Since the two will
           // always match for the current route, we can skip runtime checks
           params,
-          pathname,
+          pathname
         },
         {
-          locale: nextLocale,
+          locale: nextLocale
         }
       );
     });

@@ -13,7 +13,9 @@ interface TabsContentsProps {
 }
 
 export const TabsContents: FC<TabsContentsProps> = ({ tabs }) => (
-    <TabPanels className={s.tabs__contents}>
-      {tabs.map(({ label, value }) => <TabsContent key={label} content={value} />)}
-    </TabPanels>
-  );
+  <TabPanels className={s.tabs__contents}>
+    {tabs.map(({ label, value }) => (
+      <TabsContent key={label} content={value} />
+    ))}
+  </TabPanels>
+);

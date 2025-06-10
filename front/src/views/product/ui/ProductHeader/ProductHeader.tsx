@@ -19,7 +19,7 @@ interface ProductHeaderProps {
 
 export const ProductHeader: FC<ProductHeaderProps> = ({
   className,
-  productData: { product_id, slug, title: productTitle, translations_slug },
+  productData: { product_id, slug, title: productTitle, translations_slug }
 }) => {
   const locale = useLocale() as Locale;
   const tShared = useTranslations(Translation.Shared);
@@ -27,16 +27,16 @@ export const ProductHeader: FC<ProductHeaderProps> = ({
   const breadcrumbs: ILink[] = [
     {
       label: tShared('pathnames.home'),
-      value: Pathname.Home,
+      value: Pathname.Home
     },
     {
       label: translations_slug[locale],
-      value: `/${slug}`,
+      value: `/${slug}`
     },
     {
       label: productTitle,
-      value: product_id.toString(),
-    },
+      value: product_id.toString()
+    }
   ];
 
   return (

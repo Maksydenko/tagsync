@@ -7,7 +7,7 @@ import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
-  useReactTable,
+  useReactTable
 } from '@tanstack/react-table';
 
 import { ILink } from '@/shared/model';
@@ -27,7 +27,7 @@ export const ComparisonCharacteristicsTable: FC<
   const table = useReactTable({
     columns,
     data,
-    getCoreRowModel: getCoreRowModel(),
+    getCoreRowModel: getCoreRowModel()
   });
 
   return (

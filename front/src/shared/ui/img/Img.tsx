@@ -43,11 +43,11 @@ export const Img: FC<ImgProps> = ({
             {...(width && height
               ? {
                   height: +height * 2,
-                  width: +width * 2,
+                  width: +width * 2
                 }
               : {
                   fill,
-                  sizes,
+                  sizes
                 })}
             ref={imgRef}
             onLoad={() => {

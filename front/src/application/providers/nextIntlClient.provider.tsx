@@ -12,7 +12,7 @@ interface NextIntlProviderProps {
 
 export const NextIntlProvider: FC<NextIntlProviderProps> = async ({
   children,
-  locale,
+  locale
 }) => {
   // Ensure that the incoming `locale` is valid
   if (!hasLocale(routing.locales, locale)) {

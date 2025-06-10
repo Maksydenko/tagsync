@@ -6,7 +6,7 @@ import {
   FieldValues,
   Path,
   RegisterOptions,
-  UseFormReturn,
+  UseFormReturn
 } from 'react-hook-form';
 
 import { ILink } from '@/shared/model';
@@ -50,7 +50,7 @@ export const Field = <T extends FieldValues>({
   const [isFocused, setIsFocused] = useState(false);
 
   const {
-    formState: { errors },
+    formState: { errors }
   } = formReturn;
   const error = errors[name];
 
@@ -81,7 +81,7 @@ export const Field = <T extends FieldValues>({
           name={name}
           options={options}
           {...(type === 'ranges' && {
-            range: true,
+            range: true
           })}
         />
       );

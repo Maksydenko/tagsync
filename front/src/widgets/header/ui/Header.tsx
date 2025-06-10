@@ -26,7 +26,7 @@ export const Header: FC<HeaderProps> = ({ className }) => {
 
   const { isScrollLocked, setIsScrollLocked } = useScrollLock([
     'main',
-    'footer',
+    'footer'
   ]);
 
   const unlockScroll = () => {

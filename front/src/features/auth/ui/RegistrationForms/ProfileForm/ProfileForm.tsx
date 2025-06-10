@@ -14,7 +14,7 @@ import {
   AuthForm,
   getProfileFields,
   ICredentialsForm,
-  IProfileForm,
+  IProfileForm
 } from '@/features/auth';
 
 import { Pathname, Translation } from '@/shared/config';
@@ -36,7 +36,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({ className }) => {
   const invalidateUser = useInvalidateAtom([QueryKey.User]);
 
   const form = useForm<IProfileForm>({
-    mode: 'onChange',
+    mode: 'onChange'
   });
 
   const { isPending: isRegistrationPending, mutate: registration } =
@@ -58,7 +58,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({ className }) => {
 
         await AuthService.register({
           email,
-          password,
+          password
         });
 
         await AuthService.addUserData({
@@ -67,13 +67,13 @@ export const ProfileForm: FC<ProfileFormProps> = ({ className }) => {
           email,
           firstName: data.name.trim(),
           lastName: data.surname.trim(),
-          phone: data.phone.replace(/\s+/g, ''),
+          phone: data.phone.replace(/\s+/g, '')
         });
       },
       mutationKey: [MutationKey.Profile],
       onError: (error: AuthError) => {
         const errorMessages = {
-          default: 'errors.unknown',
+          default: 'errors.unknown'
         };
         const errorMessage =
           errorMessages[error.code as keyof typeof errorMessages] ||
@@ -87,7 +87,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({ className }) => {
         await invalidateUser();
 
         push(Pathname.Home);
-      },
+      }
     });
 
   return (

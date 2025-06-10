@@ -1,4 +1,4 @@
-@use "@/application/styles/module" as m;
+@use '@/application/styles/module' as m;
 
 .popupBtn {
 }
@@ -62,7 +62,7 @@
       inset-block-start: 50%;
       inset-inline: 0;
       block-size: m.rem(2);
-      content: "";
+      content: '';
       background: m.$darkColor;
       border-radius: m.rem(5);
     }
@@ -93,7 +93,7 @@
     &_bg {
       position: fixed;
       inset: 0;
-      content: "";
+      content: '';
       background: m.$darkColor;
       opacity: 0.8;
       transition: opacity 0.1s ease-out 0s;

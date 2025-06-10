@@ -16,7 +16,7 @@ export const addBreakpointDesktop: IAddBreakpointDesktop = (
   const firstBreakpoint = breakpoints[0];
   const newObject = {
     isBreakpoint: true,
-    slides: firstBreakpoint.slides,
+    slides: firstBreakpoint.slides
   };
   breakpoints.unshift(newObject);
 

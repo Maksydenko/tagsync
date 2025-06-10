@@ -24,7 +24,7 @@ export const SliderSwiperNavigation: FC<SliderSwiperNavigationProps> = ({
   initialSlide,
   loop,
   slidesLength,
-  swiperRef,
+  swiperRef
 }) => {
   const [isFirstSlide, setIsFirstSlide] = useState(!loop && initialSlide === 0);
   const [isLastSlide, setIsLastSlide] = useState(
@@ -75,7 +75,7 @@ export const SliderSwiperNavigation: FC<SliderSwiperNavigationProps> = ({
       },
       [SlideDirection.Prev]: () => {
         swiper?.slidePrev();
-      },
+      }
     };
 
     slides[slideDirection]();

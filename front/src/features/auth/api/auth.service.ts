@@ -11,7 +11,7 @@ import {
   IRegister,
   IRequestResetPassword,
   IResetPassword,
-  IUserData,
+  IUserData
 } from './interfaces';
 
 const { auth } = createClientComponentClient<IDatabase>();
@@ -114,11 +114,11 @@ export const AuthService = {
   resetPassword: async ({
     accessToken,
     password,
-    refreshToken,
+    refreshToken
   }: IResetPassword) => {
     const { error: sessionError } = await auth.setSession({
       access_token: accessToken,
-      refresh_token: refreshToken,
+      refresh_token: refreshToken
     });
 
     if (sessionError) {
@@ -126,7 +126,7 @@ export const AuthService = {
     }
 
     const { data: userData, error: userError } = await auth.updateUser({
-      password,
+      password
     });
 
     if (userError) {
@@ -134,5 +134,5 @@ export const AuthService = {
     }
 
     return userData;
-  },
+  }
 };

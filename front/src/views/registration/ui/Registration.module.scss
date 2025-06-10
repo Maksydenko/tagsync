@@ -1,4 +1,4 @@
-@use "@/application/styles/module" as m;
+@use '@/application/styles/module' as m;
 
 $bodyGap: 100;
 
@@ -48,7 +48,7 @@ $bodyGap: 100;
         inset-block: 0;
         inset-inline-end: m.rem(calc($bodyGap / -2));
         inline-size: m.rem(1);
-        content: "";
+        content: '';
         background: var(--mainColor);
         translate: 50% 0;
 

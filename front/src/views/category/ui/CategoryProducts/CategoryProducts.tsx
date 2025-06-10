@@ -18,7 +18,7 @@ interface CategoryProductsProps {
 
 export const CategoryProducts: FC<CategoryProductsProps> = ({
   className,
-  productsData,
+  productsData
 }) => (
   <div className={clsx(s.categoryProducts, className)}>
     <div className={s.categoryProducts__body}>

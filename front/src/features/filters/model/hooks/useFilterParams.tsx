@@ -20,11 +20,11 @@ interface IUseFilterParams<T extends FieldValues> {
 export const useFilterParams = <T extends FieldValues>({
   defaultPrice,
   filtersData,
-  form,
+  form
 }: IUseFilterParams<T>) => {
   const defaultFilters = useMemo(
     () => ({
-      [SearchParam.PriceRange]: defaultPrice,
+      [SearchParam.PriceRange]: defaultPrice
     }),
     [defaultPrice]
   );
@@ -97,6 +97,6 @@ export const useFilterParams = <T extends FieldValues>({
     filtersData,
     form,
     push,
-    searchParams,
+    searchParams
   ]);
 };

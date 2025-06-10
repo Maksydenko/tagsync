@@ -39,9 +39,9 @@ export const LeaveReview: FC<LeaveReviewProps> = ({ className, productId }) => {
   const form = useForm<ILeaveReviewForm>({
     // TODO: remove default values
     defaultValues: {
-      rating: 5,
+      rating: 5
     },
-    mode: 'onChange',
+    mode: 'onChange'
   });
 
   const close = useCallback(() => {
@@ -74,13 +74,13 @@ export const LeaveReview: FC<LeaveReviewProps> = ({ className, productId }) => {
         lastName: user.lastName,
         product_id: productId,
         rating: data.rating,
-        userEmail: user.email,
+        userEmail: user.email
       });
     },
     mutationKey: [MutationKey.LeaveReview],
     onError: (error) => {
       const errorMessages = {
-        default: 'errors.unknown',
+        default: 'errors.unknown'
       };
       const errorMessage = errorMessages['default'];
 
@@ -89,11 +89,11 @@ export const LeaveReview: FC<LeaveReviewProps> = ({ className, productId }) => {
     },
     onSuccess: async () => {
       await queryClient.invalidateQueries({
-        queryKey: [QueryKey.Reviews],
+        queryKey: [QueryKey.Reviews]
       });
 
       close();
-    },
+    }
   });
 
   return (

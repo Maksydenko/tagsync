@@ -6,7 +6,7 @@ import {
   FieldValues,
   Path,
   RegisterOptions,
-  UseFormReturn,
+  UseFormReturn
 } from 'react-hook-form';
 
 import { Img } from '@/shared/ui';
@@ -40,7 +40,7 @@ export const Input = <T extends FieldValues>({
   const [showPassword, setShowPassword] = useState(false);
   const {
     formState: { errors },
-    register,
+    register
   } = formReturn;
 
   const { onBlur: handleBlur, ...restRegister } = register(name, options);

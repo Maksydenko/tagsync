@@ -13,7 +13,7 @@ interface IUseBullets {
 export const useBullets = ({
   breakpoints,
   slidesLength,
-  slidesPerView = 1,
+  slidesPerView = 1
 }: IUseBullets) => {
   if (!breakpoints) {
     if (+slidesPerView < slidesLength) {
@@ -25,9 +25,9 @@ export const useBullets = ({
 
   const breakpointsArray: IBreakpoint[] = Object.entries(breakpoints).map(
     ([, { isBreakpoint, slidesPerView: slides }]) => ({
-        isBreakpoint,
-        slides,
-      })
+      isBreakpoint,
+      slides
+    })
   );
 
   const breakpointsWithDesktop = addBreakpointDesktop(

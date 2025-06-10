@@ -1,4 +1,4 @@
-@use "@/application/styles/module" as m;
+@use '@/application/styles/module' as m;
 
 .checkbox {
   position: relative;
@@ -43,7 +43,7 @@
       align-self: flex-start;
       inline-size: m.rem(20);
       block-size: m.rem(20);
-      content: "";
+      content: '';
       border: m.rem(1) solid var(--mainColor);
       border-radius: m.rem(2);
     }

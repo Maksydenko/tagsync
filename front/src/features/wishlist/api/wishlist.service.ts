@@ -28,10 +28,10 @@ export const WishlistService = {
     const response: IResponse<IResult> = await axiosInstance.delete(
       '/Wishlist/remove',
       {
-        data,
+        data
       }
     );
 
     return response;
-  },
+  }
 };

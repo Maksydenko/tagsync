@@ -7,7 +7,7 @@ import { useAtom } from 'jotai';
 import {
   authAtom,
   ForgotPasswordForm,
-  ResetPasswordForm,
+  ResetPasswordForm
 } from '@/features/auth';
 
 import { Translation } from '@/shared/config';

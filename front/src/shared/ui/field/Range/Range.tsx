@@ -8,7 +8,7 @@ import {
   Path,
   PathValue,
   RegisterOptions,
-  UseFormReturn,
+  UseFormReturn
 } from 'react-hook-form';
 
 import { formatNumber } from '@/shared/model';
@@ -59,12 +59,12 @@ export const Range = <T extends FieldValues>({
         <div className={s.range__content}>
           <p className={s.range__label}>
             {formatNumber({
-              number: min,
+              number: min
             })}
           </p>
           <p className={s.range__label}>
             {formatNumber({
-              number: max,
+              number: max
             })}
           </p>
         </div>
@@ -75,10 +75,10 @@ export const Range = <T extends FieldValues>({
             setValue(name, value as PathValue<T, Path<T>>);
           }}
           {...(typeof defaultMin === 'number' && {
-            min: defaultMin,
+            min: defaultMin
           })}
           {...(typeof defaultMax === 'number' && {
-            max: defaultMax,
+            max: defaultMax
           })}
           {...props}
           {...restRegister}

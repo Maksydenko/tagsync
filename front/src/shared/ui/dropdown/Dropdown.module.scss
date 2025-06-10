@@ -1,4 +1,4 @@
-@use "@/application/styles/module" as m;
+@use '@/application/styles/module' as m;
 
 .dropdown {
   position: relative;
@@ -37,7 +37,8 @@
   outline: none;
   background: m.$lightColor;
   border-radius: m.rem(5);
-  box-shadow: 0 m.rem(10) m.rem(15) m.rem(-3) rgba(0, 0, 0, 0.1),
+  box-shadow:
+    0 m.rem(10) m.rem(15) m.rem(-3) rgba(0, 0, 0, 0.1),
     0 m.rem(4) m.rem(6) m.rem(-2) rgba(0, 0, 0, 0.1);
   transition: 0.1s ease-out 0s;
   transition-property: scale, opacity;

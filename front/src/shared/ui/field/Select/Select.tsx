@@ -8,14 +8,14 @@ import {
   Path,
   PathValue,
   RegisterOptions,
-  UseFormReturn,
+  UseFormReturn
 } from 'react-hook-form';
 
 import {
   Listbox,
   ListboxButton,
   ListboxOption,
-  ListboxOptions,
+  ListboxOptions
 } from '@headlessui/react';
 
 import { Translation } from '@/shared/config';
@@ -39,7 +39,7 @@ export const Select = <T extends FieldValues>({
   formReturn: { register, setValue, watch },
   icon = {
     label: '',
-    value: '/img/icons/form/arrow-down.svg',
+    value: '/img/icons/form/arrow-down.svg'
   },
   items,
   name,

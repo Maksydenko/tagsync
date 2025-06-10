@@ -53,7 +53,7 @@ export const ThemeItem: FC<ThemeItemProps> = ({ theme: { label, value } }) => {
         {...(isMounted &&
           !isChecked && {
             onKeyDown: handleKeyDown,
-            tabIndex: 0,
+            tabIndex: 0
           })}
       >
         <Img

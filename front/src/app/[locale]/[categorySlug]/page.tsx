@@ -22,7 +22,7 @@ const CategoryPage: NextPage<IPageProps> = async (props) => {
     ProductsService.getFiltered(
       `?category=${category}&${search}&limit=${limit}`
     ),
-    ProductsService.getFilters(`?category=${category}`),
+    ProductsService.getFilters(`?category=${category}`)
   ]);
 
   return (
@@ -36,7 +36,7 @@ export const generateStaticParams = async () => {
   const categories = await ProductsService.getCategories();
 
   return categories.data.map((category: { slug: string }) => ({
-    categorySlug: category.slug,
+    categorySlug: category.slug
   }));
 };
 
@@ -51,6 +51,6 @@ export const generateMetadata = async ({ params }: IPageProps) => {
     description: categoryTitle,
     keywords: categoryTitle.split(' ').join(','),
     revalidate: process.env.REVALIDATE_TIMEOUT,
-    title: categoryTitle,
+    title: categoryTitle
   };
 };

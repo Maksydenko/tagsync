@@ -9,5 +9,5 @@ export const useCreateSteps = () => [
     key={MutationKey.Credentials}
     className={s.registration__step}
   />,
-  <ProfileForm key={MutationKey.Profile} className={s.registration__step} />,
+  <ProfileForm key={MutationKey.Profile} className={s.registration__step} />
 ];

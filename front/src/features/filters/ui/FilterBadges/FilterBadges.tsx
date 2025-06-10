@@ -19,7 +19,7 @@ interface FilterBadgesProps {
 
 export const FilterBadges: FC<FilterBadgesProps> = ({
   className,
-  filtersData,
+  filtersData
 }) => {
   const searchParams = useSearchParams();
   const { push } = useRouter();
@@ -40,7 +40,7 @@ export const FilterBadges: FC<FilterBadgesProps> = ({
         activeBadges.push({
           groupKey: name,
           name: value,
-          value,
+          value
         });
       }
     });

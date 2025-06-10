@@ -14,7 +14,7 @@ import {
   // Parallax,
   // Scrollbar,
   Thumbs,
-  Virtual,
+  Virtual
 } from 'swiper/modules';
 // Import Swiper React components
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
@@ -151,7 +151,7 @@ export const SliderSwiper: FC<SliderSwiperProps> = ({
   // Virtual slides
   virtual,
   // Disabling navigation if there are more slides than needed
-  watchOverflow = true,
+  watchOverflow = true
 }) => {
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   const swiperRef = useRef<any>(null);
@@ -165,7 +165,7 @@ export const SliderSwiper: FC<SliderSwiperProps> = ({
     useBullets({
       breakpoints,
       slidesLength,
-      slidesPerView,
+      slidesPerView
     });
 
   useEffect(() => {
@@ -202,10 +202,10 @@ export const SliderSwiper: FC<SliderSwiperProps> = ({
     <SwiperSlide
       key={label}
       {...(hash && {
-        'data-hash': `${hash}${label}`,
+        'data-hash': `${hash}${label}`
       })}
       {...(virtual && {
-        virtualIndex: index,
+        virtualIndex: index
       })}
     >
       {value}
@@ -236,7 +236,7 @@ export const SliderSwiper: FC<SliderSwiperProps> = ({
             // Parallax,
             // Scrollbar,
             Thumbs,
-            Virtual,
+            Virtual
           ]}
           /* eslint-disable react/jsx-sort-props */
           // Pagination
@@ -247,15 +247,15 @@ export const SliderSwiper: FC<SliderSwiperProps> = ({
               // Dynamic bullets
               dynamicBullets: paginationDynamicBullets,
               // Types: bullets, fraction, progressbar
-              type: paginationType,
-            },
+              type: paginationType
+            }
           })}
           // Scrollbar
           {...(scrollbar && {
             scrollbar: {
               // The ability to drag scrollbar
-              draggable: scrollbarDraggable,
-            },
+              draggable: scrollbarDraggable
+            }
           })}
           // Turning/disabling dragging on a PC
           simulateTouch={simulateTouch}
@@ -271,8 +271,8 @@ export const SliderSwiper: FC<SliderSwiperProps> = ({
           {...(hash && {
             hashNavigation: {
               // Track the condition
-              watchState: hashNavigationWatchState,
-            },
+              watchState: hashNavigationWatchState
+            }
           })}
           // Keyboard management
           {...(keyboardEnabled && {
@@ -282,15 +282,15 @@ export const SliderSwiper: FC<SliderSwiperProps> = ({
               // Turn on/off only when the slider is within the viewport
               onlyInViewport: keyboardOnlyInViewport,
               // Turn on/off the control control of PageUp, PageDown
-              pageUpDown: keyboardPageUpDown,
-            },
+              pageUpDown: keyboardPageUpDown
+            }
           })}
           // Mouse wheel control
           {...(mousewheel && {
             mousewheel: {
               // The sensitivity of mouse wheel
-              sensitivity: mousewheelSensitivity,
-            },
+              sensitivity: mousewheelSensitivity
+            }
           })}
           // Auto height
           autoHeight={autoHeight}
@@ -318,8 +318,8 @@ export const SliderSwiper: FC<SliderSwiperProps> = ({
               // Disable after manual override
               disableOnInteraction: autoplayDisableOnInteraction,
               // Stop on last slide
-              stopOnLastSlide: autoplayStopOnLastSlide,
-            },
+              stopOnLastSlide: autoplayStopOnLastSlide
+            }
           })}
           // Speed
           speed={speed}

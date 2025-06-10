@@ -40,9 +40,9 @@ export const Sort: FC<SortProps> = ({ className }) => {
     [SearchParam.SortBy]: ILink;
   }>({
     defaultValues: {
-      [SearchParam.SortBy]: defaultSort,
+      [SearchParam.SortBy]: defaultSort
     },
-    mode: 'onChange',
+    mode: 'onChange'
   });
 
   const watchedSort = form.watch(SearchParam.SortBy);

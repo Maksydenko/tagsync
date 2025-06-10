@@ -11,5 +11,5 @@ export enum MutationKey {
   Logout = 'logout',
   Profile = 'profile',
   RequestResetPassword = 'request-reset-password',
-  ResetPassword = 'reset-password',
+  ResetPassword = 'reset-password'
 }

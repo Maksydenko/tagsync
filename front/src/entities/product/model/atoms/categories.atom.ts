@@ -9,6 +9,6 @@ import { QueryKey } from '@/shared/model';
 export const categoriesAtom = atomWithQuery(() =>
   queryOptions({
     queryFn: async () => ProductsService.getCategories(),
-    queryKey: [QueryKey.Categories],
+    queryKey: [QueryKey.Categories]
   })
 );

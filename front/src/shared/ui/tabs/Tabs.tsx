@@ -23,14 +23,14 @@ const Tabs: FC<TabsProps> = ({
   className,
   defaultTab = 0,
   isVertical,
-  tabs,
+  tabs
 }) => (
-    <div className={clsx(s.tabs, isVertical && s.tabs_vertical, className)}>
-      <TabGroup defaultIndex={defaultTab} vertical={isVertical}>
-        <TabsTitles isVertical={isVertical} tabs={tabs} />
-        <TabsContents tabs={tabs} />
-      </TabGroup>
-    </div>
-  );
+  <div className={clsx(s.tabs, isVertical && s.tabs_vertical, className)}>
+    <TabGroup defaultIndex={defaultTab} vertical={isVertical}>
+      <TabsTitles isVertical={isVertical} tabs={tabs} />
+      <TabsContents tabs={tabs} />
+    </TabGroup>
+  </div>
+);
 
 export default Tabs;

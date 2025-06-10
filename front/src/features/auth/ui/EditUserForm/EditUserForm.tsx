@@ -41,7 +41,7 @@ export const EditUserForm: FC<EditUserFormProps> = ({ className }) => {
       city,
       name,
       phone,
-      surname,
+      surname
     }: IEditUserForm) => {
       if (!user) {
         return;
@@ -57,13 +57,13 @@ export const EditUserForm: FC<EditUserFormProps> = ({ className }) => {
         email: user.email,
         firstName: name.trim(),
         lastName: surname.trim(),
-        phone: phone.replace(/\s+/g, ''),
+        phone: phone.replace(/\s+/g, '')
       });
     },
     mutationKey: [MutationKey.EditUser],
     onError: (error) => {
       const errorMessages = {
-        default: 'errors.unknown',
+        default: 'errors.unknown'
       };
       const errorMessage =
         errorMessages[error.message as keyof typeof errorMessages] ||
@@ -72,11 +72,11 @@ export const EditUserForm: FC<EditUserFormProps> = ({ className }) => {
       setSubmissionMessage(errorMessage);
       console.warn(error);
     },
-    onSuccess: async () => invalidateUser(),
+    onSuccess: async () => invalidateUser()
   });
 
   const form = useForm<IEditUserForm>({
-    mode: 'onChange',
+    mode: 'onChange'
   });
   const { reset } = form;
 
@@ -93,7 +93,7 @@ export const EditUserForm: FC<EditUserFormProps> = ({ className }) => {
       email,
       name: firstName,
       phone,
-      surname: lastName,
+      surname: lastName
     });
   }, [reset, user]);
 

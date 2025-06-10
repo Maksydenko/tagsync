@@ -13,10 +13,10 @@ const nextConfig: NextConfig = {
       {
         hostname: backURI.hostname,
         pathname: '/storage/**',
-        protocol: backURI.protocol.split(':')[0] as Protocol,
-      },
-    ],
-  },
+        protocol: backURI.protocol.split(':')[0] as Protocol
+      }
+    ]
+  }
 };
 
 export default withNextIntl(nextConfig);

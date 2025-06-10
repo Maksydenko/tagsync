@@ -8,7 +8,7 @@ import { clsx } from 'clsx';
 import {
   ColumnDef,
   getCoreRowModel,
-  useReactTable,
+  useReactTable
 } from '@tanstack/react-table';
 
 import { IOrder } from '@/features/orders';
@@ -26,35 +26,35 @@ interface OrderCardContentProps {
 
 export const OrderCardContent: FC<OrderCardContentProps> = ({
   className,
-  order,
+  order
 }) => {
   const tShared = useTranslations(Translation.Shared);
 
   const columns: ColumnDef<ILink>[] = [
     {
       accessorKey: 'label',
-      header: '',
+      header: ''
     },
     {
       accessorKey: 'value',
-      header: '',
-    },
+      header: ''
+    }
   ];
 
   const data: ILink[] = useMemo(
     () => [
       {
         label: tShared('form.name.label'),
-        value: order.full_name,
+        value: order.full_name
       },
       {
         label: tShared('form.address.label'),
-        value: order.address,
+        value: order.address
       },
       {
         label: tShared('form.phone.label'),
-        value: order.phone,
-      },
+        value: order.phone
+      }
     ],
     [order, tShared]
   );
@@ -62,7 +62,7 @@ export const OrderCardContent: FC<OrderCardContentProps> = ({
   const table = useReactTable({
     columns,
     data,
-    getCoreRowModel: getCoreRowModel(),
+    getCoreRowModel: getCoreRowModel()
   });
 
   return (
@@ -77,7 +77,7 @@ export const OrderCardContent: FC<OrderCardContentProps> = ({
               product_title,
               quantity,
               slug,
-              total_price,
+              total_price
             }) => {
               const productUrl = `/${slug}/${product_id}`;
 
@@ -99,13 +99,13 @@ export const OrderCardContent: FC<OrderCardContentProps> = ({
                     <div className={s.orderCardContent__prices}>
                       <p className={s.orderCardContent__price}>
                         {formatPrice({
-                          price: price_per_item,
+                          price: price_per_item
                         })}
                       </p>
                       <p className={s.orderCardContent__quantity}>{quantity}</p>
                       <p className={s.orderCardContent__total}>
                         {formatPrice({
-                          price: total_price,
+                          price: total_price
                         })}
                       </p>
                     </div>

@@ -7,7 +7,7 @@ import { clsx } from 'clsx';
 import {
   ColumnDef,
   getCoreRowModel,
-  useReactTable,
+  useReactTable
 } from '@tanstack/react-table';
 
 import { IProductCharacteristic } from '@/entities/product';
@@ -25,7 +25,7 @@ interface CharacteristicsProps {
 
 export const Characteristics: FC<CharacteristicsProps> = ({
   characteristics,
-  className,
+  className
 }) => {
   const tProduct = useTranslations(Translation.Product);
   const locale = useLocale() as Locale;
@@ -33,12 +33,12 @@ export const Characteristics: FC<CharacteristicsProps> = ({
   const columns: ColumnDef<ILink>[] = [
     {
       accessorKey: 'label',
-      header: '',
+      header: ''
     },
     {
       accessorKey: 'value',
-      header: '',
-    },
+      header: ''
+    }
   ];
 
   const data: ILink[] = useMemo(
@@ -46,7 +46,7 @@ export const Characteristics: FC<CharacteristicsProps> = ({
       characteristics.map((characteristic) => ({
         label: characteristic.translations[locale],
         value:
-          characteristic.value_translations?.[locale] || characteristic.value,
+          characteristic.value_translations?.[locale] || characteristic.value
       })),
     [characteristics, locale]
   );
@@ -54,7 +54,7 @@ export const Characteristics: FC<CharacteristicsProps> = ({
   const table = useReactTable({
     columns,
     data,
-    getCoreRowModel: getCoreRowModel(),
+    getCoreRowModel: getCoreRowModel()
   });
 
   return (

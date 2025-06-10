@@ -49,5 +49,5 @@ export const RecommendationsService = {
     } catch (err) {
       throw err;
     }
-  },
+  }
 };

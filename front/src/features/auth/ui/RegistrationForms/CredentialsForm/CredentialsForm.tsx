@@ -12,7 +12,7 @@ import { useMutation } from '@tanstack/react-query';
 import {
   AuthForm,
   getCredentialsFields,
-  ICredentialsForm,
+  ICredentialsForm
 } from '@/features/auth';
 
 import { Pathname, Translation } from '@/shared/config';
@@ -27,7 +27,7 @@ interface CredentialsFormProps extends Partial<StepWizardChildProps> {
 
 export const CredentialsForm: FC<CredentialsFormProps> = ({
   className,
-  nextStep,
+  nextStep
 }) => {
   const [submissionMessage, setSubmissionMessage] = useState('');
   const tShared = useTranslations(Translation.Shared);
@@ -38,7 +38,7 @@ export const CredentialsForm: FC<CredentialsFormProps> = ({
 
   const form = useForm<ICredentialsForm>({
     defaultValues: parsedFormData,
-    mode: 'onChange',
+    mode: 'onChange'
   });
 
   const { isPending: isRegisterPending, mutate: register } = useMutation({
@@ -59,7 +59,7 @@ export const CredentialsForm: FC<CredentialsFormProps> = ({
     onError: (error) => {
       const errorMessages = {
         default: 'errors.unknown',
-        [ErrorCode.UserAlreadyExists]: 'errors.user-already-exists',
+        [ErrorCode.UserAlreadyExists]: 'errors.user-already-exists'
       };
       const errorMessage =
         errorMessages[error.message as keyof typeof errorMessages] ||
@@ -73,7 +73,7 @@ export const CredentialsForm: FC<CredentialsFormProps> = ({
 
       setSubmissionMessage('');
       nextStep?.();
-    },
+    }
   });
 
   return (

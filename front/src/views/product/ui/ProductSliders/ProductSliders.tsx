@@ -19,7 +19,7 @@ interface ProductSlidersProps {
 export const ProductSliders: FC<ProductSlidersProps> = ({
   className,
   images,
-  title,
+  title
 }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<null | Swiper>(null);
   const isMobile = useBreakpointCheck(Breakpoint.Mobile);
@@ -45,7 +45,7 @@ export const ProductSliders: FC<ProductSlidersProps> = ({
                 src={img}
                 width={735}
               />
-            ),
+            )
           }))}
           slidesPerView={4}
           spaceBetween={16}
@@ -71,10 +71,10 @@ export const ProductSliders: FC<ProductSlidersProps> = ({
                   src={img}
                   width={172}
                 />
-              ),
+              )
             }))}
             thumbs={{
-              swiper: thumbsSwiper,
+              swiper: thumbsSwiper
             }}
             pagination
           />

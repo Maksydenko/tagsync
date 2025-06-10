@@ -14,7 +14,7 @@ interface MenuItemProps {
 
 export const MenuItem: FC<MenuItemProps> = ({
   link: { label, value },
-  onClick,
+  onClick
 }) => {
   const tShared = useTranslations(Translation.Shared);
 

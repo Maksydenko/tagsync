@@ -1,9 +1,9 @@
 export enum Direction {
   Horizontal = 'horizontal',
-  Vertical = 'vertical',
+  Vertical = 'vertical'
 }
 
 export enum SlideDirection {
   Next = 'next',
-  Prev = 'prev',
+  Prev = 'prev'
 }

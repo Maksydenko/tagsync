@@ -7,7 +7,7 @@ import {
   Path,
   PathValue,
   RegisterOptions,
-  UseFormReturn,
+  UseFormReturn
 } from 'react-hook-form';
 
 import {
@@ -15,7 +15,7 @@ import {
   ComboboxButton,
   ComboboxInput,
   ComboboxOption,
-  ComboboxOptions,
+  ComboboxOptions
 } from '@headlessui/react';
 
 import { Translation } from '@/shared/config';

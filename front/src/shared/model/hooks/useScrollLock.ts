@@ -51,6 +51,6 @@ export const useScrollLock: IUseScrollLock = (inerts = []) => {
 
   return {
     isScrollLocked,
-    setIsScrollLocked,
+    setIsScrollLocked
   };
 };

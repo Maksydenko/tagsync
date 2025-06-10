@@ -4,12 +4,12 @@ describe('transformPxToRem', () => {
   test('Correct int value', () => {
     expect(
       formatNumber({
-        number: 100,
+        number: 100
       })
     ).toBe('100');
     expect(
       formatNumber({
-        number: 1_000,
+        number: 1_000
       })
     ).toBe('1\xA0000');
   });
@@ -17,12 +17,12 @@ describe('transformPxToRem', () => {
   test('Correct float value', () => {
     expect(
       formatNumber({
-        number: 100.5,
+        number: 100.5
       })
     ).toBe('100,5');
     expect(
       formatNumber({
-        number: 100.55,
+        number: 100.55
       })
     ).toBe('100,55');
   });
@@ -30,7 +30,7 @@ describe('transformPxToRem', () => {
   test('Incorrect value', () => {
     expect(
       formatNumber({
-        number: NaN,
+        number: NaN
       })
     ).toBe(null);
   });

@@ -35,7 +35,7 @@ export const OrdersList: FC<OrdersListProps> = ({ className }) => {
 
       return OrdersService.get(userEmail);
     },
-    queryKey: [QueryKey.Orders, userEmail],
+    queryKey: [QueryKey.Orders, userEmail]
   });
 
   const items = ordersData?.data.map((order) => ({
@@ -46,7 +46,7 @@ export const OrdersList: FC<OrdersListProps> = ({ className }) => {
       />
     ),
     key: order.order_time,
-    label: <OrderCard className={s.ordersList__orderCard} orderData={order} />,
+    label: <OrderCard className={s.ordersList__orderCard} orderData={order} />
   }));
 
   return (

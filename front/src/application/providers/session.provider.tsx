@@ -2,7 +2,7 @@ import { FC, PropsWithChildren } from 'react';
 
 import {
   SessionContextProvider,
-  SessionContextProviderProps,
+  SessionContextProviderProps
 } from '@supabase/auth-helpers-react';
 import { createClient } from '@supabase/supabase-js';
 

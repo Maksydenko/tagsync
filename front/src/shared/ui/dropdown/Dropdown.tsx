@@ -32,10 +32,10 @@ export const Dropdown: FC<DropdownProps> = ({
   className,
   icon = {
     label: '',
-    value: '/img/icons/form/arrow-down.svg',
+    value: '/img/icons/form/arrow-down.svg'
   },
   isDisabled,
-  items,
+  items
 }) => {
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
   const tShared = useTranslations(Translation.Shared);

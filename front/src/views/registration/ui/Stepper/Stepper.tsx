@@ -19,7 +19,7 @@ export const Stepper: FC<StepperProps> = ({
   className,
   current,
   onChange,
-  stepsLength,
+  stepsLength
 }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [progressbarWidth, setProgressbarWidth] = useState(0);
@@ -80,7 +80,7 @@ export const Stepper: FC<StepperProps> = ({
       <span
         className={s.stepper__progressbar}
         style={{
-          inlineSize: transformPxToRem(progressbarWidth * current) || 'auto',
+          inlineSize: transformPxToRem(progressbarWidth * current) || 'auto'
         }}
       />
     </div>

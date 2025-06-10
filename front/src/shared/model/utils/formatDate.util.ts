@@ -13,8 +13,8 @@ interface IFormatDate {
 export const formatDate = ({
   date,
   format = DateFormat.Default,
-  locale = Locale.Default,
+  locale = Locale.Default
 }: IFormatDate) =>
   DateTime.fromISO(date.toISOString(), {
-    locale,
+    locale
   }).toFormat(format);

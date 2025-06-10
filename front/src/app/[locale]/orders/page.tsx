@@ -22,11 +22,11 @@ export const generateMetadata = async ({ params }: IPageProps) => {
   const { locale } = await params;
   const tShared = await getTranslations({
     locale,
-    namespace: Translation.Shared,
+    namespace: Translation.Shared
   });
 
   return {
     revalidate: process.env.REVALIDATE_TIMEOUT,
-    title: generateMetaTitle(tShared('user.orders')),
+    title: generateMetaTitle(tShared('user.orders'))
   };
 };

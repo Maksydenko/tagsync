@@ -8,11 +8,11 @@ import {
   Path,
   PathValue,
   RegisterOptions,
-  UseFormReturn,
+  UseFormReturn
 } from 'react-hook-form';
 import {
   Rating as RootRating,
-  RatingProps as RootRatingProps,
+  RatingProps as RootRatingProps
 } from 'react-simple-star-rating';
 
 import s from './Rating.module.scss';

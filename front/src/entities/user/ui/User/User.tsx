@@ -15,7 +15,7 @@ import { useInvalidateAtom } from '@/shared/lib';
 import {
   MutationKey,
   QueryKey,
-  userData as userLinksData,
+  userData as userLinksData
 } from '@/shared/model';
 import { Dropdown, Img, Loader } from '@/shared/ui';
 
@@ -50,7 +50,7 @@ export const User: FC<UserProps> = ({ className, onClick }) => {
     onSuccess: async () => {
       await invalidateUser();
       push(Pathname.Login);
-    },
+    }
   });
 
   const userIcon = (
@@ -77,15 +77,15 @@ export const User: FC<UserProps> = ({ className, onClick }) => {
             items={[
               ...userLinksData.map(({ label, ...rest }) => ({
                 label: tShared(`user.${label}`),
-                ...rest,
+                ...rest
               })),
               {
                 icon: '/img/icons/logout.svg',
                 label: tShared('user.logout'),
                 value: () => {
                   logout();
-                },
-              },
+                }
+              }
             ]}
           >
             {userName ? initials(userName) : userIcon}

@@ -10,19 +10,19 @@ const manifest = async (): Promise<MetadataRoute.Manifest> => ({
       purpose: 'maskable',
       sizes: '192x192',
       src: '/manifest/web-app-manifest-192x192.png',
-      type: 'image/png',
+      type: 'image/png'
     },
     {
       purpose: 'maskable',
       sizes: '512x512',
       src: '/manifest/web-app-manifest-512x512.png',
-      type: 'image/png',
-    },
+      type: 'image/png'
+    }
   ],
   name: 'TagSync',
   short_name: 'TagSync',
   start_url: Pathname.Home,
-  theme_color: '#fff',
+  theme_color: '#fff'
 });
 
 export default manifest;

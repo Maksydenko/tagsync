@@ -7,12 +7,12 @@ import {
   Path,
   PathValue,
   RegisterOptions,
-  UseFormReturn,
+  UseFormReturn
 } from 'react-hook-form';
 import PhoneInputWithCountrySelect, {
   Country,
   getCountries,
-  getCountryCallingCode,
+  getCountryCallingCode
 } from 'react-phone-number-input';
 
 import s from './Phone.module.scss';
@@ -40,7 +40,7 @@ export const Phone = <T extends FieldValues>({
     register,
     setValue,
     trigger,
-    watch,
+    watch
   } = formReturn;
 
   const error = errors[name];

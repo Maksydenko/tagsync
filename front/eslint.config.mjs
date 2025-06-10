@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const compat = new FlatCompat({
-  baseDirectory: __dirname,
+  baseDirectory: __dirname
 });
 
 const eslintConfig = [
@@ -20,7 +20,7 @@ const eslintConfig = [
   ),
   {
     plugins: {
-      'simple-import-sort': simpleImportSort,
+      'simple-import-sort': simpleImportSort
     },
     rules: {
       'arrow-body-style': ['error', 'as-needed'],
@@ -30,7 +30,13 @@ const eslintConfig = [
       'perfectionist/sort-imports': 'off',
       'perfectionist/sort-jsx-props': 'off',
       'prefer-template': 'error',
-      quotes: ['error', 'single'],
+      quotes: [
+        'error',
+        'single',
+        {
+          avoidEscape: true
+        }
+      ],
       'react/jsx-no-useless-fragment': ['error', { allowExpressions: false }],
       'react/jsx-sort-props': [
         'warn',
@@ -38,8 +44,8 @@ const eslintConfig = [
           callbacksLast: true,
           ignoreCase: true,
           reservedFirst: true,
-          shorthandLast: true,
-        },
+          shorthandLast: true
+        }
       ],
       'simple-import-sort/imports': [
         'warn',
@@ -73,12 +79,12 @@ const eslintConfig = [
             ['^\\.\\.(?!/?$)', '^\\.(?!/?$)'],
             ['^.+\\.json$'],
             ['^.+\\.svg$'],
-            ['^.+\\.s?css$'],
-          ],
-        },
-      ],
-    },
-  },
+            ['^.+\\.s?css$']
+          ]
+        }
+      ]
+    }
+  }
 ];
 
 export default eslintConfig;

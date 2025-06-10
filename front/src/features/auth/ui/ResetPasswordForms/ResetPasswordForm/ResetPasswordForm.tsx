@@ -12,7 +12,7 @@ import {
   authAtom,
   AuthForm,
   getResetPasswordFields,
-  IResetPasswordForm,
+  IResetPasswordForm
 } from '@/features/auth';
 
 import { Translation } from '@/shared/config';
@@ -26,7 +26,7 @@ interface ResetPasswordFormProps {
 }
 
 export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
-  className,
+  className
 }) => {
   const [submissionMessage, setSubmissionMessage] = useState('');
   const tShared = useTranslations(Translation.Shared);
@@ -34,7 +34,7 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
   const [{ accessToken, refreshToken }] = useAtom(authAtom);
 
   const form = useForm<IResetPasswordForm>({
-    mode: 'onChange',
+    mode: 'onChange'
   });
 
   const { isPending: isResetPasswordPending, mutate: login } = useMutation({
@@ -50,13 +50,13 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
       return AuthService.resetPassword({
         accessToken,
         password,
-        refreshToken,
+        refreshToken
       });
     },
     mutationKey: [MutationKey.ResetPassword],
     onError: (error) => {
       const errorMessages = {
-        default: 'errors.unknown',
+        default: 'errors.unknown'
       };
       const errorMessage =
         errorMessages[error.message as keyof typeof errorMessages] ||
@@ -67,7 +67,7 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
     },
     onSuccess: () => {
       // TODO: handle success message
-    },
+    }
   });
 
   return (

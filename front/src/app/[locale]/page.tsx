@@ -21,7 +21,7 @@ const HomePage: NextPage<HomePageProps> = async (props) => {
 
   const [popularData, topRatedData] = await Promise.all([
     HomePageRecommendationsService.getPopular(),
-    HomePageRecommendationsService.getTopRated(),
+    HomePageRecommendationsService.getTopRated()
   ]);
 
   return (
@@ -35,16 +35,16 @@ export const generateMetadata = async ({ params }: IPageProps) => {
   const { locale } = await params;
   const tShared = await getTranslations({
     locale,
-    namespace: Translation.Shared,
+    namespace: Translation.Shared
   });
   const tHome = await getTranslations({
     locale,
-    namespace: Translation.Home,
+    namespace: Translation.Home
   });
 
   return {
     description: tShared('footer.text'),
     revalidate: process.env.REVALIDATE_TIMEOUT,
-    title: generateMetaTitle(tHome('title')),
+    title: generateMetaTitle(tHome('title'))
   };
 };

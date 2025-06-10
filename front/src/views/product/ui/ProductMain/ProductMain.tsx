@@ -22,7 +22,7 @@ import {
   formatPrice,
   isValueInSet,
   MutationKey,
-  QueryKey,
+  QueryKey
 } from '@/shared/model';
 import { Btn, Img, Rating } from '@/shared/ui';
 
@@ -37,7 +37,7 @@ interface ProductMainProps {
 export const ProductMain: FC<ProductMainProps> = ({
   className,
   productData,
-  reviewsLength,
+  reviewsLength
 }) => {
   const { price, product_id, rating, slug, title } = productData;
 
@@ -51,8 +51,8 @@ export const ProductMain: FC<ProductMainProps> = ({
 
   const form = useForm({
     defaultValues: {
-      rating,
-    },
+      rating
+    }
   });
 
   const invalidateWishlist = useInvalidateAtom([QueryKey.Wishlist]);
@@ -62,7 +62,7 @@ export const ProductMain: FC<ProductMainProps> = ({
   const isWished = isValueInSet({
     data: wishlistData?.data,
     key: 'product_id',
-    value: product_id,
+    value: product_id
   });
 
   const invalidateComparisons = useInvalidateAtom([QueryKey.Comparisons]);
@@ -72,7 +72,7 @@ export const ProductMain: FC<ProductMainProps> = ({
   const isInComparisons = isValueInSet({
     data: comparisonsData?.data[slug.toLocaleLowerCase()],
     key: 'product_id',
-    value: product_id,
+    value: product_id
   });
 
   const invalidateCart = useInvalidateAtom([QueryKey.Cart]);
@@ -86,7 +86,7 @@ export const ProductMain: FC<ProductMainProps> = ({
   const isInCart = isValueInSet({
     data: cartItems,
     key: 'product_id',
-    value: product_id,
+    value: product_id
   });
 
   const { isPending: isAddToWishlistPending, mutate: addToWishlist } =
@@ -109,17 +109,17 @@ export const ProductMain: FC<ProductMainProps> = ({
         if (isWished) {
           return WishlistService.remove({
             product_id,
-            userEmail,
+            userEmail
           });
         }
 
         return WishlistService.add({
           product_id,
-          userEmail,
+          userEmail
         });
       },
       mutationKey: [MutationKey.AddToWishlist, userEmail],
-      onSuccess: async () => invalidateWishlist(),
+      onSuccess: async () => invalidateWishlist()
     });
 
   const { isPending: isAddToComparisonsPending, mutate: addToComparisons } =
@@ -142,17 +142,17 @@ export const ProductMain: FC<ProductMainProps> = ({
         if (isInComparisons) {
           return ComparisonsService.remove({
             product_id,
-            userEmail: userData.data.email,
+            userEmail: userData.data.email
           });
         }
 
         return ComparisonsService.add({
           product_id,
-          userEmail: userData.data.email,
+          userEmail: userData.data.email
         });
       },
       mutationKey: [MutationKey.AddToComparisons],
-      onSuccess: async () => invalidateComparisons(),
+      onSuccess: async () => invalidateComparisons()
     });
 
   const { isPending: isAddToCartPending, mutate: addToCart } = useMutation({
@@ -172,7 +172,7 @@ export const ProductMain: FC<ProductMainProps> = ({
       return CartService.add({
         product_id,
         quantity: 1,
-        userEmail: userData.data.email,
+        userEmail: userData.data.email
       });
     },
     mutationKey: [MutationKey.AddToCart],
@@ -182,7 +182,7 @@ export const ProductMain: FC<ProductMainProps> = ({
       }
 
       await invalidateCart();
-    },
+    }
   });
 
   return (
@@ -195,14 +195,14 @@ export const ProductMain: FC<ProductMainProps> = ({
             formReturn={form}
             name="rating"
             options={{
-              disabled: true,
+              disabled: true
             }}
           />
           <p>({reviewsLength})</p>
         </div>
         <p className={s.productMain__price}>
           {formatPrice({
-            price: +price,
+            price: +price
           })}
         </p>
         <div className={s.productMain__footer}>
@@ -211,7 +211,7 @@ export const ProductMain: FC<ProductMainProps> = ({
             disabled={isAddToCartPending || isCartLoading}
             icon={{
               label: tShared(`product.cart.${isInCart ? 'in' : 'add-to'}-cart`),
-              value: '/img/icons/product/cart.svg',
+              value: '/img/icons/product/cart.svg'
             }}
             isLoading={isAddToCartPending}
             onClick={() => {

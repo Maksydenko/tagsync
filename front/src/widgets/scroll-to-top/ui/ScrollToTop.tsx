@@ -26,7 +26,7 @@ export const ScrollToTop: FC<ScrollToTopProps> = ({ className }) => {
       duration: 0.8,
       onUpdate: (value) => {
         scrollTo(0, value);
-      },
+      }
     });
   };
 

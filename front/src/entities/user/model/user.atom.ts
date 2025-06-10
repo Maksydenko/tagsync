@@ -9,6 +9,6 @@ import { QueryKey } from '@/shared/model';
 export const userAtom = atomWithQuery(() =>
   queryOptions({
     queryFn: async () => AuthService.getUserData(),
-    queryKey: [QueryKey.User],
+    queryKey: [QueryKey.User]
   })
 );

@@ -30,7 +30,7 @@ export const AuthForm = <T extends FieldValues>({
   formReturn,
   isLoading,
   onSubmit: handleSubmit,
-  submissionMessage,
+  submissionMessage
 }: AuthFormProps<T>): ReactNode => {
   const tShared = useTranslations(Translation.Shared);
 
@@ -43,7 +43,7 @@ export const AuthForm = <T extends FieldValues>({
       className={clsx(s.authForm, className)}
       onSubmit={formReturn.handleSubmit(onSubmit)}
       {...(isLoading && {
-        inert: true,
+        inert: true
       })}
     >
       <div className={s.authForm__body}>

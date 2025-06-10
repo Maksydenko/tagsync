@@ -23,7 +23,7 @@ export const Popup: FC<PopupProps> = ({
   children,
   className,
   forceOpen,
-  setForceOpen,
+  setForceOpen
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const isForceOpen = typeof forceOpen === 'boolean' && setForceOpen;

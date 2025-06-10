@@ -1,3 +1,3 @@
 export enum FontSize {
-  Default = 16,
+  Default = 16
 }

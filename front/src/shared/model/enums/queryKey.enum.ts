@@ -7,5 +7,5 @@ export enum QueryKey {
   Reviews = 'reviews',
   Search = 'search',
   User = 'user',
-  Wishlist = 'wishlist',
+  Wishlist = 'wishlist'
 }

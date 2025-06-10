@@ -22,7 +22,7 @@ interface ReviewsProps {
 export const Reviews: FC<ReviewsProps> = ({
   className,
   productId,
-  reviewsData,
+  reviewsData
 }) => {
   const tProduct = useTranslations(Translation.Product);
 

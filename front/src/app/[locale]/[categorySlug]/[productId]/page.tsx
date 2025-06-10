@@ -29,7 +29,7 @@ const ProductPage: NextPage<IPageProps> = async (props) => {
         getProductById(categorySlug, productId),
         ReviewsService.get(productId),
         RecommendationsService.getSimilar(productId),
-        RecommendationsService.getCompatible(productId),
+        RecommendationsService.getCompatible(productId)
       ]);
 
     const [productData] = productsData.data.products;
@@ -62,6 +62,6 @@ export const generateMetadata = async ({ params }: IPageProps) => {
     description: productTitle,
     keywords: productTitle.split(' ').join(','),
     revalidate: process.env.REVALIDATE_TIMEOUT,
-    title: generateMetaTitle(productTitle),
+    title: generateMetaTitle(productTitle)
   };
 };

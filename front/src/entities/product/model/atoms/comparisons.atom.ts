@@ -12,7 +12,7 @@ export const comparisonsAtom = atomFamily((userEmail: string | undefined) =>
     queryOptions({
       enabled: !!userEmail,
       queryFn: () => ComparisonsService.get(userEmail!),
-      queryKey: [QueryKey.Comparisons, userEmail],
+      queryKey: [QueryKey.Comparisons, userEmail]
     })
   )
 );

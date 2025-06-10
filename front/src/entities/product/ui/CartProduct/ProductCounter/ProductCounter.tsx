@@ -27,7 +27,7 @@ interface ProductCounterProps {
 
 export const ProductCounter: FC<ProductCounterProps> = ({
   className,
-  productData: { product_id, quantity },
+  productData: { product_id, quantity }
 }) => {
   const tShared = useTranslations(Translation.Shared);
 
@@ -40,7 +40,7 @@ export const ProductCounter: FC<ProductCounterProps> = ({
     decrementLocalCartQuantity,
     incrementLocalCartQuantity,
     localCart,
-    removeFromLocalCart,
+    removeFromLocalCart
   } = useLocalCart();
 
   const cart = cartData?.data ?? localCart;
@@ -66,21 +66,21 @@ export const ProductCounter: FC<ProductCounterProps> = ({
             await CartService.remove({
               product_id,
               quantity,
-              userEmail,
+              userEmail
             });
             break;
           case CartAction.Decrement:
             await CartService.remove({
               product_id,
               quantity: 1,
-              userEmail,
+              userEmail
             });
             break;
           case CartAction.Increment:
             await CartService.add({
               product_id,
               quantity: 1,
-              userEmail,
+              userEmail
             });
             break;
         }
@@ -107,7 +107,7 @@ export const ProductCounter: FC<ProductCounterProps> = ({
       }
 
       await invalidateCart();
-    },
+    }
   });
 
   return (
@@ -118,7 +118,7 @@ export const ProductCounter: FC<ProductCounterProps> = ({
             className={s.productCounter__btn}
             icon={{
               label: tShared('cart.counter.decrement'),
-              value: '/img/icons/form/minus.svg',
+              value: '/img/icons/form/minus.svg'
             }}
             type="button"
             onClick={() => {
@@ -130,7 +130,7 @@ export const ProductCounter: FC<ProductCounterProps> = ({
             className={s.productCounter__btn}
             icon={{
               label: tShared('cart.counter.increment'),
-              value: '/img/icons/form/plus.svg',
+              value: '/img/icons/form/plus.svg'
             }}
             type="button"
             onClick={() => {
@@ -142,7 +142,7 @@ export const ProductCounter: FC<ProductCounterProps> = ({
           className={s.productCounter__btn}
           icon={{
             label: tShared('cart.counter.clear'),
-            value: '/img/icons/form/trash.svg',
+            value: '/img/icons/form/trash.svg'
           }}
           type="button"
           onClick={() => {

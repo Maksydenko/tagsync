@@ -21,9 +21,8 @@ export const ProductsService = {
 
   getCategories: async () => {
     try {
-      const response: IResponse<ICategory[]> = await axiosInstance.get(
-        '/products/category'
-      );
+      const response: IResponse<ICategory[]> =
+        await axiosInstance.get('/products/category');
 
       return response;
     } catch (err) {
@@ -78,5 +77,5 @@ export const ProductsService = {
     } catch (err) {
       throw err;
     }
-  },
+  }
 };

@@ -7,4 +7,6 @@ interface LoaderProps {
   className?: string;
 }
 
-export const Loader: FC<LoaderProps> = ({ className }) => <div className={clsx(s.loader, className)} />;
+export const Loader: FC<LoaderProps> = ({ className }) => (
+  <div className={clsx(s.loader, className)} />
+);

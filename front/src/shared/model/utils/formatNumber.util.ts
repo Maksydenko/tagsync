@@ -17,6 +17,6 @@ export const formatNumber = ({
 
   return number.toLocaleString(locales, {
     useGrouping,
-    ...props,
+    ...props
   });
 };

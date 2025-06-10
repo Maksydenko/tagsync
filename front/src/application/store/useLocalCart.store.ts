@@ -9,7 +9,7 @@ import { QueryKey } from '@/shared/model';
 const DEFAULT_LOCAL_CART: ICart = {
   cart_price: 0,
   items: [],
-  total_quantity: 0,
+  total_quantity: 0
 };
 
 interface ILocalCartState {
@@ -33,15 +33,15 @@ export const useLocalCart = create<ILocalCartState>()(
               {
                 ...product,
                 all_price: +product.price,
-                quantity: 1,
-              },
+                quantity: 1
+              }
             ],
-            total_quantity: ++localCart.total_quantity,
-          },
+            total_quantity: ++localCart.total_quantity
+          }
         })),
       clearLocalCart: () =>
         set(() => ({
-          localCart: structuredClone(DEFAULT_LOCAL_CART),
+          localCart: structuredClone(DEFAULT_LOCAL_CART)
         })),
       decrementLocalCartQuantity: (productId) =>
         set(({ localCart }) => {
@@ -51,7 +51,7 @@ export const useLocalCart = create<ILocalCartState>()(
 
           if (!existingProduct) {
             return {
-              localCart,
+              localCart
             };
           }
 
@@ -66,11 +66,11 @@ export const useLocalCart = create<ILocalCartState>()(
                   ...existingProduct,
                   all_price:
                     +existingProduct.all_price - +existingProduct.price,
-                  quantity: --existingProduct.quantity,
-                },
+                  quantity: --existingProduct.quantity
+                }
               ],
-              total_quantity: --localCart.total_quantity,
-            },
+              total_quantity: --localCart.total_quantity
+            }
           };
         }),
       incrementLocalCartQuantity: (productId) =>
@@ -81,7 +81,7 @@ export const useLocalCart = create<ILocalCartState>()(
 
           if (!existingProduct) {
             return {
-              localCart,
+              localCart
             };
           }
 
@@ -96,11 +96,11 @@ export const useLocalCart = create<ILocalCartState>()(
                   ...existingProduct,
                   all_price:
                     +existingProduct.all_price + +existingProduct.price,
-                  quantity: ++existingProduct.quantity,
-                },
+                  quantity: ++existingProduct.quantity
+                }
               ],
-              total_quantity: ++localCart.total_quantity,
-            },
+              total_quantity: ++localCart.total_quantity
+            }
           };
         }),
       localCart: structuredClone(DEFAULT_LOCAL_CART),
@@ -112,7 +112,7 @@ export const useLocalCart = create<ILocalCartState>()(
 
           if (!existingProduct) {
             return {
-              localCart,
+              localCart
             };
           }
 
@@ -123,13 +123,13 @@ export const useLocalCart = create<ILocalCartState>()(
                 (item) => item.product_id !== productId
               ),
               total_quantity:
-                localCart.total_quantity - +existingProduct.quantity,
-            },
+                localCart.total_quantity - +existingProduct.quantity
+            }
           };
-        }),
+        })
     }),
     {
-      name: QueryKey.Cart,
+      name: QueryKey.Cart
     }
   )
 );

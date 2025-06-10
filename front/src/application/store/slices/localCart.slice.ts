@@ -8,7 +8,7 @@ import { QueryKey } from '@/shared/model';
 const INITIAL_STATE: ICart = {
   cart_price: 0,
   items: [],
-  total_quantity: 0,
+  total_quantity: 0
 };
 
 export const localCartSlice = createSlice({
@@ -28,7 +28,7 @@ export const localCartSlice = createSlice({
       state.items.push({
         ...product,
         all_price: +product.price,
-        quantity: 1,
+        quantity: 1
       });
       ++state.total_quantity;
     },
@@ -59,10 +59,10 @@ export const localCartSlice = createSlice({
               {
                 ...existingProduct,
                 all_price: +existingProduct.price * --existingProduct.quantity,
-                quantity: existingProduct.quantity,
-              },
+                quantity: existingProduct.quantity
+              }
             ]
-          : []),
+          : [])
       ];
       --state.total_quantity;
     },
@@ -85,8 +85,8 @@ export const localCartSlice = createSlice({
         {
           ...existingProduct,
           all_price: +existingProduct.price * ++existingProduct.quantity,
-          quantity: existingProduct.quantity,
-        },
+          quantity: existingProduct.quantity
+        }
       ];
       ++state.total_quantity;
     },
@@ -106,8 +106,8 @@ export const localCartSlice = createSlice({
       state.cart_price -= +existingProduct.price * existingProduct.quantity;
       state.items = state.items.filter((i) => i.product_id !== productId);
       state.total_quantity -= existingProduct.quantity;
-    },
-  },
+    }
+  }
 });
 
 export const {
@@ -116,7 +116,7 @@ export const {
     clearLocalCart,
     decrementLocalCartQuantity,
     incrementLocalCartQuantity,
-    removeFromLocalCart,
+    removeFromLocalCart
   },
-  reducer: localCartReducer,
+  reducer: localCartReducer
 } = localCartSlice;

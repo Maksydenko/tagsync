@@ -37,5 +37,5 @@ export const HomePageRecommendationsService = {
     } catch (err) {
       throw err;
     }
-  },
+  }
 };

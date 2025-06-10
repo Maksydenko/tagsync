@@ -23,7 +23,7 @@ interface ComparisonCharacteristicsProps {
 }
 
 export const ComparisonCharacteristics: FC<ComparisonCharacteristicsProps> = ({
-  className,
+  className
 }) => {
   const locale = useLocale() as Locale;
   const [{ data: userData }] = useAtom(userAtom);
@@ -57,7 +57,7 @@ export const ComparisonCharacteristics: FC<ComparisonCharacteristicsProps> = ({
             if (!allCharacteristics.has(characteristic.name)) {
               allCharacteristics.set(characteristic.name, {
                 label,
-                value: Array(products.length).fill('—'),
+                value: Array(products.length).fill('—')
               });
             }
 
@@ -83,7 +83,7 @@ export const ComparisonCharacteristics: FC<ComparisonCharacteristicsProps> = ({
               isStable
             />
           ),
-          id: product.product_id.toString(),
+          id: product.product_id.toString()
         })
       );
 
@@ -91,7 +91,7 @@ export const ComparisonCharacteristics: FC<ComparisonCharacteristicsProps> = ({
         columns,
         data,
         groupId,
-        products,
+        products
       };
     });
   }, [comparisonsRecord, locale]);
@@ -107,7 +107,7 @@ export const ComparisonCharacteristics: FC<ComparisonCharacteristicsProps> = ({
               columns: groupColumns,
               data: groupData,
               groupId,
-              products: groupProducts,
+              products: groupProducts
             }) => (
               <div key={groupId} className={s.comparisonCharacteristics__group}>
                 <ComparisonCharacteristicsTable

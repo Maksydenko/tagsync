@@ -23,7 +23,7 @@ interface CategoryHeaderProps {
 
 export const CategoryHeader: FC<CategoryHeaderProps> = ({
   className,
-  filtersData,
+  filtersData
 }) => {
   const pathname = usePathname();
   const locale = useLocale() as Locale;
@@ -44,12 +44,12 @@ export const CategoryHeader: FC<CategoryHeaderProps> = ({
   const breadcrumbs: ILink[] = [
     {
       label: tShared('pathnames.home'),
-      value: Pathname.Home,
+      value: Pathname.Home
     },
     {
       label: categoryTitle,
-      value: categorySlug,
-    },
+      value: categorySlug
+    }
   ];
 
   return (
@@ -69,7 +69,7 @@ export const CategoryHeader: FC<CategoryHeaderProps> = ({
                   className={s.categoryHeader__btn}
                   icon={{
                     label: tCategory('filters.label'),
-                    value: '/img/icons/form/filter.svg',
+                    value: '/img/icons/form/filter.svg'
                   }}
                   type="button"
                   asChild

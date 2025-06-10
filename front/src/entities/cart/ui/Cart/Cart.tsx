@@ -56,7 +56,7 @@ export const Cart: FC<CartProps> = ({ className }) => {
 
       if (userEmail) {
         return CartService.clear({
-          userEmail,
+          userEmail
         });
       }
 
@@ -69,7 +69,7 @@ export const Cart: FC<CartProps> = ({ className }) => {
       }
 
       setIsCartOpen(false);
-    },
+    }
   });
 
   return (

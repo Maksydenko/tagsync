@@ -35,10 +35,10 @@ export const CartService = {
     const response: IResponse<IResult> = await axiosInstance.delete(
       '/Cart/remove',
       {
-        data,
+        data
       }
     );
 
     return response;
-  },
+  }
 };

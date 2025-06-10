@@ -12,5 +12,5 @@ export enum Percent {
   ThreeFifths = 60,
   Twentieth = 5,
   TwoFifths = 40,
-  TwoThirds = 66.666,
+  TwoThirds = 66.666
 }

@@ -38,7 +38,7 @@ export const Pagination: FC<PaginationProps> = ({
   const pageCount = Math.ceil(itemsPerTotal / itemsPerPage);
 
   const handlePageChange: ReactPaginateProps['onPageChange'] = ({
-    selected,
+    selected
   }) => {
     const page = ++selected;
     const params = new URLSearchParams(searchParams.toString());

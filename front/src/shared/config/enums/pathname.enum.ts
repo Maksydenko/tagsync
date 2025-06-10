@@ -7,5 +7,5 @@ export enum Pathname {
   Profile = '/profile',
   Registration = '/registration',
   ResetPassword = '/reset-password',
-  Wishlist = '/wishlist',
+  Wishlist = '/wishlist'
 }

@@ -26,11 +26,11 @@ export const generateMetadata = async ({ params }: IPageProps) => {
   const { locale } = await params;
   const tLogin = await getTranslations({
     locale,
-    namespace: Translation.Login,
+    namespace: Translation.Login
   });
 
   return {
     revalidate: process.env.REVALIDATE_TIMEOUT,
-    title: generateMetaTitle(tLogin('title')),
+    title: generateMetaTitle(tLogin('title'))
   };
 };

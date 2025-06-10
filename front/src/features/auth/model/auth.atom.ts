@@ -7,7 +7,7 @@ export const authAtom = atom(() => {
     return {
       accessToken: null,
       errorCode: null,
-      refreshToken: null,
+      refreshToken: null
     };
   }
 
@@ -16,6 +16,6 @@ export const authAtom = atom(() => {
   return {
     accessToken: hashParams.get('access_token'),
     errorCode: hashParams.get('error_code'),
-    refreshToken: hashParams.get('refresh_token'),
+    refreshToken: hashParams.get('refresh_token')
   };
 });

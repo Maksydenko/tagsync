@@ -31,7 +31,7 @@ export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
       max: Number(
         priceFilter?.values[priceFilter.values.length - 1].split('-')[1]
       ),
-      min: Number(priceFilter?.values[0].split('-')[0]),
+      min: Number(priceFilter?.values[0].split('-')[0])
     }),
     [priceFilter?.values]
   );
@@ -43,7 +43,7 @@ export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
 
   const defaultFilters = useMemo(
     () => ({
-      [SearchParam.PriceRange]: defaultPrice,
+      [SearchParam.PriceRange]: defaultPrice
     }),
     [defaultPrice]
   );
@@ -95,13 +95,13 @@ export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   const form = useForm<any>({
     defaultValues,
-    mode: 'onChange',
+    mode: 'onChange'
   });
 
   useFilterParams({
     defaultPrice,
     filtersData: filteredData,
-    form,
+    form
   });
 
   const filterFields = [
@@ -113,21 +113,21 @@ export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
             name={SearchParam.PriceRange}
             options={{
               max: defaultFilters[SearchParam.PriceRange].max,
-              min: defaultFilters[SearchParam.PriceRange].min,
+              min: defaultFilters[SearchParam.PriceRange].min
             }}
             type="ranges"
           />
         </div>
       ),
       key: SearchParam.PriceRange,
-      label: tCategory('filters.price'),
+      label: tCategory('filters.price')
     },
     ...filteredData.map(
       ({
         name: filterName,
         translations: filterTranslations,
         type: groupType,
-        values: filterValues,
+        values: filterValues
       }) => ({
         children: (
           <div className={s.filters__fields}>
@@ -150,9 +150,9 @@ export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
           </div>
         ),
         key: filterName,
-        label: filterTranslations?.[locale] || filterName,
+        label: filterTranslations?.[locale] || filterName
       })
-    ),
+    )
   ];
 
   return (

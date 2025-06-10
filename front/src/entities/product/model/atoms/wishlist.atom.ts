@@ -12,7 +12,7 @@ export const wishlistAtom = atomFamily((userEmail: string | undefined) =>
     queryOptions({
       enabled: !!userEmail,
       queryFn: () => WishlistService.get(userEmail!),
-      queryKey: [QueryKey.Wishlist, userEmail],
+      queryKey: [QueryKey.Wishlist, userEmail]
     })
   )
 );

@@ -1,6 +1,6 @@
 // Icons fonts
 
-@use "./mixins";
+@use './mixins';
 
 // ============================================================================
 
@@ -15,7 +15,7 @@
   text-transform: none;
 }
 
-body [class*="_icon-"] {
+body [class*='_icon-'] {
   &::before {
     @extend %icon;
     display: block;

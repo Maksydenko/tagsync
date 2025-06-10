@@ -28,10 +28,10 @@ export const ComparisonsService = {
     const response: IResponse<IResult> = await axiosInstance.delete(
       '/Comparison/remove',
       {
-        data,
+        data
       }
     );
 
     return response;
-  },
+  }
 };

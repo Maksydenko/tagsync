@@ -12,9 +12,9 @@ interface LocaleSwitcherProps {
 
 export const LocaleSwitcher: FC<LocaleSwitcherProps> = ({
   className,
-  onClick,
+  onClick
 }) => (
-    <ul className={clsx(s.localeSwitcher, className)}>
-      <LocaleSwitcherItems onClick={onClick} />
-    </ul>
-  );
+  <ul className={clsx(s.localeSwitcher, className)}>
+    <LocaleSwitcherItems onClick={onClick} />
+  </ul>
+);

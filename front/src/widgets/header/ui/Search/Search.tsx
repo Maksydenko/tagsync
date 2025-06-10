@@ -15,7 +15,7 @@ interface SearchProps {
 
 export const Search: FC<SearchProps> = ({ className }) => {
   const form = useForm({
-    mode: 'onChange',
+    mode: 'onChange'
   });
   const search = form.watch('search');
 
@@ -28,13 +28,13 @@ export const Search: FC<SearchProps> = ({ className }) => {
 
       return ProductsService.search(`?query=${search}`);
     },
-    queryKey: [QueryKey.Search, search],
+    queryKey: [QueryKey.Search, search]
   });
 
   const items =
     searchData?.data.products.map((item) => ({
       label: item.title,
-      value: `/${item.slug}/${item.product_id}`,
+      value: `/${item.slug}/${item.product_id}`
     })) || [];
 
   return (

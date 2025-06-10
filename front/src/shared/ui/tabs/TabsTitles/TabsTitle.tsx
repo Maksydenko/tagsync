@@ -16,13 +16,13 @@ interface TabsTitleProps {
 export const TabsTitle: FC<TabsTitleProps> = ({
   isVertical,
   tab: { value },
-  tabsLength,
+  tabsLength
 }) => {
   const titleItem = typeof value === 'string' ? <p>{value}</p> : value;
 
   const tabWidth = Percent.Full / tabsLength;
   const titleStyle = {
-    inlineSize: `${tabWidth}%`,
+    inlineSize: `${tabWidth}%`
   };
 
   return (

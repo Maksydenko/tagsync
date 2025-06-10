@@ -20,7 +20,7 @@ export const File: FC<FileProps> = ({
   className,
   maxSize = 10,
   selectedFile,
-  setSelectedFile,
+  setSelectedFile
 }) => {
   const [isActive, setIsActive] = useState(false);
 

@@ -39,14 +39,14 @@ const requestConfig = getRequestConfig(async ({ requestLocale }) => {
     Translation.Login,
     Translation.Product,
     Translation.Registration,
-    Translation.ResetPassword,
+    Translation.ResetPassword
   ];
 
   const messages = await importMessages(translations, locale);
 
   return {
     locale,
-    messages,
+    messages
   };
 });
 

@@ -26,11 +26,11 @@ export const generateMetadata = async ({ params }: IPageProps) => {
   const { locale } = await params;
   const tResetPassword = await getTranslations({
     locale,
-    namespace: Translation.ResetPassword,
+    namespace: Translation.ResetPassword
   });
 
   return {
     revalidate: process.env.REVALIDATE_TIMEOUT,
-    title: generateMetaTitle(tResetPassword('title')),
+    title: generateMetaTitle(tResetPassword('title'))
   };
 };

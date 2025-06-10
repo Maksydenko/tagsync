@@ -9,7 +9,7 @@ import { rootReducers } from './rootReducers';
 
 const persistConfig = {
   key: 'root',
-  storage,
+  storage
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);
@@ -18,9 +18,9 @@ export const store = configureStore({
   devTools: process.env.NEXT_PUBLIC_PHASE === Phase.Development,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false,
+      serializableCheck: false
     }),
-  reducer: persistedReducer,
+  reducer: persistedReducer
 });
 
 export const persistor = persistStore(store);

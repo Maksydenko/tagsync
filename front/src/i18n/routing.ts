@@ -7,5 +7,5 @@ export const routing = defineRouting({
   defaultLocale: Locale.Default,
 
   // A list of all locales that are supported
-  locales: [Locale.EN, Locale.UK],
+  locales: [Locale.EN, Locale.UK]
 });

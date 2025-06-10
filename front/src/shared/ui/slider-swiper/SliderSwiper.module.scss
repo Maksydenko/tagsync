@@ -1,8 +1,8 @@
-@use "@/application/styles/module" as m;
+@use '@/application/styles/module' as m;
 
-@use "./styles/navigation.module";
-@use "./styles/pagination/progressbar.module";
-@use "./styles/pagination/bullets.module";
+@use './styles/navigation.module';
+@use './styles/pagination/progressbar.module';
+@use './styles/pagination/bullets.module';
 
 .sliderSwiper {
   // .sliderSwiper__body

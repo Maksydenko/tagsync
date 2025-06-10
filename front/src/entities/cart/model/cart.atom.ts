@@ -15,7 +15,7 @@ export const cartAtom = atomFamily((userEmail: string | undefined) =>
     queryOptions({
       enabled: !!userEmail,
       queryFn: () => CartService.get(userEmail!),
-      queryKey: [QueryKey.Cart, userEmail],
+      queryKey: [QueryKey.Cart, userEmail]
     })
   )
 );

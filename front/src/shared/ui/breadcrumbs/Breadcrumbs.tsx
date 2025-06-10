@@ -15,7 +15,7 @@ interface BreadcrumbsProps {
 
 export const Breadcrumbs: FC<BreadcrumbsProps> = ({
   breadcrumbs,
-  className,
+  className
 }) => (
   <ul className={clsx(s.breadcrumbs, className)}>
     {breadcrumbs.map(({ label, value }) => (

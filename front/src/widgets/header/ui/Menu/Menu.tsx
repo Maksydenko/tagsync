@@ -64,7 +64,7 @@ export const Menu: FC<MenuProps> = ({ className, isScrollLocked, onClick }) => {
                 categoriesData?.data?.map((category) => ({
                   icon: category.img,
                   label: category.translations_slug[locale],
-                  value: category.slug,
+                  value: category.slug
                 })) || []
               }
             >
@@ -80,7 +80,7 @@ export const Menu: FC<MenuProps> = ({ className, isScrollLocked, onClick }) => {
       <User
         className={s.menu__user}
         {...(isScrollLocked && {
-          onClick,
+          onClick
         })}
       />
     </div>

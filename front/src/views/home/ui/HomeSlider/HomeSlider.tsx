@@ -29,7 +29,7 @@ export const HomeSlider: FC<HomeSliderProps> = ({ className }) => {
                 isPriority={index === 0}
                 slide={slide}
               />
-            ),
+            )
           }))}
           spaceBetween={0}
           autoplay

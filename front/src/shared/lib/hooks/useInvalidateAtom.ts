@@ -10,7 +10,7 @@ export const useInvalidateAtom = (queryKeys: QueryKey[]) => {
     await Promise.allSettled(
       queryKeys.map((key) =>
         queryClient.invalidateQueries({
-          queryKey: [key],
+          queryKey: [key]
         })
       )
     );

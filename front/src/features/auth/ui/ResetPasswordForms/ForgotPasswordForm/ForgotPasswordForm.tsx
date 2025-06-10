@@ -12,7 +12,7 @@ import {
   authAtom,
   AuthForm,
   getForgotPasswordFields,
-  IForgotPasswordForm,
+  IForgotPasswordForm
 } from '@/features/auth';
 
 import { Pathname, Translation } from '@/shared/config';
@@ -26,7 +26,7 @@ interface ForgotPasswordFormProps {
 }
 
 export const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({
-  className,
+  className
 }) => {
   const tShared = useTranslations(Translation.Shared);
 
@@ -37,12 +37,12 @@ export const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({
   );
 
   const form = useForm<IForgotPasswordForm>({
-    mode: 'onChange',
+    mode: 'onChange'
   });
 
   const {
     isPending: isRequestResetPasswordPending,
-    mutate: requestResetPassword,
+    mutate: requestResetPassword
   } = useMutation({
     mutationFn: async ({ email }: IForgotPasswordForm) => {
       const AuthService = await import('@/features/auth').then(
@@ -51,13 +51,13 @@ export const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({
 
       await AuthService.requestResetPassword({
         email,
-        redirectUrl: `${window.location.origin}${Pathname.ResetPassword}`,
+        redirectUrl: `${window.location.origin}${Pathname.ResetPassword}`
       });
     },
     mutationKey: [MutationKey.RequestResetPassword],
     onError: (error) => {
       const errorMessages = {
-        default: 'errors.unknown',
+        default: 'errors.unknown'
       };
       const errorMessage =
         errorMessages[error.message as keyof typeof errorMessages] ||
@@ -68,7 +68,7 @@ export const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({
     },
     onSuccess: () => {
       // TODO: handle success message
-    },
+    }
   });
 
   return (

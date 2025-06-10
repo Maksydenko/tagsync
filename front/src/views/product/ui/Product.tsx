@@ -31,7 +31,7 @@ export const Product: FC<ProductProps> = ({
   productData,
   relatedData,
   reviewsData,
-  similarData,
+  similarData
 }) => {
   const { characteristics, images, product_id, title } = productData;
   const tProduct = useTranslations(Translation.Product);
@@ -46,7 +46,7 @@ export const Product: FC<ProductProps> = ({
 
     ProductsService.trackView({
       product_id,
-      userEmail,
+      userEmail
     });
   }, [product_id, userEmail]);
 
