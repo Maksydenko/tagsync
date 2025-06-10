@@ -7,7 +7,7 @@ import { IResult } from '@/shared/api';
 import { ICategory, IProducts, ITrackView } from './interfaces';
 
 export const ProductsService = {
-  getAll: async (query: string) => {
+  getAll: async (query = '') => {
     try {
       const response: IResponse<IProducts> = await axiosInstance.get(
         `/products${query}`
