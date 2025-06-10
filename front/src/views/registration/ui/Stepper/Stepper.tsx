@@ -24,7 +24,10 @@ export const Stepper: FC<StepperProps> = ({
   const [currentStep, setCurrentStep] = useState(0);
   const [progressbarWidth, setProgressbarWidth] = useState(0);
 
-  const items = useMemo(() => createSteps(currentStep, stepsLength), [currentStep, stepsLength]);
+  const items = useMemo(
+    () => createSteps(currentStep, stepsLength),
+    [currentStep, stepsLength]
+  );
 
   const { length: itemsLength } = items;
 
@@ -77,7 +80,7 @@ export const Stepper: FC<StepperProps> = ({
       <span
         className={s.stepper__progressbar}
         style={{
-          inlineSize: transformPxToRem(progressbarWidth * current),
+          inlineSize: transformPxToRem(progressbarWidth * current) || "auto",
         }}
       />
     </div>
