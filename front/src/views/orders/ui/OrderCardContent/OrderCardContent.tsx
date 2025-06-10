@@ -65,7 +65,6 @@ export const OrderCardContent: FC<OrderCardContentProps> = ({
     getCoreRowModel: getCoreRowModel(),
   });
 
-
   return (
     <div className={clsx(s.orderCardContent, className)}>
       <div className={s.orderCardContent__body}>
@@ -100,13 +99,13 @@ export const OrderCardContent: FC<OrderCardContentProps> = ({
                     <div className={s.orderCardContent__prices}>
                       <p className={s.orderCardContent__price}>
                         {formatPrice({
-                          number: price_per_item,
+                          price: price_per_item,
                         })}
                       </p>
                       <p className={s.orderCardContent__quantity}>{quantity}</p>
                       <p className={s.orderCardContent__total}>
                         {formatPrice({
-                          number: total_price,
+                          price: total_price,
                         })}
                       </p>
                     </div>

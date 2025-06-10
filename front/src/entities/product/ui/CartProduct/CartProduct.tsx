@@ -32,7 +32,7 @@ export const CartProduct: FC<CartProductProps> = ({
           <h3 className={s.cartProduct__title}>{title}</h3>
           <p className={s.cartProduct__price}>
             {formatPrice({
-              number: +all_price,
+              price: +all_price,
             })}
           </p>
           <ProductCounter

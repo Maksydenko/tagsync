@@ -275,7 +275,7 @@ export const ProductCard: FC<ProductCardProps> = ({
             <div className={s.productCard__box}>
               <p className={s.productCard__price}>
                 {formatPrice({
-                  number: +price,
+                  price: +price,
                 })}
               </p>
               <div className={s.productCard__status}>

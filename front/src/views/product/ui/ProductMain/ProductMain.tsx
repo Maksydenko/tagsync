@@ -202,7 +202,7 @@ export const ProductMain: FC<ProductMainProps> = ({
         </div>
         <p className={s.productMain__price}>
           {formatPrice({
-            number: +price,
+            price: +price,
           })}
         </p>
         <div className={s.productMain__footer}>
