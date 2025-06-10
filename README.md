@@ -16,6 +16,7 @@ yarn dev
 ![Next](https://skillicons.dev/icons?i=next)
 ![JS](https://skillicons.dev/icons?i=js)
 ![TS](https://skillicons.dev/icons?i=ts)
+![Jest](https://skillicons.dev/icons?i=jest)
 ![SCSS](https://skillicons.dev/icons?i=scss)
 ![HTML](https://skillicons.dev/icons?i=html)
 ![CSS](https://skillicons.dev/icons?i=css)

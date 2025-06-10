@@ -44,7 +44,7 @@ export const OrderCard: FC<OrderCardProps> = ({
         </p>
         <p className={s.orderCard__total}>
           {formatPrice({
-            number: total_order_price,
+            price: total_order_price,
           })}
         </p>
       </div>

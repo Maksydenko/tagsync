@@ -7,13 +7,16 @@ interface IFormatNumber extends Intl.NumberFormatOptions {
 
 export const formatNumber = ({
   locales = Locale.UK,
-  minimumFractionDigits = 0,
   number = 0,
   useGrouping = true,
   ...props
-}: IFormatNumber) =>
-  number.toLocaleString(locales, {
-    minimumFractionDigits,
+}: IFormatNumber) => {
+  if (Number.isNaN(number)) {
+    return null;
+  }
+
+  return number.toLocaleString(locales, {
     useGrouping,
     ...props,
   });
+};

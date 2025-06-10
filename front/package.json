@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest",
+    "generate": "plop"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.4",
@@ -47,6 +49,9 @@
     "@eslint/eslintrc": "^3.3.1",
     "@tanstack/eslint-plugin-query": "^5.78.0",
     "@tanstack/react-query-devtools": "^5.80.6",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@types/jest": "^29.5.14",
     "@types/luxon": "^3.6.2",
     "@types/node": "^22.15.3",
     "@types/react": "^19.1.6",
@@ -57,11 +62,15 @@
     "eslint-plugin-perfectionist": "^4.14.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-simple-import-sort": "^12.1.1",
+    "jest": "^30.0.0",
+    "jest-environment-jsdom": "^30.0.0",
+    "plop": "^4.0.1",
     "postcss": "^8.5.4",
     "sass": "^1.89.1",
     "stylelint": "^16.20.0",
     "stylelint-config-recess-order": "^6.0.0",
     "stylelint-config-recommended-scss": "^15.0.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   }
 }
