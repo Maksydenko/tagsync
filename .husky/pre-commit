@@ -1,5 +1,6 @@
 cd front
 yarn tsc
+yarn test
 yarn lint
 yarn eslint
 yarn stylelint
