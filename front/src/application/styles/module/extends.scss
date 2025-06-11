@@ -1,7 +1,12 @@
 // Extends
 
+// Connection mixins
 @use './mixins';
+
+// Connection utils
 @use './utils';
+
+// Connection vars
 @use './vars';
 
 // ============================================================================
@@ -12,46 +17,52 @@
   // Responsive
   @if vars.$adaptiveType == 1 {
     @if vars.$maxWidthContainer > 0 {
-      max-width: utils.rem(vars.$containerWidth);
-      margin: 0 auto;
+      & {
+        max-width: utils.rem(vars.$containerWidth);
+        margin: 0 auto;
 
-      @media (min-width: vars.$desktopMedium) {
-        max-width: utils.rem(vars.$containerDesktopWidth);
+        @media (min-width: vars.$desktopMedium) {
+          max-width: utils.rem(vars.$containerDesktopWidth);
+        }
       }
     }
 
     @if vars.$containerPadding > 0 {
       @if vars.$maxWidthContainer > 0 {
-        padding-right: utils.rem(calc(vars.$containerPadding / 2));
-        padding-left: utils.rem(calc(vars.$containerPadding / 2));
+        & {
+          padding-right: utils.rem(calc(vars.$containerPadding / 2));
+          padding-left: utils.rem(calc(vars.$containerPadding / 2));
 
-        @media (min-width: vars.$desktopMedium) {
-          padding-right: utils.rem(calc(vars.$containerDesktopPadding / 2));
-          padding-left: utils.rem(calc(vars.$containerDesktopPadding / 2));
+          @media (min-width: vars.$desktopMedium) {
+            padding-right: utils.rem(calc(vars.$containerDesktopPadding / 2));
+            padding-left: utils.rem(calc(vars.$containerDesktopPadding / 2));
+          }
         }
       } @else {
-        @include mixins.responsiveValue(
-          padding-right,
-          calc(vars.$containerPadding / 2),
-          15
-        );
-        @include mixins.responsiveValue(
-          padding-left,
-          calc(vars.$containerPadding / 2),
-          15
-        );
-
-        @media (min-width: vars.$desktopMedium) {
+        & {
           @include mixins.responsiveValue(
             padding-right,
-            calc(vars.$containerDesktopPadding / 2),
+            calc(vars.$containerPadding / 2),
             15
           );
           @include mixins.responsiveValue(
             padding-left,
-            calc(vars.$containerDesktopPadding / 2),
+            calc(vars.$containerPadding / 2),
             15
           );
+
+          @media (min-width: vars.$desktopMedium) {
+            @include mixins.responsiveValue(
+              padding-right,
+              calc(vars.$containerDesktopPadding / 2),
+              15
+            );
+            @include mixins.responsiveValue(
+              padding-left,
+              calc(vars.$containerDesktopPadding / 2),
+              15
+            );
+          }
         }
       }
     }
@@ -61,19 +72,23 @@
     margin: 0 auto;
 
     @if vars.$maxWidthContainer > 0 {
-      max-width: utils.rem(vars.$containerWidth);
+      & {
+        max-width: utils.rem(vars.$containerWidth);
 
-      @media (min-width: vars.$desktopMedium) {
-        max-width: utils.rem(vars.$containerDesktopWidth);
+        @media (min-width: vars.$desktopMedium) {
+          max-width: utils.rem(vars.$containerDesktopWidth);
+        }
       }
     } @else {
       @if vars.$containerPadding > 0 {
-        padding-right: utils.rem(calc(vars.$containerPadding / 2));
-        padding-left: utils.rem(calc(vars.$containerPadding / 2));
+        & {
+          padding-right: utils.rem(calc(vars.$containerPadding / 2));
+          padding-left: utils.rem(calc(vars.$containerPadding / 2));
 
-        @media (min-width: vars.$desktopMedium) {
-          padding-right: utils.rem(calc(vars.$containerDesktopPadding / 2));
-          padding-left: utils.rem(calc(vars.$containerDesktopPadding / 2));
+          @media (min-width: vars.$desktopMedium) {
+            padding-right: utils.rem(calc(vars.$containerDesktopPadding / 2));
+            padding-left: utils.rem(calc(vars.$containerDesktopPadding / 2));
+          }
         }
       }
     }
@@ -91,12 +106,14 @@
     }
 
     @if vars.$containerPadding > 0 and vars.$maxWidthContainer > 0 {
-      padding-right: utils.rem(calc(vars.$containerPadding / 2));
-      padding-left: utils.rem(calc(vars.$containerPadding / 2));
+      & {
+        padding-right: utils.rem(calc(vars.$containerPadding / 2));
+        padding-left: utils.rem(calc(vars.$containerPadding / 2));
 
-      @media (min-width: vars.$desktopMedium) {
-        padding-right: utils.rem(calc(vars.$containerDesktopPadding / 2));
-        padding-left: utils.rem(calc(vars.$containerDesktopPadding / 2));
+        @media (min-width: vars.$desktopMedium) {
+          padding-right: utils.rem(calc(vars.$containerDesktopPadding / 2));
+          padding-left: utils.rem(calc(vars.$containerDesktopPadding / 2));
+        }
       }
     }
   }
