@@ -56,8 +56,7 @@ export const Autocomplete = <T extends FieldValues>({
   return (
     <div className={clsx(s.autocomplete, className)}>
       <Combobox
-        value={selected}
-        // onChange={(value) => setSelected(value)}
+        value={selected || ''}
         onClose={() => setValue(name, '' as PathValue<T, Path<T>>)}
       >
         <div className={s.autocomplete__body}>

@@ -19,7 +19,7 @@ const eslintConfig = [
     'plugin:@tanstack/eslint-plugin-query/recommended'
   ),
   {
-    ignores: ['.next', 'node_modules']
+    ignores: ['node_modules', '.next']
   },
   {
     plugins: {

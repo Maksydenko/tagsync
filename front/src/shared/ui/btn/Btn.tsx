@@ -36,7 +36,7 @@ export const Btn: FC<BtnProps> = ({
     return cloneElement(children, {
       /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
       /* @ts-ignore */
-      className: clsx(classNames, children.props.className)
+      className: clsx(classNames, className, children.props.className)
     });
   }
 

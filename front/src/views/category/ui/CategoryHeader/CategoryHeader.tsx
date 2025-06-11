@@ -74,7 +74,7 @@ export const CategoryHeader: FC<CategoryHeaderProps> = ({
                   type="button"
                   asChild
                 >
-                  {tCategory('filters.label')}
+                  <p>{tCategory('filters.label')}</p>
                 </Btn>
               }
             >
