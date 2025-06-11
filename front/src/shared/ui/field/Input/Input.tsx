@@ -54,10 +54,8 @@ export const Input = <T extends FieldValues>({
   return (
     <div className={clsx(s.input, className)}>
       <Tag
-        aria-disabled={!!disabled}
         aria-invalid={!!error}
         aria-label={label}
-        aria-placeholder={placeholder}
         aria-required={!!options?.required}
         autoComplete={name}
         className={s.input__input}

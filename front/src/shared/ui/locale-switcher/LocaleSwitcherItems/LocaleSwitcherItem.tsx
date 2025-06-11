@@ -51,7 +51,6 @@ export const LocaleSwitcherItem: FC<LocaleSwitcherItemProps> = ({
   return (
     <li className={s.localeSwitcher__item}>
       <button
-        aria-disabled={isDisabled}
         aria-label={label}
         className={s.localeSwitcher__btn}
         disabled={isDisabled}

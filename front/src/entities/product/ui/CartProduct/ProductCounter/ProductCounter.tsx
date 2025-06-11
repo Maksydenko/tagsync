@@ -115,6 +115,7 @@ export const ProductCounter: FC<ProductCounterProps> = ({
       <div className={s.productCounter__body}>
         <div className={s.productCounter__content}>
           <Btn
+            aria-label={tShared('cart.counter.decrement')}
             className={s.productCounter__btn}
             icon={{
               label: tShared('cart.counter.decrement'),
@@ -127,6 +128,7 @@ export const ProductCounter: FC<ProductCounterProps> = ({
           />
           <p className={s.productCounter__value}>{quantity}</p>
           <Btn
+            aria-label={tShared('cart.counter.increment')}
             className={s.productCounter__btn}
             icon={{
               label: tShared('cart.counter.increment'),
@@ -139,6 +141,7 @@ export const ProductCounter: FC<ProductCounterProps> = ({
           />
         </div>
         <Btn
+          aria-label={tShared('cart.counter.clear')}
           className={s.productCounter__btn}
           icon={{
             label: tShared('cart.counter.clear'),

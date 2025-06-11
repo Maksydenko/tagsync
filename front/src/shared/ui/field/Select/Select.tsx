@@ -26,6 +26,7 @@ import { Img } from '../../img/Img';
 import s from './Select.module.scss';
 
 interface SelectProps<T extends FieldValues> {
+  ariaLabel?: string;
   className?: string;
   formReturn: UseFormReturn<T>;
   icon?: ILink<ReactNode> | null;
@@ -35,6 +36,7 @@ interface SelectProps<T extends FieldValues> {
 }
 
 export const Select = <T extends FieldValues>({
+  ariaLabel,
   className,
   formReturn: { register, setValue, watch },
   icon = {
@@ -47,13 +49,12 @@ export const Select = <T extends FieldValues>({
   ...props
 }: SelectProps<T>): ReactNode => {
   const tShared = useTranslations(Translation.Shared);
+
   const {
     /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
     onChange,
     ...restRegister
   } = register(name, options);
-
-  const iconLabel = icon?.label || tShared('arrow');
   const iconValue = icon?.value;
 
   return (
@@ -68,7 +69,7 @@ export const Select = <T extends FieldValues>({
           }}
         >
           <ListboxButton
-            aria-label={iconLabel}
+            aria-label={ariaLabel}
             className={s.select__listbox}
             {...props}
             {...restRegister}
@@ -76,7 +77,7 @@ export const Select = <T extends FieldValues>({
             <p>{watch(name).label}</p>
             {typeof iconValue === 'string' ? (
               <Img
-                alt={iconLabel}
+                alt={icon?.label || tShared('arrow')}
                 className={s.select__icon}
                 height={20}
                 src={iconValue}

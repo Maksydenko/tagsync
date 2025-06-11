@@ -40,6 +40,8 @@ export const Dropdown: FC<DropdownProps> = ({
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
   const tShared = useTranslations(Translation.Shared);
 
+  const iconValue = icon?.value;
+
   const handleClose = () => {
     const { current: menuButtonElement } = menuButtonRef;
 
@@ -51,14 +53,11 @@ export const Dropdown: FC<DropdownProps> = ({
   };
   useWindowListener('resize', handleClose);
 
-  const iconLabel = icon?.label || tShared('arrow');
-  const iconValue = icon?.value;
-
   return (
     <Menu as="div" className={clsx(s.dropdown, className)}>
       <MenuButton
         ref={menuButtonRef}
-        aria-label={iconLabel || ariaLabel}
+        aria-label={ariaLabel}
         className={s.dropdown__btn}
         disabled={isDisabled}
       >
@@ -69,7 +68,7 @@ export const Dropdown: FC<DropdownProps> = ({
         )}
         {typeof iconValue === 'string' ? (
           <Img
-            alt={iconLabel}
+            alt={icon?.label || tShared('arrow')}
             className={s.dropdown__icon}
             height={20}
             src={iconValue}

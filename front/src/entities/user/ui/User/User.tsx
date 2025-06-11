@@ -71,6 +71,7 @@ export const User: FC<UserProps> = ({ className, onClick }) => {
           <Loader className={s.user__loader} />
         ) : user ? (
           <Dropdown
+            ariaLabel={tShared('user.profile')}
             className={s.user__dropdown}
             icon={null}
             isDisabled={isUserLoading}
