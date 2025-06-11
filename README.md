@@ -9,6 +9,7 @@ Our online store for computer components offers a convenient way to find compati
 ## Launch
 
 ```bash
+bun i # first launch
 cd front
 bun i # first launch
 bun dev
