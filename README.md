@@ -10,8 +10,8 @@ Our online store for computer components offers a convenient way to find compati
 
 ```bash
 cd front
-yarn # first launch
-yarn dev
+bun i # first launch
+bun dev
 ```
 
 ![React](https://skillicons.dev/icons?i=react)
@@ -25,8 +25,7 @@ yarn dev
 ![Supabase](https://skillicons.dev/icons?i=supabase)
 ![Git](https://skillicons.dev/icons?i=git)
 ![GitHub](https://skillicons.dev/icons?i=github)
-![npm](https://skillicons.dev/icons?i=npm)
-![yarn](https://skillicons.dev/icons?i=yarn)
+![yarn](https://skillicons.dev/icons?i=bun)
 ![Vercel](https://skillicons.dev/icons?i=vercel)
 ![Postman](https://skillicons.dev/icons?i=postman)
 ![VS Code](https://skillicons.dev/icons?i=vscode)
