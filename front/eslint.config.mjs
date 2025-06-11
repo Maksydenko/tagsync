@@ -19,6 +19,9 @@ const eslintConfig = [
     'plugin:@tanstack/eslint-plugin-query/recommended'
   ),
   {
+    ignores: ['.next', 'node_modules']
+  },
+  {
     plugins: {
       'simple-import-sort': simpleImportSort
     },
