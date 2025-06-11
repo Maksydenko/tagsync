@@ -9,7 +9,7 @@ export const isValueInSet = <T>({ data, key, value }: IIsValueInSet<T>) => {
     return false;
   }
 
-  const setId = new Set(data.map((item) => item[key]));
+  const setId = new Set(data.map(item => item[key]));
 
   return setId.has(value);
 };

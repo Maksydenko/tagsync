@@ -27,6 +27,7 @@ const eslintConfig = [
     },
     rules: {
       'arrow-body-style': ['error', 'as-needed'],
+      curly: ['error', 'all'],
       'func-style': ['error', 'expression'],
       'no-useless-rename': 'error',
       'object-shorthand': ['error', 'always'],

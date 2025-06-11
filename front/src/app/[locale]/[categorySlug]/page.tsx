@@ -7,7 +7,7 @@ import { ProductsService } from '@/features/products';
 
 import { IPageProps } from '@/shared/model';
 
-const CategoryPage: NextPage<IPageProps> = async (props) => {
+const CategoryPage: NextPage<IPageProps> = async props => {
   const params = await props.params;
   const searchParams = await props.searchParams;
   const { locale } = params;

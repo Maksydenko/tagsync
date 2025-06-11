@@ -43,7 +43,7 @@ export const Characteristics: FC<CharacteristicsProps> = ({
 
   const data: ILink[] = useMemo(
     () =>
-      characteristics.map((characteristic) => ({
+      characteristics.map(characteristic => ({
         label: characteristic.translations[locale],
         value:
           characteristic.value_translations?.[locale] || characteristic.value

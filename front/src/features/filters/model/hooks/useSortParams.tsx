@@ -19,7 +19,7 @@ export const useSortParams = (sortValue: string) => {
     const paramsToReset = [SearchParam.Page];
     const currentParams = new URLSearchParams(window.location.search);
 
-    paramsToReset.forEach((param) => currentParams.delete(param));
+    paramsToReset.forEach(param => currentParams.delete(param));
 
     Object.entries(query).forEach(([key, val]) => currentParams.set(key, val));
 

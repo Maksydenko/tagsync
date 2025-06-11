@@ -23,7 +23,7 @@ export const Search: FC<SearchProps> = ({ className }) => {
     enabled: !!search,
     queryFn: async () => {
       const ProductsService = await import('@/features/products').then(
-        (module) => module.ProductsService
+        module => module.ProductsService
       );
 
       return ProductsService.search(`?query=${search}`);
@@ -32,7 +32,7 @@ export const Search: FC<SearchProps> = ({ className }) => {
   });
 
   const items =
-    searchData?.data.products.map((item) => ({
+    searchData?.data.products.map(item => ({
       label: item.title,
       value: `/${item.slug}/${item.product_id}`
     })) || [];

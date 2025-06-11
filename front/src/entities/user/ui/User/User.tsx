@@ -41,7 +41,7 @@ export const User: FC<UserProps> = ({ className, onClick }) => {
   const { mutate: logout } = useMutation({
     mutationFn: async () => {
       const AuthService = await import('@/features/auth').then(
-        (module) => module.AuthService
+        module => module.AuthService
       );
 
       return AuthService.logout();

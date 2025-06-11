@@ -77,7 +77,7 @@ export const Checkbox = <T extends FieldValues>({
         disabled={disabled}
         id={name}
         type="checkbox"
-        onBlur={(e) => {
+        onBlur={e => {
           setIsFocused(false);
           handleBlur?.(e);
         }}

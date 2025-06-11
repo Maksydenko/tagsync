@@ -35,7 +35,7 @@ export const FilterBadges: FC<FilterBadgesProps> = ({
   filtersData.forEach(({ name, values }) => {
     const paramValues = searchParams.get(name)?.split(',') || [];
 
-    values.forEach((value) => {
+    values.forEach(value => {
       if (paramValues.includes(value)) {
         activeBadges.push({
           groupKey: name,
@@ -50,7 +50,7 @@ export const FilterBadges: FC<FilterBadgesProps> = ({
     const params = new URLSearchParams(searchParams);
     const values = params.get(groupKey)?.split(',').filter(Boolean) || [];
 
-    const updatedValues = values.filter((v) => v !== value);
+    const updatedValues = values.filter(v => v !== value);
     if (updatedValues.length) {
       params.set(groupKey, updatedValues.join(','));
     } else {

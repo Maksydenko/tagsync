@@ -37,7 +37,7 @@ export const Reviews: FC<ReviewsProps> = ({
         </div>
         {!!reviewsData.length && (
           <ul className={s.reviews__list}>
-            {reviewsData.map((review) => (
+            {reviewsData.map(review => (
               <li key={review.id}>
                 <ReviewCard review={review} />
               </li>

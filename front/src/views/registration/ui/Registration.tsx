@@ -40,7 +40,7 @@ export const Registration: FC = () => {
                 <StepWizard
                   className={s.registration__stepWizard}
                   initialStep={defaultStep}
-                  instance={(wizard) =>
+                  instance={wizard =>
                     (stepWizardRef.current = wizard as StepWizardChildProps)
                   }
                   nav={
@@ -51,7 +51,7 @@ export const Registration: FC = () => {
                       onChange={handleStepChange}
                     />
                   }
-                  onStepChange={(e) => handleStepChange(--e.activeStep)}
+                  onStepChange={e => handleStepChange(--e.activeStep)}
                 >
                   {steps}
                 </StepWizard>

@@ -48,7 +48,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
   const { isPending: isLoginPending, mutate: login } = useMutation({
     mutationFn: async (data: ILoginForm) => {
       const AuthService = await import('@/features/auth').then(
-        (module) => module.AuthService
+        module => module.AuthService
       );
 
       const { error } = await AuthService.login(data);
@@ -73,7 +73,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
       setSubmissionMessage(errorMessage);
       console.warn(error);
     },
-    onSuccess: async (userEmail) => {
+    onSuccess: async userEmail => {
       sessionStorage.removeItem(MutationKey.Credentials);
       await invalidateUser();
 
@@ -82,7 +82,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
 
       if (!userCart.data.items.length && localCartItemsLength) {
         await Promise.allSettled(
-          localCartItems.map((item) =>
+          localCartItems.map(item =>
             CartService.add({
               product_id: item.product_id,
               quantity: item.quantity,

@@ -11,7 +11,7 @@ interface CheckoutPageProps {
   params: Promise<IParams>;
 }
 
-const CheckoutPage: NextPage<CheckoutPageProps> = async (props) => {
+const CheckoutPage: NextPage<CheckoutPageProps> = async props => {
   const params = await props.params;
   const { locale } = params;
 

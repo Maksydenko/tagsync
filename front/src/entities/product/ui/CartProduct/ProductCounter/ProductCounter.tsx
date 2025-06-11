@@ -53,12 +53,12 @@ export const ProductCounter: FC<ProductCounterProps> = ({
       }
 
       const quantity = cartItems.find(
-        (item) => item.product_id === product_id
+        item => item.product_id === product_id
       )!.quantity;
 
       if (userEmail) {
         const CartService = await import('@/entities/cart').then(
-          (module) => module.CartService
+          module => module.CartService
         );
 
         switch (method) {

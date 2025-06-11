@@ -16,10 +16,10 @@ import { Providers } from './providers';
 import '@/application/styles/globals.scss';
 
 const Sidebar = dynamic(() =>
-  import('@/widgets/sidebar').then((module) => module.Sidebar)
+  import('@/widgets/sidebar').then(module => module.Sidebar)
 );
 const ScrollToTop = dynamic(() =>
-  import('@/widgets/scroll-to-top').then((module) => module.ScrollToTop)
+  import('@/widgets/scroll-to-top').then(module => module.ScrollToTop)
 );
 
 interface LayoutProviderProps {

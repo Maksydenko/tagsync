@@ -11,7 +11,7 @@ interface ResetPasswordPageProps {
   params: Promise<IParams>;
 }
 
-const ResetPasswordPage: NextPage<ResetPasswordPageProps> = async (props) => {
+const ResetPasswordPage: NextPage<ResetPasswordPageProps> = async props => {
   const params = await props.params;
   const { locale } = params;
 

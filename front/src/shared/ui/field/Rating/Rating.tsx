@@ -54,7 +54,7 @@ export const Rating = <T extends FieldValues>({
         initialValue={getValues(name) as number}
         readonly={isDisabled}
         transition
-        onClick={(value) => {
+        onClick={value => {
           setValue(name, value as PathValue<T, Path<T>>);
         }}
         {...props}

@@ -23,8 +23,8 @@ interface ILocalCartState {
 
 export const useLocalCart = create<ILocalCartState>()(
   persist(
-    (set) => ({
-      addToLocalCart: (product) =>
+    set => ({
+      addToLocalCart: product =>
         set(({ localCart }) => ({
           localCart: {
             cart_price: localCart.cart_price + +product.price,
@@ -43,10 +43,10 @@ export const useLocalCart = create<ILocalCartState>()(
         set(() => ({
           localCart: structuredClone(DEFAULT_LOCAL_CART)
         })),
-      decrementLocalCartQuantity: (productId) =>
+      decrementLocalCartQuantity: productId =>
         set(({ localCart }) => {
           const existingProduct = localCart.items.find(
-            (item) => item.product_id === productId
+            item => item.product_id === productId
           );
 
           if (!existingProduct) {
@@ -60,7 +60,7 @@ export const useLocalCart = create<ILocalCartState>()(
               cart_price: localCart.cart_price - +existingProduct.price,
               items: [
                 ...localCart.items.filter(
-                  (item) => item.product_id !== productId
+                  item => item.product_id !== productId
                 ),
                 {
                   ...existingProduct,
@@ -73,10 +73,10 @@ export const useLocalCart = create<ILocalCartState>()(
             }
           };
         }),
-      incrementLocalCartQuantity: (productId) =>
+      incrementLocalCartQuantity: productId =>
         set(({ localCart }) => {
           const existingProduct = localCart.items.find(
-            (item) => item.product_id === productId
+            item => item.product_id === productId
           );
 
           if (!existingProduct) {
@@ -90,7 +90,7 @@ export const useLocalCart = create<ILocalCartState>()(
               cart_price: localCart.cart_price + +existingProduct.price,
               items: [
                 ...localCart.items.filter(
-                  (item) => item.product_id !== productId
+                  item => item.product_id !== productId
                 ),
                 {
                   ...existingProduct,
@@ -104,10 +104,10 @@ export const useLocalCart = create<ILocalCartState>()(
           };
         }),
       localCart: structuredClone(DEFAULT_LOCAL_CART),
-      removeFromLocalCart: (productId) =>
+      removeFromLocalCart: productId =>
         set(({ localCart }) => {
           const existingProduct = localCart.items.find(
-            (item) => item.product_id === productId
+            item => item.product_id === productId
           );
 
           if (!existingProduct) {
@@ -120,7 +120,7 @@ export const useLocalCart = create<ILocalCartState>()(
             localCart: {
               cart_price: localCart.cart_price - +existingProduct.all_price,
               items: localCart.items.filter(
-                (item) => item.product_id !== productId
+                item => item.product_id !== productId
               ),
               total_quantity:
                 localCart.total_quantity - +existingProduct.quantity

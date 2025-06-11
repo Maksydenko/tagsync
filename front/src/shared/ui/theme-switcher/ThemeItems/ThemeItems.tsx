@@ -9,4 +9,4 @@ interface ThemeItemsProps {
 }
 
 export const ThemeItems: FC<ThemeItemsProps> = ({ themes }) =>
-  themes.map((theme) => <ThemeItem key={theme.value} theme={theme} />);
+  themes.map(theme => <ThemeItem key={theme.value} theme={theme} />);

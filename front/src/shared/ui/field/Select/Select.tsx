@@ -64,7 +64,7 @@ export const Select = <T extends FieldValues>({
           defaultValue={items[0]}
           disabled={options?.disabled}
           value={watch(name)}
-          onChange={(value) => {
+          onChange={value => {
             setValue(name, value as PathValue<T, Path<T>>);
           }}
         >
@@ -93,7 +93,7 @@ export const Select = <T extends FieldValues>({
             className={s.select__options}
             transition
           >
-            {items.map((item) => (
+            {items.map(item => (
               <ListboxOption
                 key={item.value}
                 className={s.select__option}

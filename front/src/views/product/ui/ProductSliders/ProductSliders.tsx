@@ -34,7 +34,7 @@ export const ProductSliders: FC<ProductSlidersProps> = ({
           className={s.productSliders__miniSlider}
           direction={isMobile ? Direction.Horizontal : Direction.Vertical}
           navigation={false}
-          slides={images?.map((img) => ({
+          slides={images?.map(img => ({
             label: img,
             value: (
               <Img

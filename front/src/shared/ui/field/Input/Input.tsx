@@ -63,7 +63,7 @@ export const Input = <T extends FieldValues>({
         id={name}
         placeholder={placeholder}
         type={showPassword ? 'text' : type}
-        onBlur={(e) => {
+        onBlur={e => {
           handleBlur(e);
           onBlur?.();
         }}
@@ -76,7 +76,7 @@ export const Input = <T extends FieldValues>({
           className={s.input__btn}
           type="button"
           onClick={() => {
-            setShowPassword((prev) => !prev);
+            setShowPassword(prev => !prev);
           }}
         >
           <Img

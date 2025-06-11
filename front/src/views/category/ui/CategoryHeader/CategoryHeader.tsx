@@ -37,7 +37,7 @@ export const CategoryHeader: FC<CategoryHeaderProps> = ({
   const categorySlug = pathname.split('/')[2];
   /* eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain */
   const category = categories?.find(
-    (category) => category.slug === categorySlug
+    category => category.slug === categorySlug
   )!;
   const categoryTitle = category?.translations_slug[locale];
 

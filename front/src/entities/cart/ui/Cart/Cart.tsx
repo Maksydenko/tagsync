@@ -22,9 +22,9 @@ import { cartAtom, cartOpenAtom } from '../../model';
 import s from './Cart.module.scss';
 
 const Link = dynamic(() => import('next/link'));
-const Btn = dynamic(() => import('@/shared/ui').then((module) => module.Btn));
+const Btn = dynamic(() => import('@/shared/ui').then(module => module.Btn));
 const CartProduct = dynamic(() =>
-  import('@/entities/product').then((module) => module.CartProduct)
+  import('@/entities/product').then(module => module.CartProduct)
 );
 
 interface CartProps {
@@ -51,7 +51,7 @@ export const Cart: FC<CartProps> = ({ className }) => {
   const { mutate: clearCart } = useMutation({
     mutationFn: async () => {
       const CartService = await import('../../api').then(
-        (module) => module.CartService
+        module => module.CartService
       );
 
       if (userEmail) {
@@ -97,7 +97,7 @@ export const Cart: FC<CartProps> = ({ className }) => {
         <div className={s.cart__body}>
           <h2 className={s.cart__title}>{tShared('cart.title')}</h2>
           <div className={s.cart__content}>
-            {cartItems?.map((product) => (
+            {cartItems?.map(product => (
               <CartProduct
                 key={product.product_id}
                 className={s.cart__product}
@@ -111,7 +111,7 @@ export const Cart: FC<CartProps> = ({ className }) => {
                 aria-disabled={!cartItems?.length}
                 className={s.cart__btn}
                 href={Pathname.Checkout}
-                onClick={(e) => {
+                onClick={e => {
                   if (!cartItems?.length) {
                     return e.preventDefault();
                   }

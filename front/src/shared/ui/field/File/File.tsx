@@ -51,7 +51,7 @@ export const File: FC<FileProps> = ({
       // Checking the type of file
       if (
         accept &&
-        !accept.some((type) => name.toLocaleLowerCase().endsWith(type))
+        !accept.some(type => name.toLocaleLowerCase().endsWith(type))
       ) {
         alert(`File type must be ${accept.join(', ')}!`);
         setSelectedFile(null);

@@ -35,7 +35,7 @@ export const ComparisonCharacteristicsTable: FC<
       <thead className={s.table__head}>
         {table.getHeaderGroups().map(({ headers, id }) => (
           <tr key={id} className={clsx(s.table__row, s.table__row_head)}>
-            {headers.map((header) => (
+            {headers.map(header => (
               <th
                 key={header.id}
                 className={clsx(s.table__cell, s.table__cell_head)}

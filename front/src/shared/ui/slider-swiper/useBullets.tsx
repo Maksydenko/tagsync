@@ -35,7 +35,7 @@ export const useBullets = ({
     breakpointsArray
   );
 
-  const results = breakpointsWithDesktop.map((breakpoint) => {
+  const results = breakpointsWithDesktop.map(breakpoint => {
     const { isBreakpoint, slides } = breakpoint;
 
     if (isBreakpoint && Number(slides) < slidesLength) {

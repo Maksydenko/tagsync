@@ -14,7 +14,7 @@ export const SidebarItems: FC = () => {
 
   return (
     <ul className={s.sidebar__list}>
-      {categoriesData?.data.map((category) => (
+      {categoriesData?.data.map(category => (
         <SidebarItem key={category.slug} category={category} />
       ))}
     </ul>

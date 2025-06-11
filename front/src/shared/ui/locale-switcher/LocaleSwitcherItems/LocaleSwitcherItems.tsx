@@ -11,6 +11,6 @@ interface LocaleSwitcherItemsProps {
 export const LocaleSwitcherItems: FC<LocaleSwitcherItemsProps> = ({
   onClick
 }) =>
-  localeData.map((locale) => (
+  localeData.map(locale => (
     <LocaleSwitcherItem key={locale.value} locale={locale} onClick={onClick} />
   ));

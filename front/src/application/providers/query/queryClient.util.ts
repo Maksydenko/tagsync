@@ -13,7 +13,7 @@ const makeQueryClient = () => {
     defaultOptions: {
       dehydrate: {
         // include pending queries in dehydration
-        shouldDehydrateQuery: (query) =>
+        shouldDehydrateQuery: query =>
           defaultShouldDehydrateQuery(query) ||
           query.state.status === QueryStatus.Pending
       },
