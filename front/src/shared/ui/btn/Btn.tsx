@@ -29,7 +29,6 @@ export const Btn: FC<BtnProps> = ({
   isLoading,
   ...props
 }) => {
-  const isDisabled = disabled || isLoading;
   const classNames = clsx(s.btn, isLoading && s.btn_loading);
 
   if (asChild && isValidElement(children)) {
@@ -40,13 +39,11 @@ export const Btn: FC<BtnProps> = ({
     });
   }
 
-  const iconLabel = icon?.label;
+  const isDisabled = disabled || isLoading;
   const iconValue = icon?.value;
 
   return (
     <button
-      aria-disabled={isDisabled}
-      aria-label={props['aria-label'] || iconLabel}
       className={clsx(classNames, className)}
       disabled={isDisabled}
       {...props}
@@ -60,7 +57,7 @@ export const Btn: FC<BtnProps> = ({
           )}
           {typeof iconValue === 'string' ? (
             <Img
-              alt={iconLabel}
+              alt={icon?.label}
               className={s.btn__icon}
               height={20}
               src={iconValue}

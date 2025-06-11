@@ -283,6 +283,9 @@ export const ProductCard: FC<ProductCardProps> = ({
               </div>
             </div>
             <Btn
+              aria-label={tShared(
+                `product.cart.${isInCart ? 'in' : 'add-to'}-cart`
+              )}
               className={s.productCard__btn}
               disabled={isCartLoading}
               icon={{

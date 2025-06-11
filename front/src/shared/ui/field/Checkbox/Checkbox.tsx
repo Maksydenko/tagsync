@@ -71,8 +71,6 @@ export const Checkbox = <T extends FieldValues>({
       )}
     >
       <input
-        aria-checked={isChecked}
-        aria-disabled={disabled}
         aria-invalid={!!error}
         aria-label={label}
         aria-required={!!options?.required}
