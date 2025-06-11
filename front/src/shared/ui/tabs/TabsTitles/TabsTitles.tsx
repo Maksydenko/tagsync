@@ -15,7 +15,7 @@ interface TitlesProps {
 
 export const TabsTitles: FC<TitlesProps> = ({ isVertical, tabs }) => (
   <TabList className={s.tabs__titles}>
-    {tabs.map((tab) => (
+    {tabs.map(tab => (
       <TabsTitle
         key={tab.label}
         isVertical={isVertical}

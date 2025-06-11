@@ -9,12 +9,12 @@ const getCollapsedHeight: MotionEventHandler = () => ({
   opacity: 0
 });
 
-const getRealHeight: MotionEventHandler = (node) => ({
+const getRealHeight: MotionEventHandler = node => ({
   height: node.scrollHeight,
   opacity: 1
 });
 
-const getCurrentHeight: MotionEventHandler = (node) => ({
+const getCurrentHeight: MotionEventHandler = node => ({
   height: node.offsetHeight
 });
 

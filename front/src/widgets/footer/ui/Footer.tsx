@@ -14,7 +14,7 @@ import { Copyright } from './Copyright/Copyright';
 import s from './Footer.module.scss';
 
 const FooterList = dynamic(() =>
-  import('./FooterList').then((module) => module.FooterList)
+  import('./FooterList').then(module => module.FooterList)
 );
 
 interface FooterProps {

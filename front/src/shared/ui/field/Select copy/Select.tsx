@@ -63,7 +63,7 @@ export const Select = <T extends FieldValues>({
           isLoading={isLoading}
           isSearchable={false}
           options={items as OptionProps['options']}
-          onChange={(value) => {
+          onChange={value => {
             setValue(name, value as PathValue<T, Path<T>>);
           }}
           {...props}

@@ -7,7 +7,7 @@ export const invalidateQueries = async (
   queryKeys: QueryKey[]
 ) => {
   await Promise.allSettled(
-    queryKeys.map((key) =>
+    queryKeys.map(key =>
       queryClient.invalidateQueries({
         queryKey: [key]
       })

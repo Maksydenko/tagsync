@@ -41,7 +41,7 @@ export const useFilterParams = <T extends FieldValues>({
   useEffect(() => {
     const { current: timeoutElement } = timeoutRef;
 
-    const subscription = form.watch((formValues) => {
+    const subscription = form.watch(formValues => {
       if (timeoutElement) {
         clearTimeout(timeoutElement);
       }
@@ -71,7 +71,7 @@ export const useFilterParams = <T extends FieldValues>({
             params.delete(filterNameParam);
 
             const checked = filterValues.filter(
-              (name) => formValues[`${filterNameParam}-${name}`]
+              name => formValues[`${filterNameParam}-${name}`]
             );
 
             if (checked.length) {

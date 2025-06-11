@@ -29,7 +29,7 @@ export const WishlistProducts: FC<WishlistProductsProps> = ({ className }) => {
         <Loader className={s.wishlistProducts__loader} />
       ) : (
         <div className={s.wishlistProducts__body}>
-          {wishlistData?.data.map((product) => (
+          {wishlistData?.data.map(product => (
             <ProductCard key={product.product_id} productData={product} />
           ))}
         </div>

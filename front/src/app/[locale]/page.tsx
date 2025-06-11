@@ -13,7 +13,7 @@ interface HomePageProps {
   params: Promise<IParams>;
 }
 
-const HomePage: NextPage<HomePageProps> = async (props) => {
+const HomePage: NextPage<HomePageProps> = async props => {
   const params = await props.params;
   const { locale } = params;
 

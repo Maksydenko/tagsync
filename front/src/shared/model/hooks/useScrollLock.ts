@@ -18,14 +18,14 @@ export const useScrollLock: IUseScrollLock = (inerts = []) => {
     (elements: (Element | null)[]): void;
   }
 
-  const setInerts: IHandleInerts = (elements) => {
-    elements.forEach((element) => {
+  const setInerts: IHandleInerts = elements => {
+    elements.forEach(element => {
       element?.setAttribute('inert', '');
     });
   };
 
-  const removeInerts: IHandleInerts = (elements) => {
-    elements.forEach((element) => {
+  const removeInerts: IHandleInerts = elements => {
+    elements.forEach(element => {
       element?.removeAttribute('inert');
     });
   };
@@ -33,7 +33,7 @@ export const useScrollLock: IUseScrollLock = (inerts = []) => {
   useEffect(() => {
     const { body } = document;
 
-    const inertElements = inerts.map((inert) => document.querySelector(inert));
+    const inertElements = inerts.map(inert => document.querySelector(inert));
 
     if (isScrollLocked) {
       body.classList.add('lock');

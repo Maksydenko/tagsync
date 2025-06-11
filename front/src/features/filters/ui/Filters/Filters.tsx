@@ -23,7 +23,7 @@ interface FiltersProps {
 
 export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
   const priceFilter = useMemo(
-    () => filtersData.find((filter) => filter.name === SearchParam.Price),
+    () => filtersData.find(filter => filter.name === SearchParam.Price),
     [filtersData]
   );
   const defaultPrice = useMemo(
@@ -37,7 +37,7 @@ export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
   );
 
   const filteredData = useMemo(
-    () => filtersData.filter((filter) => filter.name !== SearchParam.Price),
+    () => filtersData.filter(filter => filter.name !== SearchParam.Price),
     [filtersData]
   );
 
@@ -76,13 +76,13 @@ export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
       values[SearchParam.PriceRange] = defaultPrice;
     }
 
-    filteredData.forEach((group) => {
+    filteredData.forEach(group => {
       const paramName =
         group.type === 'int' ? `${group.name}_range` : group.name;
       const param = searchParams.get(paramName);
       const activeValues = param?.split(',') || [];
 
-      activeValues.forEach((value) => {
+      activeValues.forEach(value => {
         if (value) {
           values[`${paramName}-${value}`] = true;
         }
@@ -131,7 +131,7 @@ export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
       }) => ({
         children: (
           <div className={s.filters__fields}>
-            {filterValues.map((value) => {
+            {filterValues.map(value => {
               const fieldName = `${
                 groupType === 'int' ? `${filterName}_range` : filterName
               }-${value}`;

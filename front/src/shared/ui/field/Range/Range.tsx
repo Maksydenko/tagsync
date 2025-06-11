@@ -71,7 +71,7 @@ export const Range = <T extends FieldValues>({
         <Slider
           disabled={options?.disabled}
           value={watch(name)}
-          onChange={(value) => {
+          onChange={value => {
             setValue(name, value as PathValue<T, Path<T>>);
           }}
           {...(typeof defaultMin === 'number' && {

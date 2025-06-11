@@ -24,7 +24,7 @@ export const ScrollToTop: FC<ScrollToTopProps> = ({ className }) => {
 
     animate(scrollY, 0, {
       duration: 0.8,
-      onUpdate: (value) => {
+      onUpdate: value => {
         scrollTo(0, value);
       }
     });

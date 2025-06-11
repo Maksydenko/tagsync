@@ -17,7 +17,7 @@ export const localCartSlice = createSlice({
   reducers: {
     addToLocalCart: (state, { payload: product }: PayloadAction<IProduct>) => {
       const existingProduct = state.items.find(
-        (item) => item.product_id === product.product_id
+        item => item.product_id === product.product_id
       );
 
       if (existingProduct) {
@@ -33,7 +33,7 @@ export const localCartSlice = createSlice({
       ++state.total_quantity;
     },
 
-    clearLocalCart: (state) => {
+    clearLocalCart: state => {
       state.cart_price = 0;
       state.items = [];
       state.total_quantity = 0;
@@ -44,7 +44,7 @@ export const localCartSlice = createSlice({
       { payload: productId }: PayloadAction<IProduct['product_id']>
     ) => {
       const existingProduct = state.items.find(
-        (item) => item.product_id === productId
+        item => item.product_id === productId
       );
 
       if (!existingProduct) {
@@ -53,7 +53,7 @@ export const localCartSlice = createSlice({
 
       state.cart_price -= +existingProduct.price;
       state.items = [
-        ...state.items.filter((items) => items.product_id !== productId),
+        ...state.items.filter(items => items.product_id !== productId),
         ...(existingProduct.quantity > 1
           ? [
               {
@@ -72,7 +72,7 @@ export const localCartSlice = createSlice({
       { payload: productId }: PayloadAction<IProduct['product_id']>
     ) => {
       const existingProduct = state.items.find(
-        (item) => item.product_id === productId
+        item => item.product_id === productId
       );
 
       if (!existingProduct) {
@@ -81,7 +81,7 @@ export const localCartSlice = createSlice({
 
       state.cart_price += +existingProduct.price;
       state.items = [
-        ...state.items.filter((items) => items.product_id !== productId),
+        ...state.items.filter(items => items.product_id !== productId),
         {
           ...existingProduct,
           all_price: +existingProduct.price * ++existingProduct.quantity,
@@ -96,7 +96,7 @@ export const localCartSlice = createSlice({
       { payload: productId }: PayloadAction<IProduct['product_id']>
     ) => {
       const existingProduct = state.items.find(
-        (item) => item.product_id === productId
+        item => item.product_id === productId
       );
 
       if (!existingProduct) {
@@ -104,7 +104,7 @@ export const localCartSlice = createSlice({
       }
 
       state.cart_price -= +existingProduct.price * existingProduct.quantity;
-      state.items = state.items.filter((i) => i.product_id !== productId);
+      state.items = state.items.filter(i => i.product_id !== productId);
       state.total_quantity -= existingProduct.quantity;
     }
   }

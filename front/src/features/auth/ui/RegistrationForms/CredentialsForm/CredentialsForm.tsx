@@ -44,7 +44,7 @@ export const CredentialsForm: FC<CredentialsFormProps> = ({
   const { isPending: isRegisterPending, mutate: register } = useMutation({
     mutationFn: async (data: ICredentialsForm) => {
       const AuthService = await import('@/features/auth').then(
-        (module) => module.AuthService
+        module => module.AuthService
       );
 
       const response = await AuthService.checkEmailExists(data.email);
@@ -56,7 +56,7 @@ export const CredentialsForm: FC<CredentialsFormProps> = ({
       return data;
     },
     mutationKey: [MutationKey.Credentials],
-    onError: (error) => {
+    onError: error => {
       const errorMessages = {
         default: 'errors.unknown',
         [ErrorCode.UserAlreadyExists]: 'errors.user-already-exists'
@@ -68,7 +68,7 @@ export const CredentialsForm: FC<CredentialsFormProps> = ({
       setSubmissionMessage(errorMessage);
       console.warn(error);
     },
-    onSuccess: (data) => {
+    onSuccess: data => {
       sessionStorage.setItem(MutationKey.Credentials, JSON.stringify(data));
 
       setSubmissionMessage('');

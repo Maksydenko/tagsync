@@ -12,4 +12,4 @@ interface MenuItemsProps {
 }
 
 export const MenuItems: FC<MenuItemsProps> = ({ links }) =>
-  links.map((link) => <MenuItem key={link.value} link={link} />);
+  links.map(link => <MenuItem key={link.value} link={link} />);

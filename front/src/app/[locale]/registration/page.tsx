@@ -11,7 +11,7 @@ interface RegistrationPageProps {
   params: Promise<IParams>;
 }
 
-const RegistrationPage: NextPage<RegistrationPageProps> = async (props) => {
+const RegistrationPage: NextPage<RegistrationPageProps> = async props => {
   const params = await props.params;
   const { locale } = params;
 

@@ -11,7 +11,7 @@ interface LoginPageProps {
   params: Promise<IParams>;
 }
 
-const LoginPage: NextPage<LoginPageProps> = async (props) => {
+const LoginPage: NextPage<LoginPageProps> = async props => {
   const params = await props.params;
   const { locale } = params;
 

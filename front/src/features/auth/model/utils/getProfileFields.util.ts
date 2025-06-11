@@ -48,7 +48,7 @@ export const getProfileFields = (
     name: 'phone',
     options: {
       required: tShared('form.phone.required'),
-      validate: (value) => {
+      validate: value => {
         if (!value || value?.length <= 1) {
           return;
         }

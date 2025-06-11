@@ -51,7 +51,7 @@ export const ComparisonCharacteristics: FC<ComparisonCharacteristicsProps> = ({
         >();
 
         products.forEach((product, index) => {
-          product.characteristics.forEach((characteristic) => {
+          product.characteristics.forEach(characteristic => {
             const label = characteristic.translations.uk || characteristic.name;
 
             if (!allCharacteristics.has(characteristic.name)) {

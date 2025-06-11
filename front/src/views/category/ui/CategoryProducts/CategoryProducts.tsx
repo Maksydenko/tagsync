@@ -23,7 +23,7 @@ export const CategoryProducts: FC<CategoryProductsProps> = ({
   <div className={clsx(s.categoryProducts, className)}>
     <div className={s.categoryProducts__body}>
       <div className={s.categoryProducts__content}>
-        {productsData.products.map((product) => (
+        {productsData.products.map(product => (
           <ProductCard key={product.product_id} productData={product} />
         ))}
       </div>

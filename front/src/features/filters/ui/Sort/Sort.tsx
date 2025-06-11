@@ -34,7 +34,7 @@ export const Sort: FC<SortProps> = ({ className }) => {
     : null;
 
   const defaultSort =
-    sorts.find((sort) => sort.value === urlSortValue) || sorts[0];
+    sorts.find(sort => sort.value === urlSortValue) || sorts[0];
 
   const form = useForm<{
     [SearchParam.SortBy]: ILink;

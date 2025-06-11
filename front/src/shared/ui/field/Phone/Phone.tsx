@@ -59,7 +59,7 @@ export const Phone = <T extends FieldValues>({
     const countryCode = phoneValue.slice(1).split(' ')[0];
 
     const matchedCountry = getCountries().find(
-      (country) => getCountryCallingCode(country) === countryCode
+      country => getCountryCallingCode(country) === countryCode
     );
 
     if (!matchedCountry) {
@@ -78,7 +78,7 @@ export const Phone = <T extends FieldValues>({
       placeholder={placeholder}
       value={phoneValue}
       international
-      onChange={(value) => {
+      onChange={value => {
         setValue(name, value as PathValue<T, Path<T>>);
         trigger(name);
       }}

@@ -42,7 +42,7 @@ export const ProductsSlider: FC<ProductsSliderProps> = ({
             }
           }}
           className={s.productsSlider__slider}
-          slides={productsData.map((product) => {
+          slides={productsData.map(product => {
             const { product_id } = product;
 
             return {

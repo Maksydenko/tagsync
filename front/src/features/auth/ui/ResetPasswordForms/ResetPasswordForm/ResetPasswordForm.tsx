@@ -44,7 +44,7 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
       }
 
       const AuthService = await import('@/features/auth').then(
-        (module) => module.AuthService
+        module => module.AuthService
       );
 
       return AuthService.resetPassword({
@@ -54,7 +54,7 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
       });
     },
     mutationKey: [MutationKey.ResetPassword],
-    onError: (error) => {
+    onError: error => {
       const errorMessages = {
         default: 'errors.unknown'
       };

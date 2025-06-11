@@ -88,7 +88,7 @@ export const Autocomplete = <T extends FieldValues>({
           className={s.autocomplete__options}
           transition
         >
-          {items.map((item) => {
+          {items.map(item => {
             const { label, value } = item;
             const icon = checkKeyByTypes<
               ILinkWithIcon<(() => unknown) | string>,

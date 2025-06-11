@@ -38,7 +38,7 @@ export const OrdersList: FC<OrdersListProps> = ({ className }) => {
     queryKey: [QueryKey.Orders, userEmail]
   });
 
-  const items = ordersData?.data.map((order) => ({
+  const items = ordersData?.data.map(order => ({
     children: (
       <OrderCardContent
         className={s.ordersList__orderCardContent}

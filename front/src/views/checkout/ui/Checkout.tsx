@@ -41,7 +41,7 @@ export const Checkout: FC<CheckoutProps> = ({ className }) => {
         <div className={s.checkout__container}>
           <div className={s.checkout__body}>
             <div className={s.checkout__content}>
-              {cartItems?.map((product) => (
+              {cartItems?.map(product => (
                 <CartProduct key={product.product_id} productData={product} />
               ))}
             </div>

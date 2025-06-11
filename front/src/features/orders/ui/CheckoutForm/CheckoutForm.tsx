@@ -51,7 +51,7 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({ className }) => {
       }
 
       const OrdersService = await import('@/features/orders').then(
-        (module) => module.OrdersService
+        module => module.OrdersService
       );
 
       return OrdersService.checkout({

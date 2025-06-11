@@ -15,7 +15,7 @@ export const FooterList: FC = () => {
 
   return (
     <ul className={s.footer__list}>
-      {categoriesData?.data.map((category) => (
+      {categoriesData?.data.map(category => (
         <li key={category.slug} className={s.footer__item}>
           <Link className={s.footer__link} href={`/${category.slug}`}>
             {category.translations_slug[locale]}

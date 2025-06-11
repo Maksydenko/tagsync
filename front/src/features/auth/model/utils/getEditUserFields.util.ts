@@ -56,7 +56,7 @@ export const getEditUserFields = (
     name: 'phone',
     options: {
       required: tShared('form.phone.required'),
-      validate: (value) => {
+      validate: value => {
         if (!value || value?.length <= 1) {
           return;
         }

@@ -65,7 +65,7 @@ export const LeaveReview: FC<LeaveReviewProps> = ({ className, productId }) => {
       }
 
       const ReviewsService = await import('../../api').then(
-        (module) => module.ReviewsService
+        module => module.ReviewsService
       );
 
       await ReviewsService.add({
@@ -78,7 +78,7 @@ export const LeaveReview: FC<LeaveReviewProps> = ({ className, productId }) => {
       });
     },
     mutationKey: [MutationKey.LeaveReview],
-    onError: (error) => {
+    onError: error => {
       const errorMessages = {
         default: 'errors.unknown'
       };

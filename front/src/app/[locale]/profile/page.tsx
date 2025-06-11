@@ -7,7 +7,7 @@ import { Translation } from '@/shared/config';
 import { generateMetaTitle } from '@/shared/lib';
 import { IPageProps } from '@/shared/model';
 
-const ProfilePage: NextPage<IPageProps> = async (props) => {
+const ProfilePage: NextPage<IPageProps> = async props => {
   const params = await props.params;
   const { locale } = params;
 

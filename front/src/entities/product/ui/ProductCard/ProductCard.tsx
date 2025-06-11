@@ -101,7 +101,7 @@ export const ProductCard: FC<ProductCardProps> = ({
         }
 
         const WishlistService = await import('@/features/wishlist').then(
-          (module) => module.WishlistService
+          module => module.WishlistService
         );
 
         if (isWished) {
@@ -134,7 +134,7 @@ export const ProductCard: FC<ProductCardProps> = ({
         }
 
         const ComparisonsService = await import('@/features/comparisons').then(
-          (module) => module.ComparisonsService
+          module => module.ComparisonsService
         );
 
         if (isInComparisons) {
@@ -164,7 +164,7 @@ export const ProductCard: FC<ProductCardProps> = ({
       }
 
       const CartService = await import('@/entities/cart').then(
-        (module) => module.CartService
+        module => module.CartService
       );
 
       return CartService.add({

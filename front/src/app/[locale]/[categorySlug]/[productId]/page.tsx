@@ -17,7 +17,7 @@ const getProductById = cache(async (categorySlug: string, productId: string) =>
   ProductsService.getAll(`?category=${categorySlug}&product_id=${productId}`)
 );
 
-const ProductPage: NextPage<IPageProps> = async (props) => {
+const ProductPage: NextPage<IPageProps> = async props => {
   const params = await props.params;
   const { categorySlug, locale, productId } = params;
 

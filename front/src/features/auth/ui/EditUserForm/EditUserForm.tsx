@@ -48,7 +48,7 @@ export const EditUserForm: FC<EditUserFormProps> = ({ className }) => {
       }
 
       const AuthService = await import('@/features/auth').then(
-        (module) => module.AuthService
+        module => module.AuthService
       );
 
       return AuthService.changeUserData({
@@ -61,7 +61,7 @@ export const EditUserForm: FC<EditUserFormProps> = ({ className }) => {
       });
     },
     mutationKey: [MutationKey.EditUser],
-    onError: (error) => {
+    onError: error => {
       const errorMessages = {
         default: 'errors.unknown'
       };

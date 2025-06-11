@@ -46,7 +46,7 @@ export const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({
   } = useMutation({
     mutationFn: async ({ email }: IForgotPasswordForm) => {
       const AuthService = await import('@/features/auth').then(
-        (module) => module.AuthService
+        module => module.AuthService
       );
 
       await AuthService.requestResetPassword({
@@ -55,7 +55,7 @@ export const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({
       });
     },
     mutationKey: [MutationKey.RequestResetPassword],
-    onError: (error) => {
+    onError: error => {
       const errorMessages = {
         default: 'errors.unknown'
       };

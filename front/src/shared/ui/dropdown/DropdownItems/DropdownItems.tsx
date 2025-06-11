@@ -17,7 +17,7 @@ interface DropdownItemsProps {
 
 export const DropdownItems: FC<DropdownItemsProps> = ({ items }) => (
   <MenuItems anchor="bottom end" className={s.dropdownItems} transition>
-    {items.map((item) => (
+    {items.map(item => (
       <DropdownItem key={item.label} item={item} />
     ))}
   </MenuItems>

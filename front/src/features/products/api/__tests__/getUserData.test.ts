@@ -45,13 +45,23 @@ jest.mock('@/application/api', () => ({
 }));
 
 describe('getAll', () => {
-  it('should return a successful response', async () => {
+  beforeEach(() => {
     (axiosInstance.get as jest.Mock).mockResolvedValue({
       data: mockProductsData
     });
+  });
 
+  it('should return a successful response', async () => {
     const productsData = await ProductsService.getAll();
 
     expect(productsData.data).toEqual(mockProductsData);
+  });
+
+  it('должен корректно обрабатывать ошибку', async () => {
+    (axiosInstance.get as jest.Mock).mockRejectedValue(
+      new Error('Network error')
+    );
+
+    await expect(ProductsService.getAll()).rejects.toThrow('Network error');
   });
 });

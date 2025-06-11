@@ -51,7 +51,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({ className }) => {
         }
 
         const AuthService = await import('@/features/auth').then(
-          (module) => module.AuthService
+          module => module.AuthService
         );
 
         const { email, password } = parsedFormData;

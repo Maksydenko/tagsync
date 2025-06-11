@@ -16,7 +16,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducers);
 
 export const store = configureStore({
   devTools: process.env.NEXT_PUBLIC_PHASE === Phase.Development,
-  middleware: (getDefaultMiddleware) =>
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: false
     }),
