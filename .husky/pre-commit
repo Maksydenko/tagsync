@@ -1,4 +1,4 @@
 cd front
-yarn tsc
-yarn lint
-yarn stylelint
+bun tsc
+bun lint
+bun stylelint
