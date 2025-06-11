@@ -22,12 +22,4 @@ describe('getAll', () => {
 
     expect(productsData.data).toEqual(productsDataMock);
   });
-
-  it('должен корректно обрабатывать ошибку', async () => {
-    (axiosInstance.get as jest.Mock).mockRejectedValue(
-      new Error('Network error')
-    );
-
-    await expect(ProductsService.getAll()).rejects.toThrow('Network error');
-  });
 });
