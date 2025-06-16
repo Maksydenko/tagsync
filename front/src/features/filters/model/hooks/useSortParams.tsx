@@ -5,9 +5,9 @@ import { useRouter } from 'next/navigation';
 
 import { SearchParam, sortSearchParams } from '@/shared/model';
 
-import { parseSortValue } from '../utils';
+import { SEARCH_PARAMS_TO_RESET } from '../searchParamsToReset.const';
 
-const PARAMS_TO_RESET = [SearchParam.Page];
+import { parseSortValue } from '../utils';
 
 export const useSortParams = (sortValue: string, defaultSortValue: string) => {
   const { push } = useRouter();
@@ -18,19 +18,19 @@ export const useSortParams = (sortValue: string, defaultSortValue: string) => {
     }
 
     const query = parseSortValue(sortValue);
-    const currentParams = new URLSearchParams(window.location.search);
+    const searchParams = new URLSearchParams(window.location.search);
 
-    currentParams.delete(SearchParam.SortOrder);
-    PARAMS_TO_RESET.forEach(param => currentParams.delete(param));
+    searchParams.delete(SearchParam.SortOrder);
+    SEARCH_PARAMS_TO_RESET.forEach(param => searchParams.delete(param));
 
     Object.entries(query).forEach(([key, value]) => {
       if (sortValue === defaultSortValue) {
-        currentParams.delete(SearchParam.SortBy);
+        searchParams.delete(SearchParam.SortBy);
       } else {
-        currentParams.set(key, value);
+        searchParams.set(key, value);
       }
     });
 
-    push(`?${sortSearchParams(currentParams)}`);
+    push(`?${sortSearchParams(searchParams)}`);
   }, [defaultSortValue, push, sortValue]);
 };

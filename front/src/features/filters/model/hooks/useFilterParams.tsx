@@ -8,6 +8,8 @@ import { SearchParam, sortSearchParams, Time } from '@/shared/model';
 
 import { FilterType, IFilter } from '../../api';
 
+import { SEARCH_PARAMS_TO_RESET } from '../searchParamsToReset.const';
+
 interface IUseFilterParams<T extends FieldValues> {
   defaultPrice: {
     max: number;
@@ -23,15 +25,16 @@ export const useFilterParams = <T extends FieldValues>({
   form
 }: IUseFilterParams<T>) => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const searchParams = useSearchParams();
+  const { push } = useRouter();
+
   const defaultFilters = useMemo(
     () => ({
       [SearchParam.PriceRange]: defaultPrice
     }),
     [defaultPrice]
   );
-
-  const searchParams = useSearchParams();
-  const { push } = useRouter();
 
   const filterDebounceDelay =
     Number(process.env.NEXT_PUBLIC_FILTER_DEBOUNCE_DELAY) *
@@ -47,6 +50,7 @@ export const useFilterParams = <T extends FieldValues>({
 
       timeoutRef.current = setTimeout(() => {
         const params = new URLSearchParams(searchParams.toString());
+        SEARCH_PARAMS_TO_RESET.forEach(param => params.delete(param));
 
         if (formValues[SearchParam.PriceRange]) {
           const [min, max] = formValues[SearchParam.PriceRange];
@@ -75,9 +79,11 @@ export const useFilterParams = <T extends FieldValues>({
               name => formValues[[filterNameParam, name].join('-')]
             );
 
-            if (checked.length) {
-              params.set(filterNameParam, checked.join(','));
+            if (!checked.length) {
+              return;
             }
+
+            params.set(filterNameParam, checked.join(','));
           }
         );
 

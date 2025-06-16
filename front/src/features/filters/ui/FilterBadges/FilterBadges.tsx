@@ -36,13 +36,15 @@ export const FilterBadges: FC<FilterBadgesProps> = ({
     const paramValues = searchParams.get(name)?.split(',') || [];
 
     values.forEach(value => {
-      if (paramValues.includes(value)) {
-        activeBadges.push({
-          groupKey: name,
-          name: value,
-          value
-        });
+      if (!paramValues.includes(value)) {
+        return;
       }
+
+      activeBadges.push({
+        groupKey: name,
+        name: value,
+        value
+      });
     });
   });
 
