@@ -8,7 +8,7 @@ import { categoriesAtom } from '@/entities/product';
 import { User } from '@/entities/user';
 
 import { Locale, Translation } from '@/shared/config';
-import { Dropdown, LocaleSwitcher, ThemeSwitcher } from '@/shared/ui';
+import { LocaleSwitcher, ThemeSwitcher } from '@/shared/ui';
 
 import { menuData } from '../../model';
 
@@ -57,19 +57,21 @@ export const Menu: FC<MenuProps> = ({ className, isScrollLocked, onClick }) => {
       >
         <nav className={s.menu__content}>
           <ul className={s.menu__list}>
-            <MenuItems links={menuData} onClick={onClick} />
-            <Dropdown
-              className={s.menu__dropdown}
-              items={
-                categoriesData?.data?.map(category => ({
-                  icon: category.img,
-                  label: category.translations_slug[locale],
-                  value: category.slug
-                })) || []
-              }
-            >
-              {tShared('pathnames.categories')}
-            </Dropdown>
+            <MenuItems
+              links={[
+                ...menuData,
+                {
+                  label: 'categories',
+                  value:
+                    categoriesData?.data?.map(category => ({
+                      icon: category.img,
+                      label: category.translations_slug[locale],
+                      value: category.slug
+                    })) || []
+                }
+              ]}
+              onClick={onClick}
+            />
           </ul>
           <LocaleSwitcher className={s.menu__localeSwitcher} />
           <ThemeSwitcher />

@@ -1,3 +1,4 @@
+export * from './accordion/Accordion';
 export * from './breadcrumbs/Breadcrumbs';
 export * from './btn/Btn';
 export * from './collapse/Collapse';

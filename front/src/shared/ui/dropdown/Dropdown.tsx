@@ -62,7 +62,7 @@ export const Dropdown: FC<DropdownProps> = ({
         disabled={isDisabled}
       >
         {typeof children === 'string' ? (
-          <div className={s.dropdown__box}>{children}</div>
+          <p className={s.dropdown__box}>{children}</p>
         ) : (
           children
         )}

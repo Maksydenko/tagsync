@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form';
 
 import { Locale, Translation } from '@/shared/config';
 import { SearchParam } from '@/shared/model';
-import { Collapse, Field } from '@/shared/ui';
+import { Accordion, Field } from '@/shared/ui';
 
 import { IFilter } from '../../api';
 
@@ -158,7 +158,7 @@ export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
   return (
     <div className={clsx(s.filters, className)}>
       <form className={s.filters__form}>
-        <Collapse
+        <Accordion
           className={s.filters__collapse}
           defaultActiveKey={[SearchParam.PriceRange, filteredData[0].name]}
           items={filterFields}
