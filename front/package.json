@@ -11,6 +11,7 @@
     "stylelint": "stylelint \"**/*.{css,scss}\"",
     "stylelint:fix": "stylelint \"**/*.{css,scss}\" --fix && prettier \"**/*.{css,scss}\" --write",
     "test": "jest",
+    "test:watch": "jest --watch",
     "generate": "plop"
   },
   "dependencies": {
