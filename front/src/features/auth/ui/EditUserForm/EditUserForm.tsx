@@ -47,9 +47,7 @@ export const EditUserForm: FC<EditUserFormProps> = ({ className }) => {
         return;
       }
 
-      const AuthService = await import('@/features/auth').then(
-        module => module.AuthService
-      );
+      const { AuthService } = await import('@/features/auth');
 
       return AuthService.changeUserData({
         address: address.trim(),

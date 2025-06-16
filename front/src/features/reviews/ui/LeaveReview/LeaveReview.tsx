@@ -64,10 +64,7 @@ export const LeaveReview: FC<LeaveReviewProps> = ({ className, productId }) => {
         return;
       }
 
-      const ReviewsService = await import('../../api').then(
-        module => module.ReviewsService
-      );
-
+      const { ReviewsService } = await import('../../api');
       await ReviewsService.add({
         comment: data.review,
         firstName: user.firstName,

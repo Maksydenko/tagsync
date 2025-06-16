@@ -47,10 +47,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
 
   const { isPending: isLoginPending, mutate: login } = useMutation({
     mutationFn: async (data: ILoginForm) => {
-      const AuthService = await import('@/features/auth').then(
-        module => module.AuthService
-      );
-
+      const { AuthService } = await import('@/features/auth');
       const { error } = await AuthService.login(data);
 
       if (error) {

@@ -43,10 +43,7 @@ export const CredentialsForm: FC<CredentialsFormProps> = ({
 
   const { isPending: isRegisterPending, mutate: register } = useMutation({
     mutationFn: async (data: ICredentialsForm) => {
-      const AuthService = await import('@/features/auth').then(
-        module => module.AuthService
-      );
-
+      const { AuthService } = await import('@/features/auth');
       const response = await AuthService.checkEmailExists(data.email);
 
       if (response.data.exists) {
