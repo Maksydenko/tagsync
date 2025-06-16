@@ -19,24 +19,50 @@
 
   &__content {
     display: flex;
-    justify-content: space-between;
+    gap: m.rem(24);
+
+    @media (max-width: m.$tablet) {
+      flex-direction: column;
+    }
+  }
+
+  // .categoryHeader__filterBadges
+
+  &__filterBadges {
+    flex: 1 1 100%;
+  }
+
+  // .categoryHeader__box
+
+  &__box {
+    @media (max-width: m.$tablet) {
+      columns: 2;
+      column-gap: m.rem(16);
+    }
+  }
+
+  // .categoryHeader__popup
+
+  &__popup {
+    inline-size: 100%;
+
+    @media (min-width: m.$tablet) {
+      display: none;
+    }
   }
 
   // .categoryHeader__btn
 
   &__btn {
+    inline-size: 100%;
     padding-block: m.rem(10);
     padding-inline: m.rem(16);
     color: m.$darkColor;
     background: m.$cardBgLightColor;
-    border: none;
+    border-color: m.$cardBgLightColor;
 
     img {
       filter: unset;
-    }
-
-    @media (min-width: m.$tablet) {
-      display: none;
     }
   }
 
@@ -45,6 +71,16 @@
   &__filters {
     @media (min-width: m.$tablet) {
       display: none;
+    }
+  }
+
+  // .categoryHeader__sort
+
+  &__sort {
+    @media (max-width: m.$tablet) {
+      button {
+        inline-size: 100%;
+      }
     }
   }
 }

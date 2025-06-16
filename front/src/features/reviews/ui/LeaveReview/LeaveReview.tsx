@@ -101,7 +101,7 @@ export const LeaveReview: FC<LeaveReviewProps> = ({ className, productId }) => {
             <p>{tShared('review.leave-review')}</p>
           </Btn>
         }
-        className={s.leaveReview__popup}
+        classNameBtn={s.leaveReview__popup}
         forceOpen={isOpen}
         setForceOpen={setIsOpen}
       >

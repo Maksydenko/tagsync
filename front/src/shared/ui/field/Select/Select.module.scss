@@ -7,19 +7,15 @@
     position: relative;
   }
 
-  // .select__listbox
+  // .select__btn
 
-  &__listbox {
-    display: flex;
+  &__btn {
     gap: m.rem(8);
-    align-items: center;
-    padding-block: m.rem(12);
-    padding-inline: m.rem(16);
-    font-family: m.$primaryFontFamily;
     color: m.$darkColor;
-    appearance: none;
     background: m.$cardBgLightColor;
-    border-radius: m.rem(4);
+    border-color: m.$cardBgLightColor;
+
+    @extend %btn;
   }
 
   // .select__icon
@@ -35,6 +31,7 @@
 
   &__options {
     z-index: 2;
+    min-inline-size: var(--button-width);
     padding: m.rem(4);
     background: m.$cardBorderLightColor;
     border-radius: m.rem(4);

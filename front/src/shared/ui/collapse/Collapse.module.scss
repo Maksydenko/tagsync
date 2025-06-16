@@ -6,8 +6,11 @@
   &__icon {
     inline-size: m.rem(12);
     aspect-ratio: 1;
-    filter: invert(var(--iconInvert));
     transition: rotate 0.3s ease 0s;
+
+    img {
+      filter: invert(var(--iconInvert));
+    }
   }
 
   // .collapse__btn

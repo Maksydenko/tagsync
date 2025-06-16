@@ -88,7 +88,7 @@ export const Cart: FC<CartProps> = ({ className }) => {
             )}
           </div>
         }
-        className={s.cart__popup}
+        classNameBtn={s.cart__popup}
         forceOpen={isCartLoading ? false : isCartOpen}
         setForceOpen={setIsCartOpen}
       >

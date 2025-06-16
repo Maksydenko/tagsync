@@ -70,7 +70,7 @@ export const Select = <T extends FieldValues>({
         >
           <ListboxButton
             aria-label={ariaLabel}
-            className={s.select__listbox}
+            className={s.select__btn}
             {...props}
             {...restRegister}
           >
