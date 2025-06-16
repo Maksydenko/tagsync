@@ -1,6 +1,7 @@
 export const sortSearchParams = (params: URLSearchParams) => {
   const sortedParams = new URLSearchParams();
-  const sortedKeys = Array.from(params.keys()).sort();
+  const keys = Array.from(params.keys());
+  const sortedKeys = keys.sort();
 
   sortedKeys.forEach(key => {
     const values = params.getAll(key);

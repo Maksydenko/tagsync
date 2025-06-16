@@ -10,7 +10,7 @@ import { Locale, Translation } from '@/shared/config';
 import { SearchParam } from '@/shared/model';
 import { Accordion, Field } from '@/shared/ui';
 
-import { IFilter } from '../../api';
+import { FilterType, IFilter } from '../../api';
 
 import { useFilterParams } from '../../model';
 
@@ -22,18 +22,25 @@ interface FiltersProps {
 }
 
 export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
+  const searchParams = useSearchParams();
+
+  const locale = useLocale() as Locale;
+  const tCategory = useTranslations(Translation.Category);
+
   const priceFilter = useMemo(
     () => filtersData.find(filter => filter.name === SearchParam.Price),
     [filtersData]
   );
+  const priceFilterValues = priceFilter?.values;
+
   const defaultPrice = useMemo(
     () => ({
       max: Number(
-        priceFilter?.values[priceFilter.values.length - 1].split('-')[1]
+        priceFilterValues?.[priceFilterValues.length - 1].split('-')[1]
       ),
-      min: Number(priceFilter?.values[0].split('-')[0])
+      min: Number(priceFilterValues?.[0].split('-')[0])
     }),
-    [priceFilter?.values]
+    [priceFilterValues]
   );
 
   const filteredData = useMemo(
@@ -47,11 +54,6 @@ export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
     }),
     [defaultPrice]
   );
-
-  const searchParams = useSearchParams();
-
-  const locale = useLocale() as Locale;
-  const tCategory = useTranslations(Translation.Category);
 
   const defaultValues = useMemo(() => {
     const values: Record<string, boolean | number[]> = {};
@@ -78,13 +80,13 @@ export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
 
     filteredData.forEach(group => {
       const paramName =
-        group.type === 'int' ? `${group.name}_range` : group.name;
+        group.type === FilterType.Int ? `${group.name}_range` : group.name;
       const param = searchParams.get(paramName);
       const activeValues = param?.split(',') || [];
 
       activeValues.forEach(value => {
         if (value) {
-          values[`${paramName}-${value}`] = true;
+          values[[paramName, value].join('-')] = true;
         }
       });
     });
@@ -133,7 +135,9 @@ export const Filters: FC<FiltersProps> = ({ className, filtersData }) => {
           <div className={s.filters__fields}>
             {filterValues.map(value => {
               const fieldName = `${
-                groupType === 'int' ? `${filterName}_range` : filterName
+                groupType === FilterType.Int
+                  ? `${filterName}_range`
+                  : filterName
               }-${value}`;
 
               return (

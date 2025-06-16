@@ -5,9 +5,11 @@ import { useRouter } from 'next/navigation';
 
 import { SearchParam, sortSearchParams } from '@/shared/model';
 
+import { SEARCH_PARAMS_TO_RESET } from '../searchParamsToReset.const';
+
 import { parseSortValue } from '../utils';
 
-export const useSortParams = (sortValue: string) => {
+export const useSortParams = (sortValue: string, defaultSortValue: string) => {
   const { push } = useRouter();
 
   useEffect(() => {
@@ -16,13 +18,19 @@ export const useSortParams = (sortValue: string) => {
     }
 
     const query = parseSortValue(sortValue);
-    const paramsToReset = [SearchParam.Page];
-    const currentParams = new URLSearchParams(window.location.search);
+    const searchParams = new URLSearchParams(window.location.search);
 
-    paramsToReset.forEach(param => currentParams.delete(param));
+    searchParams.delete(SearchParam.SortOrder);
+    SEARCH_PARAMS_TO_RESET.forEach(param => searchParams.delete(param));
 
-    Object.entries(query).forEach(([key, val]) => currentParams.set(key, val));
+    Object.entries(query).forEach(([key, value]) => {
+      if (sortValue === defaultSortValue) {
+        searchParams.delete(SearchParam.SortBy);
+      } else {
+        searchParams.set(key, value);
+      }
+    });
 
-    push(`?${sortSearchParams(currentParams)}`);
-  }, [push, sortValue]);
+    push(`?${sortSearchParams(searchParams)}`);
+  }, [defaultSortValue, push, sortValue]);
 };

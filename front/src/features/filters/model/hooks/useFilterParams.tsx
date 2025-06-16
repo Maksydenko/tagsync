@@ -6,7 +6,9 @@ import { FieldValues, UseFormReturn } from 'react-hook-form';
 
 import { SearchParam, sortSearchParams, Time } from '@/shared/model';
 
-import { IFilter } from '../../api';
+import { FilterType, IFilter } from '../../api';
+
+import { SEARCH_PARAMS_TO_RESET } from '../searchParamsToReset.const';
 
 interface IUseFilterParams<T extends FieldValues> {
   defaultPrice: {
@@ -22,17 +24,17 @@ export const useFilterParams = <T extends FieldValues>({
   filtersData,
   form
 }: IUseFilterParams<T>) => {
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const searchParams = useSearchParams();
+  const { push } = useRouter();
+
   const defaultFilters = useMemo(
     () => ({
       [SearchParam.PriceRange]: defaultPrice
     }),
     [defaultPrice]
   );
-
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  const searchParams = useSearchParams();
-  const { push } = useRouter();
 
   const filterDebounceDelay =
     Number(process.env.NEXT_PUBLIC_FILTER_DEBOUNCE_DELAY) *
@@ -48,6 +50,7 @@ export const useFilterParams = <T extends FieldValues>({
 
       timeoutRef.current = setTimeout(() => {
         const params = new URLSearchParams(searchParams.toString());
+        SEARCH_PARAMS_TO_RESET.forEach(param => params.delete(param));
 
         if (formValues[SearchParam.PriceRange]) {
           const [min, max] = formValues[SearchParam.PriceRange];
@@ -59,24 +62,28 @@ export const useFilterParams = <T extends FieldValues>({
           if (isDefaultPrice) {
             params.delete(SearchParam.PriceRange);
           } else {
-            params.set(SearchParam.PriceRange, `${min}-${max}`);
+            params.set(SearchParam.PriceRange, [min, max].join('-'));
           }
         }
 
         filtersData.forEach(
           ({ name: filterName, type: filterType, values: filterValues }) => {
             const filterNameParam =
-              filterType === 'int' ? `${filterName}_range` : filterName;
+              filterType === FilterType.Int
+                ? `${filterName}_range`
+                : filterName;
 
             params.delete(filterNameParam);
 
             const checked = filterValues.filter(
-              name => formValues[`${filterNameParam}-${name}`]
+              name => formValues[[filterNameParam, name].join('-')]
             );
 
-            if (checked.length) {
-              params.set(filterNameParam, checked.join(','));
+            if (!checked.length) {
+              return;
             }
+
+            params.set(filterNameParam, checked.join(','));
           }
         );
 
