@@ -7,7 +7,9 @@ import { SearchParam, sortSearchParams } from '@/shared/model';
 
 import { parseSortValue } from '../utils';
 
-export const useSortParams = (sortValue: string) => {
+const PARAMS_TO_RESET = [SearchParam.Page];
+
+export const useSortParams = (sortValue: string, defaultSortValue: string) => {
   const { push } = useRouter();
 
   useEffect(() => {
@@ -16,13 +18,19 @@ export const useSortParams = (sortValue: string) => {
     }
 
     const query = parseSortValue(sortValue);
-    const paramsToReset = [SearchParam.Page];
     const currentParams = new URLSearchParams(window.location.search);
 
-    paramsToReset.forEach(param => currentParams.delete(param));
+    currentParams.delete(SearchParam.SortOrder);
+    PARAMS_TO_RESET.forEach(param => currentParams.delete(param));
 
-    Object.entries(query).forEach(([key, val]) => currentParams.set(key, val));
+    Object.entries(query).forEach(([key, value]) => {
+      if (sortValue === defaultSortValue) {
+        currentParams.delete(SearchParam.SortBy);
+      } else {
+        currentParams.set(key, value);
+      }
+    });
 
     push(`?${sortSearchParams(currentParams)}`);
-  }, [push, sortValue]);
+  }, [defaultSortValue, push, sortValue]);
 };

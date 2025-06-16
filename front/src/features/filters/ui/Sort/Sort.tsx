@@ -7,10 +7,10 @@ import { clsx } from 'clsx';
 import { useForm } from 'react-hook-form';
 
 import { Translation } from '@/shared/config';
-import { ILink, SearchParam } from '@/shared/model';
+import { SearchParam } from '@/shared/model';
 import { Select } from '@/shared/ui';
 
-import { getSortsData, useSortParams } from '../../model';
+import { getSortsData, ISortForm, useSortParams } from '../../model';
 
 import s from './Sort.module.scss';
 
@@ -22,8 +22,6 @@ export const Sort: FC<SortProps> = ({ className }) => {
   const searchParams = useSearchParams();
   const tCategory = useTranslations(Translation.Category);
 
-  const sorts = getSortsData(tCategory);
-
   const urlSortBy = searchParams.get(SearchParam.SortBy);
   const urlSortOrder = searchParams.get(SearchParam.SortOrder);
 
@@ -33,14 +31,13 @@ export const Sort: FC<SortProps> = ({ className }) => {
       : urlSortBy
     : null;
 
-  const defaultSort =
-    sorts.find(sort => sort.value === urlSortValue) || sorts[0];
+  const sorts = getSortsData(tCategory);
+  const [defaultSort] = sorts;
 
-  const form = useForm<{
-    [SearchParam.SortBy]: ILink;
-  }>({
+  const form = useForm<ISortForm>({
     defaultValues: {
-      [SearchParam.SortBy]: defaultSort
+      [SearchParam.SortBy]:
+        sorts.find(sort => sort.value === urlSortValue) || defaultSort
     },
     mode: 'onChange'
   });
@@ -48,7 +45,7 @@ export const Sort: FC<SortProps> = ({ className }) => {
   const watchedSort = form.watch(SearchParam.SortBy);
   const watchedSortValue = watchedSort?.value;
 
-  useSortParams(watchedSortValue);
+  useSortParams(watchedSortValue, defaultSort.value);
 
   return (
     <div className={clsx(s.sort, className)}>
