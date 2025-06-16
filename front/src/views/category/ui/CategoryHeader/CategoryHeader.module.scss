@@ -55,14 +55,19 @@
 
   &__btn {
     inline-size: 100%;
+    min-block-size: m.rem(44);
     padding-block: m.rem(10);
     padding-inline: m.rem(16);
     color: m.$darkColor;
     background: m.$cardBgLightColor;
     border-color: m.$cardBgLightColor;
 
+    [data-img] {
+      inline-size: m.rem(16);
+    }
+
     img {
-      filter: unset;
+      filter: none;
     }
   }
 

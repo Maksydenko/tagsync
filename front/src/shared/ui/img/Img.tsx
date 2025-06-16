@@ -32,7 +32,11 @@ export const Img: FC<ImgProps> = ({
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <div className={clsx(s.img, isSvg && s.img_svg, className)} style={style}>
+    <div
+      className={clsx(s.img, isSvg && s.img_svg, className)}
+      style={style}
+      data-img
+    >
       {src && (
         <>
           {isLoading && customLoader}
