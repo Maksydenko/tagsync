@@ -1,6 +1,46 @@
 @use '@/application/styles/module' as m;
 
 .cart {
+  // .cart__popup
+
+  &__popup {
+    position: relative;
+    inline-size: m.rem(44);
+    aspect-ratio: 1;
+    overflow: hidden;
+    border: m.rem(1) solid m.$darkColor;
+    border-radius: 50%;
+
+    @include m.centered(flex);
+
+    .cart__btn {
+      position: relative;
+    }
+
+    .cart__icon {
+      inline-size: m.rem(20);
+      aspect-ratio: 1;
+
+      img {
+        scale: -1 1;
+      }
+    }
+
+    .cart__counter {
+      position: absolute;
+      inset-block-start: m.rem(-4);
+      inset-inline-end: m.rem(-4);
+      inline-size: m.rem(16);
+      block-size: m.rem(16);
+      font-size: m.rem(12);
+      color: m.$lightColor;
+      background: m.$darkColor;
+      border-radius: 50%;
+
+      @include m.centered(flex);
+    }
+  }
+
   // .cart__body
 
   &__body {
@@ -25,6 +65,7 @@
       background: m.$darkColor;
       border-color: m.$darkColor;
 
+      /* stylelint-disable-next-line no-descending-specificity */
       img {
         filter: invert(1);
       }
@@ -82,45 +123,6 @@
           }
         }
       }
-    }
-  }
-
-  button.cart__popup {
-    position: relative;
-    inline-size: m.rem(44);
-    aspect-ratio: 1;
-    overflow: hidden;
-    border: m.rem(1) solid m.$darkColor;
-    border-radius: 50%;
-
-    @include m.centered(flex);
-
-    /* stylelint-disable-next-line no-descending-specificity */
-    .cart__btn {
-      position: relative;
-    }
-
-    .cart__icon {
-      inline-size: m.rem(20);
-      aspect-ratio: 1;
-
-      img {
-        scale: -1 1;
-      }
-    }
-
-    .cart__counter {
-      position: absolute;
-      inset-block-start: m.rem(-4);
-      inset-inline-end: m.rem(-4);
-      inline-size: m.rem(16);
-      block-size: m.rem(16);
-      font-size: m.rem(12);
-      color: m.$lightColor;
-      background: m.$darkColor;
-      border-radius: 50%;
-
-      @include m.centered(flex);
     }
   }
 }
