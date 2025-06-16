@@ -42,6 +42,7 @@
     }
   }
 
+  &:disabled,
   &[aria-disabled='true'] {
     cursor: default;
   }

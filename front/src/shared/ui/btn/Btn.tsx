@@ -32,7 +32,7 @@ export const Btn: FC<BtnProps> = ({
   const classNames = clsx(s.btn, isLoading && s.btn_loading);
   const iconValue = icon?.value;
 
-  const bodyElement = (
+  const getBodyElement = (children: ReactNode) => (
     <div className={s.btn__body}>
       <div className={s.btn__content}>
         {typeof children === 'string' ? (
@@ -61,7 +61,7 @@ export const Btn: FC<BtnProps> = ({
     return cloneElement(children, {
       /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
       /* @ts-ignore */
-      children: bodyElement,
+      children: getBodyElement(children.props.children),
       /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
       /* @ts-ignore */
       className: clsx(classNames, className, children.props.className)
@@ -76,7 +76,7 @@ export const Btn: FC<BtnProps> = ({
       disabled={isDisabled}
       {...props}
     >
-      {bodyElement}
+      {getBodyElement(children)}
     </button>
   );
 };
