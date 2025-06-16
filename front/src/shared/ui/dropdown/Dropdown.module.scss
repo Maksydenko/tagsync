@@ -10,9 +10,11 @@
     gap: m.rem(8);
     align-items: center;
     justify-content: center;
+    transition: opacity 0.3s ease 0s;
 
-    &:focus-visible {
-      outline: none;
+    &[data-hover],
+    &[data-focus] {
+      opacity: 0.5;
     }
   }
 

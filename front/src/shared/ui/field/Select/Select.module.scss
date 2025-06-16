@@ -7,17 +7,6 @@
     position: relative;
   }
 
-  // .select__btn
-
-  &__btn {
-    gap: m.rem(8);
-    color: m.$darkColor;
-    background: m.$cardBgLightColor;
-    border-color: m.$cardBgLightColor;
-
-    @extend %btn;
-  }
-
   // .select__icon
 
   &__icon {
@@ -25,6 +14,30 @@
     align-items: center;
     inline-size: m.rem(12);
     aspect-ratio: 1;
+    transition: rotate 0.3s ease 0s;
+  }
+
+  // .select__btn
+
+  &__btn {
+    gap: m.rem(8);
+    color: m.$darkColor;
+    background: m.$cardBgLightColor;
+    border-color: m.$cardBgLightColor;
+    transition: opacity 0.3s ease 0s;
+
+    @extend %btn;
+
+    &[data-hover],
+    &[data-focus] {
+      opacity: 0.5;
+    }
+
+    &[data-open] {
+      .select__icon {
+        rotate: 90deg;
+      }
+    }
   }
 
   // .select__options

@@ -191,9 +191,15 @@
     color: m.$darkColor;
     text-align: end;
     text-transform: capitalize;
+    transition: opacity 0.3s ease 0s;
 
     @media (min-width: m.$desktopSmall) {
       padding: m.em(10, 18) 0;
+    }
+
+    &:hover,
+    &:focus-visible {
+      opacity: 0.5;
     }
 
     // .menu__link_active
