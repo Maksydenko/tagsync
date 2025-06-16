@@ -77,6 +77,7 @@ export const CategoryHeader: FC<CategoryHeaderProps> = ({
                   <p>{tCategory('filters.label')}</p>
                 </Btn>
               }
+              className={s.categoryHeaderPopup}
               classNameBtn={s.categoryHeader__popup}
             >
               <Filters
