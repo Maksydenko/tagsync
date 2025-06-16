@@ -1,4 +1,4 @@
-module.exports = plop => {
+const generator = plop => {
   plop.setGenerator('module', {
     actions: [
       {
@@ -58,3 +58,5 @@ module.exports = plop => {
     ]
   });
 };
+
+export default generator;

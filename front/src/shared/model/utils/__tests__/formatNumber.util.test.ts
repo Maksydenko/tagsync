@@ -1,7 +1,7 @@
 import { formatNumber } from '../formatNumber.util';
 
 describe('transformPxToRem', () => {
-  test('Correct int value', () => {
+  it('correct int value', () => {
     expect(
       formatNumber({
         number: 100
@@ -14,7 +14,7 @@ describe('transformPxToRem', () => {
     ).toBe('1\xA0000');
   });
 
-  test('Correct float value', () => {
+  it('correct float value', () => {
     expect(
       formatNumber({
         number: 100.5
@@ -27,7 +27,7 @@ describe('transformPxToRem', () => {
     ).toBe('100,55');
   });
 
-  test('Incorrect value', () => {
+  it('incorrect value', () => {
     expect(
       formatNumber({
         number: NaN

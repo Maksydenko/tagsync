@@ -11,7 +11,7 @@ import { OrdersService } from '@/features/orders';
 import { userAtom } from '@/entities/user';
 
 import { QueryKey } from '@/shared/model';
-import { Collapse, Loader } from '@/shared/ui';
+import { Accordion, Loader } from '@/shared/ui';
 
 import { OrderCard } from '../OrderCard/OrderCard';
 import { OrderCardContent } from '../OrderCardContent/OrderCardContent';
@@ -55,7 +55,7 @@ export const OrdersList: FC<OrdersListProps> = ({ className }) => {
         <Loader className={s.ordersList__loader} />
       ) : (
         <div className={s.ordersList__body}>
-          <Collapse
+          <Accordion
             className={s.ordersList__collapse}
             items={items}
             accordion

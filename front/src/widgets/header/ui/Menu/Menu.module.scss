@@ -142,12 +142,13 @@
     }
   }
 
+  // .menu__content
+
   &__content {
     display: flex;
     gap: m.rem(40) m.rem(40);
     align-items: center;
     font-size: m.rem(18);
-    text-transform: uppercase;
 
     @media (max-width: m.$desktopSmall) {
       flex-direction: column-reverse;
@@ -170,7 +171,7 @@
 
     @media (max-width: m.$desktopSmall) {
       flex-direction: column;
-      font-size: m.rem(24);
+      font-size: m.rem(20);
     }
   }
 
@@ -180,6 +181,7 @@
     position: relative;
     display: flex;
     justify-content: flex-end;
+    line-height: 1.8;
   }
 
   // .menu__link
@@ -197,7 +199,6 @@
     // .menu__link_active
 
     &_active {
-      cursor: default;
       opacity: 0.5;
     }
   }
@@ -207,8 +208,88 @@
   &__dropdown {
     color: m.$darkColor;
 
+    @media (max-width: m.$desktopSmall) {
+      display: none;
+    }
+
     img {
       filter: none !important ;
+    }
+  }
+
+  // .menu__collapse
+
+  &__collapse {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    color: m.$darkColor;
+
+    @media (min-width: m.$desktopSmall) {
+      display: none;
+    }
+
+    img {
+      filter: invert(1);
+    }
+  }
+
+  // .menu__subList
+
+  &__subList {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(8);
+    align-items: flex-end;
+    padding-block: m.rem(12);
+    padding-inline: m.rem(8);
+    background: m.$lightColor;
+    border-end-start-radius: m.rem(4);
+    border-end-end-radius: m.rem(4);
+  }
+
+  // .menu__subItem
+
+  &__subItem {
+    display: flex;
+    justify-content: flex-end;
+    inline-size: 100%;
+  }
+
+  // .menu__subIcon
+
+  &__subIcon {
+    inline-size: m.rem(20);
+    aspect-ratio: 1;
+    transition: filter 0.3s ease 0s;
+
+    img {
+      filter: none;
+    }
+  }
+
+  // .menu__subLink
+
+  &__subLink {
+    display: flex;
+    gap: m.rem(8);
+    align-items: center;
+    justify-content: flex-end;
+    inline-size: 100%;
+    padding-inline: m.rem(8);
+    font-size: m.rem(20);
+    border-radius: m.rem(4);
+    transition: 0.3s ease 0s;
+    transition-property: color, background;
+
+    &:hover,
+    &:focus-visible {
+      color: m.$lightColor;
+      background: m.$darkColor;
+
+      .menu__subIcon {
+        filter: invert(1);
+      }
     }
   }
 

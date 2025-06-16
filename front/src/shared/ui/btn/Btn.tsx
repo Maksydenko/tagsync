@@ -51,7 +51,7 @@ export const Btn: FC<BtnProps> = ({
       <div className={s.btn__body}>
         <div className={s.btn__content}>
           {typeof children === 'string' ? (
-            <div className={s.btn__box}>{children}</div>
+            <p className={s.btn__box}>{children}</p>
           ) : (
             children
           )}

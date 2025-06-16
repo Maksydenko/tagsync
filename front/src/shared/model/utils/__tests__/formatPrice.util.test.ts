@@ -1,7 +1,7 @@
 import { formatPrice } from '../formatPrice.util';
 
 describe('formatPrice', () => {
-  test('Correct int value', () => {
+  it('correct int value', () => {
     expect(
       formatPrice({
         price: 0
@@ -19,7 +19,7 @@ describe('formatPrice', () => {
     ).toBe('1\xA0000 ₴');
   });
 
-  test('Correct float value', () => {
+  it('correct float value', () => {
     expect(
       formatPrice({
         minimumFractionDigits: 2,
@@ -40,7 +40,7 @@ describe('formatPrice', () => {
     ).toBe('100,56 ₴');
   });
 
-  test('Incorrect value', () => {
+  it('incorrect value', () => {
     expect(
       formatPrice({
         price: -100
