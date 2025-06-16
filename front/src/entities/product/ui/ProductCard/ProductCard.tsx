@@ -100,9 +100,7 @@ export const ProductCard: FC<ProductCardProps> = ({
           throw new Error();
         }
 
-        const WishlistService = await import('@/features/wishlist').then(
-          module => module.WishlistService
-        );
+        const { WishlistService } = await import('@/features/wishlist');
 
         if (isWished) {
           return WishlistService.remove({
@@ -133,9 +131,7 @@ export const ProductCard: FC<ProductCardProps> = ({
           throw new Error();
         }
 
-        const ComparisonsService = await import('@/features/comparisons').then(
-          module => module.ComparisonsService
-        );
+        const { ComparisonsService } = await import('@/features/comparisons');
 
         if (isInComparisons) {
           return ComparisonsService.remove({
@@ -163,9 +159,7 @@ export const ProductCard: FC<ProductCardProps> = ({
         return addToLocalCart(productData);
       }
 
-      const CartService = await import('@/entities/cart').then(
-        module => module.CartService
-      );
+      const { CartService } = await import('@/entities/cart');
 
       return CartService.add({
         product_id,

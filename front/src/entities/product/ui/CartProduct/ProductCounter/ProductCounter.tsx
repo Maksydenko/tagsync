@@ -57,9 +57,7 @@ export const ProductCounter: FC<ProductCounterProps> = ({
       )!.quantity;
 
       if (userEmail) {
-        const CartService = await import('@/entities/cart').then(
-          module => module.CartService
-        );
+        const { CartService } = await import('@/entities/cart');
 
         switch (method) {
           case CartAction.Clear:

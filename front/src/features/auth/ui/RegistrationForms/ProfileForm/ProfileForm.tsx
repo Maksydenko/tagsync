@@ -50,10 +50,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({ className }) => {
           throw new Error();
         }
 
-        const AuthService = await import('@/features/auth').then(
-          module => module.AuthService
-        );
-
+        const { AuthService } = await import('@/features/auth');
         const { email, password } = parsedFormData;
 
         await AuthService.register({

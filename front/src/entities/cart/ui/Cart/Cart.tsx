@@ -22,9 +22,9 @@ import { cartAtom, cartOpenAtom } from '../../model';
 import s from './Cart.module.scss';
 
 const Link = dynamic(() => import('next/link'));
-const Btn = dynamic(() => import('@/shared/ui').then(module => module.Btn));
+const Btn = dynamic(() => import('@/shared/ui').then(({ Btn }) => Btn));
 const CartProduct = dynamic(() =>
-  import('@/entities/product').then(module => module.CartProduct)
+  import('@/entities/product').then(({ CartProduct }) => CartProduct)
 );
 
 interface CartProps {
@@ -50,9 +50,7 @@ export const Cart: FC<CartProps> = ({ className }) => {
 
   const { mutate: clearCart } = useMutation({
     mutationFn: async () => {
-      const CartService = await import('../../api').then(
-        module => module.CartService
-      );
+      const { CartService } = await import('../../api');
 
       if (userEmail) {
         return CartService.clear({
@@ -90,7 +88,7 @@ export const Cart: FC<CartProps> = ({ className }) => {
             )}
           </div>
         }
-        className={s.cart__popup}
+        classNameBtn={s.cart__popup}
         forceOpen={isCartLoading ? false : isCartOpen}
         setForceOpen={setIsCartOpen}
       >

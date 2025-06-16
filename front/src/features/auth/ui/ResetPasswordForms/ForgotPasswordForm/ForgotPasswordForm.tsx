@@ -45,10 +45,7 @@ export const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({
     mutate: requestResetPassword
   } = useMutation({
     mutationFn: async ({ email }: IForgotPasswordForm) => {
-      const AuthService = await import('@/features/auth').then(
-        module => module.AuthService
-      );
-
+      const { AuthService } = await import('@/features/auth');
       await AuthService.requestResetPassword({
         email,
         redirectUrl: `${window.location.origin}${Pathname.ResetPassword}`

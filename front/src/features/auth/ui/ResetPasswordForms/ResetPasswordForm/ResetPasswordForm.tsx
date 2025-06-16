@@ -43,9 +43,7 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
         throw new Error();
       }
 
-      const AuthService = await import('@/features/auth').then(
-        module => module.AuthService
-      );
+      const { AuthService } = await import('@/features/auth');
 
       return AuthService.resetPassword({
         accessToken,

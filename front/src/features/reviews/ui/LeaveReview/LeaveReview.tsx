@@ -64,10 +64,7 @@ export const LeaveReview: FC<LeaveReviewProps> = ({ className, productId }) => {
         return;
       }
 
-      const ReviewsService = await import('../../api').then(
-        module => module.ReviewsService
-      );
-
+      const { ReviewsService } = await import('../../api');
       await ReviewsService.add({
         comment: data.review,
         firstName: user.firstName,
@@ -104,7 +101,7 @@ export const LeaveReview: FC<LeaveReviewProps> = ({ className, productId }) => {
             <p>{tShared('review.leave-review')}</p>
           </Btn>
         }
-        className={s.leaveReview__popup}
+        classNameBtn={s.leaveReview__popup}
         forceOpen={isOpen}
         setForceOpen={setIsOpen}
       >

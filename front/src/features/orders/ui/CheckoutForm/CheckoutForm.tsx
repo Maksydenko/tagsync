@@ -50,9 +50,7 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({ className }) => {
         return;
       }
 
-      const OrdersService = await import('@/features/orders').then(
-        module => module.OrdersService
-      );
+      const { OrdersService } = await import('@/features/orders');
 
       return OrdersService.checkout({
         address: address.trim(),

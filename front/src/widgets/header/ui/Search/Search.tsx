@@ -22,9 +22,7 @@ export const Search: FC<SearchProps> = ({ className }) => {
   const { data: searchData } = useQuery({
     enabled: !!search,
     queryFn: async () => {
-      const ProductsService = await import('@/features/products').then(
-        module => module.ProductsService
-      );
+      const { ProductsService } = await import('@/features/products');
 
       return ProductsService.search(`?query=${search}`);
     },

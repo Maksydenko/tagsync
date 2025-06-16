@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, Suspense } from 'react';
+import { FC } from 'react';
 import { usePathname } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { clsx } from 'clsx';
@@ -58,11 +58,11 @@ export const CategoryHeader: FC<CategoryHeaderProps> = ({
         <Breadcrumbs breadcrumbs={breadcrumbs} />
         <h1 className={s.categoryHeader__title}>{categoryTitle}</h1>
         <div className={s.categoryHeader__content}>
-          <Suspense>
-            <FilterBadges
-              className={s.categoryHeader__filterBadges}
-              filtersData={filtersData}
-            />
+          <FilterBadges
+            className={s.categoryHeader__filterBadges}
+            filtersData={filtersData}
+          />
+          <div className={s.categoryHeader__box}>
             <Popup
               btn={
                 <Btn
@@ -77,6 +77,7 @@ export const CategoryHeader: FC<CategoryHeaderProps> = ({
                   <p>{tCategory('filters.label')}</p>
                 </Btn>
               }
+              classNameBtn={s.categoryHeader__popup}
             >
               <Filters
                 className={s.categoryHeader__filters}
@@ -84,7 +85,7 @@ export const CategoryHeader: FC<CategoryHeaderProps> = ({
               />
             </Popup>
             <Sort className={s.categoryHeader__sort} />
-          </Suspense>
+          </div>
         </div>
       </div>
     </div>

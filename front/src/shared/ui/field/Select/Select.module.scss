@@ -7,21 +7,6 @@
     position: relative;
   }
 
-  // .select__listbox
-
-  &__listbox {
-    display: flex;
-    gap: m.rem(8);
-    align-items: center;
-    padding-block: m.rem(12);
-    padding-inline: m.rem(16);
-    font-family: m.$primaryFontFamily;
-    color: m.$darkColor;
-    appearance: none;
-    background: m.$cardBgLightColor;
-    border-radius: m.rem(4);
-  }
-
   // .select__icon
 
   &__icon {
@@ -29,12 +14,37 @@
     align-items: center;
     inline-size: m.rem(12);
     aspect-ratio: 1;
+    transition: rotate 0.3s ease 0s;
+  }
+
+  // .select__btn
+
+  &__btn {
+    gap: m.rem(8);
+    color: m.$darkColor;
+    background: m.$cardBgLightColor;
+    border-color: m.$cardBgLightColor;
+    transition: opacity 0.3s ease 0s;
+
+    @extend %btn;
+
+    &[data-hover],
+    &[data-focus] {
+      opacity: 0.5;
+    }
+
+    &[data-open] {
+      .select__icon {
+        rotate: 90deg;
+      }
+    }
   }
 
   // .select__options
 
   &__options {
     z-index: 2;
+    min-inline-size: var(--button-width);
     padding: m.rem(4);
     background: m.$cardBorderLightColor;
     border-radius: m.rem(4);
