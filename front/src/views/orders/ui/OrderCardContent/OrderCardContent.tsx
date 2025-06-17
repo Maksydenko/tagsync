@@ -84,7 +84,7 @@ export const OrderCardContent: FC<OrderCardContentProps> = ({
               return (
                 <li key={product_id} className={s.orderCardContent__item}>
                   <div className={s.orderCardContent__content}>
-                    <Link href={productUrl}>
+                    <Link aria-label={product_title} href={productUrl}>
                       <Img
                         alt={product_title}
                         className={s.orderCardContent__img}

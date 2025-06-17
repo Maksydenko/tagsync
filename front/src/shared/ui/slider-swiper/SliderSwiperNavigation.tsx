@@ -83,6 +83,7 @@ export const SliderSwiperNavigation: FC<SliderSwiperNavigationProps> = ({
 
   const getBtn = (direction: SlideDirection) => {
     const isPrevDirection = direction === SlideDirection.Prev;
+    const isDisabled = isPrevDirection ? isFirstSlide : isLastSlide;
 
     return (
       <button
@@ -92,9 +93,13 @@ export const SliderSwiperNavigation: FC<SliderSwiperNavigationProps> = ({
           s[`sliderSwiper__btn_${isPrevDirection ? 'prev' : 'next'}`],
           isVertical && s.sliderSwiper__btn_vertical
         )}
-        disabled={isPrevDirection ? isFirstSlide : isLastSlide}
+        disabled={isDisabled}
         type="button"
         onClick={() => {
+          if (isDisabled) {
+            return;
+          }
+
           slide(direction);
         }}
       >

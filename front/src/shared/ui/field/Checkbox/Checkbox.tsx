@@ -25,6 +25,8 @@ interface CheckboxProps<T extends FieldValues> {
   options?: RegisterOptions<T>;
 }
 
+const TRIGGERED_KEYS = ['Enter', ' '];
+
 export const Checkbox = <T extends FieldValues>({
   className,
   formReturn,
@@ -33,8 +35,6 @@ export const Checkbox = <T extends FieldValues>({
   options,
   ...props
 }: CheckboxProps<T>): ReactNode => {
-  const TRIGGERED_KEYS = ['Enter', ' '];
-
   const [isFocused, setIsFocused] = useState(false);
   const tShared = useTranslations(Translation.Shared);
 
@@ -98,7 +98,7 @@ export const Checkbox = <T extends FieldValues>({
             width={20}
             isSvg
           />
-          {label}
+          <p>{label}</p>
         </label>
       )}
     </div>

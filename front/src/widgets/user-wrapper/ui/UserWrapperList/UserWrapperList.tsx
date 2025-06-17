@@ -64,7 +64,7 @@ export const UserWrapperList: FC<UserWrapperListProps> = ({ className }) => {
                 src={icon}
                 isSvg
               />
-              {tShared(`user.${label}`)}
+              <p>{tShared(`user.${label}`)}</p>
             </Link>
           </li>
         ))}
@@ -74,6 +74,10 @@ export const UserWrapperList: FC<UserWrapperListProps> = ({ className }) => {
             disabled={isLogoutPending}
             type="button"
             onClick={() => {
+              if (isLogoutPending) {
+                return;
+              }
+
               logout();
             }}
           >
