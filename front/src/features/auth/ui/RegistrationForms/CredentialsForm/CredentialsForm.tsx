@@ -7,15 +7,11 @@ import { clsx } from 'clsx';
 import { useForm } from 'react-hook-form';
 import { StepWizardChildProps } from 'react-step-wizard';
 
-// import { yupResolver } from '@hookform/resolvers/yup';
-// import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 
 import {
   AuthForm,
   getCredentialsFields,
-  // getCredentialsYupSchema,
-  // getCredentialsZodSchema,
   ICredentialsForm
 } from '@/features/auth';
 
