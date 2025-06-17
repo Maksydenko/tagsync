@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl';
 
 import { formConfig } from '@/shared/config';
-import { IField } from '@/shared/model';
+import { checkValidTld, IField } from '@/shared/model';
 
 import { ILoginForm } from '../interfaces';
 
@@ -22,7 +22,9 @@ export const getLoginFields = (
         message: tShared('form.email.pattern'),
         value: formConfig.email.pattern
       },
-      required: tShared('form.email.required')
+      required: tShared('form.email.required'),
+      validate: (value: string) =>
+        checkValidTld(value) || tShared('form.email.pattern')
     },
     type: 'email'
   },

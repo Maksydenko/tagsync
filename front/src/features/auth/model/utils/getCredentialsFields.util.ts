@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl';
 import { UseFormReturn } from 'react-hook-form';
 
 import { formConfig } from '@/shared/config';
-import { IField } from '@/shared/model';
+import { checkValidTld, IField } from '@/shared/model';
 
 import { ICredentialsForm } from '../interfaces';
 
@@ -24,7 +24,9 @@ export const getCredentialsFields = (
         message: tShared('form.email.pattern'),
         value: formConfig.email.pattern
       },
-      required: tShared('form.email.required')
+      required: tShared('form.email.required'),
+      validate: (value: string) =>
+        checkValidTld(value) || tShared('form.email.pattern')
     },
     type: 'email'
   },

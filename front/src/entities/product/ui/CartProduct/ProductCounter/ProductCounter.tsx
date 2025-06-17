@@ -60,13 +60,6 @@ export const ProductCounter: FC<ProductCounterProps> = ({
         const { CartService } = await import('@/entities/cart');
 
         switch (method) {
-          case CartAction.Clear:
-            await CartService.remove({
-              product_id,
-              quantity,
-              userEmail
-            });
-            break;
           case CartAction.Decrement:
             await CartService.remove({
               product_id,
@@ -81,20 +74,27 @@ export const ProductCounter: FC<ProductCounterProps> = ({
               userEmail
             });
             break;
+          case CartAction.Remove:
+            await CartService.remove({
+              product_id,
+              quantity,
+              userEmail
+            });
+            break;
         }
 
         return;
       }
 
       switch (method) {
-        case CartAction.Clear:
-          removeFromLocalCart(product_id);
-          break;
         case CartAction.Decrement:
           decrementLocalCartQuantity(product_id);
           break;
         case CartAction.Increment:
           incrementLocalCartQuantity(product_id);
+          break;
+        case CartAction.Remove:
+          removeFromLocalCart(product_id);
           break;
       }
     },
@@ -147,7 +147,7 @@ export const ProductCounter: FC<ProductCounterProps> = ({
           }}
           type="button"
           onClick={() => {
-            addToCart(CartAction.Clear);
+            addToCart(CartAction.Remove);
           }}
         />
       </div>
