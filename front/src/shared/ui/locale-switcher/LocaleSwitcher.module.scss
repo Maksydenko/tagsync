@@ -1,9 +1,13 @@
 @use '@/application/styles/module' as m;
 
 .localeSwitcher {
-  display: flex;
-  font-size: m.rem(16);
-  color: m.$darkColor;
+  // .localeSwitcher__list
+
+  &__list {
+    display: flex;
+    font-size: m.rem(16);
+    color: m.$darkColor;
+  }
 
   // .localeSwitcher__item
 

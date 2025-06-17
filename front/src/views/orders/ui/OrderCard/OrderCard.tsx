@@ -23,7 +23,11 @@ export const OrderCard: FC<OrderCardProps> = ({
       <ul className={s.orderCard__list}>
         {items.map(({ images, product_id, product_title, slug }) => (
           <li key={product_id} className={s.orderCard__item}>
-            <Link className={s.orderCard__link} href={`/${slug}/${product_id}`}>
+            <Link
+              aria-label={product_title}
+              className={s.orderCard__link}
+              href={`/${slug}/${product_id}`}
+            >
               <Img
                 alt={product_title}
                 className={s.orderCard__img}

@@ -12,7 +12,6 @@ import s from '../LocaleSwitcher.module.scss';
 
 interface LocaleSwitcherItemProps {
   locale: ILink;
-  onClick?: () => void;
 }
 
 export const LocaleSwitcherItem: FC<LocaleSwitcherItemProps> = ({
@@ -29,6 +28,10 @@ export const LocaleSwitcherItem: FC<LocaleSwitcherItemProps> = ({
   const isDisabled = value === locale || isPending;
 
   const handleClick = () => {
+    if (isDisabled) {
+      return;
+    }
+
     startTransition(() => {
       replace(
         {

@@ -202,6 +202,10 @@ export const ProductCard: FC<ProductCardProps> = ({
             disabled={isAddToComparisonsPending || isComparisonsLoading}
             type="button"
             onClick={() => {
+              if (isAddToComparisonsPending || isComparisonsLoading) {
+                return;
+              }
+
               addToComparisons();
             }}
           >
@@ -226,6 +230,10 @@ export const ProductCard: FC<ProductCardProps> = ({
             disabled={isAddToWishlistPending || isWishlistLoading}
             type="button"
             onClick={() => {
+              if (isAddToWishlistPending || isWishlistLoading) {
+                return;
+              }
+
               addToWishlist();
             }}
           >
@@ -290,6 +298,10 @@ export const ProductCard: FC<ProductCardProps> = ({
               }}
               isLoading={isAddToCartPending}
               onClick={() => {
+                if (isCartLoading) {
+                  return;
+                }
+
                 if (isInCart) {
                   return setIsOpen(true);
                 }

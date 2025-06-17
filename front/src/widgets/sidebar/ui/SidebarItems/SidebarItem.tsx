@@ -26,7 +26,7 @@ export const SidebarItem: FC<ItemProps> = ({
     <li className={s.sidebar__item}>
       <Link className={clsx(s.sidebar__link)} href={`/${slug}`}>
         <Img
-          alt={`${tShared('logo')} "${translatedSlug}"`}
+          alt={`${tShared('logo')} ${translatedSlug}`}
           className={s.sidebar__icon}
           height={32}
           src={img}
