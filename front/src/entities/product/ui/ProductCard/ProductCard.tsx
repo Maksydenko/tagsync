@@ -78,6 +78,8 @@ export const ProductCard: FC<ProductCardProps> = ({
   const [{ data: cartData, isLoading: isCartLoading }] = useAtom(
     cartAtom(userEmail)
   );
+  // const localCart = useTypedSelector(({ localCart }) => localCart);
+  // const dispatch = useDispatch();
   const { addToLocalCart, localCart } = useLocalCart();
 
   const cart = cartData?.data ?? localCart;
@@ -156,6 +158,7 @@ export const ProductCard: FC<ProductCardProps> = ({
       }
 
       if (!user) {
+        // return dispatch(addToLocalCart(productData));
         return addToLocalCart(productData);
       }
 

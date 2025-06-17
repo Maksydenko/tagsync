@@ -42,6 +42,8 @@ export const Cart: FC<CartProps> = ({ className }) => {
   const [{ data: cartData, isLoading: isCartLoading }] = useAtom(
     cartAtom(userEmail)
   );
+  // const localCart = useTypedSelector(({ localCart }) => localCart);
+  // const dispatch = useDispatch();
   const { clearLocalCart, localCart } = useLocalCart();
 
   const cart = cartData?.data ?? localCart;
@@ -58,6 +60,7 @@ export const Cart: FC<CartProps> = ({ className }) => {
         });
       }
 
+      // dispatch(clearLocalCart());
       clearLocalCart();
     },
     mutationKey: [MutationKey.CartClear],

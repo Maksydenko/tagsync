@@ -36,6 +36,8 @@ export const ProductCounter: FC<ProductCounterProps> = ({
 
   const invalidateCart = useInvalidateAtom([QueryKey.Cart]);
   const [{ data: cartData }] = useAtom(cartAtom(userEmail));
+  // const localCart = useTypedSelector(({ localCart }) => localCart);
+  // const dispatch = useDispatch();
   const {
     decrementLocalCartQuantity,
     incrementLocalCartQuantity,
@@ -60,13 +62,6 @@ export const ProductCounter: FC<ProductCounterProps> = ({
         const { CartService } = await import('@/entities/cart');
 
         switch (method) {
-          case CartAction.Clear:
-            await CartService.remove({
-              product_id,
-              quantity,
-              userEmail
-            });
-            break;
           case CartAction.Decrement:
             await CartService.remove({
               product_id,
@@ -81,20 +76,30 @@ export const ProductCounter: FC<ProductCounterProps> = ({
               userEmail
             });
             break;
+          case CartAction.Remove:
+            await CartService.remove({
+              product_id,
+              quantity,
+              userEmail
+            });
+            break;
         }
 
         return;
       }
 
       switch (method) {
-        case CartAction.Clear:
-          removeFromLocalCart(product_id);
-          break;
         case CartAction.Decrement:
+          // dispatch(decrementLocalCartQuantity(product_id));
           decrementLocalCartQuantity(product_id);
           break;
         case CartAction.Increment:
+          // dispatch(incrementLocalCartQuantity(product_id));
           incrementLocalCartQuantity(product_id);
+          break;
+        case CartAction.Remove:
+          // dispatch(removeFromLocalCart(product_id));
+          removeFromLocalCart(product_id);
           break;
       }
     },
@@ -147,7 +152,7 @@ export const ProductCounter: FC<ProductCounterProps> = ({
           }}
           type="button"
           onClick={() => {
-            addToCart(CartAction.Clear);
+            addToCart(CartAction.Remove);
           }}
         />
       </div>

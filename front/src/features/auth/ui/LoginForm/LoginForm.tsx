@@ -35,6 +35,8 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
 
   const tShared = useTranslations(Translation.Shared);
 
+  // const localCart = useTypedSelector(({ localCart }) => localCart);
+  // const dispatch = useDispatch();
   const { clearLocalCart, localCart } = useLocalCart();
   const { items: localCartItems } = localCart;
 
@@ -43,6 +45,8 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
 
   const form = useForm<ILoginForm>({
     mode: 'onChange'
+    // resolver: yupResolver(getLoginYupSchema(tShared))
+    // resolver: zodResolver(getLoginZodSchema(tShared)),
   });
 
   const { isPending: isLoginPending, mutate: login } = useMutation({
@@ -92,6 +96,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
       }
 
       if (localCartItemsLength) {
+        // dispatch(clearLocalCart());
         clearLocalCart();
       }
 

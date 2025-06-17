@@ -7,11 +7,15 @@ import { clsx } from 'clsx';
 import { useForm } from 'react-hook-form';
 import { StepWizardChildProps } from 'react-step-wizard';
 
+// import { yupResolver } from '@hookform/resolvers/yup';
+// import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 
 import {
   AuthForm,
   getCredentialsFields,
+  // getCredentialsYupSchema,
+  // getCredentialsZodSchema,
   ICredentialsForm
 } from '@/features/auth';
 
@@ -39,6 +43,8 @@ export const CredentialsForm: FC<CredentialsFormProps> = ({
   const form = useForm<ICredentialsForm>({
     defaultValues: parsedFormData,
     mode: 'onChange'
+    // resolver: yupResolver(getCredentialsYupSchema(tShared))
+    // resolver: zodResolver(getCredentialsZodSchema(tShared))
   });
 
   const { isPending: isRegisterPending, mutate: register } = useMutation({
