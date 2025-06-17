@@ -1,4 +1,5 @@
 export * from './checkKeyByTypes.util';
+export * from './checkValidTld.util';
 export * from './formatDate.util';
 export * from './formatNumber.util';
 export * from './formatPrice.util';
