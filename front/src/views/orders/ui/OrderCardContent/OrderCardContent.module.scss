@@ -33,9 +33,13 @@
     .orderCardContent__img {
       flex: 0 0 auto;
       inline-size: m.rem(120);
-      block-size: m.rem(120);
+      aspect-ratio: 1;
       background: m.$lightColor;
       border-radius: m.rem(4);
+
+      @media (max-width: m.$mobile) {
+        inline-size: m.rem(80);
+      }
 
       img {
         padding: m.rem(4);
@@ -61,6 +65,10 @@
     align-self: center;
 
     @include m.lineCamp(3);
+
+    @media (max-width: m.$mobile) {
+      font-size: m.rem(12);
+    }
   }
 
   // .orderCardContent__box
@@ -79,6 +87,8 @@
   &__prices {
     display: flex;
     align-items: center;
+    line-height: 2;
+    white-space: nowrap;
 
     @media (min-width: m.$mobile) {
       gap: m.rem(64);
@@ -88,12 +98,10 @@
       flex-direction: column;
       align-items: flex-end;
       justify-content: space-between;
+      font-size: m.rem(12);
     }
 
-    > span {
-      line-height: 2;
-      white-space: nowrap;
-
+    > p {
       &:last-child {
         font-weight: 500;
       }
@@ -108,6 +116,10 @@
     border-radius: m.rem(4);
 
     @extend %table;
+
+    @media (max-width: m.$mobile) {
+      font-size: m.rem(12);
+    }
 
     td {
       &:last-child {
