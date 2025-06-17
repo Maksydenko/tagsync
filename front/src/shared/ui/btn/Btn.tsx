@@ -44,7 +44,7 @@ export const Btn: FC<BtnProps> = ({
         )}
         {typeof iconValue === 'string' ? (
           <Img
-            alt={icon?.label}
+            alt={icon!.label}
             className={s.btn__icon}
             height={20}
             src={iconValue}

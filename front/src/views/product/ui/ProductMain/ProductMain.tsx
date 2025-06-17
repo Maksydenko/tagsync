@@ -237,7 +237,7 @@ export const ProductMain: FC<ProductMainProps> = ({
               }}
             >
               <Img
-                aria-label={tShared(
+                alt={tShared(
                   `product.compare.${
                     isInComparisons ? 'remove-from' : 'add-to'
                   }-compare`
