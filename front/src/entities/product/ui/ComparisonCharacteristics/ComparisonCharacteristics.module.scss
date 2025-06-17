@@ -15,7 +15,11 @@
     max-inline-size: m.rem(1304);
     overflow: auto;
 
-    @include m.responsiveValue(max-inline-size, 1303, 664, 1, 1631, 992);
+    @include m.responsiveValue(max-inline-size, 1303, 744, 1, 1840, 1280);
+
+    @media (max-width: m.$desktopMedium) {
+      @include m.responsiveValue(max-inline-size, 950, 664, 1, 1279, 992);
+    }
 
     @media (max-width: m.$tablet) {
       @include m.responsiveValue(max-inline-size, 959, 288, 1, 991, 320);

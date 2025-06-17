@@ -5,14 +5,19 @@
 
   &__body {
     display: flex;
-    gap: m.rem(8);
+    gap: m.rem(64);
     justify-content: space-between;
+
+    @media (max-width: m.$mobile) {
+      gap: m.rem(0);
+    }
   }
 
   // .orderCard__list
 
   &__list {
     display: flex;
+    flex-wrap: wrap;
     gap: m.rem(8);
   }
 
@@ -29,6 +34,10 @@
   &__img {
     inline-size: m.rem(120);
     aspect-ratio: 1;
+
+    @media (max-width: m.$mobile) {
+      inline-size: m.rem(80);
+    }
 
     img {
       padding: m.rem(4);
@@ -58,5 +67,7 @@
 
   &__total {
     font-weight: 500;
+
+    @include m.textNowrap;
   }
 }
