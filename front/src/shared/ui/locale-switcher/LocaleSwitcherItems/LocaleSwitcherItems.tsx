@@ -4,13 +4,12 @@ import { localeData } from '../locale.data';
 
 import { LocaleSwitcherItem } from './LocaleSwitcherItem';
 
-interface LocaleSwitcherItemsProps {
-  onClick?: () => void;
-}
+import s from '../LocaleSwitcher.module.scss';
 
-export const LocaleSwitcherItems: FC<LocaleSwitcherItemsProps> = ({
-  onClick
-}) =>
-  localeData.map(locale => (
-    <LocaleSwitcherItem key={locale.value} locale={locale} onClick={onClick} />
-  ));
+export const LocaleSwitcherItems: FC = () => (
+  <ul className={s.localeSwitcher__list}>
+    {localeData.map(locale => (
+      <LocaleSwitcherItem key={locale.value} locale={locale} />
+    ))}
+  </ul>
+);
