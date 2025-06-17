@@ -148,7 +148,7 @@
     display: flex;
     gap: m.rem(40) m.rem(40);
     align-items: center;
-    font-size: m.rem(18);
+    font-size: m.rem(20);
 
     @media (max-width: m.$desktopSmall) {
       flex-direction: column-reverse;
@@ -162,8 +162,7 @@
 
   &__list {
     display: flex;
-    gap: m.rem(30) m.rem(20);
-    font-size: m.rem(18);
+    gap: m.rem(16) m.rem(20);
 
     @media (min-width: m.$desktopSmall) {
       align-items: center;
@@ -171,7 +170,6 @@
 
     @media (max-width: m.$desktopSmall) {
       flex-direction: column;
-      font-size: m.rem(20);
     }
   }
 
@@ -181,7 +179,12 @@
     position: relative;
     display: flex;
     justify-content: flex-end;
+    font-size: m.rem(20);
     line-height: 1.8;
+
+    @media (max-width: m.$desktopSmall) {
+      font-size: m.rem(24);
+    }
   }
 
   // .menu__link

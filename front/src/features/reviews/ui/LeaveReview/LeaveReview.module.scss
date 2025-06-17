@@ -4,15 +4,9 @@
   // .leaveReview__popup
 
   &__popup {
-    > div {
-      > div {
-        > div {
-          &:last-child {
-            inline-size: 100%;
-            max-inline-size: m.rem(400);
-          }
-        }
-      }
+    [data-panel] {
+      inline-size: 100%;
+      max-inline-size: m.rem(400);
     }
   }
 
