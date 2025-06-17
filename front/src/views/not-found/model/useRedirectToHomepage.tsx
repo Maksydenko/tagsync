@@ -6,11 +6,11 @@ import { useRouter } from 'next/navigation';
 import { Pathname } from '@/shared/config';
 import { Time } from '@/shared/model';
 
+const SECONDS_TO_REDIRECT = 10;
+
 export const useRedirectToHomepage = (): {
   time: number;
 } => {
-  const SECONDS_TO_REDIRECT = 10;
-
   const [time, setTime] = useState(SECONDS_TO_REDIRECT);
   const { push } = useRouter();
 
