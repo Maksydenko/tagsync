@@ -9,10 +9,6 @@
       "dark": "Dark theme",
       "system": "System theme"
     },
-    "slide-directions": {
-      "prev": "Previous",
-      "next": "Next"
-    },
     "header": {
       "menu": {
         "open-menu": "Open menu",
@@ -89,6 +85,14 @@
       "invalid-credentials": "Invalid email or password",
       "user-already-exists": "This email already exists",
       "email-not-confirmed": "Email not confirmed"
+    },
+    "slide-directions": {
+      "prev": "Previous",
+      "next": "Next"
+    },
+    "password": {
+      "show": "Show password",
+      "hide": "Hide password"
     },
     "user": {
       "profile": "Profile",

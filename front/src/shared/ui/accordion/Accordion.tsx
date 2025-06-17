@@ -1,8 +1,11 @@
 'use client';
 
 import { FC, ReactNode } from 'react';
+import { useTranslations } from 'next-intl';
 import { clsx } from 'clsx';
 import Collapse, { CollapseProps as RootCollapseProps } from 'rc-collapse';
+
+import { Translation } from '@/shared/config';
 
 import motion from './motion.util';
 
@@ -23,8 +26,15 @@ export const Accordion: FC<AccordionProps> = ({
   isReverseIcon,
   ...props
 }) => {
+  const tShared = useTranslations(Translation.Shared);
+
   const defaultExpandIcon = (
-    <Img className={s.collapse__icon} src="/img/icons/form/arrow-down.svg" />
+    <Img
+      alt={tShared('arrow')}
+      className={s.collapse__icon}
+      src="/img/icons/form/arrow-down.svg"
+      isSvg
+    />
   );
 
   const getExpandIcon = () => {

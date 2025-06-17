@@ -41,6 +41,7 @@ const eslintConfig = [
           avoidEscape: true
         }
       ],
+      'react/button-has-type': 'error',
       'react/jsx-no-useless-fragment': ['error', { allowExpressions: false }],
       'react/jsx-sort-props': [
         'warn',

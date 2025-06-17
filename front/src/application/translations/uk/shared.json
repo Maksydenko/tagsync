@@ -9,10 +9,6 @@
       "dark": "Темна тема",
       "system": "Системна тема"
     },
-    "slide-directions": {
-      "prev": "Попередній",
-      "next": "Наступний"
-    },
     "header": {
       "menu": {
         "open-menu": "Відкрити меню",
@@ -89,6 +85,14 @@
       "invalid-credentials": "Неправильний email або пароль",
       "user-already-exists": "Цей email вже існує",
       "email-not-confirmed": "Email не підтверджено"
+    },
+    "slide-directions": {
+      "prev": "Попередній",
+      "next": "Наступний"
+    },
+    "password": {
+      "show": "Показати пароль",
+      "hide": "Сховати пароль"
     },
     "user": {
       "profile": "Особистий кабінет",

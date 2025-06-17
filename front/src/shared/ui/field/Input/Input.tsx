@@ -1,6 +1,7 @@
 'use client';
 
 import { HTMLInputTypeAttribute, ReactNode, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { clsx } from 'clsx';
 import {
   FieldValues,
@@ -9,6 +10,7 @@ import {
   UseFormReturn
 } from 'react-hook-form';
 
+import { Translation } from '@/shared/config';
 import { Img } from '@/shared/ui';
 
 import s from './Input.module.scss';
@@ -38,14 +40,15 @@ export const Input = <T extends FieldValues>({
   ...props
 }: InputProps<T>): ReactNode => {
   const [showPassword, setShowPassword] = useState(false);
+  const tShared = useTranslations(Translation.Shared);
+
   const {
     formState: { errors },
     register
   } = formReturn;
-
   const { onBlur: handleBlur, ...restRegister } = register(name, options);
-  const error = errors[name];
 
+  const error = errors[name];
   const disabled = options?.disabled;
 
   const isPassword = type === 'password';
@@ -73,6 +76,7 @@ export const Input = <T extends FieldValues>({
       />
       {isPassword && (
         <button
+          aria-label={tShared(`password-${showPassword ? 'closed' : 'opened'}`)}
           className={s.input__btn}
           type="button"
           onClick={() => {
@@ -80,6 +84,7 @@ export const Input = <T extends FieldValues>({
           }}
         >
           <Img
+            alt={tShared(`password-${showPassword ? 'closed' : 'opened'}`)}
             className={s.input__icon}
             height={20}
             src={`/img/icons/form/eye-${

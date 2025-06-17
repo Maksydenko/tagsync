@@ -27,10 +27,12 @@ export const Btn: FC<BtnProps> = ({
   disabled,
   icon,
   isLoading,
+  type = 'button',
   ...props
 }) => {
   const classNames = clsx(s.btn, isLoading && s.btn_loading);
   const iconValue = icon?.value;
+  const isDisabled = disabled || isLoading;
 
   const getBodyElement = (children: ReactNode) => (
     <div className={s.btn__body}>
@@ -42,7 +44,7 @@ export const Btn: FC<BtnProps> = ({
         )}
         {typeof iconValue === 'string' ? (
           <Img
-            alt={icon?.label}
+            alt={icon!.label}
             className={s.btn__icon}
             height={20}
             src={iconValue}
@@ -61,6 +63,9 @@ export const Btn: FC<BtnProps> = ({
     return cloneElement(children, {
       /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
       /* @ts-ignore */
+      ['aria-disabled']: isDisabled || children.props['aria-disabled'],
+      /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
+      /* @ts-ignore */
       children: getBodyElement(children.props.children),
       /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
       /* @ts-ignore */
@@ -68,12 +73,12 @@ export const Btn: FC<BtnProps> = ({
     });
   }
 
-  const isDisabled = disabled || isLoading;
-
   return (
     <button
       className={clsx(classNames, className)}
       disabled={isDisabled}
+      /* eslint-disable-next-line react/button-has-type */
+      type={type}
       {...props}
     >
       {getBodyElement(children)}

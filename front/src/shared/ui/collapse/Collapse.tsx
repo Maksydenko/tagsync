@@ -41,7 +41,7 @@ export const Collapse: FC<CollapseProps> = ({
         {typeof btn === 'string' ? <p>{btn}</p> : btn}
         {typeof iconValue === 'string' ? (
           <Img
-            alt={icon?.label}
+            alt={icon!.label}
             className={s.collapse__icon}
             height={20}
             src={iconValue}

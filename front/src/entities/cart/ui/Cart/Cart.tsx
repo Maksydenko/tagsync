@@ -106,7 +106,6 @@ export const Cart: FC<CartProps> = ({ className }) => {
           <div className={s.cart__footer}>
             <Btn disabled={!cartItems?.length} asChild>
               <Link
-                aria-disabled={!cartItems?.length}
                 className={s.cart__btn}
                 href={Pathname.Checkout}
                 onClick={e => {

@@ -7,7 +7,7 @@ import { clsx } from 'clsx';
 import s from './Img.module.scss';
 
 interface ImgProps extends Omit<ImageProps, 'alt'> {
-  alt?: string;
+  alt: string;
   className?: string;
   customLoader?: ReactNode;
   isSvg?: boolean;
@@ -15,7 +15,7 @@ interface ImgProps extends Omit<ImageProps, 'alt'> {
 }
 
 export const Img: FC<ImgProps> = ({
-  alt = '',
+  alt,
   className,
   customLoader,
   fill = true,
