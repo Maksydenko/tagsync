@@ -53,6 +53,8 @@ const ProductPage: NextPage<IPageProps> = async props => {
 
 export default ProductPage;
 
+export const revalidate = Number(process.env.REVALIDATE_TIMEOUT);
+
 export const generateMetadata = async ({ params }: IPageProps) => {
   const { categorySlug, productId } = await params;
   const productData = await getProductById(categorySlug, productId);

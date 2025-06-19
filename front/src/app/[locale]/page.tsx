@@ -44,7 +44,6 @@ export const generateMetadata = async ({ params }: IPageProps) => {
 
   return {
     description: tShared('footer.text'),
-    revalidate: process.env.REVALIDATE_TIMEOUT,
     title: generateMetaTitle(tHome('title'))
   };
 };

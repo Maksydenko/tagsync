@@ -40,6 +40,8 @@ export const generateStaticParams = async () => {
   }));
 };
 
+export const revalidate = Number(process.env.REVALIDATE_TIMEOUT);
+
 export const generateMetadata = async ({ params }: IPageProps) => {
   const { categorySlug, locale } = await params;
   const filtersData = await ProductsService.getFiltered(
@@ -50,7 +52,6 @@ export const generateMetadata = async ({ params }: IPageProps) => {
   return {
     description: categoryTitle,
     keywords: categoryTitle.split(' ').join(','),
-    revalidate: process.env.REVALIDATE_TIMEOUT,
     title: categoryTitle
   };
 };
