@@ -43,13 +43,16 @@ export const Sort: FC<SortProps> = ({ className }) => {
   });
 
   const watchedSort = form.watch(SearchParam.SortBy);
-  const watchedSortValue = watchedSort?.value;
-
-  useSortParams(watchedSortValue, defaultSort.value);
+  useSortParams(watchedSort?.value, defaultSort.value);
 
   return (
     <div className={clsx(s.sort, className)}>
-      <Select formReturn={form} items={sorts} name={SearchParam.SortBy} />
+      <Select
+        className={s.sort__select}
+        formReturn={form}
+        items={sorts}
+        name={SearchParam.SortBy}
+      />
     </div>
   );
 };

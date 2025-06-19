@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { clsx } from 'clsx';
 import {
@@ -48,6 +48,9 @@ export const Select = <T extends FieldValues>({
   options,
   ...props
 }: SelectProps<T>): ReactNode => {
+  const currentValue = watch(name);
+
+  const [localValue, setLocalValue] = useState<ILink>(currentValue);
   const tShared = useTranslations(Translation.Shared);
 
   const {
@@ -61,11 +64,12 @@ export const Select = <T extends FieldValues>({
     <div className={clsx(s.select, className)}>
       <div className={s.select__body}>
         <Listbox
-          defaultValue={items[0]}
+          defaultValue={currentValue}
           disabled={options?.disabled}
-          value={watch(name)}
+          value={localValue}
           onChange={value => {
             setValue(name, value as PathValue<T, Path<T>>);
+            setLocalValue(value);
           }}
         >
           <ListboxButton
@@ -74,7 +78,7 @@ export const Select = <T extends FieldValues>({
             {...props}
             {...restRegister}
           >
-            <p>{watch(name).label}</p>
+            <p>{localValue.label}</p>
             {typeof iconValue === 'string' ? (
               <Img
                 alt={icon?.label || tShared('arrow')}

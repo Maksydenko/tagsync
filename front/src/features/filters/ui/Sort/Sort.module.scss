@@ -1,4 +1,9 @@
 @use '@/application/styles/module' as m;
 
 .sort {
+  // .sort__select
+
+  &__select {
+    @include m.textNowrap;
+  }
 }
