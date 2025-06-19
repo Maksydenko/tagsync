@@ -30,7 +30,6 @@ export const generateMetadata = async ({ params }: IPageProps) => {
   });
 
   return {
-    revalidate: process.env.REVALIDATE_TIMEOUT,
     title: generateMetaTitle(tResetPassword('title'))
   };
 };

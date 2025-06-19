@@ -8,8 +8,7 @@ export const useBreakpointCheck = (breakpoint: number) => {
   const [isBreakpoint, setIsBreakpoint] = useState(false);
 
   const handleBreakpointCheck = useCallback(() => {
-    const { innerWidth } = window;
-    const isLessBreakpoint = innerWidth < breakpoint;
+    const isLessBreakpoint = window.innerWidth < breakpoint;
 
     setIsBreakpoint(isLessBreakpoint);
   }, [breakpoint]);
