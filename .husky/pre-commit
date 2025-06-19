@@ -2,3 +2,4 @@ cd front
 bun tsc
 bun lint
 bun stylelint
+bun run build
