@@ -32,6 +32,11 @@ const CategoryPage: NextPage<IPageProps> = async props => {
 
 export default CategoryPage;
 
+/* eslint-disable prefer-const */
+/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
+/* @ts-ignore */
+export let revalidate = Number(process.env.REVALIDATE_TIMEOUT);
+
 export const generateStaticParams = async () => {
   const categories = await ProductsService.getCategories();
 
@@ -39,8 +44,6 @@ export const generateStaticParams = async () => {
     categorySlug: category.slug
   }));
 };
-
-export const revalidate = Number(process.env.REVALIDATE_TIMEOUT);
 
 export const generateMetadata = async ({ params }: IPageProps) => {
   const { categorySlug, locale } = await params;
