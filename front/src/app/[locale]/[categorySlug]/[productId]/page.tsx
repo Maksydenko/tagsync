@@ -53,8 +53,10 @@ const ProductPage: NextPage<IPageProps> = async props => {
 
 export default ProductPage;
 
-// TODO: Use `process.env.NEXT_PUBLIC_REVALIDATE_TIMEOUT` after fix in Next.js
-export const revalidate = 60;
+/* eslint-disable prefer-const */
+/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
+/* @ts-ignore */
+export let revalidate = Number(process.env.REVALIDATE_TIMEOUT);
 
 export const generateMetadata = async ({ params }: IPageProps) => {
   const { categorySlug, productId } = await params;
