@@ -1,30 +1,12 @@
+const MOCKS_PATH = '<rootDir>/src/shared/config/__mocks__';
+
 module.exports = {
   collectCoverageFrom: [
     '**/*.{js,jsx,ts,tsx}',
     '!**/*.d.ts',
     '!**/node_modules/**'
   ],
-  moduleNameMapper: {
-    // Handle CSS imports (without CSS modules)
-    '^.+\\.(css|sass|scss)$':
-      '<rootDir>/src/shared/config/__mocks__/style.mock.ts',
 
-    // Handle image imports
-    // https://jestjs.io/docs/webpack#handling-static-assets
-    '^.+\\.(png|jpg|jpeg|gif|webp|avif|ico|bmp|svg)$':
-      '<rootDir>/src/shared/config/__mocks__/file.mock.ts',
-
-    // Handle CSS imports (with CSS modules)
-    // https://jestjs.io/docs/webpack#mocking-css-modules
-    '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
-
-    // Handle module aliases
-    '^@/(.*)$': '<rootDir>/src/$1',
-
-    // Handle Next.js specific imports
-    '^next/font/google$':
-      '<rootDir>/src/shared/config/__mocks__/nextFontGoogle.mock.ts'
-  },
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   testEnvironment: 'jest-environment-jsdom',
   testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/'],
@@ -40,6 +22,26 @@ module.exports = {
   },
   transformIgnorePatterns: [
     '/node_modules/(?!(next-intl|use-intl|swiper|ssr-window|dom7)/)',
-    '^.+\\.module\\.(css|sass|scss)$'
-  ]
+    '^.+\\.module\\.(css|sass|scss|less)$'
+  ],
+  /* eslint-disable perfectionist/sort-objects */
+  moduleNameMapper: {
+    // Handle CSS imports (without CSS modules)
+    '^.+\\.(css|sass|scss|less)$': `${MOCKS_PATH}/style.mock.ts`,
+    '^swiper/(css|sass|scss|less)/*': `${MOCKS_PATH}/style.mock.ts`,
+
+    // Handle image imports
+    // https://jestjs.io/docs/webpack#handling-static-assets
+    '^.+\\.(png|jpg|jpeg|gif|webp|avif|ico|bmp|svg)$': `${MOCKS_PATH}/file.mock.ts`,
+
+    // Handle CSS imports (with CSS modules)
+    // https://jestjs.io/docs/webpack#mocking-css-modules
+    '^.+\\.module\\.(css|sass|scss|less)$': 'identity-obj-proxy',
+
+    // Handle module aliases
+    '^@/(.*)$': '<rootDir>/src/$1',
+
+    // Handle Next.js specific imports
+    '^next/font/google$': `${MOCKS_PATH}/nextFontGoogle.mock.ts`
+  }
 };
