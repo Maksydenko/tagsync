@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
 import { clsx } from 'clsx';
 
-import { ILink, useMounted } from '@/shared/model';
+import { handleArrowFocus, ILink, useMounted } from '@/shared/model';
 import { Img } from '@/shared/ui';
 
 import s from '../ThemeSwitcher.module.scss';
@@ -19,28 +19,41 @@ export const ThemeItem: FC<ThemeItemProps> = ({ theme: { label, value } }) => {
   const { setTheme, theme } = useTheme();
 
   const isMounted = useMounted();
+
   const isChecked = theme === value;
+  const id = `${value}-theme`;
 
   const switchTheme = () => {
-    setTheme(value);
-  };
-
-  const handleKeyDown: KeyboardEventHandler<HTMLLabelElement> = ({ key }) => {
-    if (key !== 'Enter' && key !== ' ') {
+    if (isChecked) {
       return;
     }
 
-    switchTheme();
+    setTheme(value);
+  };
+
+  const handleKeyDown: KeyboardEventHandler<HTMLLabelElement> = e => {
+    const { key } = e;
+
+    if (key === 'Enter' || key === ' ') {
+      switchTheme();
+
+      return;
+    }
+
+    handleArrowFocus({
+      e,
+      selector: `.${s.themeSwitcher__label}`
+    });
   };
 
   return (
     <>
       <input
-        aria-checked={isMounted && isChecked}
         aria-label={tShared(`themes.${value}`)}
-        checked={theme === value}
+        checked={isMounted && isChecked}
         className={s.themeSwitcher__input}
-        id={value}
+        data-testid={`${id}-input`}
+        id={id}
         type="radio"
         onChange={switchTheme}
       />
@@ -49,12 +62,12 @@ export const ThemeItem: FC<ThemeItemProps> = ({ theme: { label, value } }) => {
           s.themeSwitcher__label,
           isMounted && isChecked && s.themeSwitcher__label_checked
         )}
-        htmlFor={value}
-        {...(isMounted &&
-          !isChecked && {
-            onKeyDown: handleKeyDown,
-            tabIndex: 0
-          })}
+        data-testid={`${id}-label`}
+        htmlFor={id}
+        {...(isMounted && {
+          onKeyDown: handleKeyDown,
+          tabIndex: 0
+        })}
       >
         <Img
           alt={tShared(`themes.${value}`)}
