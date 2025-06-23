@@ -3,11 +3,15 @@
 $themeSwitcherPadding: 4;
 
 .themeSwitcher {
-  position: relative;
-  display: flex;
-  padding: m.rem($themeSwitcherPadding);
-  background: var(--themeSwitcherBg);
-  border-radius: m.rem(999);
+  // .themeSwitcher__body
+
+  &__body {
+    position: relative;
+    display: flex;
+    padding: m.rem($themeSwitcherPadding);
+    background: var(--themeSwitcherBg);
+    border-radius: m.rem(999);
+  }
 
   // .themeSwitcher__slider
 

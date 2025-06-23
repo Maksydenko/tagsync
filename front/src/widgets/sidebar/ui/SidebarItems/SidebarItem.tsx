@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, KeyboardEventHandler } from 'react';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import clsx from 'clsx';
@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { ICategory } from '@/features/products';
 
 import { Locale, Translation } from '@/shared/config';
+import { handleArrowFocus } from '@/shared/model';
 import { Img } from '@/shared/ui';
 
 import s from '../Sidebar.module.scss';
@@ -22,9 +23,21 @@ export const SidebarItem: FC<ItemProps> = ({
 
   const translatedSlug = translations_slug[locale];
 
+  const handleKeyDown: KeyboardEventHandler<HTMLAnchorElement> = e => {
+    handleArrowFocus({
+      e,
+      isVertical: true,
+      selector: `.${s.sidebar__link}`
+    });
+  };
+
   return (
     <li className={s.sidebar__item}>
-      <Link className={clsx(s.sidebar__link)} href={`/${slug}`}>
+      <Link
+        className={clsx(s.sidebar__link)}
+        href={`/${slug}`}
+        onKeyDown={handleKeyDown}
+      >
         <Img
           alt={`${tShared('logo')} ${translatedSlug}`}
           className={s.sidebar__icon}

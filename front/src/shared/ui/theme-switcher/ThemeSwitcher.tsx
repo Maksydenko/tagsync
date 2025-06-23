@@ -20,8 +20,10 @@ export const ThemeSwitcher: FC<IThemeSwitcher> = ({ className }) => {
 
   return (
     <div className={clsx(s.themeSwitcher, className)}>
-      <ThemeItems themes={themeData} />
-      {isMounted && <span className={s.themeSwitcher__slider}></span>}
+      <div className={s.themeSwitcher__body}>
+        <ThemeItems themes={themeData} />
+        {isMounted && <span className={s.themeSwitcher__slider}></span>}
+      </div>
     </div>
   );
 };
