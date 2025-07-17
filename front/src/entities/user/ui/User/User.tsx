@@ -36,6 +36,7 @@ export const User: FC<UserProps> = ({ className, onClick }) => {
   const invalidateUser = useInvalidateAtom([QueryKey.User]);
 
   const user = userData?.data;
+  const userAvatar = user?.avatarUrl;
   const userName = `${user?.firstName} ${user?.lastName}`;
 
   const { mutate: logout } = useMutation({
@@ -87,7 +88,19 @@ export const User: FC<UserProps> = ({ className, onClick }) => {
               }
             ]}
           >
-            {userName ? initials(userName) : userIcon}
+            {userAvatar ? (
+              <Img
+                alt={userName}
+                className={s.user__img}
+                height={42}
+                src={userAvatar}
+                width={42}
+              />
+            ) : userName ? (
+              <p className={s.user__initials}>{initials(userName)}</p>
+            ) : (
+              userIcon
+            )}
           </Dropdown>
         ) : (
           <Link

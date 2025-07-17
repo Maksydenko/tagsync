@@ -1,6 +1,7 @@
 export * from './dateFormat.enum';
 export * from './direction.enum';
 export * from './errorCode.enum';
+export * from './fileSize.enum';
 export * from './mutationKey.enum';
 export * from './percent.enum';
 export * from './phase.enum';

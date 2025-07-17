@@ -79,7 +79,7 @@ export const Checkbox = <T extends FieldValues>({
         type="checkbox"
         onBlur={e => {
           setIsFocused(false);
-          handleBlur?.(e);
+          handleBlur(e);
         }}
         onFocus={() => {
           setIsFocused(true);

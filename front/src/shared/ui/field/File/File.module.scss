@@ -4,6 +4,14 @@
   // .file__body
 
   &__body {
+    display: flex;
+    flex-direction: column;
+    gap: m.rem(16);
+  }
+
+  // .file__content
+
+  &__content {
     position: relative;
     display: flex;
     justify-content: center;
@@ -13,12 +21,14 @@
     border-radius: m.rem(5);
     transition: border-color 0.3s ease 0s;
 
-    &:hover {
-      border-color: #766df4;
+    // .file__content_error
+
+    &_error {
+      border-color: m.$redColor;
     }
 
-    // .file__body_active
-
+    &:hover,
+    // .file__content_active
     &_active {
       border-color: #766df4;
     }
@@ -41,10 +51,6 @@
   // .file__hint
 
   &__hint {
-    > span {
-      font-weight: 700;
-      color: #766df4;
-    }
   }
 
   // .file__subHint
@@ -69,5 +75,95 @@
     z-index: 10;
     cursor: pointer;
     opacity: 0;
+  }
+
+  // .file__list
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: m.rem(10);
+  }
+
+  // .file__item
+
+  &__item {
+    position: relative;
+
+    > p {
+      aspect-ratio: 1;
+      text-transform: uppercase;
+      border: m.rem(1) solid var(--mainColor);
+      border-radius: 50%;
+
+      @include m.centered(flex);
+    }
+  }
+
+  // .file__img
+
+  &__img {
+    inline-size: m.rem(50);
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  // .file__remove
+
+  &__remove {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+
+    > span {
+      position: relative;
+      display: block;
+      inline-size: m.rem(16);
+      aspect-ratio: 1;
+      background: m.$redColor;
+      border-radius: 50%;
+
+      &::before,
+      &::after {
+        position: absolute;
+        inset-block-start: 50%;
+        inset-inline: m.rem(2);
+        block-size: m.rem(2);
+        content: '';
+        background: m.$lightColor;
+        border-radius: m.rem(4);
+        translate: 0 -50%;
+        transition: rotate 0.3s ease 0s;
+      }
+
+      &::before {
+        rotate: 45deg;
+      }
+
+      &::after {
+        rotate: -45deg;
+      }
+    }
+  }
+
+  // .file__btn
+
+  &__btn {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    &:hover,
+    &:focus {
+      + .file__remove {
+        > span {
+          &::before,
+          &::after {
+            rotate: 0deg;
+          }
+        }
+      }
+    }
   }
 }

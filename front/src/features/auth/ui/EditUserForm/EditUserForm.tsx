@@ -38,6 +38,7 @@ export const EditUserForm: FC<EditUserFormProps> = ({ className }) => {
   const { isPending: isEditUserPending, mutate: editUser } = useMutation({
     mutationFn: async ({
       address,
+      avatar,
       city,
       name,
       phone,
@@ -48,6 +49,15 @@ export const EditUserForm: FC<EditUserFormProps> = ({ className }) => {
       }
 
       const { AuthService } = await import('@/features/auth');
+
+      if (avatar) {
+        const avatarResponse = await AuthService.uploadAvatar({
+          avatar,
+          email: user.email
+        });
+
+        console.log(avatarResponse.data);
+      }
 
       return AuthService.changeUserData({
         address: address.trim(),

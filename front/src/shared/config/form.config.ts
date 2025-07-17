@@ -2,6 +2,9 @@ export const formConfig = {
   address: {
     min: 2
   },
+  avatar: {
+    max: 10
+  },
   city: {
     min: 2,
     pattern: /^[^\d]*$/

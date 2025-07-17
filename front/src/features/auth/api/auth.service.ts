@@ -11,6 +11,9 @@ import {
   IRegister,
   IRequestResetPassword,
   IResetPassword,
+  IUploadAvatar,
+  IUploadAvatarError,
+  IUploadAvatarResponse,
   IUserData
 } from './interfaces';
 
@@ -103,12 +106,16 @@ export const AuthService = {
   },
 
   requestResetPassword: async (data: IRequestResetPassword) => {
-    const response: IResponse<IResult> = await axiosInstance.post(
-      '/UserRegistration/requestPasswordReset',
-      data
-    );
+    try {
+      const response: IResponse<IResult> = await axiosInstance.post(
+        '/UserRegistration/requestPasswordReset',
+        data
+      );
 
-    return response;
+      return response;
+    } catch (err) {
+      throw err;
+    }
   },
 
   resetPassword: async ({
@@ -134,5 +141,17 @@ export const AuthService = {
     }
 
     return userData;
+  },
+
+  uploadAvatar: async ({ avatar, email }: IUploadAvatar) => {
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('avatar', avatar[0]);
+
+    const response = await axiosInstance.post<
+      IResponse<IUploadAvatarError | IUploadAvatarResponse>
+    >('/UserRegistration/uploadAvatar', formData);
+
+    return response;
   }
 };
