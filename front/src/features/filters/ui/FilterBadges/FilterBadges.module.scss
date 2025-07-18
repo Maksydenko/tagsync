@@ -35,6 +35,7 @@
       content: '';
       background: var(--mainBgColor);
       border-radius: m.rem(4);
+      translate: 0 -50%;
       transition: 0.3s ease 0s;
       transition-property: rotate, background;
     }

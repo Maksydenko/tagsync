@@ -47,4 +47,11 @@
       text-transform: uppercase;
     }
   }
+
+  // .user__img
+
+  &__img {
+    position: absolute;
+    inset: 0;
+  }
 }

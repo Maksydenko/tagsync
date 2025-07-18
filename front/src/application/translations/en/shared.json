@@ -20,6 +20,12 @@
       "copyright": "All rights reserved"
     },
     "form": {
+      "file": {
+        "max": "File size shouldn't exceed {value}MB",
+        "pattern": "Invalid file type. Allowed types: {value}",
+        "maxLength": "Maximum number of files can be {value}",
+        "placeholder": "Drag and drop or click"
+      },
       "search": {
         "label": "Search"
       },
@@ -70,6 +76,10 @@
         "label": "Address",
         "required": "Address is required",
         "min": "Address must have at least {value} characters"
+      },
+      "avatar": {
+        "label": "Avatar",
+        "max": "Avatar size shouldn't exceed {value}MB"
       },
       "rating": {
         "required": "Rating is required"

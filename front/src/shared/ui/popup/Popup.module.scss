@@ -65,6 +65,7 @@
       content: '';
       background: m.$darkColor;
       border-radius: m.rem(5);
+      translate: 0 -50%;
     }
 
     &::before {

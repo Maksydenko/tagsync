@@ -3,6 +3,7 @@ export * from './checkValidTld.util';
 export * from './formatDate.util';
 export * from './formatNumber.util';
 export * from './formatPrice.util';
+export * from './getExtensionFromPath.util';
 export * from './handleArrowFocus.util';
 export * from './isValueInSet.util';
 export * from './removeLocalePrefix.util';

@@ -14,6 +14,7 @@ import { ILink } from '@/shared/model';
 import { formatLabel } from './formatLabel.util';
 
 import { Checkbox } from './Checkbox/Checkbox';
+import { File } from './File/File';
 import { Input } from './Input/Input';
 import { Phone } from './Phone/Phone';
 import { Range } from './Range/Range';
@@ -72,6 +73,18 @@ export const Field = <T extends FieldValues>({
           options={options}
         />
       );
+    case 'file':
+      field = (
+        <File
+          {...props}
+          formReturn={formReturn}
+          label={formattedLabel}
+          name={name}
+          options={options}
+          placeholder={formattedPlaceholder}
+        />
+      );
+      break;
     case 'range':
     case 'ranges':
       field = (

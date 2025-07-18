@@ -57,7 +57,7 @@ export const getEditUserFields = (
     options: {
       required: tShared('form.phone.required'),
       validate: value => {
-        if (!value || value?.length <= 1) {
+        if (!value || typeof value !== 'string' || value?.length <= 1) {
           return;
         }
 
@@ -97,5 +97,32 @@ export const getEditUserFields = (
       },
       required: tShared('form.address.required')
     }
+  },
+  {
+    accept: '.jpg, .jpeg, .png, .webp',
+    label: tShared('form.avatar.label'),
+    name: 'avatar',
+    options: {
+      max: {
+        message: tShared('form.avatar.max', {
+          value: formConfig.avatar.max
+        }),
+        value: formConfig.avatar.max
+      },
+      maxLength: {
+        message: tShared('form.avatar.max', {
+          value: formConfig.avatar.max
+        }),
+        value: formConfig.avatar.max
+      },
+      pattern: {
+        message: tShared('form.avatar.pattern', {
+          accept: '.jpg, .jpeg, .png, .webp'
+        }),
+        value: RegExp('')
+      }
+    },
+    placeholder: tShared('form.file.placeholder'),
+    type: 'file'
   }
 ];

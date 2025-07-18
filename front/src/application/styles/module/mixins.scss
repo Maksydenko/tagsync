@@ -97,8 +97,8 @@
 // Text vertical
 @mixin textVertical {
   writing-mode: vertical-lr;
-  rotate: -180deg;
   text-orientation: upright;
+  rotate: -180deg;
 }
 
 // Line camp
