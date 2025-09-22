@@ -1,14 +1,5 @@
-'use client';
-
 import { FC } from 'react';
 import { useTranslations } from 'next-intl';
-import { useAtom } from 'jotai';
-
-import { useQuery } from '@tanstack/react-query';
-
-import { countriesAtom } from '@/features/countries';
-import { CountriesService } from '@/features/countries/api';
-import { useTwelveDataWS } from '@/features/currency';
 
 import { IProduct, ProductsSlider } from '@/entities/product';
 
@@ -25,9 +16,6 @@ interface HomeProps {
 
 export const Home: FC<HomeProps> = ({ popularData, topRatedData }) => {
   const tHome = useTranslations(Translation.Home);
-
-  const [{ data }] = useAtom(countriesAtom);
-  console.log(data);
 
   return (
     <div className={s.home}>
