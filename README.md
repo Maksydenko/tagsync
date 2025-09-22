@@ -25,6 +25,7 @@ bun dev
 ![HTML](https://skillicons.dev/icons?i=html)
 ![CSS](https://skillicons.dev/icons?i=css)
 ![Supabase](https://skillicons.dev/icons?i=supabase)
+![Supabase](https://skillicons.dev/icons?i=gql)
 ![Git](https://skillicons.dev/icons?i=git)
 ![GitHub](https://skillicons.dev/icons?i=github)
 ![yarn](https://skillicons.dev/icons?i=bun)
